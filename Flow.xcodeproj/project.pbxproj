@@ -12,6 +12,14 @@
 		41CE6AFC1C38F73000F4DBED /* Flow.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41CE6AFA1C38F73000F4DBED /* Flow.xcdatamodeld */; };
 		41CE6AFE1C38F73000F4DBED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41CE6AFD1C38F73000F4DBED /* Assets.xcassets */; };
 		41CE6B011C38F73000F4DBED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41CE6AFF1C38F73000F4DBED /* LaunchScreen.storyboard */; };
+		41CE6B0F1C38F88000F4DBED /* Actions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41CE6B0E1C38F88000F4DBED /* Actions.plist */; };
+		41CE6B131C38F99500F4DBED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE6B121C38F99500F4DBED /* Constants.swift */; };
+		41CE6B161C38F9FD00F4DBED /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41CE6B181C38F9FD00F4DBED /* Localizable.strings */; };
+		41CE6B1D1C38FA4700F4DBED /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE6B1C1C38FA4700F4DBED /* StringHelper.swift */; };
+		41CE6B231C3902BF00F4DBED /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41CE6B211C3902BF00F4DBED /* Settings.storyboard */; };
+		41CE6B251C39068300F4DBED /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE6B241C39068300F4DBED /* StartVC.swift */; };
+		41CE6B271C39073400F4DBED /* Quotes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41CE6B261C39073400F4DBED /* Quotes.plist */; };
+		41CE6B2C1C39091D00F4DBED /* SettingsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE6B2B1C39091D00F4DBED /* SettingsTVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +30,17 @@
 		41CE6AFD1C38F73000F4DBED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41CE6B001C38F73000F4DBED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		41CE6B021C38F73000F4DBED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41CE6B0E1C38F88000F4DBED /* Actions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Actions.plist; sourceTree = "<group>"; };
+		41CE6B121C38F99500F4DBED /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		41CE6B141C38F9D600F4DBED /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		41CE6B151C38F9D600F4DBED /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		41CE6B1A1C38FA0800F4DBED /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		41CE6B1B1C38FA1800F4DBED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		41CE6B1C1C38FA4700F4DBED /* StringHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
+		41CE6B221C3902BF00F4DBED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
+		41CE6B241C39068300F4DBED /* StartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
+		41CE6B261C39073400F4DBED /* Quotes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Quotes.plist; sourceTree = "<group>"; };
+		41CE6B2B1C39091D00F4DBED /* SettingsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +74,12 @@
 			isa = PBXGroup;
 			children = (
 				41CE6AF31C38F73000F4DBED /* AppDelegate.swift */,
-				41CE6AF71C38F73000F4DBED /* Main.storyboard */,
+				41CE6B1E1C39019600F4DBED /* Storyboards */,
 				41CE6B091C38F7C300F4DBED /* Helpers */,
-				41CE6B0C1C38F7F900F4DBED /* Database */,
 				41CE6B0A1C38F7CC00F4DBED /* ViewControllers */,
 				41CE6B0B1C38F7DE00F4DBED /* Supporting Files */,
+				41CE6B0D1C38F85900F4DBED /* Resources */,
+				41CE6B0C1C38F7F900F4DBED /* Database */,
 			);
 			path = Flow;
 			sourceTree = "<group>";
@@ -67,6 +87,7 @@
 		41CE6B091C38F7C300F4DBED /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				41CE6B1C1C38FA4700F4DBED /* StringHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -74,6 +95,8 @@
 		41CE6B0A1C38F7CC00F4DBED /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				41CE6B241C39068300F4DBED /* StartVC.swift */,
+				41CE6B281C3908F400F4DBED /* Settings */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -94,6 +117,34 @@
 				41CE6AFA1C38F73000F4DBED /* Flow.xcdatamodeld */,
 			);
 			name = Database;
+			sourceTree = "<group>";
+		};
+		41CE6B0D1C38F85900F4DBED /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				41CE6B0E1C38F88000F4DBED /* Actions.plist */,
+				41CE6B181C38F9FD00F4DBED /* Localizable.strings */,
+				41CE6B121C38F99500F4DBED /* Constants.swift */,
+				41CE6B261C39073400F4DBED /* Quotes.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		41CE6B1E1C39019600F4DBED /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				41CE6AF71C38F73000F4DBED /* Main.storyboard */,
+				41CE6B211C3902BF00F4DBED /* Settings.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		41CE6B281C3908F400F4DBED /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				41CE6B2B1C39091D00F4DBED /* SettingsTVC.swift */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +190,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 41CE6AE71C38F73000F4DBED;
 			productRefGroup = 41CE6AF11C38F73000F4DBED /* Products */;
@@ -155,7 +207,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41CE6B161C38F9FD00F4DBED /* Localizable.strings in Resources */,
+				41CE6B0F1C38F88000F4DBED /* Actions.plist in Resources */,
 				41CE6B011C38F73000F4DBED /* LaunchScreen.storyboard in Resources */,
+				41CE6B271C39073400F4DBED /* Quotes.plist in Resources */,
+				41CE6B231C3902BF00F4DBED /* Settings.storyboard in Resources */,
 				41CE6AFE1C38F73000F4DBED /* Assets.xcassets in Resources */,
 				41CE6AF91C38F73000F4DBED /* Main.storyboard in Resources */,
 			);
@@ -184,8 +240,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41CE6B251C39068300F4DBED /* StartVC.swift in Sources */,
+				41CE6B1D1C38FA4700F4DBED /* StringHelper.swift in Sources */,
 				41CE6AFC1C38F73000F4DBED /* Flow.xcdatamodeld in Sources */,
 				41CE6AF41C38F73000F4DBED /* AppDelegate.swift in Sources */,
+				41CE6B2C1C39091D00F4DBED /* SettingsTVC.swift in Sources */,
+				41CE6B131C38F99500F4DBED /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +256,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				41CE6AF81C38F73000F4DBED /* Base */,
+				41CE6B141C38F9D600F4DBED /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -204,8 +265,26 @@
 			isa = PBXVariantGroup;
 			children = (
 				41CE6B001C38F73000F4DBED /* Base */,
+				41CE6B151C38F9D600F4DBED /* de */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		41CE6B181C38F9FD00F4DBED /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				41CE6B1A1C38FA0800F4DBED /* de */,
+				41CE6B1B1C38FA1800F4DBED /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		41CE6B211C3902BF00F4DBED /* Settings.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				41CE6B221C3902BF00F4DBED /* Base */,
+			);
+			name = Settings.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
