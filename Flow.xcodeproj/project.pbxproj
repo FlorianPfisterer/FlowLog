@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		41CE6AF41C38F73000F4DBED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE6AF31C38F73000F4DBED /* AppDelegate.swift */; };
-		41CE6AF61C38F73000F4DBED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE6AF51C38F73000F4DBED /* ViewController.swift */; };
 		41CE6AF91C38F73000F4DBED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41CE6AF71C38F73000F4DBED /* Main.storyboard */; };
 		41CE6AFC1C38F73000F4DBED /* Flow.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41CE6AFA1C38F73000F4DBED /* Flow.xcdatamodeld */; };
 		41CE6AFE1C38F73000F4DBED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41CE6AFD1C38F73000F4DBED /* Assets.xcassets */; };
@@ -18,7 +17,6 @@
 /* Begin PBXFileReference section */
 		41CE6AF01C38F73000F4DBED /* Flow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41CE6AF31C38F73000F4DBED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		41CE6AF51C38F73000F4DBED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		41CE6AF81C38F73000F4DBED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		41CE6AFB1C38F73000F4DBED /* Flow.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Flow.xcdatamodel; sourceTree = "<group>"; };
 		41CE6AFD1C38F73000F4DBED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,14 +55,45 @@
 			isa = PBXGroup;
 			children = (
 				41CE6AF31C38F73000F4DBED /* AppDelegate.swift */,
-				41CE6AF51C38F73000F4DBED /* ViewController.swift */,
 				41CE6AF71C38F73000F4DBED /* Main.storyboard */,
-				41CE6AFD1C38F73000F4DBED /* Assets.xcassets */,
-				41CE6AFF1C38F73000F4DBED /* LaunchScreen.storyboard */,
-				41CE6B021C38F73000F4DBED /* Info.plist */,
-				41CE6AFA1C38F73000F4DBED /* Flow.xcdatamodeld */,
+				41CE6B091C38F7C300F4DBED /* Helpers */,
+				41CE6B0C1C38F7F900F4DBED /* Database */,
+				41CE6B0A1C38F7CC00F4DBED /* ViewControllers */,
+				41CE6B0B1C38F7DE00F4DBED /* Supporting Files */,
 			);
 			path = Flow;
+			sourceTree = "<group>";
+		};
+		41CE6B091C38F7C300F4DBED /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		41CE6B0A1C38F7CC00F4DBED /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		41CE6B0B1C38F7DE00F4DBED /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				41CE6AFF1C38F73000F4DBED /* LaunchScreen.storyboard */,
+				41CE6B021C38F73000F4DBED /* Info.plist */,
+				41CE6AFD1C38F73000F4DBED /* Assets.xcassets */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		41CE6B0C1C38F7F900F4DBED /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				41CE6AFA1C38F73000F4DBED /* Flow.xcdatamodeld */,
+			);
+			name = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,6 +106,7 @@
 				41CE6AEC1C38F73000F4DBED /* Sources */,
 				41CE6AED1C38F73000F4DBED /* Frameworks */,
 				41CE6AEE1C38F73000F4DBED /* Resources */,
+				41CE6B081C38F75E00F4DBED /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -133,12 +163,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		41CE6B081C38F75E00F4DBED /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "#!/bin/bash\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		41CE6AEC1C38F73000F4DBED /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41CE6AF61C38F73000F4DBED /* ViewController.swift in Sources */,
 				41CE6AFC1C38F73000F4DBED /* Flow.xcdatamodeld in Sources */,
 				41CE6AF41C38F73000F4DBED /* AppDelegate.swift in Sources */,
 			);
@@ -254,6 +299,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Flow/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.florianpfisterer.Flow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -265,6 +311,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Flow/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.florianpfisterer.Flow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
