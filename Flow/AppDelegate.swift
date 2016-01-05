@@ -12,13 +12,97 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate
 {
-
     var window: UIWindow?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
+        // optical adjustments
+        UITabBar.appearance().tintColor = TINT_COLOR    
+        UITabBar.appearance().barTintColor = BAR_TINT_COLOR
+        
+        UIToolbar.appearance().tintColor = TINT_COLOR
+        UIToolbar.appearance().barTintColor = BAR_TINT_COLOR
+        
+        UINavigationBar.appearance().tintColor = TINT_COLOR
+        UINavigationBar.appearance().barTintColor = BAR_TINT_COLOR
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : TINT_COLOR, NSFontAttributeName : UIFont.systemFontOfSize(23)]
+        
+        if let options = launchOptions
+        {
+            if let notification = options[UIApplicationLaunchOptionsLocalNotificationKey] as? UILocalNotification
+            {
+                self.notification(notification, receivedAtStartup: true)
+            }
+            else
+            {
+                self.setStoryboardTo("Main")
+            }
+        }
+        else
+        {
+            self.setStoryboardTo("Main")
+            
+            if !NotificationHelper.maySendNotifications
+            {
+                let settings = UIUserNotificationSettings(forTypes: .Alert, categories: nil)
+                application.registerUserNotificationSettings(settings)
+            }
+        }
+        
         return true
+    }
+    
+    private func setStoryboardTo(name: String)
+    {
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        let storyboard = UIStoryboard(name: name, bundle: nil)
+        
+        self.window?.rootViewController = storyboard.instantiateInitialViewController()
+        self.window?.makeKeyAndVisible()
+    }
+    
+    // MARK: - Notifications
+    private func notification(notification: UILocalNotification, receivedAtStartup startup: Bool)
+    {
+        if startup
+        {
+            self.setStoryboardTo("Log")
+        }
+        else
+        {
+            if let naviVC = UIApplication.sharedApplication().keyWindow?.rootViewController as? UINavigationController
+            {
+                naviVC.visibleViewController!.startLogWithOptions(notification.userInfo as? [String : AnyObject])
+            }
+            else if let currentVC = UIApplication.sharedApplication().keyWindow?.rootViewController as? LogStarterDelegate
+            {
+                currentVC.startLogWithOptions(notification.userInfo as? [String : AnyObject])
+            }
+        }
+    }
+    
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification)
+    {
+        switch application.applicationState
+        {
+        case .Active:
+            self.notification(notification, receivedAtStartup: false)
+        default:
+            self.notification(notification, receivedAtStartup: true)
+        }
+    }
+    
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings)
+    {
+        if notificationSettings.types == .None
+        {
+            NotificationHelper.maySendNotifications = false
+        }
+        else
+        {
+            NotificationHelper.maySendNotifications = true
+        }
     }
 
     func applicationWillResignActive(application: UIApplication)

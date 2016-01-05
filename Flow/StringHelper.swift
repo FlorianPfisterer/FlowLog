@@ -14,4 +14,22 @@ class StringHelper
     {
         return NSLocalizedString(key, comment: "comment")
     }
+    
+    class func searchDictionaryArrayForString(dictionaryArray: [[String : String]], searchString: String, concerningKey key: String) -> [[String : String]]
+    {
+        var searchedDictionaryArray = [[String : String]]()
+        
+        for dictionary in dictionaryArray
+        {
+            if let value = dictionary[key]
+            {
+                if let _ = value.lowercaseString.rangeOfString(searchString.lowercaseString)
+                {
+                    searchedDictionaryArray.append(dictionary)
+                }
+            }
+        }
+        
+        return searchedDictionaryArray
+    }
 }

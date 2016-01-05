@@ -20,6 +20,20 @@
 		41CE6B251C39068300F4DBED /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE6B241C39068300F4DBED /* StartVC.swift */; };
 		41CE6B271C39073400F4DBED /* Quotes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41CE6B261C39073400F4DBED /* Quotes.plist */; };
 		41CE6B2C1C39091D00F4DBED /* SettingsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE6B2B1C39091D00F4DBED /* SettingsTVC.swift */; };
+		41CE6B2E1C390C3700F4DBED /* Log.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41CE6B2D1C390C3700F4DBED /* Log.storyboard */; };
+		41CE6B311C390EB400F4DBED /* WhatAreYouDoingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE6B301C390EB400F4DBED /* WhatAreYouDoingVC.swift */; };
+		41CE6B341C39150400F4DBED /* ActionCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE6B331C39150400F4DBED /* ActionCollectionCell.swift */; };
+		41CE6B361C391C2200F4DBED /* HowAreYouFeelingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE6B351C391C2200F4DBED /* HowAreYouFeelingVC.swift */; };
+		41CE6B3A1C39358700F4DBED /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE6B391C39358700F4DBED /* LogHelper.swift */; };
+		41CE6B3C1C3936FF00F4DBED /* AreYouInFlowVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE6B3B1C3936FF00F4DBED /* AreYouInFlowVC.swift */; };
+		41CE6B3E1C39395B00F4DBED /* FlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE6B3D1C39395B00F4DBED /* FlowView.swift */; };
+		41D450BF1C3A701900E586D8 /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D450BE1C3A701900E586D8 /* NotificationHelper.swift */; };
+		41E678CD1C3BCE6100FD74E6 /* LogEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E678C91C3BCE6100FD74E6 /* LogEntry+CoreDataProperties.swift */; };
+		41E678CE1C3BCE6100FD74E6 /* LogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E678CA1C3BCE6100FD74E6 /* LogEntry.swift */; };
+		41E678CF1C3BCE6100FD74E6 /* LogWeek+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E678CB1C3BCE6100FD74E6 /* LogWeek+CoreDataProperties.swift */; };
+		41E678D01C3BCE6100FD74E6 /* LogWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E678CC1C3BCE6100FD74E6 /* LogWeek.swift */; };
+		41E678D21C3BCEC800FD74E6 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E678D11C3BCEC800FD74E6 /* CoreDataHelper.swift */; };
+		41E678D41C3BEF2B00FD74E6 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41E678D31C3BEF2B00FD74E6 /* Intro.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +55,20 @@
 		41CE6B241C39068300F4DBED /* StartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
 		41CE6B261C39073400F4DBED /* Quotes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Quotes.plist; sourceTree = "<group>"; };
 		41CE6B2B1C39091D00F4DBED /* SettingsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTVC.swift; sourceTree = "<group>"; };
+		41CE6B2D1C390C3700F4DBED /* Log.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Log.storyboard; sourceTree = "<group>"; };
+		41CE6B301C390EB400F4DBED /* WhatAreYouDoingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatAreYouDoingVC.swift; sourceTree = "<group>"; };
+		41CE6B331C39150400F4DBED /* ActionCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionCollectionCell.swift; sourceTree = "<group>"; };
+		41CE6B351C391C2200F4DBED /* HowAreYouFeelingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowAreYouFeelingVC.swift; sourceTree = "<group>"; };
+		41CE6B391C39358700F4DBED /* LogHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogHelper.swift; sourceTree = "<group>"; };
+		41CE6B3B1C3936FF00F4DBED /* AreYouInFlowVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInFlowVC.swift; sourceTree = "<group>"; };
+		41CE6B3D1C39395B00F4DBED /* FlowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowView.swift; sourceTree = "<group>"; };
+		41D450BE1C3A701900E586D8 /* NotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
+		41E678C91C3BCE6100FD74E6 /* LogEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LogEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		41E678CA1C3BCE6100FD74E6 /* LogEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntry.swift; sourceTree = "<group>"; };
+		41E678CB1C3BCE6100FD74E6 /* LogWeek+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LogWeek+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		41E678CC1C3BCE6100FD74E6 /* LogWeek.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogWeek.swift; sourceTree = "<group>"; };
+		41E678D11C3BCEC800FD74E6 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		41E678D31C3BEF2B00FD74E6 /* Intro.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +116,9 @@
 			isa = PBXGroup;
 			children = (
 				41CE6B1C1C38FA4700F4DBED /* StringHelper.swift */,
+				41CE6B391C39358700F4DBED /* LogHelper.swift */,
+				41D450BE1C3A701900E586D8 /* NotificationHelper.swift */,
+				41E678D11C3BCEC800FD74E6 /* CoreDataHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -96,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				41CE6B241C39068300F4DBED /* StartVC.swift */,
+				41CE6B2F1C390E9500F4DBED /* Log */,
 				41CE6B281C3908F400F4DBED /* Settings */,
 			);
 			name = ViewControllers;
@@ -114,6 +146,10 @@
 		41CE6B0C1C38F7F900F4DBED /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				41E678C91C3BCE6100FD74E6 /* LogEntry+CoreDataProperties.swift */,
+				41E678CA1C3BCE6100FD74E6 /* LogEntry.swift */,
+				41E678CB1C3BCE6100FD74E6 /* LogWeek+CoreDataProperties.swift */,
+				41E678CC1C3BCE6100FD74E6 /* LogWeek.swift */,
 				41CE6AFA1C38F73000F4DBED /* Flow.xcdatamodeld */,
 			);
 			name = Database;
@@ -135,6 +171,8 @@
 			children = (
 				41CE6AF71C38F73000F4DBED /* Main.storyboard */,
 				41CE6B211C3902BF00F4DBED /* Settings.storyboard */,
+				41CE6B2D1C390C3700F4DBED /* Log.storyboard */,
+				41E678D31C3BEF2B00FD74E6 /* Intro.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -145,6 +183,26 @@
 				41CE6B2B1C39091D00F4DBED /* SettingsTVC.swift */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		41CE6B2F1C390E9500F4DBED /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				41CE6B301C390EB400F4DBED /* WhatAreYouDoingVC.swift */,
+				41CE6B351C391C2200F4DBED /* HowAreYouFeelingVC.swift */,
+				41CE6B3B1C3936FF00F4DBED /* AreYouInFlowVC.swift */,
+				41CE6B321C3914EF00F4DBED /* Views */,
+			);
+			name = Log;
+			sourceTree = "<group>";
+		};
+		41CE6B321C3914EF00F4DBED /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				41CE6B331C39150400F4DBED /* ActionCollectionCell.swift */,
+				41CE6B3D1C39395B00F4DBED /* FlowView.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,11 +267,13 @@
 			files = (
 				41CE6B161C38F9FD00F4DBED /* Localizable.strings in Resources */,
 				41CE6B0F1C38F88000F4DBED /* Actions.plist in Resources */,
+				41E678D41C3BEF2B00FD74E6 /* Intro.storyboard in Resources */,
 				41CE6B011C38F73000F4DBED /* LaunchScreen.storyboard in Resources */,
 				41CE6B271C39073400F4DBED /* Quotes.plist in Resources */,
 				41CE6B231C3902BF00F4DBED /* Settings.storyboard in Resources */,
 				41CE6AFE1C38F73000F4DBED /* Assets.xcassets in Resources */,
 				41CE6AF91C38F73000F4DBED /* Main.storyboard in Resources */,
+				41CE6B2E1C390C3700F4DBED /* Log.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,12 +300,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41CE6B361C391C2200F4DBED /* HowAreYouFeelingVC.swift in Sources */,
 				41CE6B251C39068300F4DBED /* StartVC.swift in Sources */,
+				41E678CE1C3BCE6100FD74E6 /* LogEntry.swift in Sources */,
 				41CE6B1D1C38FA4700F4DBED /* StringHelper.swift in Sources */,
+				41E678D01C3BCE6100FD74E6 /* LogWeek.swift in Sources */,
 				41CE6AFC1C38F73000F4DBED /* Flow.xcdatamodeld in Sources */,
+				41E678D21C3BCEC800FD74E6 /* CoreDataHelper.swift in Sources */,
 				41CE6AF41C38F73000F4DBED /* AppDelegate.swift in Sources */,
 				41CE6B2C1C39091D00F4DBED /* SettingsTVC.swift in Sources */,
+				41D450BF1C3A701900E586D8 /* NotificationHelper.swift in Sources */,
+				41E678CF1C3BCE6100FD74E6 /* LogWeek+CoreDataProperties.swift in Sources */,
+				41CE6B3A1C39358700F4DBED /* LogHelper.swift in Sources */,
+				41CE6B311C390EB400F4DBED /* WhatAreYouDoingVC.swift in Sources */,
+				41CE6B3E1C39395B00F4DBED /* FlowView.swift in Sources */,
 				41CE6B131C38F99500F4DBED /* Constants.swift in Sources */,
+				41E678CD1C3BCE6100FD74E6 /* LogEntry+CoreDataProperties.swift in Sources */,
+				41CE6B341C39150400F4DBED /* ActionCollectionCell.swift in Sources */,
+				41CE6B3C1C3936FF00F4DBED /* AreYouInFlowVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,7 +398,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -365,7 +437,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -416,6 +488,7 @@
 				41CE6B071C38F73000F4DBED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -7,6 +7,77 @@
 //
 
 import Foundation
+import UIKit
 
 // MARK: - Keys
-let KEY = "key"
+let INTRO_DONE_BOOL_KEY = "intro_done_bool"
+let MAY_SEND_NOTIFICATIONS_BOOL_KEY = "may_send_notifications_bool"
+let LOG_NR_NOTIFICATION_INT_KEY = "log_nr_notification_int"
+let ALARM_START_DATE_KEY = "alarm_start_date"
+let ALARM_END_DATE_KEY = "alarm_end_date"
+let ALARM_SOUND_FILE_NAME_STRING_KEY = "alarm_sound_file_name_string"
+let CURRENT_FLOW_LOG_COUNT_INT_KEY = "current_flow_log_count_int"
+
+let FLOW_LOG_WEEK_START_DATE_KEY = "flow_log_week_start_date"
+
+// MARK: - Constants
+let FLOW_LOGS_PER_WEEK_COUNT = 40
+
+// MARK: - Identifiers
+//let LOG_NOTIFICATION_ACTION_IDENTIFIER = "log_notification_action"
+
+// MARK: - Strings
+let ALARM_SOUND_STANDARD = "not set"
+
+// MARK: - Colors
+let TINT_COLOR = UIColor.whiteColor()
+let BAR_TINT_COLOR =  UIColor(red: 0.12140575, green: 0.47735399, blue: 0.5, alpha: 0.9)
+
+// MARK: - Enums
+enum FlowState: Int16
+{
+    case Control
+    case Relaxation
+    case Boredom
+    case Apathy
+    case Worry
+    case Anxiety
+    case Arousal
+    case Flow
+}
+
+// MARK: - Extensions
+extension UIViewController: LogStarterDelegate
+{
+    func startLogWithOptions(options: [String : AnyObject]?)
+    {
+        var message = "It's time to create "
+        if let logNr = options?[LOG_NR_NOTIFICATION_INT_KEY] as? Int
+        {
+            message += "log no. \(logNr)!"
+        }
+        else
+        {
+            message += "a log!"
+        }
+        
+        let alert = UIAlertController(title: "Do a log now", message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Let's go!", style: .Default, handler: { _ in
+            let storyboard = UIStoryboard(name: "Log", bundle: nil)
+            if let rootVC = storyboard.instantiateInitialViewController()
+            {
+                self.presentViewController(rootVC, animated: true, completion: nil)
+            }
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+}
+
+// MARK: - Computed Values
+let calendar: NSCalendar = {
+    let tempCalendar = NSCalendar.currentCalendar()
+    tempCalendar.firstWeekday = 2
+    tempCalendar.minimumDaysInFirstWeek = 4
+    return tempCalendar
+}()

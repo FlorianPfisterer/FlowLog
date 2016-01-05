@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="t5T-Rv-Ezu">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="HG3-g9-OTk">
+            <objects>
+                <viewController id="N8C-GE-idm" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="glE-hX-qy7"/>
+                        <viewControllerLayoutGuide type="bottom" id="aYc-kg-UCE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OfN-DH-K3g">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FlowLog" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBA-L1-gTM">
+                                <rect key="frame" x="183" y="337" width="235" height="77"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                <color key="textColor" red="0.1215686275" green="0.47843137250000001" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rdc-VF-XlQ">
+                                <rect key="frame" x="0.0" y="544" width="600" height="36"/>
+                                <color key="backgroundColor" white="0.4665050287356321" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <state key="normal" title="GET STARTED">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flowify your life." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gm5-9a-cLc">
+                                <rect key="frame" x="235" y="414" width="131" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rdc-VF-XlQ" firstAttribute="leading" secondItem="OfN-DH-K3g" secondAttribute="leading" id="16t-KK-Epa"/>
+                            <constraint firstAttribute="trailing" secondItem="rdc-VF-XlQ" secondAttribute="trailing" id="6LL-UI-IzC"/>
+                            <constraint firstItem="gm5-9a-cLc" firstAttribute="centerX" secondItem="nBA-L1-gTM" secondAttribute="centerX" id="Fqf-tB-32w"/>
+                            <constraint firstItem="aYc-kg-UCE" firstAttribute="top" secondItem="rdc-VF-XlQ" secondAttribute="bottom" constant="20" id="KH4-8A-GaR"/>
+                            <constraint firstItem="gm5-9a-cLc" firstAttribute="top" secondItem="nBA-L1-gTM" secondAttribute="bottom" id="NNW-Iw-R4E"/>
+                            <constraint firstItem="nBA-L1-gTM" firstAttribute="centerY" secondItem="OfN-DH-K3g" secondAttribute="centerY" multiplier="1:0.8" id="Ti8-OQ-Ro6"/>
+                            <constraint firstItem="nBA-L1-gTM" firstAttribute="centerX" secondItem="OfN-DH-K3g" secondAttribute="centerX" id="hmu-gm-EXi"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="bUn-cw-zfn"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gll-AP-uyA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1028" y="276"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0WV-ph-tJY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="t5T-Rv-Ezu" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jas-0t-EGT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="N8C-GE-idm" kind="relationship" relationship="rootViewController" id="6YH-J5-M17"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jgA-fj-RZz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="328" y="276"/>
+        </scene>
+    </scenes>
+</document>

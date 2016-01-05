@@ -18,19 +18,29 @@ class StartVC: UIViewController
     {
         super.viewDidLoad()
         
-        self.updateProgressLabels()
         self.showQuoteOfTheDay()
+    }
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        
+        self.updateProgressLabels()
     }
     
     // MARK: - View Update
     func updateProgressLabels()
     {
-        // TODO!
-        let daysLeft = 7
-        let alarmsLeft = 40
-        
-        self.daysLabel.text = "\(daysLeft)"
-        self.alarmsLabel.text = "\(alarmsLeft)"
+        self.daysLabel.text = "7"   // TODO!
+        let (logsRemaning, difference) = LogHelper.getRemainingFlowLogsInCurrentWeek()
+        if logsRemaning
+        {
+            self.alarmsLabel.text = "\(difference)"
+        }
+        else
+        {
+            // TODO!
+        }
     }
     
     func showQuoteOfTheDay()
