@@ -38,14 +38,39 @@ let BAR_TINT_COLOR =  UIColor(red: 0.12140575, green: 0.47735399, blue: 0.5, alp
 // MARK: - Enums
 enum FlowState: Int16
 {
-    case Control = 1
+    case Anxiety = 1
+    case Arousal
+    case Flow
+    case Control
     case Relaxation
     case Boredom
     case Apathy
     case Worry
-    case Anxiety
-    case Arousal
-    case Flow
+    
+    static let colors: [UIColor] = [
+        UIColor(red: 0, green: 0, blue: 0.5, alpha: 0.9),
+        UIColor(red: 0.5, green: 0, blue: 0.5, alpha: 0.9),
+        UIColor(red: 1, green: 0, blue: 0.5, alpha: 0.9),
+        UIColor(red: 1, green: 1, blue: 0.5, alpha: 0.9),
+        UIColor(red: 0.5, green: 1, blue: 0.5, alpha: 0.9),
+        UIColor(red: 0, green: 1, blue: 0.5, alpha: 0.9),
+        UIColor(red: 0, green: 0.5, blue: 0.5, alpha: 0.9)]
+    
+    static func getCGColors() -> [CGColor]
+    {
+        return FlowState.colors.map({ $0.CGColor })
+    }
+    
+    static func getLocations() -> [CGFloat]
+    {
+        return [0, 1/8, 2/8, 3/8, 4/8, 5/8, 6/8, 7/8]
+    }
+    
+    func color() -> UIColor
+    {
+        return FlowState.colors[Int(self.rawValue-1)]
+    }
+    
 }
 
 // MARK: - General Functions

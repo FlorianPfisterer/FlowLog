@@ -24,6 +24,8 @@ class FlowView: UIView
     var xAxisView: UIView!
     var centerImageView: UIImageView!
     
+    var labels: [UILabel]!
+    
     var delegate: FlowViewDelegate!
     
     override func awakeFromNib()
@@ -47,6 +49,50 @@ class FlowView: UIView
         self.addSubview(self.yAxisView)
         self.addSubview(self.xAxisView)
         
+        _ = self.labels?.map({ $0.removeFromSuperview() })
+        
+        let labelWidth: CGFloat = 76
+        let labelHeight: CGFloat = 20
+        let labelMargin: CGFloat = 5
+        let xy: [(CGFloat, CGFloat)] = [(labelMargin, 0),                                                           // Anxiety
+            (self.bounds.width/2 - labelWidth/2, 0),                                                                // Arousal
+            (self.bounds.width - labelWidth - labelMargin, 0),                                                      // Flow
+            (self.bounds.width - labelWidth - labelMargin, self.bounds.height/2 - labelHeight/2),                   // Control
+            (self.bounds.width - labelWidth - labelMargin, self.bounds.height - labelHeight - labelMargin),         // Relaxation
+            (self.bounds.width/2 - labelWidth/2, self.bounds.height - labelHeight - labelMargin),                   // Boredom
+            (labelMargin, self.bounds.height - labelHeight - labelMargin),                                          // Apathy
+            (labelMargin, self.bounds.height/2 - labelHeight/2)]                                                    // Worry
+        
+        self.labels = [UILabel]()
+        for i in 1...8
+        {
+            let (x, y) = xy[i-1]
+            let label = UILabel(frame: CGRect(x: x, y: y, width: labelWidth, height: labelHeight))
+            label.text = String(FlowState(rawValue: Int16(i))!)
+            label.font = UIFont.systemFontOfSize(15)
+            label.textColor = UIColor.whiteColor()
+            
+            
+            switch i
+            {
+            case 3...5:
+                label.textAlignment = .Right
+                
+            case 2, 6:
+                label.textAlignment = .Center
+            
+            case 7, 8, 1:
+                label.textAlignment = .Left
+                
+            default:
+                break
+            }
+            
+            self.labels.append(label)
+            self.addSubview(label)
+        }
+        
+        
         if self.centerImageView == nil
         {
             self.centerImageView = UIImageView(image: UIImage(named: "SelectionCenterIcon")!)
@@ -57,6 +103,44 @@ class FlowView: UIView
             let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "didPanSelectionCenter:")
             self.centerImageView.addGestureRecognizer(panGestureRecognizer)
         }
+        
+        let center = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
+        let radius: CGFloat = 2*Vector2D(dx: center.x, dy: center.y).abs()
+        let separatorWidth: CGFloat = 1
+        let separatorSize: CGFloat = radius
+        let circleRect = CGRect(x: -separatorWidth/2, y: 0, width: separatorWidth, height: separatorSize)
+        
+        let context = UIGraphicsGetCurrentContext()
+        
+        // segment separators
+        CGContextSaveGState(context)
+        self.axisColor.setFill()
+        
+        let anglePerSegment: CGFloat = 1/4 * π
+        let startAngle: CGFloat = anglePerSegment/2
+        
+        let separatorPath = UIBezierPath(rect: circleRect)
+        
+        CGContextTranslateCTM(context, rect.width/2, rect.height/2)
+        
+        for i in 1...9
+        {
+            CGContextSaveGState(context)
+            
+            let angle = anglePerSegment * CGFloat(i) + startAngle
+            
+            CGContextRotateCTM(context, angle)
+            
+            CGContextTranslateCTM(context, 0, rect.height/2 - separatorSize)
+            
+            //6 - fill the marker rectangle
+            separatorPath.fill()
+            
+            //7 - restore the centred context for the next rotate
+            CGContextRestoreGState(context)
+        }
+        
+        CGContextRestoreGState(context)
     }
     
     func didPanSelectionCenter(gestureRecognizer: UIPanGestureRecognizer)

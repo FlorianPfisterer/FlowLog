@@ -33,7 +33,7 @@ class AreYouInFlowVC: UIViewController, FlowViewDelegate
     
     func updateFlowState(flowState: FlowState)
     {
-        self.saveLogButton.setTitle("SAVE " + String(flowState), forState: .Normal)
+        self.saveLogButton.setTitle(String(flowState), forState: .Normal)
     }
     
     // MARK: - IBActions
