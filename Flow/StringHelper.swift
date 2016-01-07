@@ -10,11 +10,6 @@ import Foundation
 
 class StringHelper
 {
-    class func localizedStringForKey(key: String) -> String
-    {
-        return NSLocalizedString(key, comment: "comment")
-    }
-    
     class func searchDictionaryArrayForString(dictionaryArray: [[String : String]], searchString: String, concerningKey key: String) -> [[String : String]]
     {
         var searchedDictionaryArray = [[String : String]]()
@@ -31,5 +26,10 @@ class StringHelper
         }
         
         return searchedDictionaryArray
+    }
+    
+    class func getLocalizedTimeDescription(time: Time)
+    {
+        _ = NSNumberFormatter() // TODO!
     }
 }

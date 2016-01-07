@@ -11,6 +11,7 @@ import UIKit
 protocol FlowViewDelegate
 {
     func setNewSelectionLocation(x x: CGFloat, y: CGFloat, alpha: CGFloat)
+    func updateFlowState(flowState: FlowState)
 }
 
 class FlowView: UIView
@@ -80,6 +81,29 @@ class FlowView: UIView
     {
         let (relativeX, relativeY) = self.getFlowDimensions()
         self.delegate.setNewSelectionLocation(x: CGFloat(relativeX), y: CGFloat(relativeY), alpha: 0.9)
+        
+        self.updateVectorAngle()
+    }
+    
+    func updateVectorAngle()
+    {
+        self.delegate.updateFlowState(self.getFlowState())
+    }
+    
+    private func getCurrentAngle() -> CGFloat
+    {
+        let middlePoint = CGPoint(x: self.bounds.size.width/2, y: self.bounds.size.height/2)
+        
+        let newVector = Vector2D(dx: self.centerImageView.center.x - middlePoint.x, dy: self.centerImageView.center.y - middlePoint.y)  // vector from own middle point to the center of the selection image view
+        
+        var α = newVector.getAngleToVector(Vector2D.upYVector)  // angle in which the selection image view is positioned relative to the own middle point, 0 degrees is at the top (x == middlePoint.x)
+        
+        if middlePoint.x > self.centerImageView.center.x    // center is in the left half => change α
+        {
+            α = 360 - α
+        }
+        
+        return α
     }
     
     // MARK: - Get Data
@@ -89,5 +113,10 @@ class FlowView: UIView
         let dimenY = Float((self.bounds.size.height - self.centerImageView.center.y) / self.bounds.size.height)
         
         return (dimenX, dimenY)
+    }
+    
+    func getFlowState() -> FlowState
+    {
+        return LogHelper.getFlowStateFromAngle(self.getCurrentAngle())
     }
 }

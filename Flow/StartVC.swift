@@ -53,7 +53,10 @@ class StartVC: UIViewController
         let array = NSArray(contentsOfFile: path)!
         let randomQuote = array.objectAtIndex(Int(arc4random_uniform(UInt32(array.count)))) as! [String : String]
         
-        self.quoteTextView.text = randomQuote["quote"]! + " - " + randomQuote["author"]!.uppercaseString
+        self.quoteTextView.text = "\(randomQuote["quote"]!) - \(randomQuote["author"]!.uppercaseString)"
+        self.quoteTextView.textColor = UIColor.whiteColor()
+        
+        // WEITER: Überlegen, wie bei Intro die Alarmzeiten einstellen + kleine Einführung was die App macht
     }
     
     // MARK: - IBActions

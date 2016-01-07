@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Darwin
 import UIKit
 
 class LogHelper
@@ -17,8 +18,7 @@ class LogHelper
     static var happinessLevel: Float!
     static var energyLevel: Float!
     
-    static var skillDimension: Float!
-    static var challengeDimension: Float!
+    static var flowState: FlowState!
     
     // functions
     static func saveCurrentLog(completion: (success: Bool, logEntry: LogEntry!) -> Void)
@@ -35,7 +35,7 @@ class LogHelper
             logEntry.happinessLevel = LogHelper.happinessLevel
             logEntry.energyLevel = LogHelper.energyLevel
             
-            logEntry.flowStateIndex = LogHelper.getFlowStateFromDimensions(skill: LogHelper.skillDimension, challenge: LogHelper.challengeDimension).rawValue
+            logEntry.flowStateIndex = LogHelper.flowState.rawValue
             
             logEntry.week = LogHelper.currentWeek()
             
@@ -49,8 +49,7 @@ class LogHelper
                 LogHelper.occupationIndex = nil
                 LogHelper.happinessLevel = nil
                 LogHelper.energyLevel = nil
-                LogHelper.skillDimension = nil
-                LogHelper.challengeDimension = nil
+                LogHelper.flowState = nil
             }
             catch
             {
@@ -95,9 +94,39 @@ class LogHelper
         }
     }
     
-    static func getFlowStateFromDimensions(skill skill: Float, challenge: Float) -> FlowState
+    static func getFlowStateFromAngle(angle: CGFloat) -> FlowState
     {
-        return .Flow
+        let α0: CGFloat = 360 / 8    // angle span of each segment: 45 degrees
+        
+        switch angle
+        {
+        case let α where α >= (15/2) * α0 || α < (1/2) * α0:          // top middle segment
+            return .Arousal
+            
+        case let α where α >= (1/2) * α0 && α < (3/2) * α0:           // top right segment
+            return .Flow
+            
+        case let α where α >= (3/2) * α0 && α < (5/2) * α0:     // right segment
+            return .Control
+            
+        case let α where α >= (5/2) * α0 && α < (7/2) * α0:     // bottom right segment
+            return .Relaxation
+            
+        case let α where α >= (7/2) * α0 && α < (9/2) * α0:     // bottom middle segment
+            return .Boredom
+            
+        case let α where α >= (9/2) * α0 && α < (11/2) * α0:    // bottom left segment
+            return .Apathy
+            
+        case let α where α >= (11/2) * α0 && α < (13/2) * α0:   // left segment
+            return .Worry
+            
+        case let α where α >= (13/2) * α0 && α < (15/2) * α0:   // top left segment
+            return .Anxiety
+            
+        default:
+            return .Relaxation
+        }
     }
     
     static var currentFlowLogCount: Int {
@@ -138,7 +167,10 @@ class LogHelper
             }
         }
         
-        set { }
+        set (newValue)
+        {
+            NSUserDefaults.standardUserDefaults().setObject(newValue.getDate(), forKey: ALARM_START_DATE_KEY)
+        }
     }
     
     static var alarmEndTime: Time {
@@ -155,7 +187,10 @@ class LogHelper
             }
         }
         
-        set { }
+        set (newValue)
+        {
+            NSUserDefaults.standardUserDefaults().setObject(newValue.getDate(), forKey: ALARM_END_DATE_KEY)
+        }
     }
     
     static var alarmSoundFileName: String {
@@ -179,10 +214,46 @@ class LogHelper
     }
 }
 
+func * (left: Vector2D, right: Vector2D) -> CGFloat
+{
+    return (left.dx * right.dx) + (left.dy * right.dy)
+}
+
+let π = CGFloat(M_PI)
+
+struct Vector2D
+{
+    var dx: CGFloat
+    var dy: CGFloat
+    
+    init(dx: CGFloat, dy: CGFloat)
+    {
+        self.dx = dx
+        self.dy = dy
+    }
+    
+    func abs() -> CGFloat
+    {
+        return sqrt((self.dx*self.dx) + (self.dy*self.dy))
+    }
+    
+    func getAngleToVector(vector: Vector2D) -> CGFloat
+    {
+        // cos(α) = ( p*q ) / ( |p|*|q| )
+        let α = acos((self * vector) / (self.abs() * vector.abs()))  // radian
+        
+        return (α * 180) / π
+    }
+    
+    static let upYVector = Vector2D(dx: 0, dy: -1)
+}
+
 struct Time
 {
     var hour: Int
     var minute: Int
+    
+    var absoluteMinutes: Int
     
     static let standardStartTime = Time(hour: 9, minute: 0)
     static let standardEndTime = Time(hour: 19, minute: 0)
@@ -191,6 +262,8 @@ struct Time
     {
         self.hour = hour
         self.minute = minute
+        
+        self.absoluteMinutes = self.hour * 60 + self.minute
     }
     
     init(date: NSDate)
@@ -198,9 +271,20 @@ struct Time
         let dateComponents = calendar.components([NSCalendarUnit.Hour, NSCalendarUnit.Minute], fromDate: date)
         self.hour = dateComponents.hour
         self.minute = dateComponents.minute
+        
+        self.absoluteMinutes = self.hour * 60 + self.minute
     }
     
-    func timeString() -> String
+    init(absoluteMinutes: Int)
+    {
+        self.minute = absoluteMinutes % 60
+        self.hour = (absoluteMinutes - self.minute) / 60
+        
+        self.absoluteMinutes = absoluteMinutes
+    }
+    
+    // public
+    func timeString() -> String // TODO! Localize
     {
         if self.minute < 10
         {
@@ -210,6 +294,17 @@ struct Time
         {
             return "\(self.hour):\(self.minute)"
         }
+    }
+    
+    func getDate() -> NSDate
+    {
+        let dateComponents = calendar.components([NSCalendarUnit.Day, NSCalendarUnit.Month, NSCalendarUnit.Year], fromDate: NSDate())
+
+        dateComponents.hour = self.hour
+        dateComponents.minute = self.minute
+        dateComponents.second = 0
+        
+        return calendar.dateFromComponents(dateComponents)!
     }
 }
 

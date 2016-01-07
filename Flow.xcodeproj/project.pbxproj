@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		412DA4BD1C3D08AA0006638B /* IntroScheduleAlarmsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412DA4BC1C3D08AA0006638B /* IntroScheduleAlarmsVC.swift */; };
+		412DA4BF1C3D131E0006638B /* IntroStartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412DA4BE1C3D131E0006638B /* IntroStartVC.swift */; };
 		41CE6AF41C38F73000F4DBED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE6AF31C38F73000F4DBED /* AppDelegate.swift */; };
 		41CE6AF91C38F73000F4DBED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41CE6AF71C38F73000F4DBED /* Main.storyboard */; };
 		41CE6AFC1C38F73000F4DBED /* Flow.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41CE6AFA1C38F73000F4DBED /* Flow.xcdatamodeld */; };
@@ -34,9 +36,14 @@
 		41E678D01C3BCE6100FD74E6 /* LogWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E678CC1C3BCE6100FD74E6 /* LogWeek.swift */; };
 		41E678D21C3BCEC800FD74E6 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E678D11C3BCEC800FD74E6 /* CoreDataHelper.swift */; };
 		41E678D41C3BEF2B00FD74E6 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41E678D31C3BEF2B00FD74E6 /* Intro.storyboard */; };
+		41E678DA1C3C16DA00FD74E6 /* GradientBackgroundVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E678D91C3C16DA00FD74E6 /* GradientBackgroundVIew.swift */; };
+		41E678DC1C3C1EEF00FD74E6 /* IntroMainSettingsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E678DB1C3C1EEF00FD74E6 /* IntroMainSettingsTVC.swift */; };
+		41E678DE1C3C203300FD74E6 /* IntroLogWeekStartDateTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E678DD1C3C203300FD74E6 /* IntroLogWeekStartDateTVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		412DA4BC1C3D08AA0006638B /* IntroScheduleAlarmsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroScheduleAlarmsVC.swift; sourceTree = "<group>"; };
+		412DA4BE1C3D131E0006638B /* IntroStartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroStartVC.swift; sourceTree = "<group>"; };
 		41CE6AF01C38F73000F4DBED /* Flow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41CE6AF31C38F73000F4DBED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41CE6AF81C38F73000F4DBED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -46,9 +53,6 @@
 		41CE6B021C38F73000F4DBED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41CE6B0E1C38F88000F4DBED /* Actions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Actions.plist; sourceTree = "<group>"; };
 		41CE6B121C38F99500F4DBED /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		41CE6B141C38F9D600F4DBED /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
-		41CE6B151C38F9D600F4DBED /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		41CE6B1A1C38FA0800F4DBED /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		41CE6B1B1C38FA1800F4DBED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		41CE6B1C1C38FA4700F4DBED /* StringHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
 		41CE6B221C3902BF00F4DBED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
@@ -69,6 +73,9 @@
 		41E678CC1C3BCE6100FD74E6 /* LogWeek.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogWeek.swift; sourceTree = "<group>"; };
 		41E678D11C3BCEC800FD74E6 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		41E678D31C3BEF2B00FD74E6 /* Intro.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
+		41E678D91C3C16DA00FD74E6 /* GradientBackgroundVIew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientBackgroundVIew.swift; sourceTree = "<group>"; };
+		41E678DB1C3C1EEF00FD74E6 /* IntroMainSettingsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroMainSettingsTVC.swift; sourceTree = "<group>"; };
+		41E678DD1C3C203300FD74E6 /* IntroLogWeekStartDateTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroLogWeekStartDateTVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +135,7 @@
 			children = (
 				41CE6B241C39068300F4DBED /* StartVC.swift */,
 				41CE6B2F1C390E9500F4DBED /* Log */,
+				41E678D51C3C139C00FD74E6 /* Intro */,
 				41CE6B281C3908F400F4DBED /* Settings */,
 			);
 			name = ViewControllers;
@@ -205,6 +213,26 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		41E678D51C3C139C00FD74E6 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				41E678D81C3C16C400FD74E6 /* Views */,
+				412DA4BE1C3D131E0006638B /* IntroStartVC.swift */,
+				41E678DB1C3C1EEF00FD74E6 /* IntroMainSettingsTVC.swift */,
+				41E678DD1C3C203300FD74E6 /* IntroLogWeekStartDateTVC.swift */,
+				412DA4BC1C3D08AA0006638B /* IntroScheduleAlarmsVC.swift */,
+			);
+			name = Intro;
+			sourceTree = "<group>";
+		};
+		41E678D81C3C16C400FD74E6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				41E678D91C3C16DA00FD74E6 /* GradientBackgroundVIew.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -248,7 +276,6 @@
 			knownRegions = (
 				en,
 				Base,
-				de,
 			);
 			mainGroup = 41CE6AE71C38F73000F4DBED;
 			productRefGroup = 41CE6AF11C38F73000F4DBED /* Products */;
@@ -304,16 +331,21 @@
 				41CE6B251C39068300F4DBED /* StartVC.swift in Sources */,
 				41E678CE1C3BCE6100FD74E6 /* LogEntry.swift in Sources */,
 				41CE6B1D1C38FA4700F4DBED /* StringHelper.swift in Sources */,
+				412DA4BD1C3D08AA0006638B /* IntroScheduleAlarmsVC.swift in Sources */,
+				41E678DC1C3C1EEF00FD74E6 /* IntroMainSettingsTVC.swift in Sources */,
 				41E678D01C3BCE6100FD74E6 /* LogWeek.swift in Sources */,
 				41CE6AFC1C38F73000F4DBED /* Flow.xcdatamodeld in Sources */,
 				41E678D21C3BCEC800FD74E6 /* CoreDataHelper.swift in Sources */,
 				41CE6AF41C38F73000F4DBED /* AppDelegate.swift in Sources */,
+				41E678DA1C3C16DA00FD74E6 /* GradientBackgroundVIew.swift in Sources */,
 				41CE6B2C1C39091D00F4DBED /* SettingsTVC.swift in Sources */,
 				41D450BF1C3A701900E586D8 /* NotificationHelper.swift in Sources */,
 				41E678CF1C3BCE6100FD74E6 /* LogWeek+CoreDataProperties.swift in Sources */,
+				41E678DE1C3C203300FD74E6 /* IntroLogWeekStartDateTVC.swift in Sources */,
 				41CE6B3A1C39358700F4DBED /* LogHelper.swift in Sources */,
 				41CE6B311C390EB400F4DBED /* WhatAreYouDoingVC.swift in Sources */,
 				41CE6B3E1C39395B00F4DBED /* FlowView.swift in Sources */,
+				412DA4BF1C3D131E0006638B /* IntroStartVC.swift in Sources */,
 				41CE6B131C38F99500F4DBED /* Constants.swift in Sources */,
 				41E678CD1C3BCE6100FD74E6 /* LogEntry+CoreDataProperties.swift in Sources */,
 				41CE6B341C39150400F4DBED /* ActionCollectionCell.swift in Sources */,
@@ -328,7 +360,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				41CE6AF81C38F73000F4DBED /* Base */,
-				41CE6B141C38F9D600F4DBED /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -337,7 +368,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				41CE6B001C38F73000F4DBED /* Base */,
-				41CE6B151C38F9D600F4DBED /* de */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -345,7 +375,6 @@
 		41CE6B181C38F9FD00F4DBED /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				41CE6B1A1C38FA0800F4DBED /* de */,
 				41CE6B1B1C38FA1800F4DBED /* en */,
 			);
 			name = Localizable.strings;

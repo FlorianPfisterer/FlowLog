@@ -28,6 +28,8 @@ let FLOW_LOGS_PER_WEEK_COUNT = 40
 
 // MARK: - Strings
 let ALARM_SOUND_STANDARD = "not set"
+let TODAY = "today"
+let TOMORROW = "tomorrow"
 
 // MARK: - Colors
 let TINT_COLOR = UIColor.whiteColor()
@@ -36,7 +38,7 @@ let BAR_TINT_COLOR =  UIColor(red: 0.12140575, green: 0.47735399, blue: 0.5, alp
 // MARK: - Enums
 enum FlowState: Int16
 {
-    case Control
+    case Control = 1
     case Relaxation
     case Boredom
     case Apathy
@@ -44,6 +46,25 @@ enum FlowState: Int16
     case Anxiety
     case Arousal
     case Flow
+}
+
+// MARK: - General Functions
+func getRelativeDateDescription(date: NSDate) -> String
+{
+    let dateDay = calendar.component(NSCalendarUnit.Day, fromDate: date)
+    let nowDay = calendar.component(NSCalendarUnit.Day, fromDate: NSDate())
+    
+    switch (dateDay - nowDay)
+    {
+    case 0:
+        return TODAY
+    case 1:
+        return TOMORROW
+    case let value where value > 1:
+        return "in \(value) days"
+    default:
+        return "in \(dateDay - nowDay) days"
+    }
 }
 
 // MARK: - Extensions

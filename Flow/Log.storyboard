@@ -20,7 +20,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What are you doing?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtF-6v-Xvy">
                                 <rect key="frame" x="150" y="77" width="301" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="33"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="qPr-WC-5aZ">
@@ -51,7 +51,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="260" verticalCompressionResistancePriority="800" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipw-eH-G80">
                                                     <rect key="frame" x="127" y="94" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b3x-Ic-dHB">
@@ -124,7 +124,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How are you feeling?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQS-jD-Jcq">
                                 <rect key="frame" x="148" y="77" width="304" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="33"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="4V5-DN-OHv">
@@ -170,7 +170,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hrk-7x-D5P" customClass="FlowView" customModule="Flow" customModuleProvider="target">
-                                <rect key="frame" x="50" y="156" width="530" height="351"/>
+                                <rect key="frame" x="50" y="156" width="530" height="356"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="axisThickness">
@@ -187,17 +187,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CHALLENGE LEVEL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktW-1X-Loo">
-                                <rect key="frame" x="-78" y="355" width="202" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.transform.rotation.z">
-                                        <real key="value" value="-1.571"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you in flow?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vj-bl-J6A">
                                 <rect key="frame" x="185" y="77" width="231" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="33"/>
@@ -216,10 +205,21 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SKILL LEVEL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8pw-h7-t12">
-                                <rect key="frame" x="258" y="515" width="115" height="24"/>
+                                <rect key="frame" x="465" y="515" width="115" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CHALLENGE LEVEL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktW-1X-Loo">
+                                <rect key="frame" x="-75" y="207" width="202" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.transform.rotation.z">
+                                        <real key="value" value="-1.571"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -227,7 +227,7 @@
                             <constraint firstItem="6TZ-kH-iQF" firstAttribute="top" secondItem="8pw-h7-t12" secondAttribute="bottom" constant="60" id="15K-nk-g7H"/>
                             <constraint firstItem="I5r-AQ-QWn" firstAttribute="top" secondItem="2vj-bl-J6A" secondAttribute="bottom" constant="1" id="E6z-qa-rO2"/>
                             <constraint firstItem="8pw-h7-t12" firstAttribute="centerX" secondItem="hrk-7x-D5P" secondAttribute="centerX" id="Fur-Pz-d2R"/>
-                            <constraint firstItem="8pw-h7-t12" firstAttribute="top" secondItem="hrk-7x-D5P" secondAttribute="bottom" constant="8" id="Ifw-Et-40W"/>
+                            <constraint firstItem="8pw-h7-t12" firstAttribute="top" secondItem="hrk-7x-D5P" secondAttribute="bottom" constant="3" id="Ifw-Et-40W"/>
                             <constraint firstItem="fKU-i4-6I4" firstAttribute="top" secondItem="8pw-h7-t12" secondAttribute="bottom" constant="17" id="IiH-BT-LTI"/>
                             <constraint firstItem="hrk-7x-D5P" firstAttribute="top" secondItem="I5r-AQ-QWn" secondAttribute="bottom" constant="8" id="KJk-EH-oci"/>
                             <constraint firstItem="8pw-h7-t12" firstAttribute="top" secondItem="hrk-7x-D5P" secondAttribute="bottom" constant="21" id="RtN-Bt-SNs"/>
@@ -236,6 +236,7 @@
                             <constraint firstItem="2vj-bl-J6A" firstAttribute="top" secondItem="CmY-AF-ehl" secondAttribute="bottom" constant="13" id="eEq-Hn-bME"/>
                             <constraint firstItem="fKU-i4-6I4" firstAttribute="leading" secondItem="kBM-bR-68l" secondAttribute="leading" id="eSp-4V-oHU"/>
                             <constraint firstItem="6TZ-kH-iQF" firstAttribute="top" secondItem="fKU-i4-6I4" secondAttribute="bottom" constant="8" id="gNw-Nm-s6l"/>
+                            <constraint firstItem="8pw-h7-t12" firstAttribute="leading" secondItem="hrk-7x-D5P" secondAttribute="trailing" constant="-115" id="ggx-ma-CTs"/>
                             <constraint firstItem="I5r-AQ-QWn" firstAttribute="centerX" secondItem="2vj-bl-J6A" secondAttribute="centerX" id="m5I-9n-unB"/>
                             <constraint firstAttribute="trailing" secondItem="fKU-i4-6I4" secondAttribute="trailing" id="mfj-BK-OQO"/>
                             <constraint firstItem="2vj-bl-J6A" firstAttribute="centerX" secondItem="kBM-bR-68l" secondAttribute="centerX" id="nA9-Qz-In2"/>
@@ -243,13 +244,15 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="RtN-Bt-SNs"/>
                                 <exclude reference="15K-nk-g7H"/>
                                 <exclude reference="Zh6-zR-dcc"/>
+                                <exclude reference="Fur-Pz-d2R"/>
+                                <exclude reference="RtN-Bt-SNs"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="challengeAxisLabel" destination="ktW-1X-Loo" id="RP5-uC-XhH"/>
                         <outlet property="flowView" destination="hrk-7x-D5P" id="m81-nN-08q"/>
                         <outlet property="saveLogButton" destination="fKU-i4-6I4" id="waY-no-GyH"/>
                     </connections>

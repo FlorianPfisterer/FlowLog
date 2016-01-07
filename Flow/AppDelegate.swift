@@ -41,7 +41,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         }
         else
         {
-            self.setStoryboardTo("Main")
+            if NSUserDefaults.standardUserDefaults().boolForKey(INTRO_DONE_BOOL_KEY)
+            {
+                self.setStoryboardTo("Main")
+            }
+            else
+            {
+                self.setStoryboardTo("Intro")
+            }
             
             if !NotificationHelper.maySendNotifications
             {
@@ -55,11 +62,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     
     private func setStoryboardTo(name: String)
     {
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        /*TODO! self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         let storyboard = UIStoryboard(name: name, bundle: nil)
         
         self.window?.rootViewController = storyboard.instantiateInitialViewController()
-        self.window?.makeKeyAndVisible()
+        self.window?.makeKeyAndVisible()*/
     }
     
     // MARK: - Notifications
