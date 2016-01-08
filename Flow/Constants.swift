@@ -74,41 +74,47 @@ enum FlowState: Int16
 }
 
 // MARK: - General Functions
-func getRelativeDateDescription(date: NSDate) -> String
+func getRelativeDateDescription(date: NSDate, time: Bool = false) -> String
 {
     let dateDay = calendar.component(NSCalendarUnit.Day, fromDate: date)
     let nowDay = calendar.component(NSCalendarUnit.Day, fromDate: NSDate())
     
+    var timeString = ""
+    
+    if time
+    {
+        timeString = ", \(StringHelper.getLocalizedTimeDescription(date))"
+    }
+    
     switch (dateDay - nowDay)
     {
     case 0:
-        return TODAY
+        return TODAY + timeString
     case 1:
         return TOMORROW
     case let value where value > 1:
-        return "in \(value) days"
+        return "in \(value) days" + timeString
     default:
-        return "in \(dateDay - nowDay) days"
+        return "in \(dateDay - nowDay) days" + timeString
     }
 }
 
 // MARK: - Extensions
 extension UIViewController: LogStarterDelegate
 {
-    func startLogWithOptions(options: [String : AnyObject]?)
+    func startLogWithLogNr(nr: Int)
     {
-        var message = "It's time to create "
-        if let logNr = options?[LOG_NR_NOTIFICATION_INT_KEY] as? Int
+        if let _ = self.presentedViewController
         {
-            message += "log no. \(logNr)!"
-        }
-        else
-        {
-            message += "a log!"
+            print("already presenting viewcontroller!")
+            return
         }
         
+        let message = "It's time to create log no. \(nr)!"
         let alert = UIAlertController(title: "Do a log now", message: message, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { _ in
+            LogHelper.currentLogNr = nil
+        }))
         alert.addAction(UIAlertAction(title: "Let's go!", style: .Default, handler: { _ in
             let storyboard = UIStoryboard(name: "Log", bundle: nil)
             if let rootVC = storyboard.instantiateInitialViewController()

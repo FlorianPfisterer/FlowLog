@@ -61,6 +61,16 @@ class IntroMainSettingsTVC: UITableViewController, LogWeekStartDateSettingsDeleg
         self.performSegueWithIdentifier("proceedToCreatingAlarms", sender: nil)
     }
     
+    @IBAction func startDateValueChanged(sender: UIDatePicker)
+    {
+        self.endDatePicker.minimumDate = sender.date
+    }
+    
+    @IBAction func endDateValueChanged(sender: UIDatePicker)
+    {
+        self.startDatePicker.maximumDate = sender.date
+    }
+    
     // MARK: - LogWeekStartDateSettingsDelegate
     func didSetStartDateTo(date: NSDate)
     {

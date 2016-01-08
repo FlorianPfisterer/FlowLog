@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         UINavigationBar.appearance().barTintColor = BAR_TINT_COLOR
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : TINT_COLOR, NSFontAttributeName : UIFont.systemFontOfSize(23)]
         
+        // react to possible notifications
         if let options = launchOptions
         {
             if let notification = options[UIApplicationLaunchOptionsLocalNotificationKey] as? UILocalNotification
@@ -52,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
             
             if !NotificationHelper.maySendNotifications
             {
-                let settings = UIUserNotificationSettings(forTypes: .Alert, categories: nil)
+                let settings = UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Badge], categories: nil)
                 application.registerUserNotificationSettings(settings)
             }
         }
@@ -62,16 +63,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     
     private func setStoryboardTo(name: String)
     {
-        /*TODO! self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         let storyboard = UIStoryboard(name: name, bundle: nil)
         
         self.window?.rootViewController = storyboard.instantiateInitialViewController()
-        self.window?.makeKeyAndVisible()*/
+        self.window?.makeKeyAndVisible()
     }
     
     // MARK: - Notifications
     private func notification(notification: UILocalNotification, receivedAtStartup startup: Bool)
     {
+        let nrOfNotification = notification.userInfo![LOG_NR_NOTIFICATION_INT_KEY] as! Int
+        LogHelper.currentLogNr = nrOfNotification
+        
         if startup
         {
             self.setStoryboardTo("Log")
@@ -80,11 +84,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         {
             if let naviVC = UIApplication.sharedApplication().keyWindow?.rootViewController as? UINavigationController
             {
-                naviVC.visibleViewController!.startLogWithOptions(notification.userInfo as? [String : AnyObject])
+                naviVC.visibleViewController!.startLogWithLogNr(nrOfNotification)
             }
             else if let currentVC = UIApplication.sharedApplication().keyWindow?.rootViewController as? LogStarterDelegate
             {
-                currentVC.startLogWithOptions(notification.userInfo as? [String : AnyObject])
+                currentVC.startLogWithLogNr(nrOfNotification)
             }
         }
     }

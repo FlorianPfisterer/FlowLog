@@ -28,9 +28,10 @@ class CoreDataHelper
         return managedObject
     }
     
-    class func fetchEntities(className: String, managedObjectContext: NSManagedObjectContext, predicate: NSPredicate?, sortDescriptor: NSSortDescriptor?) throws -> NSArray
+    class func fetchEntities(className: String, managedObjectContext: NSManagedObjectContext, predicate: NSPredicate?, sortDescriptor: NSSortDescriptor?, limit: Int? = nil) throws -> NSArray
     {
         let fetchRequest = NSFetchRequest()
+        fetchRequest.returnsObjectsAsFaults = false
         let entityDesciption = NSEntityDescription.entityForName(className, inManagedObjectContext: managedObjectContext)
         
         fetchRequest.entity = entityDesciption
@@ -45,6 +46,11 @@ class CoreDataHelper
             fetchRequest.sortDescriptors = [sortDescriptor!]
         }
         
+        if let _ = limit
+        {
+            fetchRequest.fetchLimit = limit!
+        }
+        
         var items = []
         do
         {
@@ -56,5 +62,13 @@ class CoreDataHelper
         }
         
         return items
+    }
+    
+    class func deleteObjectsInArray(array: [NSManagedObject], fromContext context: NSManagedObjectContext)
+    {
+        for object in array
+        {
+            context.deleteObject(object)
+        }
     }
 }

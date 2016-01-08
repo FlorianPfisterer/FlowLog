@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="t5T-Rv-Ezu">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -9,7 +10,7 @@
         <!--Welcome!-->
         <scene sceneID="HG3-g9-OTk">
             <objects>
-                <viewController title="Welcome!" id="N8C-GE-idm" customClass="IntroStartVC" customModule="Flow" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Welcome!" id="N8C-GE-idm" customClass="IntroStartVC" customModule="FlowLog" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="glE-hX-qy7"/>
                         <viewControllerLayoutGuide type="bottom" id="aYc-kg-UCE"/>
@@ -18,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oac-LK-HGU" customClass="GradientBackgroundVIew" customModule="Flow" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oac-LK-HGU" customClass="GradientBackgroundVIew" customModule="FlowLog" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rdc-VF-XlQ">
@@ -52,20 +53,35 @@
                                         <color key="textColor" red="0.1215686275" green="0.47843137250000001" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIconRounded" translatesAutoresizingMaskIntoConstraints="NO" id="Bom-dH-F8a">
+                                        <rect key="frame" x="191" y="55" width="220" height="220"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Bom-dH-F8a" secondAttribute="height" multiplier="1:1" id="NpR-0w-vrO"/>
+                                            <constraint firstAttribute="height" constant="220" id="aHn-EP-g8V"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Zro-re-576" secondAttribute="trailing" id="3kx-Y8-7U9"/>
+                                    <constraint firstItem="nBA-L1-gTM" firstAttribute="top" secondItem="Bom-dH-F8a" secondAttribute="bottom" constant="20" id="Le4-aq-HbB"/>
+                                    <constraint firstItem="Bom-dH-F8a" firstAttribute="top" secondItem="Oac-LK-HGU" secondAttribute="top" constant="45" id="Mhd-OH-ecV"/>
                                     <constraint firstAttribute="bottom" secondItem="rdc-VF-XlQ" secondAttribute="bottom" constant="20" id="PRh-Aw-dID"/>
                                     <constraint firstItem="gm5-9a-cLc" firstAttribute="top" secondItem="nBA-L1-gTM" secondAttribute="bottom" constant="-7" id="QAd-GS-ktB"/>
                                     <constraint firstItem="Zro-re-576" firstAttribute="leading" secondItem="Oac-LK-HGU" secondAttribute="leading" id="Rbt-ip-Oij"/>
                                     <constraint firstAttribute="trailing" secondItem="rdc-VF-XlQ" secondAttribute="trailing" id="Zas-gy-fCS"/>
                                     <constraint firstItem="rdc-VF-XlQ" firstAttribute="leading" secondItem="Oac-LK-HGU" secondAttribute="leading" id="aIh-aX-GY8"/>
+                                    <constraint firstItem="Bom-dH-F8a" firstAttribute="centerX" secondItem="nBA-L1-gTM" secondAttribute="centerX" id="j81-uS-DWb"/>
                                     <constraint firstItem="rdc-VF-XlQ" firstAttribute="top" secondItem="Zro-re-576" secondAttribute="bottom" constant="8" id="mwM-dq-vB8"/>
                                     <constraint firstItem="nBA-L1-gTM" firstAttribute="centerY" secondItem="Oac-LK-HGU" secondAttribute="centerY" multiplier="1:0.9" id="na9-KN-3Kh"/>
                                     <constraint firstItem="nBA-L1-gTM" firstAttribute="centerX" secondItem="Oac-LK-HGU" secondAttribute="centerX" id="oVf-zc-mlf"/>
                                     <constraint firstItem="gm5-9a-cLc" firstAttribute="centerX" secondItem="nBA-L1-gTM" secondAttribute="centerX" id="sAz-O7-JE4"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Mhd-OH-ecV"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -86,7 +102,7 @@
         <!--Intro Main SettingsTVC-->
         <scene sceneID="UAj-VX-or1">
             <objects>
-                <tableViewController id="fXW-kO-fob" customClass="IntroMainSettingsTVC" customModule="Flow" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="fXW-kO-fob" customClass="IntroMainSettingsTVC" customModule="FlowLog" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="nYs-RE-o1b">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -113,6 +129,9 @@
                                                     <date key="date" timeIntervalSinceReferenceDate="473673600.29316598">
                                                         <!--2016-01-05 08:00:00 +0000-->
                                                     </date>
+                                                    <connections>
+                                                        <action selector="startDateValueChanged:" destination="fXW-kO-fob" eventType="valueChanged" id="fKV-e7-wT5"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -144,6 +163,9 @@
                                                     <date key="date" timeIntervalSinceReferenceDate="473709600.29316598">
                                                         <!--2016-01-05 18:00:00 +0000-->
                                                     </date>
+                                                    <connections>
+                                                        <action selector="endDateValueChanged:" destination="fXW-kO-fob" eventType="valueChanged" id="p4i-QL-071"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -215,7 +237,7 @@
         <!--Intro Log Week Start DateTVC-->
         <scene sceneID="jKm-uP-Vf7">
             <objects>
-                <tableViewController id="uRe-Di-dsm" customClass="IntroLogWeekStartDateTVC" customModule="Flow" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="uRe-Di-dsm" customClass="IntroLogWeekStartDateTVC" customModule="FlowLog" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="111" sectionHeaderHeight="18" sectionFooterHeight="18" id="OOl-3b-vyM">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -311,7 +333,7 @@
         <!--Scheduling Alarms-->
         <scene sceneID="7b5-lP-Fhe">
             <objects>
-                <viewController title="Scheduling Alarms" id="434-qc-cs6" customClass="IntroScheduleAlarmsVC" customModule="Flow" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Scheduling Alarms" id="434-qc-cs6" customClass="IntroScheduleAlarmsVC" customModule="FlowLog" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VpI-Tl-k0A"/>
                         <viewControllerLayoutGuide type="bottom" id="9wh-3s-aDL"/>
@@ -320,7 +342,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vh0-f7-usg" customClass="GradientBackgroundVIew" customModule="Flow" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vh0-f7-usg" customClass="GradientBackgroundVIew" customModule="FlowLog" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="is scheduling alarms for you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wr4-8A-0Cj">
@@ -428,4 +450,7 @@
             <point key="canvasLocation" x="328" y="276"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="AppIconRounded" width="220" height="220"/>
+    </resources>
 </document>

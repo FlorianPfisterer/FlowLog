@@ -194,7 +194,7 @@ class FlowView: UIView
     func getFlowDimensions() -> (Float, Float)
     {
         let dimenX = Float(self.centerImageView.center.x / self.bounds.size.width)
-        let dimenY = Float((self.bounds.size.height - self.centerImageView.center.y) / self.bounds.size.height)
+        let dimenY = Float(self.centerImageView.center.y / self.bounds.size.height)
         
         return (dimenX, dimenY)
     }

@@ -12,6 +12,8 @@ import UIKit
 
 class LogHelper
 {
+    static var currentLogNr: Int!
+    
     // temp log data variables
     static var occupationIndex: Int!
     
@@ -26,74 +28,72 @@ class LogHelper
         let delay: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC))  // slight delay for experience reasons
         
         dispatch_after(delay, dispatch_get_main_queue(), {
-            let context = CoreDataHelper.managedObjectContext()
-            let logEntry = CoreDataHelper.insertManagedObject("LogEntry", managedObjectContext: context) as! LogEntry
-            logEntry.logNr = Int16(0)    // TODO!
             
-            logEntry.occupationIndex = Int16(LogHelper.occupationIndex)
-            
-            logEntry.happinessLevel = LogHelper.happinessLevel
-            logEntry.energyLevel = LogHelper.energyLevel
-            
-            logEntry.flowStateIndex = LogHelper.flowState.rawValue
-            
-            logEntry.week = LogHelper.currentWeek()
-            
-            do
+            if let notification = NotificationHelper.getLogNotificationFromLogNr(LogHelper.currentLogNr)
             {
-                try context.save()
-                LogHelper.currentFlowLogCount = LogHelper.currentFlowLogCount + 1
+                print("NOTIFICATION: \(notification)")
                 
-                completion(success: true, logEntry: logEntry)
+                let context = CoreDataHelper.managedObjectContext()
+                let logEntry = CoreDataHelper.insertManagedObject("LogEntry", managedObjectContext: context) as! LogEntry
+                logEntry.logNr = Int16(LogHelper.currentLogNr)
                 
-                LogHelper.occupationIndex = nil
-                LogHelper.happinessLevel = nil
-                LogHelper.energyLevel = nil
-                LogHelper.flowState = nil
+                logEntry.occupationIndex = Int16(LogHelper.occupationIndex)
+                
+                logEntry.happinessLevel = LogHelper.happinessLevel
+                logEntry.energyLevel = LogHelper.energyLevel
+                
+                logEntry.flowStateIndex = LogHelper.flowState.rawValue
+                
+                notification.done = true
+                logEntry.notification = notification
+                
+                do
+                {
+                    try context.save()
+                    
+                    completion(success: true, logEntry: logEntry)
+                    
+                    LogHelper.currentLogNr = nil
+                    LogHelper.occupationIndex = nil
+                    LogHelper.happinessLevel = nil
+                    LogHelper.energyLevel = nil
+                    LogHelper.flowState = nil
+                }
+                catch
+                {
+                    print("ERROR saving LogEntry: \(error)")
+                }
             }
-            catch
+            else
             {
-                completion(success: false, logEntry: nil)
+                print("ERROR: couldn't get current notification")
             }
-
+        
+            completion(success: false, logEntry: nil)
         })
     }
     
     static func getRemainingFlowLogsInCurrentWeek() -> (Bool, Int!)
     {
-        let difference =  FLOW_LOGS_PER_WEEK_COUNT - LogHelper.currentFlowLogCount
-        if difference > 0
+        let context = CoreDataHelper.managedObjectContext()
+        
+        do
         {
-            return (true, difference)
+            let predicate = NSPredicate(format: "done == %@", NSNumber(bool: false))    // remaining, not done
+            let remainingFlowLogs = try CoreDataHelper.fetchEntities("LogNotification", managedObjectContext: context, predicate: predicate, sortDescriptor: nil, limit: FLOW_LOGS_PER_WEEK_COUNT)
+            
+            return (remainingFlowLogs.count > 0, remainingFlowLogs.count)
         }
-        else
+        catch
         {
-            return (false, nil)
+            print("ERROR fetching remaining flowLogsInCurrentWeek: \(error)")
         }
-       
+        
+        // TODO!
+        return (true, FLOW_LOGS_PER_WEEK_COUNT)
     }
     
     // settings variables
-    private static var tmpCurrentWeek: LogWeek?
-    
-    static func currentWeek() -> LogWeek
-    {
-        if let week = LogHelper.tmpCurrentWeek
-        {
-            return week
-        }
-        else
-        {
-            let context = CoreDataHelper.managedObjectContext()
-            let week = CoreDataHelper.insertManagedObject("LogWeek", managedObjectContext: context) as! LogWeek
-            week.startDate = NSDate().timeIntervalSince1970
-            
-            try! context.save()
-            
-            return week
-        }
-    }
-    
     static func getFlowStateFromAngle(angle: CGFloat) -> FlowState
     {
         let α0: CGFloat = 360 / 8    // angle span of each segment: 45 degrees
@@ -126,18 +126,6 @@ class LogHelper
             
         default:
             return .Relaxation
-        }
-    }
-    
-    static var currentFlowLogCount: Int {
-        get
-        {
-            return NSUserDefaults.standardUserDefaults().integerForKey(CURRENT_FLOW_LOG_COUNT_INT_KEY)
-        }
-        
-        set (newValue)
-        {
-            return NSUserDefaults.standardUserDefaults().setInteger(newValue, forKey: CURRENT_FLOW_LOG_COUNT_INT_KEY)
         }
     }
     
@@ -193,7 +181,7 @@ class LogHelper
         }
     }
     
-    static var alarmSoundFileName: String {
+    /*static var alarmSoundFileName: String {
         get
         {
             if let name = NSUserDefaults.standardUserDefaults().stringForKey(ALARM_SOUND_FILE_NAME_STRING_KEY)
@@ -211,7 +199,7 @@ class LogHelper
             NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: ALARM_SOUND_FILE_NAME_STRING_KEY)
         }
         
-    }
+    }*/
 }
 
 func * (left: Vector2D, right: Vector2D) -> CGFloat
@@ -310,5 +298,5 @@ struct Time
 
 protocol LogStarterDelegate
 {
-    func startLogWithOptions(options: [String : AnyObject]?)
+    func startLogWithLogNr(nr: Int)
 }

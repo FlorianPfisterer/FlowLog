@@ -10,32 +10,15 @@ import UIKit
 
 class SettingsTVC: UITableViewController
 {
-    @IBOutlet weak var alarmsStartLabel: UILabel!
-    @IBOutlet weak var alarmsEndLabel: UILabel!
-    
-    @IBOutlet weak var excludedTimeFramesLabel: UILabel!
-    
-    @IBOutlet weak var alarmSoundLabel: UILabel!
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        self.title = "More"
     }
     
     override func viewWillAppear(animated: Bool)
     {
         super.viewWillAppear(animated)
-        self.setupLabels()
-    }
-    
-    // MARK: - set up UI
-    func setupLabels()
-    {
-        self.alarmsStartLabel.text = LogHelper.alarmStartTime.timeString()
-        self.alarmsEndLabel.text = LogHelper.alarmEndTime.timeString()
-        
-        // TODO! exludedTimeFrames
-        
-        self.alarmSoundLabel.text = LogHelper.alarmSoundFileName
     }
 }

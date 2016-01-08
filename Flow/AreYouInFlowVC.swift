@@ -65,11 +65,16 @@ class AreYouInFlowVC: UIViewController, FlowViewDelegate
                     self.presentViewController(destinationVC, animated: true, completion: nil)
                 }
             }
+            else
+            {
+                self.saveLogButton.setTitle("ERROR. TRY AGAIN", forState: .Normal)
+                self.saveLogButton.enabled = true
+            }
         }
     }
     
-    override func startLogWithOptions(options: [String : AnyObject]?)
+    override func startLogWithLogNr(nr: Int)
     {
-        print("already doing log")
+        print("already doing log, incoming request for nr \(nr)")
     }
 }

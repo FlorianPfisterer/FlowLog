@@ -1,5 +1,5 @@
 //
-//  LogEntry.swift
+//  Activity.swift
 //  FlowLog
 //
 //  Created by Florian Pfisterer on 08/01/16.
@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class LogEntry: NSManagedObject {
+class Activity: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 

@@ -83,8 +83,8 @@ class HowAreYouFeelingVC: UIViewController
         self.performSegueWithIdentifier("toQuestion3Segue", sender: nil)
     }
     
-    override func startLogWithOptions(options: [String : AnyObject]?)
+    override func startLogWithLogNr(nr: Int)
     {
-        print("already doing log")
+        print("already doing log, incoming request for nr \(nr)")
     }
 }

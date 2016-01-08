@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "MenuMoreIcon_NaivgationBar_30@1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "056942-glossy-black-icon-food-beverage-knife-fork3.png",
+      "filename" : "MenuMoreIcon_NaivgationBar_30@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "MenuMoreIcon_NaivgationBar_30@3x.png",
       "scale" : "3x"
     }
   ],

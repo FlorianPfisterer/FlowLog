@@ -1,8 +1,8 @@
 //
 //  LogEntry+CoreDataProperties.swift
-//  Flow
+//  FlowLog
 //
-//  Created by Florian Pfisterer on 05/01/16.
+//  Created by Florian Pfisterer on 08/01/16.
 //  Copyright © 2016 Florian Pfisterer. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -12,12 +12,14 @@
 import Foundation
 import CoreData
 
-extension LogEntry
-{
-    @NSManaged var occupationIndex: Int16
-    @NSManaged var happinessLevel: Float
+extension LogEntry {
+
     @NSManaged var energyLevel: Float
     @NSManaged var flowStateIndex: Int16
+    @NSManaged var happinessLevel: Float
     @NSManaged var logNr: Int16
-    @NSManaged var week: NSManagedObject?
+    @NSManaged var occupationIndex: Int16
+    @NSManaged var notification: LogNotification?
+    @NSManaged var activity: Activity?
+
 }

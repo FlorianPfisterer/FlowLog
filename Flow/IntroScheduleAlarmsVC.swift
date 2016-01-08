@@ -45,7 +45,6 @@ class IntroScheduleAlarmsVC: UIViewController
         super.viewDidAppear(animated)
         
         NotificationHelper.unscheduleAllCurrentNotifications()  // DEBUG!?
-        LogHelper.currentFlowLogCount = 0
         NotificationHelper.scheduleRandomNotificationsStarting(LogHelper.flowLogWeekStartDate!, between: LogHelper.alarmStartTime, and: LogHelper.alarmEndTime) { success in
             if !success
             {
@@ -67,8 +66,8 @@ class IntroScheduleAlarmsVC: UIViewController
     {
         self.weekStartDateLabel.text = "starting \(getRelativeDateDescription(LogHelper.flowLogWeekStartDate!))"
         
-        let startTimeDescription = "TODO"
-        let endTimeDescription = "TODO"
+        let startTimeDescription = StringHelper.getLocalizedTimeDescription(LogHelper.alarmStartTime.getDate())
+        let endTimeDescription = StringHelper.getLocalizedTimeDescription(LogHelper.alarmEndTime.getDate())
         
         self.alarmTimeBoundariesLabel.text = "between \(startTimeDescription) and \(endTimeDescription)"
     }
@@ -78,8 +77,6 @@ class IntroScheduleAlarmsVC: UIViewController
     {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let initialVC = storyboard.instantiateInitialViewController()!
-        
-        
         
         self.presentViewController(initialVC, animated: true, completion: nil)
     }

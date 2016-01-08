@@ -10,6 +10,5 @@ import UIKit
 
 class ActionCollectionCell: UICollectionViewCell
 {
-    @IBOutlet weak var actionImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
 }

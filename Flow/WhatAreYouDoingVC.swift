@@ -12,8 +12,8 @@ class WhatAreYouDoingVC: UIViewController, UICollectionViewDataSource, UICollect
 {
     private let cellIdentifier = "actionCell"
     
-    var actions = [[String : String]]()
-    var searchedActions: [[String : String]]?
+    var actions = [String]()
+    var searchedActions: [String]?
     
     @IBOutlet weak var actionsCollectionView: UICollectionView!
     
@@ -34,14 +34,14 @@ class WhatAreYouDoingVC: UIViewController, UICollectionViewDataSource, UICollect
             return
         }
         
-        self.actions = NSArray(contentsOfFile: path) as! [[String : String]]
+        self.actions = NSArray(contentsOfFile: path) as! [String]
         self.actionsCollectionView.reloadData()
     }
     
     func performSearchWithSearchString(searchString: String)
     {
         // perform search
-        self.searchedActions = StringHelper.searchDictionaryArrayForString(self.actions, searchString: searchString, concerningKey: "name")
+        self.searchedActions = StringHelper.searchStringArrayForString(self.actions, searchString: searchString, concerningKey: "name")
         
         self.actionsCollectionView.reloadData()
     }
@@ -69,19 +69,18 @@ class WhatAreYouDoingVC: UIViewController, UICollectionViewDataSource, UICollect
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(self.cellIdentifier, forIndexPath: indexPath) as! ActionCollectionCell
-        var actionData: [String : String]!
+        var actionName = "Error"
         
         if let searched = self.searchedActions
         {
-            actionData = searched[indexPath.row]
+            actionName = searched[indexPath.row]
         }
         else
         {
-            actionData = self.actions[indexPath.row]
+            actionName = self.actions[indexPath.row]
         }
         
-        cell.actionImageView.image = UIImage(named: actionData["imageName"]!)
-        cell.titleLabel.text = actionData["name"]!
+        cell.titleLabel.text = actionName
         cell.layer.borderColor = BAR_TINT_COLOR.CGColor
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 5
@@ -101,7 +100,7 @@ class WhatAreYouDoingVC: UIViewController, UICollectionViewDataSource, UICollect
     // MARK: - FlowLayout Delegate
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
     {
-        return CGSize(width: self.actionsCollectionView.bounds.size.width/2 - 5, height: 80)
+        return CGSize(width: self.actionsCollectionView.bounds.size.width/2 - 5, height: 23)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets
@@ -147,8 +146,8 @@ class WhatAreYouDoingVC: UIViewController, UICollectionViewDataSource, UICollect
         return true
     }
     
-    override func startLogWithOptions(options: [String : AnyObject]?)
+    override func startLogWithLogNr(nr: Int)
     {
-        print("already doing log")
+        print("already doing log, incoming request for nr \(nr)")
     }
 }
