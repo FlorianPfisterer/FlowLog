@@ -15,7 +15,7 @@ class LogHelper
     static var currentLogNr: Int!
     
     // temp log data variables
-    static var occupationIndex: Int!
+    static var currentActivity: Activity!
     
     static var happinessLevel: Float!
     static var energyLevel: Float!
@@ -37,12 +37,14 @@ class LogHelper
                 let logEntry = CoreDataHelper.insertManagedObject("LogEntry", managedObjectContext: context) as! LogEntry
                 logEntry.logNr = Int16(LogHelper.currentLogNr)
                 
-                logEntry.occupationIndex = Int16(LogHelper.occupationIndex)
+                logEntry.activity = LogHelper.currentActivity
                 
                 logEntry.happinessLevel = LogHelper.happinessLevel
                 logEntry.energyLevel = LogHelper.energyLevel
                 
                 logEntry.flowStateIndex = LogHelper.flowState.rawValue
+                
+                logEntry.createdAt = NSDate().timeIntervalSince1970
                 
                 notification.done = true
                 logEntry.notification = notification
@@ -54,7 +56,7 @@ class LogHelper
                     completion(success: true, logEntry: logEntry)
                     
                     LogHelper.currentLogNr = nil
-                    LogHelper.occupationIndex = nil
+                    LogHelper.currentActivity = nil
                     LogHelper.happinessLevel = nil
                     LogHelper.energyLevel = nil
                     LogHelper.flowState = nil
@@ -274,14 +276,13 @@ struct Time
     // public
     func timeString() -> String // TODO! Localize
     {
-        if self.minute < 10
-        {
-            return "\(self.hour):0\(self.minute)"
-        }
-        else
-        {
-            return "\(self.hour):\(self.minute)"
-        }
+        return StringHelper.getLocalizedTimeDescription(self.getDate())
+    }
+    
+    func roundedTimeHour() -> Int
+    {
+        let hoursDouble: Double = Double(self.hour) + Double(self.minute)/60
+        return Int(round(hoursDouble))
     }
     
     func getDate() -> NSDate

@@ -51,43 +51,71 @@ class NotificationHelper
         }
     }
     
-    class func scheduleRandomNotificationsStarting(startDate: NSDate, between startTime: Time, and endTime: Time, completion: (success: Bool) -> Void)
+    class func scheduleRandomNotificationsStarting(startDate: NSDate, between startTime: Time, and endTime: Time, progressView: UIProgressView, completion: (success: Bool) -> Void)
     {
         NotificationHelper.currentAbsoluteMinutes.removeAll()
         var remainingNotificationsCount = FLOW_LOGS_PER_WEEK_COUNT
         let minutesDelta = endTime.absoluteMinutes - startTime.absoluteMinutes
+        let initialProgress = progressView.progress
         var dates = [NSDate]()
         
-        let alarmsPerDay = [6, 5, 5, 6, 6, 7, 5]    // = 40     // TODO+: if first day is already gone => loop + moving to other days
+        var alarmsPerDay = [5, 6, 5, 7, 6, 5, 6]            // == 40 (Standard)
         
+        if isSameday(startDate, and: NSDate())
+        {
+            let timeNow = Time(date: NSDate())
+            let minutesDifference = endTime.absoluteMinutes - timeNow.absoluteMinutes
+            
+            switch minutesDifference
+            {
+            case let value where value < 30:                            // it's already to late for alarms today
+                alarmsPerDay = [0, 6, 5, 4, 7, 7, 5, 6]     // == 40
+                
+            case 30...80:                                               // make some today, but not too much
+                alarmsPerDay = [3, 6, 6, 7, 7, 5, 6]        // == 40
+                
+            case 101...150:                                             // make more today
+                alarmsPerDay = [4, 6, 6, 7, 6, 5, 6]        // == 40
+                
+            default:
+                alarmsPerDay = [5, 6, 5, 7, 6, 5, 6]        // == 40
+            }
+        }
+ 
         var day = 0
         for alarmsThisDay in alarmsPerDay
         {
-            for _ in 1...alarmsThisDay
+            if alarmsThisDay != 0
             {
-                let thisDate = startDate.dateByAddingTimeInterval(Double(day * 60 * 60 * 24))    // day index multiplied by seconds per day
-                let thisDateComponents = calendar.components([.Day, .Month, .Year], fromDate: thisDate)
-                
-                var randomTimeMinutes: Int! = Int(arc4random_uniform(UInt32(minutesDelta)))
-                
-                while (!NotificationHelper.absoluteMinutesIsValid(randomTimeMinutes, startTimeAbsMinutes: startTime.absoluteMinutes, onDate: thisDate))    // repeat while it's not valid
+                for _ in 1...alarmsThisDay
                 {
-                    randomTimeMinutes = Int(arc4random_uniform(UInt32(minutesDelta)))
+                    let thisDate = startDate.dateByAddingTimeInterval(Double(day * 60 * 60 * 24))    // day index multiplied by seconds per day
+                    let thisDateComponents = calendar.components([.Day, .Month, .Year], fromDate: thisDate)
+                    
+                    var randomTimeMinutes: Int! = Int(arc4random_uniform(UInt32(minutesDelta)))
+                    
+                    while (!NotificationHelper.absoluteMinutesIsValid(randomTimeMinutes, startTimeAbsMinutes: startTime.absoluteMinutes, onDate: thisDate))    // repeat until it's valid
+                    {
+                        randomTimeMinutes = Int(arc4random_uniform(UInt32(minutesDelta)))
+                    }
+                    
+                    let randomTime = Time(absoluteMinutes: randomTimeMinutes + startTime.absoluteMinutes)   // get time between specified bounds
+                    
+                    thisDateComponents.hour = randomTime.hour
+                    thisDateComponents.minute = randomTime.minute
+                    
+                    let dueDate = calendar.dateFromComponents(thisDateComponents)!
+                    dates.append(dueDate)
+                    NotificationHelper.currentAbsoluteMinutes.append(randomTimeMinutes)
+                    
+                    let newProgress = initialProgress + (1-initialProgress) * (1/Float(remainingNotificationsCount))
+                    progressView.setProgress(newProgress, animated: true)
+                    
+                    remainingNotificationsCount--
                 }
                 
-                let randomTime = Time(absoluteMinutes: randomTimeMinutes + startTime.absoluteMinutes)   // get time between specified bounds
-                
-                thisDateComponents.hour = randomTime.hour
-                thisDateComponents.minute = randomTime.minute
-                
-                let dueDate = calendar.dateFromComponents(thisDateComponents)!
-                dates.append(dueDate)
-                NotificationHelper.currentAbsoluteMinutes.append(randomTimeMinutes)
-            
-                remainingNotificationsCount--
+                day++
             }
-            
-            day++
         }
         
         if remainingNotificationsCount != 0
@@ -101,10 +129,10 @@ class NotificationHelper
         }
     }
     
-    private static func absoluteMinutesIsValid(absoluteMinutes: Int, startTimeAbsMinutes: Int, onDate date: NSDate) -> Bool     // TODO! may produce ∞ loop
+    private static func absoluteMinutesIsValid(absoluteMinutes: Int, startTimeAbsMinutes: Int, onDate date: NSDate) -> Bool
     {
         // first check if it's today and too close to the current moment
-        if calendar.component(.Day, fromDate: NSDate()) == calendar.component(.Day, fromDate: date)
+        if isSameday(date, and: NSDate())
         {
             let currentAbsoluteMinutes = Time(date: NSDate()).absoluteMinutes - startTimeAbsMinutes
             
@@ -117,8 +145,10 @@ class NotificationHelper
         // then check existing times
         for existingAbsoluteMinute in NotificationHelper.currentAbsoluteMinutes
         {
-            if abs(existingAbsoluteMinute - absoluteMinutes) < 10   // no more than 1 notification in a 10 minute time frame
+            if abs(existingAbsoluteMinute - absoluteMinutes) < 5   // no more than 1 notification in a 10 minute time frame
             {
+                print("2 existingAbsM: \(existingAbsoluteMinute), absm: \(absoluteMinutes)")
+                
                 return false
             }
         }
@@ -180,7 +210,7 @@ class NotificationHelper
         
         do
         {
-            let predicate = NSPredicate(format: "done == %@ AND dueDate < %@", NSNumber(bool: false), NSDate())        // not completed and overdue
+            let predicate = NSPredicate(format: "done == %@ AND dueDate <= %@", NSNumber(bool: false), NSDate())        // not completed and overdue
             let sortDescriptor = NSSortDescriptor(key: "nr", ascending: true)      // first notifications first
             
             let notifications = try CoreDataHelper.fetchEntities("LogNotification", managedObjectContext: context, predicate: predicate, sortDescriptor: sortDescriptor)  as! [LogNotification]

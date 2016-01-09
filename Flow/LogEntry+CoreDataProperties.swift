@@ -18,8 +18,8 @@ extension LogEntry {
     @NSManaged var flowStateIndex: Int16
     @NSManaged var happinessLevel: Float
     @NSManaged var logNr: Int16
-    @NSManaged var occupationIndex: Int16
-    @NSManaged var notification: LogNotification?
+    @NSManaged var createdAt: NSTimeInterval
     @NSManaged var activity: Activity?
+    @NSManaged var notification: LogNotification?
 
 }

@@ -15,7 +15,7 @@ import CoreData
 extension Activity {
 
     @NSManaged var name: String?
-    @NSManaged var done: Int16
+    @NSManaged var used: Int16
     @NSManaged var entries: NSSet?
 
 }

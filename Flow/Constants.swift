@@ -17,6 +17,7 @@ let ALARM_START_DATE_KEY = "alarm_start_date"
 let ALARM_END_DATE_KEY = "alarm_end_date"
 let ALARM_SOUND_FILE_NAME_STRING_KEY = "alarm_sound_file_name_string"
 let CURRENT_FLOW_LOG_COUNT_INT_KEY = "current_flow_log_count_int"
+let DATABASE_ACTIVITIES_SEED_DONE_BOOL_KEY = "database_activities_seed_done_bool"
 
 let FLOW_LOG_WEEK_START_DATE_KEY = "flow_log_week_start_date"
 
@@ -30,6 +31,7 @@ let FLOW_LOGS_PER_WEEK_COUNT = 40
 let ALARM_SOUND_STANDARD = "not set"
 let TODAY = "today"
 let TOMORROW = "tomorrow"
+let ACTIVITY_ADD_NEW_STRING = "Add New"
 
 // MARK: - Colors
 let TINT_COLOR = UIColor.whiteColor()
@@ -47,14 +49,14 @@ enum FlowState: Int16
     case Apathy
     case Worry
     
-    static let colors: [UIColor] = [
-        UIColor(red: 0, green: 0, blue: 0.5, alpha: 0.9),
-        UIColor(red: 0.5, green: 0, blue: 0.5, alpha: 0.9),
-        UIColor(red: 1, green: 0, blue: 0.5, alpha: 0.9),
-        UIColor(red: 1, green: 1, blue: 0.5, alpha: 0.9),
-        UIColor(red: 0.5, green: 1, blue: 0.5, alpha: 0.9),
-        UIColor(red: 0, green: 1, blue: 0.5, alpha: 0.9),
-        UIColor(red: 0, green: 0.5, blue: 0.5, alpha: 0.9)]
+    /*static let colors: [UIColor] = [
+        UIColor(red: 0, green: 0, blue: 0.5, alpha: 1),
+        UIColor(red: 0.5, green: 0, blue: 0.5, alpha: 1),
+        UIColor(red: 1, green: 0, blue: 0.5, alpha: 1),
+        UIColor(red: 1, green: 1, blue: 0.5, alpha: 1),
+        UIColor(red: 0.5, green: 1, blue: 0.5, alpha: 1),
+        UIColor(red: 0, green: 1, blue: 0.5, alpha: 1),
+        UIColor(red: 0, green: 0.5, blue: 0.5, alpha: 1)]
     
     static func getCGColors() -> [CGColor]
     {
@@ -69,8 +71,16 @@ enum FlowState: Int16
     func color() -> UIColor
     {
         return FlowState.colors[Int(self.rawValue-1)]
-    }
+    }*/
     
+}
+
+enum GraphDisplayState: Int
+{
+    case FlowState = 0
+    case Energy
+    case Happiness
+    case AllCombined
 }
 
 // MARK: - General Functions
@@ -97,6 +107,15 @@ func getRelativeDateDescription(date: NSDate, time: Bool = false) -> String
     default:
         return "in \(dateDay - nowDay) days" + timeString
     }
+}
+
+func isSameday(left: NSDate, and right: NSDate) -> Bool
+{
+    let leftComponents = calendar.components([NSCalendarUnit.Day, NSCalendarUnit.Month, NSCalendarUnit.Year], fromDate: left)
+    let rightComponents = calendar.components([NSCalendarUnit.Day, NSCalendarUnit.Month, NSCalendarUnit.Year], fromDate: right)
+    
+    
+    return leftComponents.day == rightComponents.day && leftComponents.month == rightComponents.month && leftComponents.year == rightComponents.year
 }
 
 // MARK: - Extensions

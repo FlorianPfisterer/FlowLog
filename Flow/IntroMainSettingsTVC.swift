@@ -47,18 +47,30 @@ class IntroMainSettingsTVC: UITableViewController, LogWeekStartDateSettingsDeleg
     // MARK: - IBActions
     func proceedToCreatingAlarms()
     {
-        LogHelper.alarmStartTime = Time(date: self.startDatePicker.date)
-        LogHelper.alarmEndTime = Time(date: self.endDatePicker.date)
-        if let date = self.datePreset
+        let startTime = Time(date: self.startDatePicker.date)
+        let endTime = Time(date: self.endDatePicker.date)
+        
+        if endTime.absoluteMinutes - startTime.absoluteMinutes < 180        // to small time frame
         {
-            LogHelper.flowLogWeekStartDate = date
+            let alert = UIAlertController(title: "Time frame too short", message: "Please select a time frame that is at least 3 hours long", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
         else
         {
-            LogHelper.flowLogWeekStartDate = NSDate()   // standard: today
+            LogHelper.alarmStartTime = startTime
+            LogHelper.alarmEndTime = endTime
+            if let date = self.datePreset
+            {
+                LogHelper.flowLogWeekStartDate = date
+            }
+            else
+            {
+                LogHelper.flowLogWeekStartDate = NSDate()   // standard: today
+            }
+            
+            self.performSegueWithIdentifier("proceedToCreatingAlarms", sender: nil)
         }
-        
-        self.performSegueWithIdentifier("proceedToCreatingAlarms", sender: nil)
     }
     
     @IBAction func startDateValueChanged(sender: UIDatePicker)

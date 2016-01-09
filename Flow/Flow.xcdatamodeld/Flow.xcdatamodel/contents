@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15C50" minimumToolsVersion="Automatic">
     <entity name="Activity" representedClassName=".Activity" syncable="YES">
-        <attribute name="done" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="used" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="entries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LogEntry" inverseName="activity" inverseEntity="LogEntry" syncable="YES"/>
     </entity>
     <entity name="LogEntry" representedClassName=".LogEntry" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="energyLevel" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="flowStateIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="happinessLevel" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="logNr" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="occupationIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="activity" maxCount="1" deletionRule="Nullify" destinationEntity="Activity" inverseName="entries" inverseEntity="Activity" syncable="YES"/>
         <relationship name="notification" maxCount="1" deletionRule="Nullify" destinationEntity="LogNotification" inverseName="entry" inverseEntity="LogNotification" syncable="YES"/>
     </entity>
@@ -21,8 +21,8 @@
         <relationship name="entry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LogEntry" inverseName="notification" inverseEntity="LogEntry" syncable="YES"/>
     </entity>
     <elements>
-        <element name="LogEntry" positionX="54" positionY="-45" width="128" height="148"/>
-        <element name="LogNotification" positionX="-164" positionY="-33" width="128" height="105"/>
         <element name="Activity" positionX="-45" positionY="-174" width="128" height="88"/>
+        <element name="LogEntry" positionX="54" positionY="-45" width="128" height="150"/>
+        <element name="LogNotification" positionX="-164" positionY="-33" width="128" height="105"/>
     </elements>
 </model>

@@ -12,8 +12,8 @@ class WhatAreYouDoingVC: UIViewController, UICollectionViewDataSource, UICollect
 {
     private let cellIdentifier = "actionCell"
     
-    var actions = [String]()
-    var searchedActions: [String]?
+    var activities = [Activity]()
+    var searchedActivities: [Activity]?
     
     @IBOutlet weak var actionsCollectionView: UICollectionView!
     
@@ -28,37 +28,76 @@ class WhatAreYouDoingVC: UIViewController, UICollectionViewDataSource, UICollect
     // MARK: - Load Data
     func loadAvailableActions()
     {
-        guard let path = NSBundle.mainBundle().pathForResource("Actions", ofType: "plist") else
-        {
-            print("ERROR: available actions not found")
-            return
-        }
+        let context = CoreDataHelper.managedObjectContext()
         
-        self.actions = NSArray(contentsOfFile: path) as! [String]
-        self.actionsCollectionView.reloadData()
+        do
+        {
+            let sortDescriptor = NSSortDescriptor(key: "used", ascending: false)
+            let activities = try CoreDataHelper.fetchEntities("Activity", managedObjectContext: context, predicate: nil, sortDescriptor: sortDescriptor) as! [Activity]
+            self.activities = activities
+            self.actionsCollectionView.reloadData()
+        }
+        catch
+        {
+            print("ERROR fetching activities: \(error)")
+        }
     }
     
     func performSearchWithSearchString(searchString: String)
     {
         // perform search
-        self.searchedActions = StringHelper.searchStringArrayForString(self.actions, searchString: searchString, concerningKey: "name")
+        self.searchedActivities = StringHelper.searchActivityArrayForString(self.activities, searchString: searchString)
         
         self.actionsCollectionView.reloadData()
     }
     
     func clearSearch()
     {
-        self.searchedActions = nil
+        self.searchedActivities = nil
         self.actionsCollectionView.reloadData()
     }
     
     // MARK: - Collection View
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
     {
-        let occupationIndex = indexPath.row
-        LogHelper.occupationIndex = occupationIndex
+        let activityIndex = indexPath.row
+        let selectedActivity = self.activities[activityIndex]
         
-        self.performSegueWithIdentifier("toQuestion2Segue", sender: nil)
+        if selectedActivity.getName() == ACTIVITY_ADD_NEW_STRING
+        {
+            let alert = UIAlertController(title: "Add New Activity", message: "Type the name of the activity", preferredStyle: .Alert)
+            alert.addTextFieldWithConfigurationHandler({ textField in
+                textField.placeholder = "activity name"
+                textField.keyboardType = .Default   // TODO+: textField did return => SO edited question by me
+            })
+            alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Save and proceed", style: .Default, handler: {
+                _ in
+                
+                // TODO+ check if activity not available yet
+                let context = CoreDataHelper.managedObjectContext()
+                let newActivityName = alert.textFields![0].text!
+                let newActivity = CoreDataHelper.insertManagedObject("Activity", managedObjectContext: context) as! Activity
+                
+                newActivity.name = newActivityName
+                newActivity.used = 1
+                
+                self.activities.append(newActivity)
+                
+                try! context.save()
+                
+                // proceed
+                LogHelper.currentActivity = newActivity
+                self.performSegueWithIdentifier("toQuestion2Segue", sender: nil)
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        else
+        {
+            LogHelper.currentActivity = selectedActivity
+            
+            self.performSegueWithIdentifier("toQuestion2Segue", sender: nil)
+        }
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int
@@ -69,20 +108,20 @@ class WhatAreYouDoingVC: UIViewController, UICollectionViewDataSource, UICollect
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(self.cellIdentifier, forIndexPath: indexPath) as! ActionCollectionCell
-        var actionName = "Error"
+        var activity: Activity!
         
-        if let searched = self.searchedActions
+        if let searched = self.searchedActivities
         {
-            actionName = searched[indexPath.row]
+            activity = searched[indexPath.row]
         }
         else
         {
-            actionName = self.actions[indexPath.row]
+            activity = self.activities[indexPath.row]
         }
         
-        cell.titleLabel.text = actionName
+        cell.titleLabel.text = activity.getName()
         cell.layer.borderColor = BAR_TINT_COLOR.CGColor
-        cell.layer.borderWidth = 1
+        cell.layer.borderWidth = 2
         cell.layer.cornerRadius = 5
         
         return cell
@@ -90,17 +129,17 @@ class WhatAreYouDoingVC: UIViewController, UICollectionViewDataSource, UICollect
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        if let searched = self.searchedActions
+        if let searched = self.searchedActivities
         {
             return searched.count
         }
-        return self.actions.count
+        return self.activities.count
     }
     
     // MARK: - FlowLayout Delegate
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
     {
-        return CGSize(width: self.actionsCollectionView.bounds.size.width/2 - 5, height: 23)
+        return CGSize(width: self.actionsCollectionView.bounds.size.width/2 - 5, height: 45)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets

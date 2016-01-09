@@ -14,7 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 {
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
         // optical adjustments
@@ -27,6 +26,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         UINavigationBar.appearance().tintColor = TINT_COLOR
         UINavigationBar.appearance().barTintColor = BAR_TINT_COLOR
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : TINT_COLOR, NSFontAttributeName : UIFont.systemFontOfSize(23)]
+        
+        // seed database if necessary
+        if !NSUserDefaults.standardUserDefaults().boolForKey(DATABASE_ACTIVITIES_SEED_DONE_BOOL_KEY)
+        {
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: DATABASE_ACTIVITIES_SEED_DONE_BOOL_KEY)
+            DBSeedHelper.seedActivities()
+        }
         
         // react to possible notifications
         if let options = launchOptions
@@ -181,7 +187,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
             // Replace this with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog("Unresolved error \(wrappedError), \(wrappedError.userInfo)")
-            abort()
+            abort() // TODO
         }
         
         return coordinator

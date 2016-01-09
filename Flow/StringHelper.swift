@@ -10,19 +10,19 @@ import Foundation
 
 class StringHelper
 {
-    class func searchStringArrayForString(stringArray: [String], searchString: String, concerningKey key: String) -> [String]
+    class func searchActivityArrayForString(activityArray: [Activity], searchString: String) -> [Activity]
     {
-        var searchedStringArray = [String]()
+        var searchedArray = [Activity]()
         
-        for string in stringArray
+        for activity in activityArray
         {
-            if let _ = string.lowercaseString.rangeOfString(searchString.lowercaseString)
+            if activity.getName().lowercaseString.rangeOfString(searchString.lowercaseString) != nil || activity.getName() == ACTIVITY_ADD_NEW_STRING       // always include the add new activity
             {
-                searchedStringArray.append(string)
+                searchedArray.append(activity)
             }
         }
         
-        return searchedStringArray
+        return searchedArray
     }
     
     class func getLocalizedTimeDescription(date: NSDate) -> String

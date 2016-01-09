@@ -15,7 +15,7 @@ class StartVC: UIViewController
     @IBOutlet weak var nextLogLabel: UILabel!
     @IBOutlet weak var quoteTextView: UITextView!
     
-    private static let NEXT_LOG = "NEXT LOG: "
+    private static let NEXT_LOG = "Next log: "
     
     override func viewDidLoad()
     {
@@ -53,14 +53,16 @@ class StartVC: UIViewController
         if logsRemaning
         {
             self.alarmsLabel.text = "\(difference)"
+            
+            // next log
+            self.nextLogLabel.text = StartVC.NEXT_LOG + getRelativeDateDescription(NotificationHelper.getNextNotificationDate(), time: true)
         }
         else
         {
             // TODO!
         }
         
-        // next log
-        self.nextLogLabel.text = StartVC.NEXT_LOG + getRelativeDateDescription(NotificationHelper.getNextNotificationDate(), time: true)
+        
     }
     
     func showQuoteOfTheDay()

@@ -13,14 +13,14 @@
                         <viewControllerLayoutGuide type="top" id="Ji4-4a-7p8"/>
                         <viewControllerLayoutGuide type="bottom" id="UOY-K3-h4O"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="bmR-kE-wiM">
+                    <view key="view" contentMode="scaleToFill" id="bmR-kE-wiM" customClass="GradientBackgroundVIew" customModule="FlowLog" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What are you doing?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtF-6v-Xvy">
                                 <rect key="frame" x="150" y="77" width="301" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="33"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="qPr-WC-5aZ">
@@ -33,7 +33,7 @@
                             </textField>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6Be-5l-CxS">
                                 <rect key="frame" x="0.0" y="174" width="600" height="426"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.1215686275" green="0.47843137250000001" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="D7F-AC-JHz">
                                     <size key="itemSize" width="279" height="39"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -51,12 +51,13 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="260" verticalCompressionResistancePriority="800" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipw-eH-G80">
                                                     <rect key="frame" x="119" y="9" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" red="0.1215686275" green="0.47843137250000001" blue="0.50196078430000002" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="ipw-eH-G80" firstAttribute="centerX" secondItem="Bcj-0u-iX4" secondAttribute="centerX" id="51j-Xq-jFM"/>
                                             <constraint firstAttribute="bottom" secondItem="ipw-eH-G80" secondAttribute="bottom" constant="5" id="VMq-di-RB2"/>
@@ -115,18 +116,19 @@
                         <viewControllerLayoutGuide type="top" id="2iY-XO-rPr"/>
                         <viewControllerLayoutGuide type="bottom" id="4tk-03-08E"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="X96-6l-hOV">
+                    <view key="view" contentMode="scaleToFill" id="X96-6l-hOV" customClass="GradientBackgroundVIew" customModule="FlowLog" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How are you feeling?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQS-jD-Jcq">
                                 <rect key="frame" x="148" y="77" width="304" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="33"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="4V5-DN-OHv">
                                 <rect key="frame" x="174" y="294" width="311" height="31"/>
+                                <color key="tintColor" red="0.1215686275" green="0.47843137250000001" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lyE-qo-Sq7">
                                 <rect key="frame" x="517" y="554" width="63" height="38"/>
@@ -184,17 +186,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKU-i4-6I4">
-                                <rect key="frame" x="0.0" y="556" width="600" height="36"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                <state key="normal" title="SAVE LOG">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveLog" destination="gHJ-de-S3G" eventType="touchUpInside" id="7fQ-aW-3dP"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SKILL LEVEL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8pw-h7-t12">
                                 <rect key="frame" x="465" y="515" width="115" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -213,6 +204,17 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKU-i4-6I4">
+                                <rect key="frame" x="0.0" y="556" width="600" height="36"/>
+                                <color key="backgroundColor" red="0.1215686275" green="0.47843137250000001" blue="0.50196078430000002" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="SAVE LOG">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveLog" destination="gHJ-de-S3G" eventType="touchUpInside" id="7fQ-aW-3dP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

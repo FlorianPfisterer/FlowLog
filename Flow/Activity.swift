@@ -10,8 +10,16 @@ import Foundation
 import CoreData
 
 
-class Activity: NSManagedObject {
-
-// Insert code here to add functionality to your managed object subclass
+class Activity: NSManagedObject
+{
+    func getName() -> String
+    {
+        if let name = self.name
+        {
+            return name
+        }
+        
+        return "Error"
+    }
 
 }
