@@ -44,9 +44,7 @@ class IntroScheduleAlarmsVC: UIViewController
     {
         super.viewDidAppear(animated)
         
-        print("INFO: starting scheduling random notifications")
-        
-        NotificationHelper.unscheduleAllCurrentNotifications()  // DEBUG!?
+        NotificationHelper.unscheduleAllCurrentNotifications(false)
         self.progressView.setProgress(0.1, animated: true)
         
         NotificationHelper.scheduleRandomNotificationsStarting(LogHelper.flowLogWeekStartDate!, between: LogHelper.alarmStartTime, and: LogHelper.alarmEndTime, progressView: self.progressView) { success in

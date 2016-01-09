@@ -100,10 +100,13 @@ func getRelativeDateDescription(date: NSDate, time: Bool = false) -> String
     {
     case 0:
         return TODAY + timeString
+        
     case 1:
-        return TOMORROW
+        return TOMORROW + timeString
+        
     case let value where value > 1:
         return "in \(value) days" + timeString
+        
     default:
         return "in \(dateDay - nowDay) days" + timeString
     }

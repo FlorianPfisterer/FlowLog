@@ -32,7 +32,7 @@
                                 </connections>
                             </textField>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6Be-5l-CxS">
-                                <rect key="frame" x="0.0" y="174" width="600" height="426"/>
+                                <rect key="frame" x="3" y="174" width="594" height="423"/>
                                 <color key="tintColor" red="0.1215686275" green="0.47843137250000001" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="D7F-AC-JHz">
                                     <size key="itemSize" width="279" height="39"/>
@@ -83,14 +83,14 @@
                         <constraints>
                             <constraint firstItem="wtF-6v-Xvy" firstAttribute="top" secondItem="Ji4-4a-7p8" secondAttribute="bottom" constant="13" id="08M-Gj-qLc"/>
                             <constraint firstItem="qPr-WC-5aZ" firstAttribute="trailing" secondItem="bmR-kE-wiM" secondAttribute="trailingMargin" id="ETX-4L-K8v"/>
-                            <constraint firstItem="UOY-K3-h4O" firstAttribute="top" secondItem="6Be-5l-CxS" secondAttribute="bottom" id="LPu-Jk-mb1"/>
+                            <constraint firstItem="UOY-K3-h4O" firstAttribute="top" secondItem="6Be-5l-CxS" secondAttribute="bottom" constant="3" id="LPu-Jk-mb1"/>
                             <constraint firstItem="wtF-6v-Xvy" firstAttribute="centerX" secondItem="bmR-kE-wiM" secondAttribute="centerX" id="R6s-72-khS"/>
                             <constraint firstAttribute="leadingMargin" secondItem="qPr-WC-5aZ" secondAttribute="leading" id="Ydk-zl-6e1"/>
                             <constraint firstItem="qPr-WC-5aZ" firstAttribute="top" secondItem="wtF-6v-Xvy" secondAttribute="bottom" constant="13" id="csG-Cg-cYB"/>
                             <constraint firstItem="6Be-5l-CxS" firstAttribute="top" secondItem="qPr-WC-5aZ" secondAttribute="bottom" constant="14" id="csd-sq-V7X"/>
-                            <constraint firstAttribute="trailing" secondItem="6Be-5l-CxS" secondAttribute="trailing" id="dFL-x8-RGE"/>
+                            <constraint firstAttribute="trailing" secondItem="6Be-5l-CxS" secondAttribute="trailing" constant="3" id="dFL-x8-RGE"/>
                             <constraint firstItem="6Be-5l-CxS" firstAttribute="top" secondItem="wtF-6v-Xvy" secondAttribute="bottom" constant="8" id="eVh-Fj-0vs"/>
-                            <constraint firstItem="6Be-5l-CxS" firstAttribute="leading" secondItem="bmR-kE-wiM" secondAttribute="leading" id="ljx-UL-JKG"/>
+                            <constraint firstItem="6Be-5l-CxS" firstAttribute="leading" secondItem="bmR-kE-wiM" secondAttribute="leading" constant="3" id="ljx-UL-JKG"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">

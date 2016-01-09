@@ -31,8 +31,6 @@ class LogHelper
             
             if let notification = NotificationHelper.getLogNotificationFromLogNr(LogHelper.currentLogNr)
             {
-                print("NOTIFICATION: \(notification)")
-                
                 let context = CoreDataHelper.managedObjectContext()
                 let logEntry = CoreDataHelper.insertManagedObject("LogEntry", managedObjectContext: context) as! LogEntry
                 logEntry.logNr = Int16(LogHelper.currentLogNr)
@@ -44,7 +42,7 @@ class LogHelper
                 
                 logEntry.flowStateIndex = LogHelper.flowState.rawValue
                 
-                logEntry.createdAt = NSDate().timeIntervalSince1970
+                logEntry.createdAt = NSDate().timeIntervalSinceReferenceDate
                 
                 notification.done = true
                 logEntry.notification = notification

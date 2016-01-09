@@ -22,6 +22,9 @@ class WhatAreYouDoingVC: UIViewController, UICollectionViewDataSource, UICollect
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
         
+        self.actionsCollectionView.backgroundView = UIView(frame: CGRectZero)
+        self.actionsCollectionView.backgroundColor = UIColor.clearColor()
+        
         self.loadAvailableActions()
     }
     

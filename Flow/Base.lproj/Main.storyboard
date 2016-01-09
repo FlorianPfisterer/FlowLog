@@ -22,12 +22,11 @@
                                 <rect key="frame" x="0.0" y="547" width="600" height="33"/>
                                 <color key="backgroundColor" red="0.1215686275" green="0.47843137250000001" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="CURRENT PROGRESS">
+                                <state key="normal" title="Log Data Analysis">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="showStatisticsInfo" destination="lun-pC-bXd" eventType="touchUpInside" id="pPd-1p-mem"/>
-                                    <segue destination="Wso-jC-oz1" kind="presentation" modalTransitionStyle="crossDissolve" id="bJa-fr-hda"/>
+                                    <segue destination="Wso-jC-oz1" kind="show" identifier="showAnalysisSegue" id="S5f-zD-pa2"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quote of the day" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPe-e8-1bI">
@@ -43,21 +42,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Days " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nkk-Gf-LA6">
-                                <rect key="frame" x="71" y="183" width="43" height="21"/>
+                                <rect key="frame" x="65" y="183" width="43" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNT-sD-lmm">
-                                <rect key="frame" x="386" y="69" width="166" height="164"/>
+                                <rect key="frame" x="372" y="69" width="166" height="164"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="137"/>
                                 <color key="textColor" red="0.1215686275" green="0.47843137250000001" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjM-4W-zdF">
-                                <rect key="frame" x="543" y="183" width="37" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="remaining." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LIV-93-ttz">
@@ -93,6 +86,12 @@
                                     <constraint firstAttribute="height" constant="1" id="QpJ-oa-4Fo"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjM-4W-zdF">
+                                <rect key="frame" x="543" y="183" width="37" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -107,8 +106,8 @@
                             <constraint firstItem="Nkk-Gf-LA6" firstAttribute="baseline" secondItem="atF-Vz-5a6" secondAttribute="baseline" id="82d-Gr-TlC"/>
                             <constraint firstItem="rPe-e8-1bI" firstAttribute="top" secondItem="YNh-c5-Vs8" secondAttribute="bottom" constant="15" id="BPs-SL-Dj3"/>
                             <constraint firstItem="LIV-93-ttz" firstAttribute="top" secondItem="vNT-sD-lmm" secondAttribute="bottom" constant="-23" id="GIB-io-rsg"/>
-                            <constraint firstItem="tjM-4W-zdF" firstAttribute="leading" secondItem="vNT-sD-lmm" secondAttribute="trailing" constant="-9" id="HlR-QF-hXo"/>
-                            <constraint firstItem="Nkk-Gf-LA6" firstAttribute="leading" secondItem="atF-Vz-5a6" secondAttribute="trailing" constant="-24" id="JCI-b4-DcO"/>
+                            <constraint firstItem="tjM-4W-zdF" firstAttribute="leading" secondItem="vNT-sD-lmm" secondAttribute="trailing" constant="5" id="HlR-QF-hXo"/>
+                            <constraint firstItem="Nkk-Gf-LA6" firstAttribute="leading" secondItem="atF-Vz-5a6" secondAttribute="trailing" constant="-30" id="JCI-b4-DcO"/>
                             <constraint firstItem="rPe-e8-1bI" firstAttribute="top" secondItem="YNh-c5-Vs8" secondAttribute="bottom" constant="35" id="M5u-W2-pam"/>
                             <constraint firstItem="W9W-BQ-6Kg" firstAttribute="centerX" secondItem="LIV-93-ttz" secondAttribute="centerX" id="Ngd-eh-TZY"/>
                             <constraint firstItem="atF-Vz-5a6" firstAttribute="top" secondItem="B5M-fu-iIN" secondAttribute="bottom" constant="5" id="PYF-PF-ErO"/>

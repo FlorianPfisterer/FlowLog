@@ -11,4 +11,8 @@ import UIKit
 class AnalysisOverviewTVC: UITableViewController
 {
     
+    @IBAction func doneButtonPressed(sender: UIBarButtonItem)
+    {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 }

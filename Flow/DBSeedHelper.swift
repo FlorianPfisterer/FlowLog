@@ -55,7 +55,8 @@ class DBSeedHelper
         "Teaching",
         "Listening to audiobook",
         "Learning new things",
-        "Styling" ]
+        "Styling",
+        "Meditating"]
     
     class func seedActivities()
     {

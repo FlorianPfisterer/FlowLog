@@ -35,14 +35,12 @@ class StartVC: UIViewController
     {
         super.viewDidAppear(animated)
         
-        print("Checking if overdue notifications available")
         let (dueNotificationsAvailable, nr) = NotificationHelper.getDueLogNofitications()
         if dueNotificationsAvailable
         {
             LogHelper.currentLogNr = nr
             self.startLogWithLogNr(nr)
         }
-        print("done checking if overdue notifications available")
     }
     
     // MARK: - View Update
@@ -59,10 +57,16 @@ class StartVC: UIViewController
         }
         else
         {
-            // TODO!
+            let alert = UIAlertController(title: "Congratulations!", message: "You have completed all notifications. Check out the analysis of the data. Do you want to start a new FlowLog-week (to make the analyses more exact)?", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "New Week", style: .Default, handler: { _ in
+                
+            }))
+            alert.addAction(UIAlertAction(title: "Show Analyses", style: .Default, handler: { _ in
+                self.performSegueWithIdentifier("showAnalysisSegue", sender: nil)
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
-        
-        
     }
     
     func showQuoteOfTheDay()
@@ -78,13 +82,5 @@ class StartVC: UIViewController
         self.quoteTextView.text = "\(randomQuote["quote"]!) - \(randomQuote["author"]!.uppercaseString)"
         self.quoteTextView.textColor = UIColor.whiteColor()
         self.quoteTextView.font = UIFont.systemFontOfSize(18)
-        
-        // WEITER: Überlegen, wie bei Intro die Alarmzeiten einstellen + kleine Einführung was die App macht
-    }
-    
-    // MARK: - IBActions
-    @IBAction func showStatisticsInfo()
-    {
-        
     }
 }

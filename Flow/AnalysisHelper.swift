@@ -41,7 +41,7 @@ class AnalysisHelper
         
         for log in logs
         {
-            if calendar.component(.Hour, fromDate: NSDate(timeIntervalSince1970: log.createdAt)) == hour
+            if calendar.component(.Hour, fromDate: NSDate(timeIntervalSinceReferenceDate: log.createdAt)) == hour
             {
                 logsInHour.append(log)
             }
@@ -54,33 +54,78 @@ class AnalysisHelper
     {
         let logs = AnalysisHelper.getLogsInHour(hour, inFlowState: flowState, context: context)
         
-        var sum: Float = 0
-        for log in logs
+        if logs.count > 0
         {
-            sum += log.energyLevel
+            var sum: Float = 0
+            for log in logs
+            {
+                sum += log.energyLevel
+            }
+            
+            return CGFloat(sum/Float(logs.count))
         }
-        
-        return CGFloat(sum/Float(logs.count))
+        return 0
     }
     
     class func getAverageHappinessLevelInHour(hour: Int, inFlowState flowState: FlowState? = nil, context: NSManagedObjectContext) -> CGFloat
     {
         let logs = AnalysisHelper.getLogsInHour(hour, inFlowState: flowState, context: context)
         
-        var sum: Float = 0
-        for log in logs
+        if logs.count > 0
         {
-            sum += log.happinessLevel
+            var sum: Float = 0
+            for log in logs
+            {
+                sum += log.happinessLevel
+            }
+            
+            return CGFloat(sum/Float(logs.count))
         }
-        
-        return CGFloat(sum/Float(logs.count))
+        return 0
     }
     
     class func getCombinedScoreInHour(hour: Int, inFlowState flowState: FlowState? = nil, context: NSManagedObjectContext) -> CGFloat
     {
+        let averageEnergy = AnalysisHelper.getAverageEnergyLevelInHour(hour, context: context)
+        let averageHappiness = AnalysisHelper.getAverageHappinessLevelInHour(hour, context: context)
         
+        let logsGeneralCount = AnalysisHelper.getNumberOfLogsInHour(hour, context: context)
+        if logsGeneralCount != 0
+        {
+            let logsInFlowCount = AnalysisHelper.getNumberOfLogsInHour(hour, inFlowState: flowState, context: context)
+            let flowStateScore: CGFloat = CGFloat(logsInFlowCount) / CGFloat(logsGeneralCount)
+            
+            let combinedScore = (averageEnergy + averageHappiness + flowStateScore) / 3
+            
+            return combinedScore
+        }
         
         return 0
+    }
+    
+    class func getSortedActivities(fromFlowState flowState: FlowState, context: NSManagedObjectContext) -> [Activity]
+    {
+        // get all flow logs
+        let logs = AnalysisHelper.getLogs(inFlowState: flowState, context: context)
+        var activitiesWithAmounts = [Activity : Int]()
+        
+        for log in logs
+        {
+            if log.flowStateIndex == flowState.rawValue
+            {
+                if let amount = activitiesWithAmounts[log.activity!]
+                {
+                    activitiesWithAmounts[log.activity!] = amount + 1
+                }
+                else
+                {
+                    activitiesWithAmounts[log.activity!] = 1
+                }
+            }
+        }
+        
+        let sortedActivities = activitiesWithAmounts.map({ $0.0 }).sort({ $0.used > $1.used })
+        return sortedActivities
     }
     
     class func getNumberOfLogs(inFlowState flowState: FlowState? = nil, context: NSManagedObjectContext) -> Int

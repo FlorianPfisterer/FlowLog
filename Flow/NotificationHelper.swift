@@ -28,26 +28,29 @@ class NotificationHelper
     
     
     // MARK: - helper functions
-    class func unscheduleAllCurrentNotifications()
+    class func unscheduleAllCurrentNotifications(deleteData: Bool)
     {
         // unschedule scheduled notifications
         UIApplication.sharedApplication().cancelAllLocalNotifications()
         
-        // delete notification and log entries from database
-        let context = CoreDataHelper.managedObjectContext()
-        do
+        if deleteData
         {
-            let notifications = try CoreDataHelper.fetchEntities("LogNotification", managedObjectContext: context, predicate: nil, sortDescriptor: nil) as! [LogNotification]
-            let entries = try CoreDataHelper.fetchEntities("LogEntry", managedObjectContext: context, predicate: nil, sortDescriptor: nil) as! [LogEntry]
-            
-            for array in [notifications, entries]
+            // delete notification and log entries from database
+            let context = CoreDataHelper.managedObjectContext()
+            do
             {
-                CoreDataHelper.deleteObjectsInArray(array as! [NSManagedObject], fromContext: context)
+                let notifications = try CoreDataHelper.fetchEntities("LogNotification", managedObjectContext: context, predicate: nil, sortDescriptor: nil) as! [LogNotification]
+                let entries = try CoreDataHelper.fetchEntities("LogEntry", managedObjectContext: context, predicate: nil, sortDescriptor: nil) as! [LogEntry]
+                
+                for array in [notifications, entries]
+                {
+                    CoreDataHelper.deleteObjectsInArray(array as! [NSManagedObject], fromContext: context)
+                }
             }
-        }
-        catch
-        {
-            print("ERROR unscheduling old notifications and deleting from database: \(error)")
+            catch
+            {
+                print("ERROR unscheduling old notifications and deleting from database: \(error)")
+            }
         }
     }
     
@@ -145,7 +148,7 @@ class NotificationHelper
         // then check existing times
         for existingAbsoluteMinute in NotificationHelper.currentAbsoluteMinutes
         {
-            if abs(existingAbsoluteMinute - absoluteMinutes) < 5   // no more than 1 notification in a 10 minute time frame
+            if abs(existingAbsoluteMinute - absoluteMinutes) < 2   // no more than 1 notification in a 4 minute time frame
             {
                 print("2 existingAbsM: \(existingAbsoluteMinute), absm: \(absoluteMinutes)")
                 
@@ -180,7 +183,7 @@ class NotificationHelper
                 
                 // create notification object in database
                 let logNotification = CoreDataHelper.insertManagedObject("LogNotification", managedObjectContext: context) as! LogNotification
-                logNotification.dueDate = date.timeIntervalSince1970
+                logNotification.dueDate = date.timeIntervalSinceReferenceDate
                 logNotification.nr = Int16(nr)  // starting at 1
                 logNotification.done = false
 
@@ -263,14 +266,15 @@ class NotificationHelper
         
         do
         {
-            let predicate = NSPredicate(format: "done == %@ AND dueDate > %@", NSNumber(bool: false), NSDate())
+            let now = NSDate()
+            let predicate = NSPredicate(format: "done == %@ AND dueDate > %@", NSNumber(bool: false), now)
             let sortDescriptor = NSSortDescriptor(key: "dueDate", ascending: true)
             
             let notifications = try CoreDataHelper.fetchEntities("LogNotification", managedObjectContext: context, predicate: predicate, sortDescriptor: sortDescriptor, limit: 1) as! [LogNotification]
             
             if let notification = notifications.first
             {
-                return NSDate(timeIntervalSince1970: notification.dueDate)
+                return NSDate(timeIntervalSinceReferenceDate: notification.dueDate)
             }
             else
             {
