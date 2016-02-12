@@ -8,12 +8,15 @@
 
 import UIKit
 
-class AreYouInFlowVC: UIViewController, FlowViewDelegate
+class AreYouInFlowVC: UIViewController
 {
     @IBOutlet weak var flowView: FlowView!
     @IBOutlet weak var saveLogButton: UIButton!
     @IBOutlet weak var challengeAxisLabel: UILabel!
-    
+}
+
+extension AreYouInFlowVC    // MARK: - View Lifecycle
+{
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -24,8 +27,10 @@ class AreYouInFlowVC: UIViewController, FlowViewDelegate
         self.flowView.delegate = self
         self.setNewSelectionLocation(x: 0.5, y: 0.5, alpha: 1)
     }
-    
-    // MARK: - FlowViewDelegate
+}
+
+extension AreYouInFlowVC: FlowViewDelegate      // MARK: - FlowViewDelegate
+{
     func setNewSelectionLocation(x x: CGFloat, y: CGFloat, alpha: CGFloat = 0.9)
     {
         self.view.backgroundColor = UIColor(red: x, green: y, blue: 0.5, alpha: alpha)
@@ -35,8 +40,10 @@ class AreYouInFlowVC: UIViewController, FlowViewDelegate
     {
         self.saveLogButton.setTitle(String(flowState), forState: .Normal)
     }
-    
-    // MARK: - IBActions
+}
+
+extension AreYouInFlowVC        // MARK: - IBActions
+{
     @IBAction func saveLog()
     {
         self.saveLogButton.setTitle("SAVING...", forState: .Normal)
@@ -72,9 +79,12 @@ class AreYouInFlowVC: UIViewController, FlowViewDelegate
             }
         }
     }
-    
-    override func startLogWithLogNr(nr: Int)
+}
+
+extension AreYouInFlowVC
+{
+    override func startLog()
     {
-        print("already doing log, incoming request for nr \(nr)")
+        print("already doing log, incoming request")
     }
 }

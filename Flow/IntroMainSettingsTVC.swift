@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IntroMainSettingsTVC: UITableViewController, LogWeekStartDateSettingsDelegate
+class IntroMainSettingsTVC: UITableViewController
 {
     @IBOutlet weak var startDatePicker: UIDatePicker!
     @IBOutlet weak var endDatePicker: UIDatePicker!
@@ -16,7 +16,10 @@ class IntroMainSettingsTVC: UITableViewController, LogWeekStartDateSettingsDeleg
     @IBOutlet weak var weekStartLabel: UILabel!
     
     var datePreset: NSDate?
-    
+}
+
+extension IntroMainSettingsTVC      // MARK: - View Lifecycle
+{
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -43,8 +46,10 @@ class IntroMainSettingsTVC: UITableViewController, LogWeekStartDateSettingsDeleg
             }
         }
     }
-    
-    // MARK: - IBActions
+}
+
+extension IntroMainSettingsTVC  // MARK: - IBActions
+{
     func proceedToCreatingAlarms()
     {
         let startTime = Time(date: self.startDatePicker.date)
@@ -82,8 +87,10 @@ class IntroMainSettingsTVC: UITableViewController, LogWeekStartDateSettingsDeleg
     {
         self.startDatePicker.maximumDate = sender.date
     }
-    
-    // MARK: - LogWeekStartDateSettingsDelegate
+}
+
+extension IntroMainSettingsTVC: LogWeekStartDateSettingsDelegate      // MARK: - LogWeekStartDateSettingsDelegate
+{
     func didSetStartDateTo(date: NSDate)
     {
         self.datePreset = date

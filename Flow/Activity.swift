@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 class Activity: NSManagedObject
 {
     func getName() -> String
@@ -18,8 +17,6 @@ class Activity: NSManagedObject
         {
             return name
         }
-        
         return "Error"
     }
-
 }

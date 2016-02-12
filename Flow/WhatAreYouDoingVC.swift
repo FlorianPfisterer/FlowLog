@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WhatAreYouDoingVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITextFieldDelegate, UICollectionViewDelegateFlowLayout
+class WhatAreYouDoingVC: UIViewController
 {
     private let cellIdentifier = "actionCell"
     
@@ -17,6 +17,11 @@ class WhatAreYouDoingVC: UIViewController, UICollectionViewDataSource, UICollect
     
     @IBOutlet weak var actionsCollectionView: UICollectionView!
     
+    var standardFontSize: CGFloat?
+}
+
+extension WhatAreYouDoingVC     // MARK: - View Lifecycle
+{
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -27,8 +32,10 @@ class WhatAreYouDoingVC: UIViewController, UICollectionViewDataSource, UICollect
         
         self.loadAvailableActions()
     }
-    
-    // MARK: - Load Data
+}
+
+extension WhatAreYouDoingVC     // MARK: - Load Data
+{
     func loadAvailableActions()
     {
         let context = CoreDataHelper.managedObjectContext()
@@ -59,8 +66,10 @@ class WhatAreYouDoingVC: UIViewController, UICollectionViewDataSource, UICollect
         self.searchedActivities = nil
         self.actionsCollectionView.reloadData()
     }
-    
-    // MARK: - Collection View
+}
+
+extension WhatAreYouDoingVC: UICollectionViewDataSource, UICollectionViewDelegate     // MARK: - Collection View
+{
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
     {
         let activityIndex = indexPath.row
@@ -106,8 +115,8 @@ class WhatAreYouDoingVC: UIViewController, UICollectionViewDataSource, UICollect
     {
         return 1
     }
+
     
-    var standardFontSize: CGFloat?
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(self.cellIdentifier, forIndexPath: indexPath) as! ActionCollectionCell
@@ -157,8 +166,10 @@ class WhatAreYouDoingVC: UIViewController, UICollectionViewDataSource, UICollect
         }
         return self.activities.count + 1
     }
-    
-    // MARK: - FlowLayout Delegate
+}
+
+extension WhatAreYouDoingVC: UICollectionViewDelegateFlowLayout     // MARK: - FlowLayout Delegate
+{
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
     {
         return CGSize(width: self.actionsCollectionView.bounds.size.width/2 - 5, height: 45)
@@ -168,8 +179,11 @@ class WhatAreYouDoingVC: UIViewController, UICollectionViewDataSource, UICollect
     {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
+}
+
+extension WhatAreYouDoingVC: UITextFieldDelegate     // MARK: - TextField Delegate
+{
     
-    // MARK: - TextField Delegate
     func textFieldShouldReturn(textField: UITextField) -> Bool
     {
         if textField.text == ""
@@ -206,9 +220,12 @@ class WhatAreYouDoingVC: UIViewController, UICollectionViewDataSource, UICollect
         self.clearSearch()
         return true
     }
-    
-    override func startLogWithLogNr(nr: Int)
+}
+
+extension WhatAreYouDoingVC
+{
+    override func startLog()
     {
-        print("already doing log, incoming request for nr \(nr)")
+        print("already doing log, incoming request")
     }
 }

@@ -16,7 +16,10 @@ class IntroScheduleAlarmsVC: UIViewController
     @IBOutlet weak var progressView: UIProgressView!
 
     @IBOutlet weak var proceedButton: UIButton!
-    
+}
+
+extension IntroScheduleAlarmsVC     // MARK: - View Lifecycle
+{
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -44,10 +47,12 @@ class IntroScheduleAlarmsVC: UIViewController
     {
         super.viewDidAppear(animated)
         
-        NotificationHelper.unscheduleAllCurrentNotifications(false)
+        
+        // TODO
+        NotificationHelper.unscheduleAllCurrentNotifications()
         self.progressView.setProgress(0.1, animated: true)
         
-        NotificationHelper.scheduleRandomNotificationsStarting(LogHelper.flowLogWeekStartDate!, between: LogHelper.alarmStartTime, and: LogHelper.alarmEndTime, progressView: self.progressView) { success in
+        /*NotificationHelper.scheduleRandomNotificationsStarting(LogHelper.flowLogWeekStartDate!, between: LogHelper.alarmStartTime, and: LogHelper.alarmEndTime, progressView: self.progressView) { success in
             if !success
             {
                 let alert = UIAlertController(title: "An error occured", message: "Please try again later", preferredStyle: .Alert)
@@ -61,9 +66,12 @@ class IntroScheduleAlarmsVC: UIViewController
                 })
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: INTRO_DONE_BOOL_KEY)
             }
-        }
+        }*/
     }
-    
+}
+
+extension IntroScheduleAlarmsVC     // MARK: - Helper Functions
+{
     func setupSettingsLabels()
     {
         self.weekStartDateLabel.text = "starting \(getRelativeDateDescription(LogHelper.flowLogWeekStartDate!))"
@@ -73,8 +81,10 @@ class IntroScheduleAlarmsVC: UIViewController
         
         self.alarmTimeBoundariesLabel.text = "between \(startTimeDescription) and \(endTimeDescription)"
     }
-    
-    // MARK: - IBActions
+}
+
+extension IntroScheduleAlarmsVC     // MARK: - IBActions
+{
     @IBAction func proceedToMainStoryboard()
     {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

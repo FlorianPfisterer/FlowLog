@@ -12,7 +12,10 @@ class HowAreYouFeelingVC: UIViewController
 {
     @IBOutlet weak var instructionLabel: UILabel!
     @IBOutlet weak var stateWheelControl: StateWheelControl!
-    
+}
+
+extension HowAreYouFeelingVC     // MARK: - View Lifecycle
+{
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -22,7 +25,7 @@ class HowAreYouFeelingVC: UIViewController
     }
 }
 
-extension HowAreYouFeelingVC    // Overall Log Management
+extension HowAreYouFeelingVC    // MARK: - Overall Log Management
 {
     func goToNextQuestion()
     {
@@ -30,8 +33,8 @@ extension HowAreYouFeelingVC    // Overall Log Management
         self.performSegueWithIdentifier("toQuestion3Segue", sender: nil)
     }
     
-    override func startLogWithLogNr(nr: Int)
+    override func startLog()
     {
-        print("already doing log, incoming request for nr \(nr)")
+        print("already doing log, incoming request")
     }
 }

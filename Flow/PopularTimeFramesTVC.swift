@@ -12,14 +12,20 @@ class PopularTimeFramesTVC: UITableViewController
 {
     var upperFlowActivities: [(Activity, CGFloat)] = []
     var lowerFlowActivities: [(Activity, CGFloat)] = []
-    
+}
+
+extension PopularTimeFramesTVC      // MARK: - View Lifecycle
+{
     override func viewDidAppear(animated: Bool)
     {
         super.viewDidAppear(animated)
         
         self.loadFlowActivities()
     }
-    
+}
+
+extension PopularTimeFramesTVC      // MARK: - Load Data
+{
     func loadFlowActivities()
     {
         let context = CoreDataHelper.managedObjectContext()
@@ -60,8 +66,10 @@ class PopularTimeFramesTVC: UITableViewController
             self.presentViewController(alert, animated: true, completion: nil)
         }
     }
-    
-    // MARK: - TableView
+}
+
+extension PopularTimeFramesTVC      // MARK: - TableView
+{
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         return 2

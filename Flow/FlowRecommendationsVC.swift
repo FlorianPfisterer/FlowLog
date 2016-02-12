@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FlowRecommendationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
+class FlowRecommendationsVC: UIViewController
 {
     // MARK: - IBOutlets
     @IBOutlet weak var diagramView: DiagramView!
@@ -42,8 +42,10 @@ class FlowRecommendationsVC: UIViewController, UITableViewDelegate, UITableViewD
     let roundedEndHour: Int = {
         return LogHelper.alarmEndTime.roundedTimeHour()
     }()
-    
-    // MARK: - View Lifecycle
+}
+
+extension FlowRecommendationsVC     // MARK: - View Lifecycle
+{
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -60,8 +62,10 @@ class FlowRecommendationsVC: UIViewController, UITableViewDelegate, UITableViewD
         
         self.setupGraphDisplay()
     }
-    
-    // MARK: - Update UI
+}
+
+extension FlowRecommendationsVC     // MARK: - Update UI
+{
     func setupGraphTimeLabels()
     {
         self.startTimeLabel.text = "\(StringHelper.getLocalizedShortTimeDescriptionAtHour(self.roundedStartHour))"
@@ -149,8 +153,10 @@ class FlowRecommendationsVC: UIViewController, UITableViewDelegate, UITableViewD
         self.minLabel.text = "\(minValueInt)"
         self.maxLabel.text = "\(maxValueInt)"
     }
-    
-    // MARK: - IBActions
+}
+
+extension FlowRecommendationsVC     // MARK: - IBActions
+{
     @IBAction func changeGraphKind(sender: UISegmentedControl)
     {
         if let newState = GraphDisplayState(rawValue: sender.selectedSegmentIndex)
@@ -162,8 +168,10 @@ class FlowRecommendationsVC: UIViewController, UITableViewDelegate, UITableViewD
             print("ERROR: couldn't find GraphDisplayState for index: \(sender.selectedSegmentIndex)")
         }
     }
-    
-    // MARK: - TableView
+}
+
+extension FlowRecommendationsVC: UITableViewDelegate, UITableViewDataSource     // MARK: - TableView
+{
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         return 1

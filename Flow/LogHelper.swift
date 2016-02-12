@@ -12,8 +12,6 @@ import UIKit
 
 class LogHelper
 {
-    static var currentLogNr: Int!
-    
     // temp log data variables
     static var currentActivity: Activity!
     
@@ -21,78 +19,57 @@ class LogHelper
     static var energyLevel: Float!
     
     static var flowState: FlowState!
-    
-    static var didDueLog = false
-    
-    // functions
+}
+
+extension LogHelper     // MARK: - Action Functions
+{
     static func saveCurrentLog(completion: (success: Bool, logEntry: LogEntry!) -> Void)
     {
         let delay: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC))  // slight delay for experience reasons
         
         dispatch_after(delay, dispatch_get_main_queue(), {
             
-            if let notification = NotificationHelper.getLogNotificationFromLogNr(LogHelper.currentLogNr)
+            let context = CoreDataHelper.managedObjectContext()
+            
+            // create and edit new LogEntry
+            let logEntry = CoreDataHelper.insertManagedObject("LogEntry", managedObjectContext: context) as! LogEntry
+            logEntry.logNr = 0  // TODO: Fetch largest Nr. from Database
+            
+            logEntry.activity = LogHelper.currentActivity
+            logEntry.happinessLevel = LogHelper.happinessLevel
+            logEntry.energyLevel = LogHelper.energyLevel
+            logEntry.flowStateIndex = LogHelper.flowState.rawValue
+            logEntry.createdAt = NSDate().timeIntervalSinceReferenceDate
+            
+            LogHelper.currentActivity.used = LogHelper.currentActivity.used + 1
+            
+            do
             {
-                let context = CoreDataHelper.managedObjectContext()
-                let logEntry = CoreDataHelper.insertManagedObject("LogEntry", managedObjectContext: context) as! LogEntry
-                logEntry.logNr = Int16(LogHelper.currentLogNr)
+                try context.save()
+                completion(success: true, logEntry: logEntry)
                 
-                logEntry.activity = LogHelper.currentActivity
+                // reset static variables
+                LogHelper.currentActivity = nil
+                LogHelper.happinessLevel = nil
+                LogHelper.energyLevel = nil
+                LogHelper.flowState = nil
                 
-                logEntry.happinessLevel = LogHelper.happinessLevel
-                logEntry.energyLevel = LogHelper.energyLevel
-                
-                logEntry.flowStateIndex = LogHelper.flowState.rawValue
-                
-                logEntry.createdAt = NSDate().timeIntervalSinceReferenceDate
-                
-                notification.done = true
-                logEntry.notification = notification
-                
-                LogHelper.currentActivity.used = LogHelper.currentActivity.used + 1
-                
-                do
-                {
-                    try context.save()
-                    
-                    completion(success: true, logEntry: logEntry)
-                    
-                    LogHelper.currentLogNr = nil
-                    LogHelper.currentActivity = nil
-                    LogHelper.happinessLevel = nil
-                    LogHelper.energyLevel = nil
-                    LogHelper.flowState = nil
-                }
-                catch
-                {
-                    print("ERROR saving LogEntry: \(error)")
-                }
+                return
             }
-            else
+            catch
             {
-                print("ERROR: couldn't get current notification")
+                print("ERROR saving LogEntry: \(error)")
             }
-        
+            
             completion(success: false, logEntry: nil)
         })
     }
-    
+}
+
+extension LogHelper     // MARK: - Help Functions
+{
     static func getRemainingFlowLogsInCurrentWeek() -> (Bool, Int!)
     {
-        let context = CoreDataHelper.managedObjectContext()
-        
-        do
-        {
-            let predicate = NSPredicate(format: "done == %@", NSNumber(bool: false))    // remaining, not done
-            let remainingFlowLogs = try CoreDataHelper.fetchEntities("LogNotification", managedObjectContext: context, predicate: predicate, sortDescriptor: nil, limit: FLOW_LOGS_PER_WEEK_COUNT)
-            
-            return (remainingFlowLogs.count > 0, remainingFlowLogs.count)
-        }
-        catch
-        {
-            print("ERROR fetching remaining flowLogsInCurrentWeek: \(error)")
-        }
-        
         // TODO!
         return (true, FLOW_LOGS_PER_WEEK_COUNT)
     }
@@ -102,34 +79,8 @@ class LogHelper
         // fetch distinct days of LogNotifications from database that are not completed (and in the future?)
         //let context = CoreDataHelper.managedObjectContext()
         
+        // TODO!
         
-        // fetch the earliest log that is done:
-        let context = CoreDataHelper.managedObjectContext()
-        let predicate = NSPredicate(format: "done == %@", NSNumber(bool: true))
-        let sortDescriptor = NSSortDescriptor(key: "dueDate", ascending: false)
-        
-        do
-        {
-            let earliestLogs = try CoreDataHelper.fetchEntities("LogNotification", managedObjectContext: context, predicate: predicate, sortDescriptor: sortDescriptor, limit: 1)
-            
-            if let earliestLog = earliestLogs.firstObject as? LogNotification
-            {
-                let timeIntervalEarliestDate: NSTimeInterval = earliestLog.dueDate
-                let timeIntervalNow: NSTimeInterval = NSDate().timeIntervalSinceReferenceDate
-                
-                let secondsPerDay = 60*60*24
-                let differenceInterval = abs(Int(timeIntervalNow - timeIntervalEarliestDate))
-                let differenceLastDay = differenceInterval % secondsPerDay
-                
-                let daysDifference = (differenceInterval - differenceLastDay) / secondsPerDay
-                
-                return daysDifference
-            }
-        }
-        catch
-        {
-            print("Couldn't fetch ealiest logs. Returning 7 remaining days.")
-        }
         return 7
     }
     
@@ -183,7 +134,10 @@ class LogHelper
             return .Relaxation
         }
     }
-    
+}
+
+extension LogHelper     // MARK: - Settings Variables
+{
     static var flowLogWeekStartDate: NSDate? {
         get
         {
@@ -235,122 +189,4 @@ class LogHelper
             NSUserDefaults.standardUserDefaults().setObject(newValue.getDate(), forKey: ALARM_END_DATE_KEY)
         }
     }
-    
-    /*static var alarmSoundFileName: String {
-        get
-        {
-            if let name = NSUserDefaults.standardUserDefaults().stringForKey(ALARM_SOUND_FILE_NAME_STRING_KEY)
-            {
-                return name
-            }
-            else
-            {
-                return ALARM_SOUND_STANDARD
-            }
-        }
-        
-        set (newValue)
-        {
-            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: ALARM_SOUND_FILE_NAME_STRING_KEY)
-        }
-        
-    }*/
-}
-
-func * (left: Vector2D, right: Vector2D) -> CGFloat
-{
-    return (left.dx * right.dx) + (left.dy * right.dy)
-}
-
-let π = CGFloat(M_PI)
-
-struct Vector2D
-{
-    var dx: CGFloat
-    var dy: CGFloat
-    
-    init(dx: CGFloat, dy: CGFloat)
-    {
-        self.dx = dx
-        self.dy = dy
-    }
-    
-    func abs() -> CGFloat
-    {
-        return sqrt((self.dx*self.dx) + (self.dy*self.dy))
-    }
-    
-    func getAngleToVector(vector: Vector2D) -> CGFloat
-    {
-        // cos(α) = ( p*q ) / ( |p|*|q| )
-        let α = acos((self * vector) / (self.abs() * vector.abs()))  // radian
-        
-        return (α * 180) / π
-    }
-    
-    static let upYVector = Vector2D(dx: 0, dy: -1)
-}
-
-struct Time
-{
-    var hour: Int
-    var minute: Int
-    
-    var absoluteMinutes: Int
-    
-    static let standardStartTime = Time(hour: 9, minute: 0)
-    static let standardEndTime = Time(hour: 19, minute: 0)
-    
-    init(hour: Int, minute: Int)
-    {
-        self.hour = hour
-        self.minute = minute
-        
-        self.absoluteMinutes = self.hour * 60 + self.minute
-    }
-    
-    init(date: NSDate)
-    {
-        let dateComponents = calendar.components([NSCalendarUnit.Hour, NSCalendarUnit.Minute], fromDate: date)
-        self.hour = dateComponents.hour
-        self.minute = dateComponents.minute
-        
-        self.absoluteMinutes = self.hour * 60 + self.minute
-    }
-    
-    init(absoluteMinutes: Int)
-    {
-        self.minute = absoluteMinutes % 60
-        self.hour = (absoluteMinutes - self.minute) / 60
-        
-        self.absoluteMinutes = absoluteMinutes
-    }
-    
-    // public
-    func timeString() -> String // TODO! Localize
-    {
-        return StringHelper.getLocalizedTimeDescription(self.getDate())
-    }
-    
-    func roundedTimeHour() -> Int
-    {
-        let hoursDouble: Double = Double(self.hour) + Double(self.minute)/60
-        return Int(round(hoursDouble))
-    }
-    
-    func getDate() -> NSDate
-    {
-        let dateComponents = calendar.components([NSCalendarUnit.Day, NSCalendarUnit.Month, NSCalendarUnit.Year], fromDate: NSDate())
-
-        dateComponents.hour = self.hour
-        dateComponents.minute = self.minute
-        dateComponents.second = 0
-        
-        return calendar.dateFromComponents(dateComponents)!
-    }
-}
-
-protocol LogStarterDelegate
-{
-    func startLogWithLogNr(nr: Int)
 }

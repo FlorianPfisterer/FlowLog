@@ -14,7 +14,7 @@ class AwardView: UIView
     private let graphPoints: [CGFloat] = [1, 3, 15, 40, 120]
     private var diagramView: DiagramView!
     
-    private var emitterLayer = CAEmitterLayer()
+    private var emitterLayer = CAEmitterLayer() // TODO
     
     override init(frame: CGRect)
     {

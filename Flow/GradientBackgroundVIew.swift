@@ -15,7 +15,10 @@ import UIKit
     
     @IBInspectable var firstLocation: CGFloat = 0
     @IBInspectable var secondLocation: CGFloat = 1
-    
+}
+
+extension GradientBackgroundVIew    // MARK: - Lifecycle
+{
     override func drawRect(rect: CGRect)
     {
         if let context = UIGraphicsGetCurrentContext()
@@ -36,3 +39,4 @@ import UIKit
         super.drawRect(rect)
     }
 }
+

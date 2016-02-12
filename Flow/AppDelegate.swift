@@ -79,9 +79,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     // MARK: - Notifications
     private func notification(notification: UILocalNotification, receivedAtStartup startup: Bool)
     {
-        let nrOfNotification = notification.userInfo![LOG_NR_NOTIFICATION_INT_KEY] as! Int
-        LogHelper.currentLogNr = nrOfNotification
-        
         if startup
         {
             self.setStoryboardTo("Log")
@@ -90,11 +87,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         {
             if let naviVC = UIApplication.sharedApplication().keyWindow?.rootViewController as? UINavigationController
             {
-                naviVC.visibleViewController!.startLogWithLogNr(nrOfNotification)
+                naviVC.visibleViewController!.startLog()
             }
             else if let currentVC = UIApplication.sharedApplication().keyWindow?.rootViewController as? LogStarterDelegate
             {
-                currentVC.startLogWithLogNr(nrOfNotification)
+                currentVC.startLog()
             }
         }
     }
@@ -105,6 +102,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         {
         case .Active:
             self.notification(notification, receivedAtStartup: false)
+            
         default:
             self.notification(notification, receivedAtStartup: true)
         }

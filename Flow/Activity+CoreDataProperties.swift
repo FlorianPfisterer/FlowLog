@@ -12,10 +12,9 @@
 import Foundation
 import CoreData
 
-extension Activity {
-
+extension Activity
+{
     @NSManaged var name: String?
     @NSManaged var used: Int16
     @NSManaged var entries: NSSet?
-
 }

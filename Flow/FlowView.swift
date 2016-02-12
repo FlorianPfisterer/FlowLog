@@ -27,7 +27,10 @@ class FlowView: UIView
     var labels: [UILabel]!
     
     var delegate: FlowViewDelegate!
-    
+}
+
+extension FlowView      // MARK: - Lifecycle
+{
     override func awakeFromNib()
     {
         super.awakeFromNib()
@@ -142,7 +145,10 @@ class FlowView: UIView
         
         CGContextRestoreGState(context)
     }
-    
+}
+
+extension FlowView      // MARK: - Helper Functions
+{
     func didPanSelectionCenter(gestureRecognizer: UIPanGestureRecognizer)
     {
         let translation = gestureRecognizer.translationInView(self)
@@ -189,8 +195,10 @@ class FlowView: UIView
         
         return α
     }
-    
-    // MARK: - Get Data
+}
+
+extension FlowView      // MARK: - Get Data
+{
     func getFlowDimensions() -> (Float, Float)
     {
         let dimenX = Float(self.centerImageView.center.x / self.bounds.size.width)

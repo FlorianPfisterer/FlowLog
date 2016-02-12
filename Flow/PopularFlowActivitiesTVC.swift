@@ -12,7 +12,10 @@ class PopularFlowActivitiesTVC: UITableViewController
 {
     var upperFlowActivities: [(Activity, CGFloat)] = []
     var lowerFlowActivities: [(Activity, CGFloat)] = []
-    
+}
+
+extension PopularFlowActivitiesTVC      // MARK: - View Lifecycle
+{
     override func viewDidAppear(animated: Bool)
     {
         super.viewDidAppear(animated)
@@ -21,6 +24,10 @@ class PopularFlowActivitiesTVC: UITableViewController
         self.tableView.reloadData()
     }
     
+}
+
+extension PopularFlowActivitiesTVC      // MARK: - Load Data
+{
     func loadFlowActivities()
     {
         let context = CoreDataHelper.managedObjectContext()
@@ -64,8 +71,10 @@ class PopularFlowActivitiesTVC: UITableViewController
             self.presentViewController(alert, animated: true, completion: nil)
         }
     }
-    
-    // MARK: - TableView
+}
+
+extension PopularFlowActivitiesTVC      // MARK: - TableView
+{
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         return 2

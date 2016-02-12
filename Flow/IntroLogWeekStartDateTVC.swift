@@ -15,7 +15,10 @@ class IntroLogWeekStartDateTVC: UITableViewController
     
     var delegate: LogWeekStartDateSettingsDelegate!
     var datePreset: NSDate!
-    
+}
+
+extension IntroLogWeekStartDateTVC  // MARK: - View Lifecycle
+{
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -37,16 +40,14 @@ class IntroLogWeekStartDateTVC: UITableViewController
         
         self.delegate.didSetStartDateTo(self.startDatePicker.date)
     }
-    
+}
+
+extension IntroLogWeekStartDateTVC      // MARK: - Helper Functions
+{
     private func getRandomProcrastinationQuote() -> String
     {
         let procrastinationQuotes = ["Procrastination is the thief of time.", "A stitch in time saves nine.", "There is no time like the present.", "Never put off till tomorrow what you can do today."]
         let randomIndex = Int(arc4random_uniform(UInt32(procrastinationQuotes.count)))
         return "\"\(procrastinationQuotes[randomIndex])\""
     }
-}
-
-protocol LogWeekStartDateSettingsDelegate
-{
-    func didSetStartDateTo(date: NSDate)
 }

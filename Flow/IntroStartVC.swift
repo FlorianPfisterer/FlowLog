@@ -23,5 +23,4 @@ class IntroStartVC: UIViewController
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
-    
 }

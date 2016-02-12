@@ -9,10 +9,6 @@
 /* Begin PBXBuildFile section */
 		4120D74B1C3FC5A1003F94B4 /* Activity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4120D7451C3FC5A1003F94B4 /* Activity+CoreDataProperties.swift */; };
 		4120D74C1C3FC5A1003F94B4 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4120D7461C3FC5A1003F94B4 /* Activity.swift */; };
-		4120D74D1C3FC5A1003F94B4 /* LogNotification+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4120D7471C3FC5A1003F94B4 /* LogNotification+CoreDataProperties.swift */; };
-		4120D74E1C3FC5A1003F94B4 /* LogNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4120D7481C3FC5A1003F94B4 /* LogNotification.swift */; };
-		4120D74F1C3FC5A1003F94B4 /* LogEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4120D7491C3FC5A1003F94B4 /* LogEntry+CoreDataProperties.swift */; };
-		4120D7501C3FC5A1003F94B4 /* LogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4120D74A1C3FC5A1003F94B4 /* LogEntry.swift */; };
 		4120D7521C3FD25E003F94B4 /* Analysis.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4120D7511C3FD25E003F94B4 /* Analysis.storyboard */; };
 		4120D7541C3FD338003F94B4 /* DBSeedHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4120D7531C3FD338003F94B4 /* DBSeedHelper.swift */; };
 		412DA4BD1C3D08AA0006638B /* IntroScheduleAlarmsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412DA4BC1C3D08AA0006638B /* IntroScheduleAlarmsVC.swift */; };
@@ -29,6 +25,11 @@
 		41B8150B1C40117200A2C72D /* AnalysisHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B8150A1C40117200A2C72D /* AnalysisHelper.swift */; };
 		41B8150E1C4014BD00A2C72D /* AnalysisOverviewTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B8150D1C4014BD00A2C72D /* AnalysisOverviewTVC.swift */; };
 		41B815111C40174900A2C72D /* DiagramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B815101C40174900A2C72D /* DiagramView.swift */; };
+		41C7CD231C6DD97C005AA1BA /* LogEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C7CD211C6DD97C005AA1BA /* LogEntry+CoreDataProperties.swift */; };
+		41C7CD241C6DD97C005AA1BA /* LogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C7CD221C6DD97C005AA1BA /* LogEntry.swift */; };
+		41C7CD261C6DDB0E005AA1BA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C7CD251C6DDB0E005AA1BA /* Extensions.swift */; };
+		41C7CD281C6DDB35005AA1BA /* Supporting Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C7CD271C6DDB35005AA1BA /* Supporting Structs.swift */; };
+		41C7CD2A1C6DDB8A005AA1BA /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C7CD291C6DDB8A005AA1BA /* Functions.swift */; };
 		41CE6AF41C38F73000F4DBED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE6AF31C38F73000F4DBED /* AppDelegate.swift */; };
 		41CE6AF91C38F73000F4DBED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41CE6AF71C38F73000F4DBED /* Main.storyboard */; };
 		41CE6AFC1C38F73000F4DBED /* Flow.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41CE6AFA1C38F73000F4DBED /* Flow.xcdatamodeld */; };
@@ -39,7 +40,6 @@
 		41CE6B1D1C38FA4700F4DBED /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE6B1C1C38FA4700F4DBED /* StringHelper.swift */; };
 		41CE6B231C3902BF00F4DBED /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41CE6B211C3902BF00F4DBED /* Settings.storyboard */; };
 		41CE6B251C39068300F4DBED /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE6B241C39068300F4DBED /* StartVC.swift */; };
-		41CE6B271C39073400F4DBED /* Quotes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41CE6B261C39073400F4DBED /* Quotes.plist */; };
 		41CE6B2C1C39091D00F4DBED /* SettingsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE6B2B1C39091D00F4DBED /* SettingsTVC.swift */; };
 		41CE6B2E1C390C3700F4DBED /* Log.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41CE6B2D1C390C3700F4DBED /* Log.storyboard */; };
 		41CE6B311C390EB400F4DBED /* WhatAreYouDoingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE6B301C390EB400F4DBED /* WhatAreYouDoingVC.swift */; };
@@ -62,10 +62,6 @@
 /* Begin PBXFileReference section */
 		4120D7451C3FC5A1003F94B4 /* Activity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4120D7461C3FC5A1003F94B4 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
-		4120D7471C3FC5A1003F94B4 /* LogNotification+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LogNotification+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		4120D7481C3FC5A1003F94B4 /* LogNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogNotification.swift; sourceTree = "<group>"; };
-		4120D7491C3FC5A1003F94B4 /* LogEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LogEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		4120D74A1C3FC5A1003F94B4 /* LogEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntry.swift; sourceTree = "<group>"; };
 		4120D7511C3FD25E003F94B4 /* Analysis.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Analysis.storyboard; sourceTree = "<group>"; };
 		4120D7531C3FD338003F94B4 /* DBSeedHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBSeedHelper.swift; sourceTree = "<group>"; };
 		412DA4BC1C3D08AA0006638B /* IntroScheduleAlarmsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroScheduleAlarmsVC.swift; sourceTree = "<group>"; };
@@ -82,6 +78,11 @@
 		41B8150A1C40117200A2C72D /* AnalysisHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisHelper.swift; sourceTree = "<group>"; };
 		41B8150D1C4014BD00A2C72D /* AnalysisOverviewTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisOverviewTVC.swift; sourceTree = "<group>"; };
 		41B815101C40174900A2C72D /* DiagramView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagramView.swift; sourceTree = "<group>"; };
+		41C7CD211C6DD97C005AA1BA /* LogEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LogEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		41C7CD221C6DD97C005AA1BA /* LogEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntry.swift; sourceTree = "<group>"; };
+		41C7CD251C6DDB0E005AA1BA /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		41C7CD271C6DDB35005AA1BA /* Supporting Structs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Supporting Structs.swift"; sourceTree = "<group>"; };
+		41C7CD291C6DDB8A005AA1BA /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		41CE6AF01C38F73000F4DBED /* FlowLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlowLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41CE6AF31C38F73000F4DBED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41CE6AF81C38F73000F4DBED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -94,7 +95,6 @@
 		41CE6B1C1C38FA4700F4DBED /* StringHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
 		41CE6B221C3902BF00F4DBED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		41CE6B241C39068300F4DBED /* StartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
-		41CE6B261C39073400F4DBED /* Quotes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Quotes.plist; sourceTree = "<group>"; };
 		41CE6B2B1C39091D00F4DBED /* SettingsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTVC.swift; sourceTree = "<group>"; };
 		41CE6B2D1C390C3700F4DBED /* Log.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Log.storyboard; sourceTree = "<group>"; };
 		41CE6B301C390EB400F4DBED /* WhatAreYouDoingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatAreYouDoingVC.swift; sourceTree = "<group>"; };
@@ -215,12 +215,10 @@
 		41CE6B0C1C38F7F900F4DBED /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				41C7CD211C6DD97C005AA1BA /* LogEntry+CoreDataProperties.swift */,
+				41C7CD221C6DD97C005AA1BA /* LogEntry.swift */,
 				4120D7451C3FC5A1003F94B4 /* Activity+CoreDataProperties.swift */,
 				4120D7461C3FC5A1003F94B4 /* Activity.swift */,
-				4120D7471C3FC5A1003F94B4 /* LogNotification+CoreDataProperties.swift */,
-				4120D7481C3FC5A1003F94B4 /* LogNotification.swift */,
-				4120D7491C3FC5A1003F94B4 /* LogEntry+CoreDataProperties.swift */,
-				4120D74A1C3FC5A1003F94B4 /* LogEntry.swift */,
 				41CE6AFA1C38F73000F4DBED /* Flow.xcdatamodeld */,
 			);
 			name = Database;
@@ -229,9 +227,11 @@
 		41CE6B0D1C38F85900F4DBED /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				41CE6B181C38F9FD00F4DBED /* Localizable.strings */,
 				41CE6B121C38F99500F4DBED /* Constants.swift */,
-				41CE6B261C39073400F4DBED /* Quotes.plist */,
+				41C7CD251C6DDB0E005AA1BA /* Extensions.swift */,
+				41C7CD271C6DDB35005AA1BA /* Supporting Structs.swift */,
+				41C7CD291C6DDB8A005AA1BA /* Functions.swift */,
+				41CE6B181C38F9FD00F4DBED /* Localizable.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -390,7 +390,6 @@
 				41E678D41C3BEF2B00FD74E6 /* Intro.storyboard in Resources */,
 				4120D7521C3FD25E003F94B4 /* Analysis.storyboard in Resources */,
 				41CE6B011C38F73000F4DBED /* LaunchScreen.storyboard in Resources */,
-				41CE6B271C39073400F4DBED /* Quotes.plist in Resources */,
 				41CE6B231C3902BF00F4DBED /* Settings.storyboard in Resources */,
 				41CE6AFE1C38F73000F4DBED /* Assets.xcassets in Resources */,
 				41CE6AF91C38F73000F4DBED /* Main.storyboard in Resources */,
@@ -422,6 +421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41386B141C6096B000D08A07 /* ColorWheelView.swift in Sources */,
+				41C7CD231C6DD97C005AA1BA /* LogEntry+CoreDataProperties.swift in Sources */,
 				41CE6B361C391C2200F4DBED /* HowAreYouFeelingVC.swift in Sources */,
 				41CE6B251C39068300F4DBED /* StartVC.swift in Sources */,
 				41CE6B1D1C38FA4700F4DBED /* StringHelper.swift in Sources */,
@@ -435,23 +435,21 @@
 				41B8150E1C4014BD00A2C72D /* AnalysisOverviewTVC.swift in Sources */,
 				41E678DA1C3C16DA00FD74E6 /* GradientBackgroundVIew.swift in Sources */,
 				413EF02B1C5F3ED4006BD0AB /* AwardView.swift in Sources */,
-				4120D74F1C3FC5A1003F94B4 /* LogEntry+CoreDataProperties.swift in Sources */,
 				4120D74C1C3FC5A1003F94B4 /* Activity.swift in Sources */,
 				416F237A1C41017900E86FFB /* PopularFlowActivitiesTVC.swift in Sources */,
+				41C7CD2A1C6DDB8A005AA1BA /* Functions.swift in Sources */,
 				41CE6B2C1C39091D00F4DBED /* SettingsTVC.swift in Sources */,
 				41386B111C60929D00D08A07 /* AngleGestureRecognizer.swift in Sources */,
 				4120D7541C3FD338003F94B4 /* DBSeedHelper.swift in Sources */,
-				4120D7501C3FC5A1003F94B4 /* LogEntry.swift in Sources */,
-				4120D74E1C3FC5A1003F94B4 /* LogNotification.swift in Sources */,
 				41D450BF1C3A701900E586D8 /* NotificationHelper.swift in Sources */,
 				41B815111C40174900A2C72D /* DiagramView.swift in Sources */,
 				41E57FD61C6252A3008D07ED /* HorizontalColorBarView.swift in Sources */,
 				41E678DE1C3C203300FD74E6 /* IntroLogWeekStartDateTVC.swift in Sources */,
+				41C7CD281C6DDB35005AA1BA /* Supporting Structs.swift in Sources */,
 				416F23781C40FF5900E86FFB /* DynamicRecommendationCell.swift in Sources */,
 				4120D74B1C3FC5A1003F94B4 /* Activity+CoreDataProperties.swift in Sources */,
 				41CE6B3A1C39358700F4DBED /* LogHelper.swift in Sources */,
 				416F23761C40EE0C00E86FFB /* RecommendationsHelper.swift in Sources */,
-				4120D74D1C3FC5A1003F94B4 /* LogNotification+CoreDataProperties.swift in Sources */,
 				41CE6B311C390EB400F4DBED /* WhatAreYouDoingVC.swift in Sources */,
 				41E57FD41C624E44008D07ED /* HorizontalStateControl.swift in Sources */,
 				41CE6B3E1C39395B00F4DBED /* FlowView.swift in Sources */,
@@ -459,6 +457,8 @@
 				41CE6B131C38F99500F4DBED /* Constants.swift in Sources */,
 				41386B0F1C60870400D08A07 /* StateWheelControl.swift in Sources */,
 				41CE6B341C39150400F4DBED /* ActionCollectionCell.swift in Sources */,
+				41C7CD261C6DDB0E005AA1BA /* Extensions.swift in Sources */,
+				41C7CD241C6DD97C005AA1BA /* LogEntry.swift in Sources */,
 				41E134DC1C55EED30027D66C /* ProgressView.swift in Sources */,
 				41B8150B1C40117200A2C72D /* AnalysisHelper.swift in Sources */,
 				41CE6B3C1C3936FF00F4DBED /* AreYouInFlowVC.swift in Sources */,

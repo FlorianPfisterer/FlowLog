@@ -12,17 +12,9 @@
         <attribute name="happinessLevel" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="logNr" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="activity" maxCount="1" deletionRule="Nullify" destinationEntity="Activity" inverseName="entries" inverseEntity="Activity" syncable="YES"/>
-        <relationship name="notification" maxCount="1" deletionRule="Nullify" destinationEntity="LogNotification" inverseName="entry" inverseEntity="LogNotification" syncable="YES"/>
-    </entity>
-    <entity name="LogNotification" representedClassName=".LogNotification" syncable="YES">
-        <attribute name="done" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
-        <attribute name="dueDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="nr" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="entry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LogEntry" inverseName="notification" inverseEntity="LogEntry" syncable="YES"/>
     </entity>
     <elements>
         <element name="Activity" positionX="-45" positionY="-174" width="128" height="88"/>
-        <element name="LogEntry" positionX="54" positionY="-45" width="128" height="150"/>
-        <element name="LogNotification" positionX="9" positionY="-81" width="128" height="105"/>
+        <element name="LogEntry" positionX="54" positionY="-45" width="128" height="135"/>
     </elements>
 </model>
