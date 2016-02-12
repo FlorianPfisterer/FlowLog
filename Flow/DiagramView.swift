@@ -15,6 +15,19 @@ import UIKit
     
     var graphPoints: [CGFloat] = [3, 6, 4, 21, 12, 3, 23, 3, 5, 8, 9, 2]        // example
     
+    override init(frame: CGRect)
+    {
+        super.init(frame: frame)
+    }
+    
+    required init?(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
+    }
+}
+
+extension DiagramView
+{
     override func drawRect(rect: CGRect)
     {
         // make rounded corners

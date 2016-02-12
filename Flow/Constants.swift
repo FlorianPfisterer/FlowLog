@@ -48,31 +48,6 @@ enum FlowState: Int16
     case Boredom
     case Apathy
     case Worry
-    
-    /*static let colors: [UIColor] = [
-        UIColor(red: 0, green: 0, blue: 0.5, alpha: 1),
-        UIColor(red: 0.5, green: 0, blue: 0.5, alpha: 1),
-        UIColor(red: 1, green: 0, blue: 0.5, alpha: 1),
-        UIColor(red: 1, green: 1, blue: 0.5, alpha: 1),
-        UIColor(red: 0.5, green: 1, blue: 0.5, alpha: 1),
-        UIColor(red: 0, green: 1, blue: 0.5, alpha: 1),
-        UIColor(red: 0, green: 0.5, blue: 0.5, alpha: 1)]
-    
-    static func getCGColors() -> [CGColor]
-    {
-        return FlowState.colors.map({ $0.CGColor })
-    }
-    
-    static func getLocations() -> [CGFloat]
-    {
-        return [0, 1/8, 2/8, 3/8, 4/8, 5/8, 6/8, 7/8]
-    }
-    
-    func color() -> UIColor
-    {
-        return FlowState.colors[Int(self.rawValue-1)]
-    }*/
-    
 }
 
 enum GraphDisplayState: Int
@@ -123,7 +98,7 @@ func isSameday(left: NSDate, and right: NSDate) -> Bool
 
 // MARK: - Extensions
 extension UIViewController: LogStarterDelegate
-{
+{    
     func startLogWithLogNr(nr: Int)
     {
         if let _ = self.presentedViewController
@@ -138,6 +113,7 @@ extension UIViewController: LogStarterDelegate
             LogHelper.currentLogNr = nil
         }))
         alert.addAction(UIAlertAction(title: "Let's go!", style: .Default, handler: { _ in
+            LogHelper.didDueLog = true
             let storyboard = UIStoryboard(name: "Log", bundle: nil)
             if let rootVC = storyboard.instantiateInitialViewController()
             {
@@ -148,6 +124,46 @@ extension UIViewController: LogStarterDelegate
     }
 }
 
+extension NSDate
+{
+    var dateWithoutTime: NSDate {
+        get
+        {
+            let dayComponents = calendar.components([.Day, .Month, .Year], fromDate: self)
+            let dayOnlyDate = calendar.dateFromComponents(dayComponents)!
+            return dayOnlyDate
+        }
+    }
+}
+
+extension CGRect
+{
+    var minDimension: CGFloat {
+        get
+        {
+            return min(self.width, self.height)
+        }
+    }
+}
+
+extension CGFloat
+{
+    func inBetween(min min: CGFloat, max: CGFloat) -> Bool
+    {
+        return self >= min && self <= max
+    }
+}
+
+extension CGVector
+{
+    var length: CGFloat {
+        get
+        {
+            return sqrt(self.dx * self.dx + self.dy * self.dy)
+        }
+    }
+}
+
 // MARK: - Computed Values
 let calendar: NSCalendar = {
     let tempCalendar = NSCalendar.currentCalendar()
@@ -155,3 +171,16 @@ let calendar: NSCalendar = {
     tempCalendar.minimumDaysInFirstWeek = 4
     return tempCalendar
 }()
+
+func doDelayed(inSeconds seconds: Double, completion: () -> Void)
+{
+    let delay: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(seconds * Double(NSEC_PER_SEC)))
+    dispatch_after(delay, dispatch_get_main_queue(), completion)
+}
+
+
+
+
+
+
+

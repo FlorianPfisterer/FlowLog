@@ -64,9 +64,8 @@ class WhatAreYouDoingVC: UIViewController, UICollectionViewDataSource, UICollect
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
     {
         let activityIndex = indexPath.row
-        let selectedActivity = self.activities[activityIndex]
         
-        if selectedActivity.getName() == ACTIVITY_ADD_NEW_STRING
+        if activityIndex == 0       // first cell
         {
             let alert = UIAlertController(title: "Add New Activity", message: "Type the name of the activity", preferredStyle: .Alert)
             alert.addTextFieldWithConfigurationHandler({ textField in
@@ -97,7 +96,7 @@ class WhatAreYouDoingVC: UIViewController, UICollectionViewDataSource, UICollect
         }
         else
         {
-            LogHelper.currentActivity = selectedActivity
+            LogHelper.currentActivity = self.activities[activityIndex - 1]
             
             self.performSegueWithIdentifier("toQuestion2Segue", sender: nil)
         }
@@ -108,21 +107,41 @@ class WhatAreYouDoingVC: UIViewController, UICollectionViewDataSource, UICollect
         return 1
     }
     
+    var standardFontSize: CGFloat?
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(self.cellIdentifier, forIndexPath: indexPath) as! ActionCollectionCell
-        var activity: Activity!
-        
-        if let searched = self.searchedActivities
+        if let fontSize = self.standardFontSize
         {
-            activity = searched[indexPath.row]
+            cell.titleLabel.font = UIFont.systemFontOfSize(fontSize)
         }
         else
         {
-            activity = self.activities[indexPath.row]
+            self.standardFontSize = cell.titleLabel.font.pointSize
         }
         
-        cell.titleLabel.text = activity.getName()
+        if indexPath.row == 0       // first cell
+        {
+            cell.titleLabel.text = "+"
+            cell.titleLabel.font = UIFont.systemFontOfSize(self.standardFontSize! + 20)
+        }
+        else        // other cells
+        {
+            var activity: Activity!
+            let row = indexPath.row - 1
+            
+            if let searched = self.searchedActivities
+            {
+                activity = searched[row]
+            }
+            else
+            {
+                activity = self.activities[row]
+            }
+            
+            cell.titleLabel.text = activity.getName()
+        }
+        
         cell.layer.borderColor = BAR_TINT_COLOR.CGColor
         cell.layer.borderWidth = 2
         cell.layer.cornerRadius = 5
@@ -134,9 +153,9 @@ class WhatAreYouDoingVC: UIViewController, UICollectionViewDataSource, UICollect
     {
         if let searched = self.searchedActivities
         {
-            return searched.count
+            return searched.count + 1
         }
-        return self.activities.count
+        return self.activities.count + 1
     }
     
     // MARK: - FlowLayout Delegate

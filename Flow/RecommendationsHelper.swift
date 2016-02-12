@@ -29,27 +29,33 @@ class RecommendationsHelper
                         recommendations.append("Work on flow activities at \(StringHelper.getLocalizedShortTimeDescriptionAtHour(hourWithMaxFlow + LogHelper.alarmStartTime.hour))")
                     }
                     
-                    var relaxationAmounts: [Int] = []
-                    var boredomAmounts: [Int] = []
-                    var anxietyAmounts: [Int] = []
+                    var relaxationProportions: [CGFloat] = []
+                    var boredomProportions: [CGFloat] = []
+                    var anxietyProportions: [CGFloat] = []
                     for hour in LogHelper.alarmStartTime.hour...LogHelper.alarmEndTime.hour
                     {
-                        relaxationAmounts.append(AnalysisHelper.getNumberOfLogsInHour(hour, inFlowState: .Relaxation, context: context))
-                        boredomAmounts.append(AnalysisHelper.getNumberOfLogsInHour(hour, inFlowState: .Boredom, context: context))
-                        anxietyAmounts.append(AnalysisHelper.getNumberOfLogsInHour(hour, inFlowState: .Anxiety, context: context))
+                        let logsCount = CGFloat(AnalysisHelper.getNumberOfLogsInHour(hour, context: context))
+                        
+                        let numberOfRelaxationLogs = CGFloat(AnalysisHelper.getNumberOfLogsInHour(hour, inFlowState: .Relaxation, context: context))
+                        let numberOfBoredomLogs = CGFloat(AnalysisHelper.getNumberOfLogsInHour(hour, inFlowState: .Boredom, context: context))
+                        let numberOfAnxietyLogs = CGFloat(AnalysisHelper.getNumberOfLogsInHour(hour, inFlowState: .Anxiety, context: context))
+                        
+                        relaxationProportions.append(numberOfRelaxationLogs/logsCount)
+                        boredomProportions.append(numberOfBoredomLogs/logsCount)
+                        anxietyProportions.append(numberOfAnxietyLogs/logsCount)
                     }
                     
-                    if let hourWithMaxRelaxation: Int = relaxationAmounts.indexOf({ $0 == relaxationAmounts.maxElement() })
+                    if let hourWithMaxRelaxation: Int = relaxationProportions.indexOf({ $0 == relaxationProportions.maxElement() })
                     {
                         recommendations.append("Good relaxation time: \(StringHelper.getLocalizedShortTimeDescriptionAtHour(hourWithMaxRelaxation + LogHelper.alarmStartTime.hour)).")
                     }
                     
-                    if let hourWithMaxBoredom: Int = boredomAmounts.indexOf({ $0 == boredomAmounts.maxElement() })
+                    if let hourWithMaxBoredom: Int = boredomProportions.indexOf({ $0 == boredomProportions.maxElement() })
                     {
                         recommendations.append("Good time to do something interesting: \(StringHelper.getLocalizedShortTimeDescriptionAtHour(hourWithMaxBoredom + LogHelper.alarmStartTime.hour)).")
                     }
                     
-                    if let hourWithMaxAnxiety: Int = anxietyAmounts.indexOf({ $0 == anxietyAmounts.maxElement() })
+                    if let hourWithMaxAnxiety: Int = anxietyProportions.indexOf({ $0 == anxietyProportions.maxElement() })
                     {
                         recommendations.append("Reduce your challenge level by relaxing at \(StringHelper.getLocalizedShortTimeDescriptionAtHour(hourWithMaxAnxiety + LogHelper.alarmStartTime.hour)).")
                     }
@@ -83,7 +89,9 @@ class RecommendationsHelper
                     
                     if let hourWithBestCombinedScore: Int = graphValues.indexOf({ $0 == graphValues.maxElement() })
                     {
-                        recommendations.append("Your ultimate time is at \(StringHelper.getLocalizedShortTimeDescriptionAtHour(hourWithBestCombinedScore)). You feel energized, happy and are in flow state. Try to extend and study these moments and how you can achieve them more often.")
+                        recommendations.append("Your ultimate time is at \(StringHelper.getLocalizedShortTimeDescriptionAtHour(hourWithBestCombinedScore)).")
+                        recommendations.append("You feel energized, happy and are in flow state.")
+                        recommendations.append("Try to extend and study these moments and how you can achieve them more often.")
                     }
                 }
             }

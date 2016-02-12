@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     private func setStoryboardTo(name: String)
     {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        let storyboard = UIStoryboard(name: name, bundle: nil)
+        let storyboard = UIStoryboard(name: name, bundle: NSBundle.mainBundle())  // DEBUG TODO
         
         self.window?.rootViewController = storyboard.instantiateInitialViewController()
         self.window?.makeKeyAndVisible()

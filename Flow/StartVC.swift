@@ -10,54 +10,84 @@ import UIKit
 
 class StartVC: UIViewController
 {
-    @IBOutlet weak var daysLabel: UILabel!
-    @IBOutlet weak var alarmsLabel: UILabel!
+    @IBOutlet weak var progressView: ProgressView!
     @IBOutlet weak var nextLogLabel: UILabel!
-    @IBOutlet weak var quoteTextView: UITextView!
     
     private static let NEXT_LOG = "Next log: "
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        self.showQuoteOfTheDay()
-    }
-    
-    override func viewWillAppear(animated: Bool)
-    {
-        super.viewWillAppear(animated)
-        
-        self.updateProgressLabels()
     }
     
     override func viewDidAppear(animated: Bool)
     {
         super.viewDidAppear(animated)
         
+        //let storyboard = self.storyboard!
+        //self.presentViewController(storyboard.instantiateViewControllerWithIdentifier("CompletedVC"), animated: true, completion: nil)
+        
+        self.updateProgress()
+        
+        if !LogHelper.didDueLog
+        {
+            self.checkDueLogs()
+        }
+        else
+        {
+            doDelayed(inSeconds: 180, completion: {
+                LogHelper.didDueLog = false
+                self.checkDueLogs()
+            })
+        }
+    }
+    
+    private func checkDueLogs()
+    {
         let (dueNotificationsAvailable, nr) = NotificationHelper.getDueLogNofitications()
-        if dueNotificationsAvailable
+        if dueNotificationsAvailable && LogHelper.currentTimeIsInBoundaries()
         {
             LogHelper.currentLogNr = nr
             self.startLogWithLogNr(nr)
         }
     }
     
-    // MARK: - View Update
-    func updateProgressLabels()
+    override func viewDidDisappear(animated: Bool)
     {
-        self.daysLabel.text = "7"   // TODO!
-        let (logsRemaning, difference) = LogHelper.getRemainingFlowLogsInCurrentWeek()
-        if logsRemaning
+        super.viewDidDisappear(animated)
+        
+        // reset progress
+        self.progressView.numberOfDaysRemaining = 7
+        self.progressView.numberOfLogsRemaining = FLOW_LOGS_PER_WEEK_COUNT
+    }
+    
+    // MARK: - View Update
+    func updateProgress()
+    {
+        let (logsRemaningBool, numberOfLogsRemaining) = LogHelper.getRemainingFlowLogsInCurrentWeek()
+        if logsRemaningBool
         {
-            self.alarmsLabel.text = "\(difference)"
+            // 1. days
+            let numberOfDaysRemaining = LogHelper.getRemainingDaysInCurrentWeek()
+            self.progressView.numberOfDaysRemaining = numberOfDaysRemaining
             
-            // next log
-            self.nextLogLabel.text = StartVC.NEXT_LOG + getRelativeDateDescription(NotificationHelper.getNextNotificationDate(), time: true)
+            // 2. logs
+            self.progressView.numberOfLogsRemaining = numberOfLogsRemaining
+            
+            // 3. next log date
+            if let nextLogDate = NotificationHelper.getNextNotificationDate()
+            {
+                self.nextLogLabel.text = StartVC.NEXT_LOG + getRelativeDateDescription(nextLogDate, time: true)
+            }
+            else
+            {
+                
+                self.nextLogLabel.text = "All current logs completed!"
+            }
         }
         else
         {
-            let alert = UIAlertController(title: "Congratulations!", message: "You have completed all notifications. Check out the analysis of the data. Do you want to start a new FlowLog-week (to make the analyses more exact)?", preferredStyle: .Alert)
+            /*let alert = UIAlertController(title: "Congratulations!", message: "You have completed all FlowLogs. Check out the analysis of the data. Do you want to start a new FlowLog-week (to make the analyses more exact)?", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "New Week", style: .Default, handler: { _ in
                 
             }))
@@ -65,22 +95,7 @@ class StartVC: UIViewController
                 self.performSegueWithIdentifier("showAnalysisSegue", sender: nil)
             }))
             alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.presentViewController(alert, animated: true, completion: nil)*/
         }
-    }
-    
-    func showQuoteOfTheDay()
-    {
-        guard let path = NSBundle.mainBundle().pathForResource("Quotes", ofType: "plist") else
-        {
-            return
-        }
-        
-        let array = NSArray(contentsOfFile: path)!
-        let randomQuote = array.objectAtIndex(Int(arc4random_uniform(UInt32(array.count)))) as! [String : String]
-        
-        self.quoteTextView.text = "\(randomQuote["quote"]!) - \(randomQuote["author"]!.uppercaseString)"
-        self.quoteTextView.textColor = UIColor.whiteColor()
-        self.quoteTextView.font = UIFont.systemFontOfSize(18)
     }
 }

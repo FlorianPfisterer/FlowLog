@@ -10,76 +10,23 @@ import UIKit
 
 class HowAreYouFeelingVC: UIViewController
 {
-    var verticalSlider: UISlider!
-    @IBOutlet weak var horizontalSlider: UISlider!
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var instructionLabel: UILabel!
+    @IBOutlet weak var stateWheelControl: StateWheelControl!
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
         
-        self.horizontalSlider.alpha = 0
-        self.nextButton.alpha = 0
-        
-        self.configureVerticalSlider()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .Done, target: self, action: "goToNextQuestion")
     }
-    
-    func configureVerticalSlider()
+}
+
+extension HowAreYouFeelingVC    // Overall Log Management
+{
+    func goToNextQuestion()
     {
-        self.verticalSlider = UISlider()
-        self.verticalSlider.center = CGPoint(x: 30, y: 200)
-        self.view.addSubview(self.verticalSlider)
-        
-        self.verticalSlider.minimumValue = 0
-        self.verticalSlider.maximumValue = 1
-        self.verticalSlider.value = 0.5
-        
-        let rotation = CGAffineTransformMakeRotation(CGFloat(M_PI * -0.5))
-        self.verticalSlider.transform = rotation
-        self.verticalSlider.frame.size = CGSize(width: 30, height: self.view.bounds.size.height - 200)
-        
-        // add actions
-        self.verticalSlider.addTarget(self, action: "verticalSliderValueChanged:", forControlEvents: .ValueChanged)
-        self.verticalSlider.addTarget(self, action: "verticalSliderEditingDidEnd", forControlEvents: .TouchUpInside)
-    }
-    
-    override func viewWillAppear(animated: Bool)
-    {
-        super.viewWillAppear(animated)
-    }
-    
-    // MARK: - Vertical Slider Actions
-    func verticalSliderEditingDidEnd()
-    {
-        let startY = self.verticalSlider.frame.origin.y
-        let ΔY = self.verticalSlider.bounds.size.width
-        
-        self.horizontalSlider.frame.origin = CGPoint(x: 70, y: startY + (1-CGFloat(self.verticalSlider.value))*ΔY-5)
-        self.horizontalSlider.frame.size = CGSize(width: self.view.bounds.size.width - 120, height: 30)
-        self.horizontalSlider.value = 0.5
-        
-        UIView.animateWithDuration(0.3, animations: {
-            self.horizontalSlider.alpha = 1
-            self.nextButton.alpha = 1
-        })
-    }
-    
-    func verticalSliderValueChanged(sender: UISlider)
-    {
-         // TODO! set color
-    }
-    
-    // MARK: - Horizontal Slider Actions
-    @IBAction func horizontalSliderValueChanged(sender: UISlider)
-    {
-        // TODO! set color
-    }
-    
-    @IBAction func goToNextQuestion()
-    {
-        LogHelper.happinessLevel = self.horizontalSlider.value
-        LogHelper.energyLevel = self.horizontalSlider.value
+        LogHelper.happinessLevel = Float(self.stateWheelControl.percentage) / 100
         self.performSegueWithIdentifier("toQuestion3Segue", sender: nil)
     }
     

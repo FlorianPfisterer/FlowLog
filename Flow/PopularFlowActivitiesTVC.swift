@@ -18,18 +18,19 @@ class PopularFlowActivitiesTVC: UITableViewController
         super.viewDidAppear(animated)
         
         self.loadFlowActivities()
+        self.tableView.reloadData()
     }
     
     func loadFlowActivities()
     {
         let context = CoreDataHelper.managedObjectContext()
-        let logsCount: Int = AnalysisHelper.getNumberOfLogs(inFlowState: .Flow, context: context)
+        let flowLogsCount: Int = AnalysisHelper.getNumberOfLogs(inFlowState: .Flow, context: context)
         let allUsedActivities = AnalysisHelper.getSortedActivities(fromFlowState: .Flow, context: context)
         
         self.upperFlowActivities.removeAll()
         self.lowerFlowActivities.removeAll()
         
-        if allUsedActivities.count != 0 && logsCount > 5
+        if allUsedActivities.count != 0 && flowLogsCount > 5
         {
             var sum: Int = 0
             for activity in allUsedActivities
@@ -37,17 +38,20 @@ class PopularFlowActivitiesTVC: UITableViewController
                 sum += Int(activity.used)
             }
             
-            let averageActivityUse = CGFloat(sum) / CGFloat(allUsedActivities.count)
-            
-            for activity in allUsedActivities
+            if sum != 0
             {
-                if CGFloat(activity.used) >= averageActivityUse
+                let averageActivityUse = CGFloat(sum) / CGFloat(allUsedActivities.count)
+                
+                for activity in allUsedActivities
                 {
-                    self.upperFlowActivities.append((activity, CGFloat(activity.used)/CGFloat(sum)))
-                }
-                else
-                {
-                    self.lowerFlowActivities.append((activity, CGFloat(activity.used)/CGFloat(sum)))
+                    if CGFloat(activity.used) >= averageActivityUse
+                    {
+                        self.upperFlowActivities.append((activity, CGFloat(activity.used)/CGFloat(sum)))
+                    }
+                    else
+                    {
+                        self.lowerFlowActivities.append((activity, CGFloat(activity.used)/CGFloat(sum)))
+                    }
                 }
             }
         }

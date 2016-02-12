@@ -84,4 +84,13 @@ class StringHelper
     {
         return NSString(format: "%\(format)f", Double(value)) as String
     }
+    
+    class func sEventually(number: Int) -> String
+    {
+        if number == 1||number == -1
+        {
+            return ""
+        }
+        return "s"
+    }
 }

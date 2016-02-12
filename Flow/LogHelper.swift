@@ -22,6 +22,8 @@ class LogHelper
     
     static var flowState: FlowState!
     
+    static var didDueLog = false
+    
     // functions
     static func saveCurrentLog(completion: (success: Bool, logEntry: LogEntry!) -> Void)
     {
@@ -46,6 +48,8 @@ class LogHelper
                 
                 notification.done = true
                 logEntry.notification = notification
+                
+                LogHelper.currentActivity.used = LogHelper.currentActivity.used + 1
                 
                 do
                 {
@@ -91,6 +95,57 @@ class LogHelper
         
         // TODO!
         return (true, FLOW_LOGS_PER_WEEK_COUNT)
+    }
+    
+    static func getRemainingDaysInCurrentWeek() -> Int
+    {
+        // fetch distinct days of LogNotifications from database that are not completed (and in the future?)
+        //let context = CoreDataHelper.managedObjectContext()
+        
+        
+        // fetch the earliest log that is done:
+        let context = CoreDataHelper.managedObjectContext()
+        let predicate = NSPredicate(format: "done == %@", NSNumber(bool: true))
+        let sortDescriptor = NSSortDescriptor(key: "dueDate", ascending: false)
+        
+        do
+        {
+            let earliestLogs = try CoreDataHelper.fetchEntities("LogNotification", managedObjectContext: context, predicate: predicate, sortDescriptor: sortDescriptor, limit: 1)
+            
+            if let earliestLog = earliestLogs.firstObject as? LogNotification
+            {
+                let timeIntervalEarliestDate: NSTimeInterval = earliestLog.dueDate
+                let timeIntervalNow: NSTimeInterval = NSDate().timeIntervalSinceReferenceDate
+                
+                let secondsPerDay = 60*60*24
+                let differenceInterval = abs(Int(timeIntervalNow - timeIntervalEarliestDate))
+                let differenceLastDay = differenceInterval % secondsPerDay
+                
+                let daysDifference = (differenceInterval - differenceLastDay) / secondsPerDay
+                
+                return daysDifference
+            }
+        }
+        catch
+        {
+            print("Couldn't fetch ealiest logs. Returning 7 remaining days.")
+        }
+        return 7
+    }
+    
+    // returns if the current time is in the timeframe that the user set up for FlowLogs to be done
+    class func currentTimeIsInBoundaries() -> Bool
+    {
+        let currentTimeAbsM = Time(date: NSDate()).absoluteMinutes
+        let startTimeAbsM = LogHelper.alarmStartTime.absoluteMinutes
+        let endTimeAbsM = LogHelper.alarmEndTime.absoluteMinutes
+        
+        if endTimeAbsM > currentTimeAbsM && startTimeAbsM < currentTimeAbsM
+        {
+            return true
+        }
+        
+        return false
     }
     
     // settings variables

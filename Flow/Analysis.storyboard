@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ghg-LI-xKZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10089" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ghg-LI-xKZ">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10072.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -160,6 +160,41 @@
                                     <action selector="changeGraphKind:" destination="6Ef-Jz-vhe" eventType="valueChanged" id="YNa-CX-z1h"/>
                                 </connections>
                             </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dBQ-DJ-Vws">
+                                <rect key="frame" x="0.0" y="377" width="375" height="290"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recommendationCell" rowHeight="70" id="ajN-Lf-ZAw" customClass="DynamicRecommendationCell" customModule="FlowLog" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ajN-Lf-ZAw" id="ecQ-D1-crn">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbL-wt-hEY">
+                                                    <rect key="frame" x="11" y="8" width="356" height="53"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="sbL-wt-hEY" firstAttribute="bottom" secondItem="ecQ-D1-crn" secondAttribute="bottomMargin" id="CES-6f-Nwa"/>
+                                                <constraint firstItem="sbL-wt-hEY" firstAttribute="trailing" secondItem="ecQ-D1-crn" secondAttribute="trailingMargin" id="G6L-59-6n1"/>
+                                                <constraint firstItem="sbL-wt-hEY" firstAttribute="top" secondItem="ecQ-D1-crn" secondAttribute="topMargin" id="ipA-Rj-wDx"/>
+                                                <constraint firstItem="sbL-wt-hEY" firstAttribute="leading" secondItem="ecQ-D1-crn" secondAttribute="leadingMargin" constant="3" id="uV3-D2-jfy"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contentLabel" destination="sbL-wt-hEY" id="E5P-Y4-fCA"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="6Ef-Jz-vhe" id="M8c-zm-xVx"/>
+                                    <outlet property="delegate" destination="6Ef-Jz-vhe" id="BAi-8C-Jdc"/>
+                                </connections>
+                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0l-ug-m9l" customClass="DiagramView" customModule="FlowLog" customModuleProvider="target">
                                 <rect key="frame" x="16" y="76" width="343" height="257"/>
                                 <subviews>
@@ -258,41 +293,6 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dBQ-DJ-Vws">
-                                <rect key="frame" x="0.0" y="377" width="375" height="290"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recommendationCell" rowHeight="70" id="ajN-Lf-ZAw" customClass="DynamicRecommendationCell" customModule="FlowLog" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="70"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ajN-Lf-ZAw" id="ecQ-D1-crn">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbL-wt-hEY">
-                                                    <rect key="frame" x="11" y="8" width="356" height="53"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="sbL-wt-hEY" firstAttribute="bottom" secondItem="ecQ-D1-crn" secondAttribute="bottomMargin" id="CES-6f-Nwa"/>
-                                                <constraint firstItem="sbL-wt-hEY" firstAttribute="trailing" secondItem="ecQ-D1-crn" secondAttribute="trailingMargin" id="G6L-59-6n1"/>
-                                                <constraint firstItem="sbL-wt-hEY" firstAttribute="top" secondItem="ecQ-D1-crn" secondAttribute="topMargin" id="ipA-Rj-wDx"/>
-                                                <constraint firstItem="sbL-wt-hEY" firstAttribute="leading" secondItem="ecQ-D1-crn" secondAttribute="leadingMargin" constant="3" id="uV3-D2-jfy"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="contentLabel" destination="sbL-wt-hEY" id="E5P-Y4-fCA"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="6Ef-Jz-vhe" id="M8c-zm-xVx"/>
-                                    <outlet property="delegate" destination="6Ef-Jz-vhe" id="BAi-8C-Jdc"/>
-                                </connections>
-                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -354,7 +354,7 @@
                                             <rect key="frame" x="15" y="12" width="32" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tca-eD-dbD">

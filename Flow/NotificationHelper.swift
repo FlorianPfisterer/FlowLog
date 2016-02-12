@@ -54,6 +54,11 @@ class NotificationHelper
         }
     }
     
+    class func scheduleNextNotification(completion: (success: Bool) -> Void)
+    {
+        let numberOfCompletedNotificationsToday = 0
+    }
+    
     class func scheduleRandomNotificationsStarting(startDate: NSDate, between startTime: Time, and endTime: Time, progressView: UIProgressView, completion: (success: Bool) -> Void)
     {
         NotificationHelper.currentAbsoluteMinutes.removeAll()
@@ -201,7 +206,7 @@ class NotificationHelper
     
     class func getTitleForNotification(nr nr: Int) -> String
     {
-        return "Notification TODO Nr. \(nr)"
+        return "Do a FlowLog now!"
     }
     
     // MARK: - Database Queries
@@ -260,7 +265,7 @@ class NotificationHelper
         return nil  // problem !
     }
     
-    class func getNextNotificationDate() -> NSDate!
+    class func getNextNotificationDate() -> NSDate?
     {
         let context = CoreDataHelper.managedObjectContext()
         

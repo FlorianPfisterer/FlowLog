@@ -11,4 +11,6 @@ import UIKit
 class ActionCollectionCell: UICollectionViewCell
 {
     @IBOutlet weak var titleLabel: UILabel!
+    
+    // TODO: Selected State
 }
