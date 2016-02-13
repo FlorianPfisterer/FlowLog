@@ -70,6 +70,7 @@ extension StateWheelControl
         selectedSegmentView.backgroundColor = UIColor.clearColor()
         selectedSegmentView.layer.borderColor = UIColor(white: 0, alpha: 0.3).CGColor
         selectedSegmentView.layer.borderWidth = 3
+        selectedSegmentView.layer.cornerRadius = 3
         self.addSubview(selectedSegmentView)
         
         NSLayoutConstraint.activateConstraints([
@@ -110,7 +111,6 @@ extension StateWheelControl
 {
     private func updatePercentageLabel()
     {
-        print("UPDATE")
         if let angle = self.colorWheel.layer.valueForKeyPath("transform.rotation.z") as? CGFloat
         {
             if angle < 0    // left side, postive green

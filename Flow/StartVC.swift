@@ -11,8 +11,6 @@ import UIKit
 class StartVC: UIViewController
 {
     @IBOutlet weak var progressView: ProgressView!
-    
-    private static let NEXT_LOG = "Next log: "
 }
 
 extension StartVC

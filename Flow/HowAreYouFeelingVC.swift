@@ -12,6 +12,7 @@ class HowAreYouFeelingVC: UIViewController
 {
     @IBOutlet weak var instructionLabel: UILabel!
     @IBOutlet weak var stateWheelControl: StateWheelControl!
+    @IBOutlet weak var horizontalStateControl: HorizontalStateControl!
 }
 
 extension HowAreYouFeelingVC     // MARK: - View Lifecycle
@@ -30,7 +31,7 @@ extension HowAreYouFeelingVC    // MARK: - Overall Log Management
     func goToNextQuestion()
     {
         LogHelper.happinessLevel = Float(self.stateWheelControl.percentage) / 100
-        LogHelper.energyLevel = 0.5 // TODO!
+        LogHelper.energyLevel = Float(self.horizontalStateControl.percentage) / 100
         self.performSegueWithIdentifier("toQuestion3Segue", sender: nil)
     }
     
