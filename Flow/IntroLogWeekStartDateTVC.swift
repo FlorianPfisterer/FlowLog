@@ -46,7 +46,6 @@ extension IntroLogWeekStartDateTVC      // MARK: - Helper Functions
 {
     private func getRandomProcrastinationQuote() -> String
     {
-        let procrastinationQuotes = ["Procrastination is the thief of time.", "A stitch in time saves nine.", "There is no time like the present.", "Never put off till tomorrow what you can do today."]
         let randomIndex = Int(arc4random_uniform(UInt32(procrastinationQuotes.count)))
         return "\"\(procrastinationQuotes[randomIndex])\""
     }

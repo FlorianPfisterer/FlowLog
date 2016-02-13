@@ -38,7 +38,7 @@ extension AreYouInFlowVC: FlowViewDelegate      // MARK: - FlowViewDelegate
     
     func updateFlowState(flowState: FlowState)
     {
-        self.saveLogButton.setTitle(String(flowState), forState: .Normal)
+        self.saveLogButton.setTitle("SAVE " + String(flowState), forState: .Normal)
     }
 }
 
@@ -50,7 +50,7 @@ extension AreYouInFlowVC        // MARK: - IBActions
         self.saveLogButton.enabled = false
         
         UIView.animateWithDuration(0.2, animations: {
-            self.saveLogButton.backgroundColor = UIColor(red: 0.6, green: 0.84, blue: 0.29, alpha: 1)   // nice green color
+            self.saveLogButton.backgroundColor = BAR_TINT_COLOR
         })
         
         LogHelper.flowState = self.flowView.getFlowState()
@@ -58,7 +58,12 @@ extension AreYouInFlowVC        // MARK: - IBActions
         LogHelper.saveCurrentLog() { success, logEntry in
             if success
             {
-                self.saveLogButton.setTitle("LOG ENTRY SAVED", forState: .Normal)
+                self.saveLogButton.setTitle("LOG SAVED", forState: .Normal)
+                
+                if NotificationHelper.shouldScheduleNotification()
+                {
+                    NotificationHelper.scheduleNextNotification(completion: nil)        // after completing the log, schedule the next notification if needed
+                }
                 
                 if let _ = self.presentingViewController
                 {

@@ -33,7 +33,7 @@ extension LogHelper     // MARK: - Action Functions
             
             // create and edit new LogEntry
             let logEntry = CoreDataHelper.insertManagedObject("LogEntry", managedObjectContext: context) as! LogEntry
-            logEntry.logNr = 0  // TODO: Fetch largest Nr. from Database
+            logEntry.logNr = LogHelper.getCurrentLogNr()
             
             logEntry.activity = LogHelper.currentActivity
             logEntry.happinessLevel = LogHelper.happinessLevel
@@ -68,10 +68,12 @@ extension LogHelper     // MARK: - Action Functions
 
 extension LogHelper     // MARK: - Help Functions
 {
-    static func getRemainingFlowLogsInCurrentWeek() -> (Bool, Int!)
+    static func getRemainingFlowLogsInCurrentWeek() -> (Bool, Int)
     {
-        // TODO!
-        return (true, FLOW_LOGS_PER_WEEK_COUNT)
+        let weekIndex = LogHelper.getCurrentWeekIndex()     // 1 - n
+        
+        let remainingLogsCount = weekIndex*FLOW_LOGS_PER_WEEK_COUNT - Int(LogHelper.getCurrentLogNr()-1)
+        return (remainingLogsCount > 0, remainingLogsCount)
     }
     
     static func getRemainingDaysInCurrentWeek() -> Int
@@ -82,6 +84,29 @@ extension LogHelper     // MARK: - Help Functions
         // TODO!
         
         return 7
+    }
+    
+    class func getCurrentLogNr() -> Int16
+    {
+        let context = CoreDataHelper.managedObjectContext()
+        let sortedLogs = AnalysisHelper.getLogs(context: context).sort({ $0.logNr > $1.logNr })
+        
+        if let largestLogNr = sortedLogs.first?.logNr
+        {
+            return largestLogNr + 1
+        }
+        
+        return 1
+    }
+    
+    // returns the current week number, 1 - n
+    class func getCurrentWeekIndex() -> Int
+    {
+        let context = CoreDataHelper.managedObjectContext()
+        let logsCount = AnalysisHelper.getNumberOfLogs(context: context)
+        
+        let weekIndex = (logsCount - (logsCount % FLOW_LOGS_PER_WEEK_COUNT)) / FLOW_LOGS_PER_WEEK_COUNT
+        return weekIndex + 1
     }
     
     // returns if the current time is in the timeframe that the user set up for FlowLogs to be done

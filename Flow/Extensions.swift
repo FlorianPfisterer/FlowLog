@@ -61,6 +61,10 @@ extension CGFloat
     {
         return self >= min && self <= max
     }
+    
+    var radianValue: CGFloat {
+        return CGFloat(self * π / 180)
+    }
 }
 
 extension CGVector
@@ -72,3 +76,18 @@ extension CGVector
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

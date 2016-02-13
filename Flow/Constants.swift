@@ -24,6 +24,7 @@ let FLOW_LOG_WEEK_START_DATE_KEY = "flow_log_week_start_date"
 // MARK: - Constants
 let FLOW_LOGS_PER_WEEK_COUNT = 40
 let π = CGFloat(M_PI)
+let procrastinationQuotes = ["Procrastination is the thief of time.", "A stitch in time saves nine.", "There is no time like the present.", "Never put off till tomorrow what you can do today."]
 
 // MARK: - Identifiers
 //let LOG_NOTIFICATION_ACTION_IDENTIFIER = "log_notification_action"

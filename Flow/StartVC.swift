@@ -23,14 +23,17 @@ extension StartVC
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        
+        self.updateProgress()
+    }
+    
     override func viewDidAppear(animated: Bool)
     {
         super.viewDidAppear(animated)
         
-        //let storyboard = self.storyboard!
-        //self.presentViewController(storyboard.instantiateViewControllerWithIdentifier("CompletedVC"), animated: true, completion: nil)
-        
-        self.updateProgress()
         self.checkDueLogs()
     }
     
@@ -48,13 +51,10 @@ extension StartVC   // MARK: - Helper Functions
 {
     private func checkDueLogs()
     {
-        // TODO
-        /*let (dueNotificationsAvailable, nr) = NotificationHelper.getDueLogNofitications()
-        if dueNotificationsAvailable && LogHelper.currentTimeIsInBoundaries()
+        if NotificationHelper.getLogIsDue()
         {
-        LogHelper.currentLogNr = nr
-        self.startLogWithLogNr(nr)
-        }*/
+            self.startLog()
+        }
     }
 }
 
@@ -72,7 +72,10 @@ extension StartVC   // MARK: - View Update
             // 2. logs
             self.progressView.numberOfLogsRemaining = numberOfLogsRemaining
         }
-        
-        // else: TODO!
+        else
+        {
+            let storyboard = self.storyboard!
+            self.presentViewController(storyboard.instantiateViewControllerWithIdentifier("CompletedVC"), animated: true, completion: nil)
+        }
     }
 }

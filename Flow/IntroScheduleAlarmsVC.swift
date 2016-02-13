@@ -47,12 +47,12 @@ extension IntroScheduleAlarmsVC     // MARK: - View Lifecycle
     {
         super.viewDidAppear(animated)
         
-        
-        // TODO
         NotificationHelper.unscheduleAllCurrentNotifications()
         self.progressView.setProgress(0.1, animated: true)
         
-        /*NotificationHelper.scheduleRandomNotificationsStarting(LogHelper.flowLogWeekStartDate!, between: LogHelper.alarmStartTime, and: LogHelper.alarmEndTime, progressView: self.progressView) { success in
+        NotificationHelper.scheduleNextNotification(starting: LogHelper.flowLogWeekStartDate!, completion: { success in
+            self.progressView.setProgress(1, animated: true)
+            
             if !success
             {
                 let alert = UIAlertController(title: "An error occured", message: "Please try again later", preferredStyle: .Alert)
@@ -66,7 +66,7 @@ extension IntroScheduleAlarmsVC     // MARK: - View Lifecycle
                 })
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: INTRO_DONE_BOOL_KEY)
             }
-        }*/
+        })
     }
 }
 

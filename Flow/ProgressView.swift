@@ -13,11 +13,14 @@ import UIKit
     var outerArcShapeLayer = CAShapeLayer()
     var innerArcShapeLayer = CAShapeLayer()
     
+    var outerBackgroundArcLayer = CAShapeLayer()
+    var innerBackgroundArcLayer = CAShapeLayer()
+    
     var daysRemainingLabel = UILabel()
     var logsRemainingLabel = UILabel()
     var remainingLabel = UILabel()
     
-    @IBInspectable var numberOfLogsRemaining: Int = 40 {
+    @IBInspectable var numberOfLogsRemaining: Int = 10 {
         didSet
         {
             self.animateArcs()
@@ -25,7 +28,7 @@ import UIKit
         }
     }
     
-    @IBInspectable var numberOfDaysRemaining: Int = 7 {
+    @IBInspectable var numberOfDaysRemaining: Int = 3 {
         didSet
         {
             self.animateArcs()
@@ -35,11 +38,20 @@ import UIKit
     
     @IBInspectable var outerStrokeColor: UIColor = BAR_TINT_COLOR
     @IBInspectable var innerStrokeColor: UIColor = UIColor.whiteColor()
+    
+    @IBInspectable var arcBackgroundColor: UIColor = UIColor(white: 0, alpha: 0.5)
+    
     @IBInspectable var outerLineWidth: CGFloat = 13
     @IBInspectable var innerLineWidth: CGFloat = 10
     
     @IBInspectable var arcsMargin: CGFloat = 3
     
+    
+    let ARC_ANIMATION_KEY = "arcAnimationStrokeEnd"
+}
+
+extension ProgressView      // MARK: - Lifecycle
+{
     override func layoutSubviews()
     {
         super.layoutSubviews()
@@ -58,6 +70,14 @@ import UIKit
         let outerArcPath = UIBezierPath(arcCenter: center, radius: outerRadius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         
         // configure the outer shape layer
+        self.outerBackgroundArcLayer.path = outerArcPath.CGPath
+        self.configureShapeLayer(self.outerBackgroundArcLayer)
+        self.outerBackgroundArcLayer.strokeColor = self.arcBackgroundColor.CGColor
+        self.outerBackgroundArcLayer.lineWidth = self.outerLineWidth
+        self.outerBackgroundArcLayer.strokeEnd = 1
+        
+        self.layer.addSublayer(self.outerBackgroundArcLayer)
+        
         self.outerArcShapeLayer.path = outerArcPath.CGPath
         self.configureShapeLayer(self.outerArcShapeLayer)
         self.outerArcShapeLayer.strokeColor = self.outerStrokeColor.CGColor
@@ -70,6 +90,14 @@ import UIKit
         let innerRadius = self.bounds.size.height/2 - self.outerLineWidth - self.arcsMargin - self.innerLineWidth/2
         let innerArcPath = UIBezierPath(arcCenter: center, radius: innerRadius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         
+        self.innerBackgroundArcLayer.path = innerArcPath.CGPath
+        self.configureShapeLayer(self.innerBackgroundArcLayer)
+        self.innerBackgroundArcLayer.strokeColor = self.arcBackgroundColor.CGColor
+        self.innerBackgroundArcLayer.lineWidth = self.innerLineWidth
+        self.innerBackgroundArcLayer.strokeEnd = 1
+        
+        self.layer.addSublayer(self.innerBackgroundArcLayer)
+        
         self.innerArcShapeLayer.path = innerArcPath.CGPath
         self.configureShapeLayer(self.innerArcShapeLayer)
         self.innerArcShapeLayer.strokeColor = self.innerStrokeColor.CGColor
@@ -78,16 +106,18 @@ import UIKit
         
         self.layer.addSublayer(self.innerArcShapeLayer)
     }
-    
-    // MARK: - Calculation and Configuration
+}
+
+extension ProgressView      // MARK: - Calculation and Configuration
+{
     func getStrokeEndForOuterArc() -> CGFloat
     {
-        return 1 - CGFloat(self.numberOfLogsRemaining) / CGFloat(FLOW_LOGS_PER_WEEK_COUNT)
+        return 1 - CGFloat(self.numberOfLogsRemaining) / CGFloat(FLOW_LOGS_PER_WEEK_COUNT) + 0.01
     }
     
     func getStrokeEndForInnerArc() -> CGFloat
     {
-        return 1 - CGFloat(self.numberOfDaysRemaining) / CGFloat(7)
+        return 1 - CGFloat(self.numberOfDaysRemaining) / CGFloat(7) + 0.01
     }
     
     func configureShapeLayer(shapeLayer: CAShapeLayer)
@@ -115,7 +145,10 @@ import UIKit
         return "\(self.numberOfDaysRemaining) day" + StringHelper.sEventually(self.numberOfDaysRemaining)
     }
     
-    // MARK: - Drawing Helpers
+}
+
+extension ProgressView      // MARK: - Drawing Helpers
+{
     func setupLabels()
     {
         let labelWidth: CGFloat = 125
@@ -147,8 +180,7 @@ import UIKit
         self.addSubview(self.remainingLabel)
         
     }
-    
-    let ARC_ANIMATION_KEY = "arcAnimationStrokeEnd"
+
     func animateArcs()
     {
         // 1. animate outer arc

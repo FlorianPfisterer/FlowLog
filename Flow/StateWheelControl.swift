@@ -24,12 +24,12 @@ class StateWheelControl: UIControl
         }
     }
     
-    @IBOutlet weak var percentageLabel: UILabel! {
+    @IBOutlet weak var percentageLabel: UILabel!/* {
         didSet
         {
             self.updatePercentageLabel()
         }
-    }
+    }*/
     
     var percentage: Int = 100
     
@@ -101,7 +101,7 @@ extension StateWheelControl
         default:
             self.transformAtStartOfGesture = .None
         }
-        
+
         self.updatePercentageLabel()
     }
 }
@@ -110,15 +110,16 @@ extension StateWheelControl
 {
     private func updatePercentageLabel()
     {
+        print("UPDATE")
         if let angle = self.colorWheel.layer.valueForKeyPath("transform.rotation.z") as? CGFloat
         {
             if angle < 0    // left side, postive green
             {
-                self.percentage = Int((π - abs(angle) + π) / (2*π) * 100)
+                self.percentage = Int((π - abs(angle) + π) / (2*π) * 100) + 1
             }
             else        // right side, negative red
             {
-                self.percentage = Int(angle / (2*π) * 100)
+                self.percentage = Int(angle / (2*π) * 100) + 1
             }
         }
         else

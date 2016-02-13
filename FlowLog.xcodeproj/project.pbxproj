@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		411E39731C6E4BCA002F794D /* CompletedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411E39721C6E4BCA002F794D /* CompletedVC.swift */; };
 		4120D74B1C3FC5A1003F94B4 /* Activity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4120D7451C3FC5A1003F94B4 /* Activity+CoreDataProperties.swift */; };
 		4120D74C1C3FC5A1003F94B4 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4120D7461C3FC5A1003F94B4 /* Activity.swift */; };
 		4120D7521C3FD25E003F94B4 /* Analysis.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4120D7511C3FD25E003F94B4 /* Analysis.storyboard */; };
@@ -60,6 +61,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		411E39721C6E4BCA002F794D /* CompletedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedVC.swift; sourceTree = "<group>"; };
 		4120D7451C3FC5A1003F94B4 /* Activity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4120D7461C3FC5A1003F94B4 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		4120D7511C3FD25E003F94B4 /* Analysis.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Analysis.storyboard; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				41CE6B241C39068300F4DBED /* StartVC.swift */,
+				411E39721C6E4BCA002F794D /* CompletedVC.swift */,
 				41E134DA1C55EEC60027D66C /* VIews */,
 			);
 			name = Overview;
@@ -310,11 +313,11 @@
 		41E678D51C3C139C00FD74E6 /* Intro */ = {
 			isa = PBXGroup;
 			children = (
-				41E678D81C3C16C400FD74E6 /* Views */,
 				412DA4BE1C3D131E0006638B /* IntroStartVC.swift */,
 				41E678DB1C3C1EEF00FD74E6 /* IntroMainSettingsTVC.swift */,
 				41E678DD1C3C203300FD74E6 /* IntroLogWeekStartDateTVC.swift */,
 				412DA4BC1C3D08AA0006638B /* IntroScheduleAlarmsVC.swift */,
+				41E678D81C3C16C400FD74E6 /* Views */,
 			);
 			name = Intro;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				41C7CD231C6DD97C005AA1BA /* LogEntry+CoreDataProperties.swift in Sources */,
 				41CE6B361C391C2200F4DBED /* HowAreYouFeelingVC.swift in Sources */,
 				41CE6B251C39068300F4DBED /* StartVC.swift in Sources */,
+				411E39731C6E4BCA002F794D /* CompletedVC.swift in Sources */,
 				41CE6B1D1C38FA4700F4DBED /* StringHelper.swift in Sources */,
 				416F23741C40D8E200E86FFB /* FlowRecommendationsVC.swift in Sources */,
 				412DA4BD1C3D08AA0006638B /* IntroScheduleAlarmsVC.swift in Sources */,

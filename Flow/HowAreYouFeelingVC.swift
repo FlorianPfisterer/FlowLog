@@ -30,6 +30,7 @@ extension HowAreYouFeelingVC    // MARK: - Overall Log Management
     func goToNextQuestion()
     {
         LogHelper.happinessLevel = Float(self.stateWheelControl.percentage) / 100
+        LogHelper.energyLevel = 0.5 // TODO!
         self.performSegueWithIdentifier("toQuestion3Segue", sender: nil)
     }
     

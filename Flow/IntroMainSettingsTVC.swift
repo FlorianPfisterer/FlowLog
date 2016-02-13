@@ -25,8 +25,6 @@ extension IntroMainSettingsTVC      // MARK: - View Lifecycle
         super.viewDidLoad()
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "proceedToCreatingAlarms")
-        
-        // TODO! make sure that !endDate < startDate
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
