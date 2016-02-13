@@ -19,6 +19,11 @@ extension StartVC
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        if let nextNotificationFireDate = UIApplication.sharedApplication().scheduledLocalNotifications?.first?.fireDate
+        {
+            print("NEXT NOTIFICATION: \(nextNotificationFireDate)")
+        }
     }
     
     override func viewWillAppear(animated: Bool)

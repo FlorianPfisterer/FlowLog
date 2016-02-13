@@ -115,7 +115,7 @@ extension FlowRecommendationsVC     // MARK: - Update UI
                 sum += item
             }
             
-            let averageValue: CGFloat = sum/CGFloat(graphValues.count)
+            let averageValue: CGFloat = sum/CGFloat(graphValues.filter({ $0 != 0 }).count)
             switch self.graphDisplayState
             {
             case .FlowState:
@@ -152,6 +152,8 @@ extension FlowRecommendationsVC     // MARK: - Update UI
 
         self.minLabel.text = "\(minValueInt)"
         self.maxLabel.text = "\(maxValueInt)"
+        
+        self.graphTitleLabel.text = self.graphDisplayState.stringDescription
     }
 }
 

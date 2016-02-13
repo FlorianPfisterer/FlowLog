@@ -39,6 +39,16 @@ enum GraphDisplayState: Int
     case Energy
     case Happiness
     case AllCombined
+    
+    var stringDescription: String {
+        switch self
+        {
+        case .FlowState: return "Flow State"
+        case .Energy: return "Energy Level"
+        case .Happiness: return "Happiness Level"
+        case .AllCombined: return "All Combined"
+        }
+    }
 }
 
 // MARK: - Structs
