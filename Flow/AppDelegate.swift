@@ -186,7 +186,7 @@ extension AppDelegate       // MARK: - Helper Functions
         }
     }
     
-    // MARK: - Storyboard Helper Function for Debug
+    // MARK: - Storyboard Helper Function (also for Debug)
     private func setStoryboardTo(name: String)
     {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
