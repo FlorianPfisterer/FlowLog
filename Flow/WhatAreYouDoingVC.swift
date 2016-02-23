@@ -85,20 +85,31 @@ extension WhatAreYouDoingVC: UICollectionViewDataSource, UICollectionViewDelegat
             alert.addAction(UIAlertAction(title: "Save and proceed", style: .Default, handler: {
                 _ in
                 
-                // TODO+ check if activity not available yet
                 let context = CoreDataHelper.managedObjectContext()
                 let newActivityName = alert.textFields![0].text!
-                let newActivity = CoreDataHelper.insertManagedObject("Activity", managedObjectContext: context) as! Activity
                 
-                newActivity.name = newActivityName
-                newActivity.used = 1
-                
-                self.activities.append(newActivity)
-                
+                // check if activity is already available
+                if let existingActivity = ActivityHelper.activityIsAlreadyAvailableWithName(newActivityName, context: context)
+                {
+                    existingActivity.used = existingActivity.used + 1
+                    
+                    LogHelper.currentActivity = existingActivity
+                }
+                else
+                {
+                    let newActivity = CoreDataHelper.insertManagedObject("Activity", managedObjectContext: context) as! Activity
+                    
+                    newActivity.name = newActivityName
+                    newActivity.used = 1
+                    
+                    self.activities.append(newActivity)
+                    
+                    LogHelper.currentActivity = newActivity
+                }
+
                 try! context.save()
                 
                 // proceed
-                LogHelper.currentActivity = newActivity
                 self.performSegueWithIdentifier("toQuestion2Segue", sender: nil)
             }))
             self.presentViewController(alert, animated: true, completion: nil)

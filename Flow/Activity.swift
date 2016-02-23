@@ -19,4 +19,10 @@ class Activity: NSManagedObject
         }
         return "Error"
     }
+    
+    class func randomActivity(context: NSManagedObjectContext) -> Activity
+    {
+        let activities = try! CoreDataHelper.fetchEntities("Activity", managedObjectContext: context, predicate: nil, sortDescriptor: nil) as! [Activity]
+        return activities[Int(arc4random_uniform(UInt32(activities.count)))]
+    }
 }

@@ -17,10 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
         self.performOpticalAdjustments()
-        
         self.seedDatabaseIfNecessary()
-        
         self.reactToPossibleNotificationsForApplication(application, withLaunchOptions: launchOptions)
+        
+        //DBSeedHelper.seedLogs(40) // DEBUG
         
         return true
     }
@@ -127,18 +127,6 @@ extension AppDelegate       // MARK: - Notifications
             self.notification(notification, receivedAtStartup: true)
         }
     }
-    
-    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings)
-    {
-        if notificationSettings.types == .None
-        {
-            NotificationHelper.maySendNotifications = false
-        }
-        else
-        {
-            NotificationHelper.maySendNotifications = true
-        }
-    }
 }
 
 extension AppDelegate       // MARK: - Helper Functions
@@ -192,7 +180,7 @@ extension AppDelegate       // MARK: - Helper Functions
             
             if !NotificationHelper.maySendNotifications
             {
-                let settings = UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Badge], categories: nil)
+                let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
                 application.registerUserNotificationSettings(settings)
             }
         }
@@ -201,7 +189,7 @@ extension AppDelegate       // MARK: - Helper Functions
     private func setStoryboardTo(name: String)
     {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        let storyboard = UIStoryboard(name: name, bundle: NSBundle.mainBundle())  // DEBUG TODO
+        let storyboard = UIStoryboard(name: name, bundle: NSBundle.mainBundle())  //
         
         self.window?.rootViewController = storyboard.instantiateInitialViewController()
         self.window?.makeKeyAndVisible()

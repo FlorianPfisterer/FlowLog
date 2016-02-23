@@ -24,13 +24,13 @@ protocol LogWeekStartDateSettingsDelegate
 enum FlowState: Int16
 {
     case Anxiety = 1
-    case Arousal
-    case Flow
-    case Control
-    case Relaxation
-    case Boredom
-    case Apathy
-    case Worry
+    case Arousal = 2
+    case Flow = 3
+    case Control = 4
+    case Relaxation = 5
+    case Boredom = 6
+    case Apathy = 7
+    case Worry = 8
 }
 
 enum GraphDisplayState: Int
@@ -49,6 +49,14 @@ enum GraphDisplayState: Int
         case .AllCombined: return "All Combined"
         }
     }
+}
+
+enum NotificationScheduleResult: Int
+{
+    case Success = 0
+    case InvalidDate
+    case NotificationsDisabled
+    case Other
 }
 
 // MARK: - Structs
@@ -81,6 +89,7 @@ extension Vector2D  // public API
         return (α * 180) / π
     }
 }
+
 
 struct Time
 {
@@ -120,7 +129,7 @@ struct Time
 
 extension Time      // public API
 {
-    func timeString() -> String // TODO! Localize
+    func timeString() -> String
     {
         return StringHelper.getLocalizedTimeDescription(self.getDate())
     }

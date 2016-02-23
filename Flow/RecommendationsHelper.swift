@@ -12,11 +12,17 @@ import CoreData
 
 class RecommendationsHelper
 {
-    class func getRecommendationsForGraphState(graphState: GraphDisplayState, graphValues: [CGFloat], completion: ([String]) -> Void, context: NSManagedObjectContext)
+    class func getRecommendationsForGraphState(graphState: GraphDisplayState, var graphValues: [CGFloat], completion: ([String]) -> Void, context: NSManagedObjectContext)
     {
         dispatch_async(dispatch_get_main_queue(), {
             
             var recommendations: [String] = []
+            
+            // exclude zero log timeframes
+            if graphState != .FlowState
+            {
+                graphValues = graphValues.filter({ $0 != 0 })
+            }
             
             if AnalysisHelper.getNumberOfLogs(context: context) > 5
             {
@@ -81,7 +87,7 @@ class RecommendationsHelper
                     
                     if let hourWithLeastHappiness: Int = graphValues.indexOf({ $0 == graphValues.minElement() })
                     {
-                        recommendations.append("You most unhappy at \(StringHelper.getLocalizedShortTimeDescriptionAtHour(hourWithLeastHappiness + LogHelper.alarmStartTime.hour)). Try to do something that makes you happy at this time.")
+                        recommendations.append("You are most unhappy at \(StringHelper.getLocalizedShortTimeDescriptionAtHour(hourWithLeastHappiness + LogHelper.alarmStartTime.hour)). Try to do something that makes you happy at this time.")
                     }
                     
                     

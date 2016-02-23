@@ -23,11 +23,9 @@ class LogHelper
 
 extension LogHelper     // MARK: - Action Functions
 {
-    static func saveCurrentLog(completion: (success: Bool, logEntry: LogEntry!) -> Void)
+    static func saveCurrentLog(seed: Bool = false, completion: (success: Bool, logEntry: LogEntry!) -> Void)
     {
-        let delay: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC))  // slight delay for experience reasons
-        
-        dispatch_after(delay, dispatch_get_main_queue(), {
+        dispatch_async(dispatch_get_main_queue(), {
             
             let context = CoreDataHelper.managedObjectContext()
             
@@ -46,13 +44,18 @@ extension LogHelper     // MARK: - Action Functions
             do
             {
                 try context.save()
+                
+                NotificationHelper.logFireDateScheduledNotYetExecuted = nil     // !
                 completion(success: true, logEntry: logEntry)
                 
                 // reset static variables
-                LogHelper.currentActivity = nil
-                LogHelper.happinessLevel = nil
-                LogHelper.energyLevel = nil
-                LogHelper.flowState = nil
+                if !seed
+                {
+                    LogHelper.currentActivity = nil
+                    LogHelper.happinessLevel = nil
+                    LogHelper.energyLevel = nil
+                    LogHelper.flowState = nil
+                }
                 
                 return
             }
@@ -70,18 +73,26 @@ extension LogHelper     // MARK: - Help Functions
 {
     static func getRemainingFlowLogsInCurrentWeek() -> (Bool, Int)
     {
-        let weekIndex = LogHelper.getCurrentWeekIndex()     // 1 - n
-        
+        let weekIndex = NotificationHelper.currentWeekIndex     // 1 - n
         let remainingLogsCount = weekIndex*FLOW_LOGS_PER_WEEK_COUNT - Int(LogHelper.getCurrentLogNr()-1)
+        
+        print("INFO: weekIndex = \(weekIndex), remainingLogsCount = \(remainingLogsCount)")
+        
         return (remainingLogsCount > 0, remainingLogsCount)
     }
     
     static func getRemainingDaysInCurrentWeek() -> Int
     {
-        // fetch distinct days of LogNotifications from database that are not completed (and in the future?)
-        //let context = CoreDataHelper.managedObjectContext()
-        
-        // TODO!
+        if let startDateTimeInterval: NSTimeInterval = LogHelper.flowLogWeekStartDate?.timeIntervalSinceReferenceDate
+        {
+            let secondsPerDay: NSTimeInterval = 60 * 60 * 24
+            
+            // calculate difference in days since the start date
+            let secondsDifference: NSTimeInterval = NSDate().timeIntervalSinceReferenceDate - startDateTimeInterval
+            let daysDifference: Int = Int(floor(secondsDifference / secondsPerDay))
+            
+            return 7 - min(daysDifference, 7)
+        }
         
         return 7
     }
@@ -97,16 +108,6 @@ extension LogHelper     // MARK: - Help Functions
         }
         
         return 1
-    }
-    
-    // returns the current week number, 1 - n
-    class func getCurrentWeekIndex() -> Int
-    {
-        let context = CoreDataHelper.managedObjectContext()
-        let logsCount = AnalysisHelper.getNumberOfLogs(context: context)
-        
-        let weekIndex = (logsCount - (logsCount % FLOW_LOGS_PER_WEEK_COUNT)) / FLOW_LOGS_PER_WEEK_COUNT
-        return weekIndex + 1
     }
     
     // returns if the current time is in the timeframe that the user set up for FlowLogs to be done
@@ -169,7 +170,7 @@ extension LogHelper     // MARK: - Settings Variables
             return NSUserDefaults.standardUserDefaults().objectForKey(FLOW_LOG_WEEK_START_DATE_KEY) as? NSDate
         }
         
-        set (newValue)
+        set
         {
             NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: FLOW_LOG_WEEK_START_DATE_KEY)
         }
@@ -189,7 +190,7 @@ extension LogHelper     // MARK: - Settings Variables
             }
         }
         
-        set (newValue)
+        set
         {
             NSUserDefaults.standardUserDefaults().setObject(newValue.getDate(), forKey: ALARM_START_DATE_KEY)
         }
@@ -209,7 +210,7 @@ extension LogHelper     // MARK: - Settings Variables
             }
         }
         
-        set (newValue)
+        set
         {
             NSUserDefaults.standardUserDefaults().setObject(newValue.getDate(), forKey: ALARM_END_DATE_KEY)
         }

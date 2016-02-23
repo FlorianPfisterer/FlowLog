@@ -179,6 +179,13 @@ extension ProgressView      // MARK: - Drawing Helpers
         self.configureLabel(self.remainingLabel, withFontSize: 19, textColor: UIColor.whiteColor())
         self.addSubview(self.remainingLabel)
         
+        if UIScreen.mainScreen().bounds.size.height < 568
+        {
+            // iPhone 4s
+            self.logsRemainingLabel.frame.origin.y -= 10
+            self.remainingLabel.alpha = 0
+        }
+        
     }
 
     func animateArcs()

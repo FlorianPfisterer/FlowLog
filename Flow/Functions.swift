@@ -56,3 +56,17 @@ func isSameday(left: NSDate, and right: NSDate) -> Bool
     
     return leftComponents.day == rightComponents.day && leftComponents.month == rightComponents.month && leftComponents.year == rightComponents.year
 }
+
+func checkNotificationsEnabled(completion: (() -> Void)?) -> UIAlertController?
+{
+    if !NotificationHelper.maySendNotifications
+    {
+        let (title, message) = NOTIFICATIONS_DISABLED_ALERT_STRINGS
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: { _ in
+            completion?()
+        }))
+        return alert
+    }
+    return nil
+}

@@ -22,6 +22,14 @@ class HorizontalStateControl: UIControl
     
     var percentage: Int = 50
     
+    var showLabels: Bool = true {
+        didSet
+        {
+            self.percentageLabel.alpha = self.showLabels ? 1 : 0
+            self.indicatorLabel.alpha = self.showLabels ? 1 : 0
+        }
+    }
+    
     @IBInspectable
     var percentageLabelHeight: CGFloat = 25 {
         didSet

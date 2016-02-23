@@ -13,6 +13,7 @@ class HowAreYouFeelingVC: UIViewController
     @IBOutlet weak var instructionLabel: UILabel!
     @IBOutlet weak var stateWheelControl: StateWheelControl!
     @IBOutlet weak var horizontalStateControl: HorizontalStateControl!
+    @IBOutlet weak var energySliderHeightConstraint: NSLayoutConstraint!
 }
 
 extension HowAreYouFeelingVC     // MARK: - View Lifecycle
@@ -23,6 +24,18 @@ extension HowAreYouFeelingVC     // MARK: - View Lifecycle
         self.navigationItem.hidesBackButton = true
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .Done, target: self, action: "goToNextQuestion")
+        
+        if UIScreen.mainScreen().bounds.size.height < 568
+        {
+            // iPhone 4s
+            self.horizontalStateControl.showLabels = false
+            self.energySliderHeightConstraint.constant = 80
+        }
+        else
+        {
+            self.horizontalStateControl.showLabels = true
+            self.energySliderHeightConstraint.constant = 97
+        }
     }
 }
 

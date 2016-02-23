@@ -10,7 +10,7 @@ import UIKit
 
 protocol FlowViewDelegate
 {
-    func setNewSelectionLocation(x x: CGFloat, y: CGFloat, alpha: CGFloat)
+    func setNewSelectionLocation(x x: CGFloat, y: CGFloat)
     func updateFlowState(flowState: FlowState)
 }
 
@@ -27,6 +27,40 @@ class FlowView: UIView
     var labels: [UILabel]!
     
     var delegate: FlowViewDelegate!
+    
+    private var userTookCenterSelector = false
+    
+    override init(frame: CGRect)
+    {
+        super.init(frame: frame)
+        self.sharedInitialization()
+    }
+
+    required init?(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
+        self.sharedInitialization()
+    }
+}
+
+extension FlowView
+{
+    private func sharedInitialization()
+    {
+        self.centerImageView = UIImageView(image: UIImage(named: "SelectionCenterIcon")!)
+        self.centerImageView.userInteractionEnabled = true
+        self.addSubview(self.centerImageView)
+        
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "didPanSelectionCenter:")
+        self.addGestureRecognizer(panGestureRecognizer)
+    }
+    
+    override func layoutSubviews()
+    {
+        super.layoutSubviews()
+        
+        self.centerImageView.frame = CGRect(x: self.bounds.size.width/2 - self.selectionImageViewSize/2, y: self.bounds.size.height/2 - self.selectionImageViewSize/2, width: self.selectionImageViewSize, height: self.selectionImageViewSize)
+    }
 }
 
 extension FlowView      // MARK: - Lifecycle
@@ -54,9 +88,19 @@ extension FlowView      // MARK: - Lifecycle
         
         _ = self.labels?.map({ $0.removeFromSuperview() })
         
-        let labelWidth: CGFloat = 76
-        let labelHeight: CGFloat = 20
-        let labelMargin: CGFloat = 5
+        var labelWidth: CGFloat = 76
+        var labelHeight: CGFloat = 20
+        var labelMargin: CGFloat = 5
+        var fontSize: CGFloat = 15
+        
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad
+        {
+            fontSize = 25
+            labelWidth = 130
+            labelHeight = 35
+            labelMargin = 8
+        }
+        
         let xy: [(CGFloat, CGFloat)] = [(labelMargin, 0),                                                           // Anxiety
             (self.bounds.width/2 - labelWidth/2, 0),                                                                // Arousal
             (self.bounds.width - labelWidth - labelMargin, 0),                                                      // Flow
@@ -72,7 +116,7 @@ extension FlowView      // MARK: - Lifecycle
             let (x, y) = xy[i-1]
             let label = UILabel(frame: CGRect(x: x, y: y, width: labelWidth, height: labelHeight))
             label.text = String(FlowState(rawValue: Int16(i))!)
-            label.font = UIFont.systemFontOfSize(15)
+            label.font = UIFont.systemFontOfSize(fontSize)
             label.textColor = UIColor.whiteColor()
             
             
@@ -93,18 +137,6 @@ extension FlowView      // MARK: - Lifecycle
             
             self.labels.append(label)
             self.addSubview(label)
-        }
-        
-        
-        if self.centerImageView == nil
-        {
-            self.centerImageView = UIImageView(image: UIImage(named: "SelectionCenterIcon")!)
-            self.centerImageView.frame = CGRect(x: self.bounds.size.width/2 - self.selectionImageViewSize/2, y: self.bounds.size.height/2 - self.selectionImageViewSize/2, width: self.selectionImageViewSize, height: self.selectionImageViewSize)
-            self.centerImageView.userInteractionEnabled = true
-            self.addSubview(self.centerImageView)
-            
-            let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "didPanSelectionCenter:")
-            self.centerImageView.addGestureRecognizer(panGestureRecognizer)
         }
         
         let center = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
@@ -149,28 +181,59 @@ extension FlowView      // MARK: - Lifecycle
 
 extension FlowView      // MARK: - Helper Functions
 {
-    func didPanSelectionCenter(gestureRecognizer: UIPanGestureRecognizer)
+    func didPanSelectionCenter(recognizer: UIPanGestureRecognizer)
     {
-        let translation = gestureRecognizer.translationInView(self)
-        var recognizerFrame = gestureRecognizer.view!.frame
+        let location = recognizer.locationInView(self)
         
-        recognizerFrame.origin.x += translation.x
-        recognizerFrame.origin.y += translation.y
-        
-        if CGRectContainsRect(self.bounds, recognizerFrame)
+        switch recognizer.state
         {
-            gestureRecognizer.view!.frame = recognizerFrame
+        case .Began:
+            if CGRectContainsPoint(CGRect(x: self.centerImageView.frame.origin.x - 10, y: self.centerImageView.frame.origin.y - 10, width: self.centerImageView.bounds.size.width + 20, height: self.centerImageView.bounds.size.height + 20), location)
+            {
+                self.userTookCenterSelector = true
+                let translation = recognizer.translationInView(self)
+                self.moveSelectionLocationEventually(by: translation)
+            }
+            
+        case .Changed:
+            if self.userTookCenterSelector
+            {
+                let translation = recognizer.translationInView(self)
+                self.moveSelectionLocationEventually(by: translation)
+            }
+            
+        case .Ended, .Cancelled, .Failed:
+            self.userTookCenterSelector = false
+            
+        case .Possible:
+            break
+        }
+
+        recognizer.setTranslation(CGPointZero, inView: self)
+    }
+    
+    private func moveSelectionLocationEventually(by translation: CGPoint)
+    {
+        let newX = self.centerImageView.center.x + translation.x
+        let newY = self.centerImageView.center.y + translation.y
+        
+        if newX > 0 + self.selectionImageViewSize/2 && newX < self.bounds.size.width - self.selectionImageViewSize/2
+        {
+            self.centerImageView.center.x = newX
+        }
+        
+        if newY > 0 + self.selectionImageViewSize/2 && newY < self.bounds.size.height - self.selectionImageViewSize/2
+        {
+            self.centerImageView.center.y = newY
         }
         
         self.updateSelectionLocation()
-        
-        gestureRecognizer.setTranslation(CGPoint(x: 0, y: 0), inView: self)
     }
     
     func updateSelectionLocation()
     {
         let (relativeX, relativeY) = self.getFlowDimensions()
-        self.delegate.setNewSelectionLocation(x: CGFloat(relativeX), y: CGFloat(relativeY), alpha: 0.9)
+        self.delegate.setNewSelectionLocation(x: CGFloat(relativeX), y: CGFloat(relativeY))
         
         self.updateVectorAngle()
     }

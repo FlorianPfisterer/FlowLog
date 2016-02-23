@@ -69,51 +69,33 @@
                                             <segue destination="VZL-N5-KE9" kind="show" id="NP7-fG-LAb"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="oTY-qd-5BR">
-                                        <rect key="frame" x="0.0" y="253" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oTY-qd-5BR" id="hei-cv-0uP">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popular flow time frames" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYb-zK-M9F">
-                                                    <rect key="frame" x="8" y="11" width="190" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="aYb-zK-M9F" secondAttribute="bottom" constant="3" id="CPk-4h-xQu"/>
-                                                <constraint firstItem="aYb-zK-M9F" firstAttribute="top" secondItem="hei-cv-0uP" secondAttribute="topMargin" constant="3" id="YH6-Pd-Ydc"/>
-                                                <constraint firstItem="aYb-zK-M9F" firstAttribute="leading" secondItem="hei-cv-0uP" secondAttribute="leadingMargin" id="l3R-bR-AG9"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Custom Analyses" id="ULD-qB-F0w">
+                            <tableViewSection headerTitle="More Analyses coming soon!" id="9e6-nF-hYK">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="4YL-76-7YV">
-                                        <rect key="frame" x="0.0" y="348" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="dAZ-XW-mgG">
+                                        <rect key="frame" x="0.0" y="304" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4YL-76-7YV" id="VIF-jn-bIU">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dAZ-XW-mgG" id="4Yr-IZ-vrr">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rank activities by flow states" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0YZ-ER-HOg">
-                                                    <rect key="frame" x="8" y="11" width="221" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have a good idea? Tell me!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JL1-S9-QPX">
+                                                    <rect key="frame" x="8" y="11" width="584" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="0YZ-ER-HOg" secondAttribute="bottom" constant="3" id="4ri-Wq-Dsd"/>
-                                                <constraint firstItem="0YZ-ER-HOg" firstAttribute="leading" secondItem="VIF-jn-bIU" secondAttribute="leadingMargin" id="QDu-6x-t7D"/>
-                                                <constraint firstItem="0YZ-ER-HOg" firstAttribute="top" secondItem="VIF-jn-bIU" secondAttribute="topMargin" constant="3" id="kth-r0-61e"/>
+                                                <constraint firstItem="JL1-S9-QPX" firstAttribute="top" secondItem="4Yr-IZ-vrr" secondAttribute="topMargin" constant="3" id="1Ha-lJ-QcQ"/>
+                                                <constraint firstItem="JL1-S9-QPX" firstAttribute="leading" secondItem="4Yr-IZ-vrr" secondAttribute="leadingMargin" id="5My-jO-Jr0"/>
+                                                <constraint firstItem="JL1-S9-QPX" firstAttribute="trailing" secondItem="4Yr-IZ-vrr" secondAttribute="trailingMargin" id="CQS-Zk-Nzq"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="JL1-S9-QPX" secondAttribute="bottom" constant="3" id="Lty-st-2C0"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="0.1215686275" green="0.47843137250000001" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -133,7 +115,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ojv-Yn-52F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3383" y="910"/>
+            <point key="canvasLocation" x="3385" y="910"/>
         </scene>
         <!--Flow Recommendations-->
         <scene sceneID="6cK-ZU-bun">

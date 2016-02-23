@@ -10,8 +10,7 @@ import UIKit
 
 class PopularFlowActivitiesTVC: UITableViewController
 {
-    var upperFlowActivities: [(Activity, CGFloat)] = []
-    var lowerFlowActivities: [(Activity, CGFloat)] = []
+    var flowActivities: [(Activity, Float)] = []
 }
 
 extension PopularFlowActivitiesTVC      // MARK: - View Lifecycle
@@ -30,41 +29,36 @@ extension PopularFlowActivitiesTVC      // MARK: - Load Data
 {
     func loadFlowActivities()
     {
+        self.flowActivities.removeAll()
+        
         let context = CoreDataHelper.managedObjectContext()
         let flowLogsCount: Int = AnalysisHelper.getNumberOfLogs(inFlowState: .Flow, context: context)
-        let allUsedActivities = AnalysisHelper.getSortedActivities(fromFlowState: .Flow, context: context)
         
-        self.upperFlowActivities.removeAll()
-        self.lowerFlowActivities.removeAll()
-        
-        if allUsedActivities.count != 0 && flowLogsCount > 5
+        if flowLogsCount >= 2
         {
+            let allUsedFlowActivities = AnalysisHelper.getSortedActivities(fromFlowState: .Flow, context: context)
+            
             var sum: Int = 0
-            for activity in allUsedActivities
+            for activity in allUsedFlowActivities
             {
                 sum += Int(activity.used)
             }
             
+            print(sum)
+            
             if sum != 0
             {
-                let averageActivityUse = CGFloat(sum) / CGFloat(allUsedActivities.count)
-                
-                for activity in allUsedActivities
+                for activity in allUsedFlowActivities
                 {
-                    if CGFloat(activity.used) >= averageActivityUse
-                    {
-                        self.upperFlowActivities.append((activity, CGFloat(activity.used)/CGFloat(sum)))
-                    }
-                    else
-                    {
-                        self.lowerFlowActivities.append((activity, CGFloat(activity.used)/CGFloat(sum)))
-                    }
+                    self.flowActivities.append((activity, Float(activity.used)/Float(sum)))
                 }
             }
+            
+            self.flowActivities.sortInPlace({ $0.1 > $1.1 })
         }
         else
         {
-            let alert = UIAlertController(title: "Not enough data yet", message: "Come back later after doing a few logs.", preferredStyle: .Alert)
+            let alert = UIAlertController(title: "Not enough data yet", message: "Come back later after doing at least 2 logs with flow state.", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: { _ in
                 self.navigationController?.popViewControllerAnimated(true)
             }))
@@ -77,35 +71,19 @@ extension PopularFlowActivitiesTVC      // MARK: - TableView
 {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        return 2
+        return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        switch section
-        {
-        case 0:
-            return self.upperFlowActivities.count
-        case 1:
-            return self.lowerFlowActivities.count
-        default:
-            return 0
-        }
+        return self.flowActivities.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("activityCell")!
-        var activity: Activity
-        var percentage: CGFloat
         
-        switch indexPath.section
-        {
-        case 0:
-            (activity, percentage) = self.upperFlowActivities[indexPath.row]
-        default:
-            (activity, percentage) = self.lowerFlowActivities[indexPath.row]
-        }
+        let (activity, percentage) = self.flowActivities[indexPath.row]
         
         cell.textLabel?.text = activity.getName()
         cell.detailTextLabel?.text = "\(Int(percentage*100))%"
@@ -115,15 +93,9 @@ extension PopularFlowActivitiesTVC      // MARK: - TableView
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?
     {
-        if self.upperFlowActivities.count > 0
+        if self.flowActivities.count > 0
         {
-            switch section
-            {
-            case 0:
-                return "Activities with much flow potential"
-            default:
-                return "Activities with little flow potential"
-            }
+            return "Quota of all flow logs"
         }
         
         return nil

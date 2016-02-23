@@ -1,5 +1,5 @@
 //
-//  Activity+CoreDataProperties.swift
+//  Category+CoreDataProperties.swift
 //  FlowLog
 //
 //  Created by Florian Pfisterer on 14.02.16.
@@ -12,10 +12,8 @@
 import Foundation
 import CoreData
 
-extension Activity
+extension Category
 {
     @NSManaged var name: String?
-    @NSManaged var used: Int16
-    @NSManaged var entries: NSSet?
-    @NSManaged var category: Category?
+    @NSManaged var activities: NSSet?
 }

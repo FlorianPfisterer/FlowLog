@@ -103,16 +103,15 @@ class AnalysisHelper
         return 0
     }
     
-    class func getSortedActivities(fromFlowState flowState: FlowState, context: NSManagedObjectContext) -> [Activity]
+    class func getSortedActivities(fromFlowState flowState: FlowState? = nil, context: NSManagedObjectContext) -> [Activity]
     {
-        // get all flow logs
+        // get all logs in given flowState
         let logs = AnalysisHelper.getLogs(inFlowState: flowState, context: context)
         var activitiesWithAmounts = [Activity : Int]()
         
         for log in logs
         {
-            if log.flowStateIndex == flowState.rawValue
-            {
+            let addActivityToArray = {
                 if let amount = activitiesWithAmounts[log.activity!]
                 {
                     activitiesWithAmounts[log.activity!] = amount + 1
@@ -122,9 +121,20 @@ class AnalysisHelper
                     activitiesWithAmounts[log.activity!] = 1
                 }
             }
+            
+            guard let flowState = flowState else
+            {
+                addActivityToArray()
+                continue
+            }
+            
+            if log.flowStateIndex == flowState.rawValue
+            {
+                addActivityToArray()
+            }
         }
         
-        let sortedActivities = activitiesWithAmounts.map({ $0.0 }).sort({ $0.used > $1.used })
+        let sortedActivities = activitiesWithAmounts.sort({ $0.1 > $1.1 }).map({ $0.0 })
         return sortedActivities
     }
     

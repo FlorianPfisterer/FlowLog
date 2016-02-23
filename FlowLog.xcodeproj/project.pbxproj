@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		411E39731C6E4BCA002F794D /* CompletedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411E39721C6E4BCA002F794D /* CompletedVC.swift */; };
-		4120D74B1C3FC5A1003F94B4 /* Activity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4120D7451C3FC5A1003F94B4 /* Activity+CoreDataProperties.swift */; };
 		4120D74C1C3FC5A1003F94B4 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4120D7461C3FC5A1003F94B4 /* Activity.swift */; };
 		4120D7521C3FD25E003F94B4 /* Analysis.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4120D7511C3FD25E003F94B4 /* Analysis.storyboard */; };
 		4120D7541C3FD338003F94B4 /* DBSeedHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4120D7531C3FD338003F94B4 /* DBSeedHelper.swift */; };
@@ -18,11 +17,15 @@
 		41386B111C60929D00D08A07 /* AngleGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41386B101C60929D00D08A07 /* AngleGestureRecognizer.swift */; };
 		41386B141C6096B000D08A07 /* ColorWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41386B131C6096B000D08A07 /* ColorWheelView.swift */; };
 		413EF02B1C5F3ED4006BD0AB /* AwardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413EF02A1C5F3ED4006BD0AB /* AwardView.swift */; };
+		414FE4621C709195006AE6DD /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414FE4601C709195006AE6DD /* Category+CoreDataProperties.swift */; };
+		414FE4631C709195006AE6DD /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414FE4611C709195006AE6DD /* Category.swift */; };
+		414FE4651C7091A5006AE6DD /* Activity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414FE4641C7091A5006AE6DD /* Activity+CoreDataProperties.swift */; };
 		416F23741C40D8E200E86FFB /* FlowRecommendationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416F23731C40D8E200E86FFB /* FlowRecommendationsVC.swift */; };
 		416F23761C40EE0C00E86FFB /* RecommendationsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416F23751C40EE0C00E86FFB /* RecommendationsHelper.swift */; };
 		416F23781C40FF5900E86FFB /* DynamicRecommendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416F23771C40FF5900E86FFB /* DynamicRecommendationCell.swift */; };
 		416F237A1C41017900E86FFB /* PopularFlowActivitiesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416F23791C41017900E86FFB /* PopularFlowActivitiesTVC.swift */; };
 		416F237C1C41080600E86FFB /* PopularTimeFramesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416F237B1C41080600E86FFB /* PopularTimeFramesTVC.swift */; };
+		419681981C7C425200A9BE3A /* ActivityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419681971C7C425200A9BE3A /* ActivityHelper.swift */; };
 		41B8150B1C40117200A2C72D /* AnalysisHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B8150A1C40117200A2C72D /* AnalysisHelper.swift */; };
 		41B8150E1C4014BD00A2C72D /* AnalysisOverviewTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B8150D1C4014BD00A2C72D /* AnalysisOverviewTVC.swift */; };
 		41B815111C40174900A2C72D /* DiagramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B815101C40174900A2C72D /* DiagramView.swift */; };
@@ -62,7 +65,6 @@
 
 /* Begin PBXFileReference section */
 		411E39721C6E4BCA002F794D /* CompletedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedVC.swift; sourceTree = "<group>"; };
-		4120D7451C3FC5A1003F94B4 /* Activity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4120D7461C3FC5A1003F94B4 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		4120D7511C3FD25E003F94B4 /* Analysis.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Analysis.storyboard; sourceTree = "<group>"; };
 		4120D7531C3FD338003F94B4 /* DBSeedHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBSeedHelper.swift; sourceTree = "<group>"; };
@@ -72,11 +74,15 @@
 		41386B101C60929D00D08A07 /* AngleGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AngleGestureRecognizer.swift; sourceTree = "<group>"; };
 		41386B131C6096B000D08A07 /* ColorWheelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorWheelView.swift; sourceTree = "<group>"; };
 		413EF02A1C5F3ED4006BD0AB /* AwardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardView.swift; sourceTree = "<group>"; };
+		414FE4601C709195006AE6DD /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		414FE4611C709195006AE6DD /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		414FE4641C7091A5006AE6DD /* Activity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		416F23731C40D8E200E86FFB /* FlowRecommendationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowRecommendationsVC.swift; sourceTree = "<group>"; };
 		416F23751C40EE0C00E86FFB /* RecommendationsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationsHelper.swift; sourceTree = "<group>"; };
 		416F23771C40FF5900E86FFB /* DynamicRecommendationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicRecommendationCell.swift; sourceTree = "<group>"; };
 		416F23791C41017900E86FFB /* PopularFlowActivitiesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularFlowActivitiesTVC.swift; sourceTree = "<group>"; };
 		416F237B1C41080600E86FFB /* PopularTimeFramesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularTimeFramesTVC.swift; sourceTree = "<group>"; };
+		419681971C7C425200A9BE3A /* ActivityHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityHelper.swift; sourceTree = "<group>"; };
 		41B8150A1C40117200A2C72D /* AnalysisHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisHelper.swift; sourceTree = "<group>"; };
 		41B8150D1C4014BD00A2C72D /* AnalysisOverviewTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisOverviewTVC.swift; sourceTree = "<group>"; };
 		41B815101C40174900A2C72D /* DiagramView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagramView.swift; sourceTree = "<group>"; };
@@ -188,6 +194,7 @@
 				4120D7531C3FD338003F94B4 /* DBSeedHelper.swift */,
 				41B8150A1C40117200A2C72D /* AnalysisHelper.swift */,
 				416F23751C40EE0C00E86FFB /* RecommendationsHelper.swift */,
+				419681971C7C425200A9BE3A /* ActivityHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -217,9 +224,11 @@
 		41CE6B0C1C38F7F900F4DBED /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				414FE4601C709195006AE6DD /* Category+CoreDataProperties.swift */,
+				414FE4611C709195006AE6DD /* Category.swift */,
 				41C7CD211C6DD97C005AA1BA /* LogEntry+CoreDataProperties.swift */,
 				41C7CD221C6DD97C005AA1BA /* LogEntry.swift */,
-				4120D7451C3FC5A1003F94B4 /* Activity+CoreDataProperties.swift */,
+				414FE4641C7091A5006AE6DD /* Activity+CoreDataProperties.swift */,
 				4120D7461C3FC5A1003F94B4 /* Activity.swift */,
 				41CE6AFA1C38F73000F4DBED /* Flow.xcdatamodeld */,
 			);
@@ -440,6 +449,7 @@
 				41E678DA1C3C16DA00FD74E6 /* GradientBackgroundVIew.swift in Sources */,
 				413EF02B1C5F3ED4006BD0AB /* AwardView.swift in Sources */,
 				4120D74C1C3FC5A1003F94B4 /* Activity.swift in Sources */,
+				414FE4651C7091A5006AE6DD /* Activity+CoreDataProperties.swift in Sources */,
 				416F237A1C41017900E86FFB /* PopularFlowActivitiesTVC.swift in Sources */,
 				41C7CD2A1C6DDB8A005AA1BA /* Functions.swift in Sources */,
 				41CE6B2C1C39091D00F4DBED /* SettingsTVC.swift in Sources */,
@@ -451,18 +461,20 @@
 				41E678DE1C3C203300FD74E6 /* IntroLogWeekStartDateTVC.swift in Sources */,
 				41C7CD281C6DDB35005AA1BA /* Supporting Structs.swift in Sources */,
 				416F23781C40FF5900E86FFB /* DynamicRecommendationCell.swift in Sources */,
-				4120D74B1C3FC5A1003F94B4 /* Activity+CoreDataProperties.swift in Sources */,
 				41CE6B3A1C39358700F4DBED /* LogHelper.swift in Sources */,
 				416F23761C40EE0C00E86FFB /* RecommendationsHelper.swift in Sources */,
 				41CE6B311C390EB400F4DBED /* WhatAreYouDoingVC.swift in Sources */,
 				41E57FD41C624E44008D07ED /* HorizontalStateControl.swift in Sources */,
 				41CE6B3E1C39395B00F4DBED /* FlowView.swift in Sources */,
+				419681981C7C425200A9BE3A /* ActivityHelper.swift in Sources */,
 				412DA4BF1C3D131E0006638B /* IntroStartVC.swift in Sources */,
 				41CE6B131C38F99500F4DBED /* Constants.swift in Sources */,
 				41386B0F1C60870400D08A07 /* StateWheelControl.swift in Sources */,
 				41CE6B341C39150400F4DBED /* ActionCollectionCell.swift in Sources */,
 				41C7CD261C6DDB0E005AA1BA /* Extensions.swift in Sources */,
+				414FE4621C709195006AE6DD /* Category+CoreDataProperties.swift in Sources */,
 				41C7CD241C6DD97C005AA1BA /* LogEntry.swift in Sources */,
+				414FE4631C709195006AE6DD /* Category.swift in Sources */,
 				41E134DC1C55EED30027D66C /* ProgressView.swift in Sources */,
 				41B8150B1C40117200A2C72D /* AnalysisHelper.swift in Sources */,
 				41CE6B3C1C3936FF00F4DBED /* AreYouInFlowVC.swift in Sources */,
@@ -599,7 +611,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.florianpfisterer.Flow;
 				PRODUCT_NAME = FlowLog;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -612,7 +624,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.florianpfisterer.Flow;
 				PRODUCT_NAME = FlowLog;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

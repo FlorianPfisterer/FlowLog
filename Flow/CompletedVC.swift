@@ -73,8 +73,6 @@ extension CompletedVC   // MARK: View Lifecycle
             }, completion: nil)
             
         })
-        
-        
     }
 }
 
@@ -82,19 +80,13 @@ extension CompletedVC   // MARK: - IBActions
 {
     @IBAction func startNewFlowLogWeek()
     {
-        NotificationHelper.scheduleNextNotification(completion: { success in
-            
-            if success
-            {
-                self.dismissViewControllerAnimated(true, completion: nil)
-            }
-            else
-            {
-                let alert = UIAlertController(title: "An error occurred.", message: "Please try again later", preferredStyle: .Alert)
-                alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
-            }
-        })
+        LogHelper.flowLogWeekStartDate = NSDate()   // now starts a new week
+        
+        let completion = AUTOMATIC_VC_NOTIFICATION_COMPLETION(vc: self, success: {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }, failure: nil)
+        
+        NotificationHelper.scheduleNextNotification(completion: completion)
     }
 }
 

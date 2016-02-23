@@ -11,6 +11,8 @@ import UIKit
 class StartVC: UIViewController
 {
     @IBOutlet weak var progressView: ProgressView!
+    
+    private var notificationAlertShown = false
 }
 
 extension StartVC
@@ -19,11 +21,6 @@ extension StartVC
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        if let nextNotificationFireDate = UIApplication.sharedApplication().scheduledLocalNotifications?.first?.fireDate
-        {
-            print("NEXT NOTIFICATION: \(nextNotificationFireDate)")
-        }
     }
     
     override func viewWillAppear(animated: Bool)
@@ -54,9 +51,28 @@ extension StartVC   // MARK: - Helper Functions
 {
     private func checkDueLogs()
     {
+        print("CheckDueLogs")
         if NotificationHelper.getLogIsDue()
         {
             self.startLog()
+        }
+        else if !self.notificationAlertShown
+        {
+            let completion = {
+                // for security reasons, in case there is no notification scheduled
+                if NotificationHelper.shouldScheduleNotification()
+                {
+                    let scheduleCompletion = AUTOMATIC_VC_NOTIFICATION_COMPLETION(vc: self, success: nil, failure: nil)
+                    NotificationHelper.scheduleNextNotification(completion: scheduleCompletion)
+                }
+            }
+            
+
+            if let alert = checkNotificationsEnabled(completion)
+            {
+                self.presentViewController(alert, animated: true, completion: nil)
+                self.notificationAlertShown = true
+            }
         }
     }
 }

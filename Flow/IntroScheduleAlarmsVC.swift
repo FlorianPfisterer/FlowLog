@@ -47,24 +47,46 @@ extension IntroScheduleAlarmsVC     // MARK: - View Lifecycle
     {
         super.viewDidAppear(animated)
         
-        NotificationHelper.unscheduleAllCurrentNotifications()
+        // if the user hasn't allowed notifications, remind him to enable them, because otherwise the app makes no sense
+        if let alert = checkNotificationsEnabled({ self.navigationController?.popViewControllerAnimated(true) })
+        {
+            self.presentViewController(alert, animated: true, completion: nil)
+            return
+        }
+        
         self.progressView.setProgress(0.1, animated: true)
         
-        NotificationHelper.scheduleNextNotification(starting: LogHelper.flowLogWeekStartDate!, completion: { success in
-            self.progressView.setProgress(1, animated: true)
+        NotificationHelper.scheduleNextNotification(starting: LogHelper.flowLogWeekStartDate!, completion: { result in
             
-            if !success
+            var alert: UIAlertController?
+            switch result
             {
-                let alert = UIAlertController(title: "An error occured", message: "Please try again later", preferredStyle: .Alert)
-                alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
-            }
-            else
-            {
+            case .Success:
+                self.progressView.setProgress(1, animated: true)
+                
+                LogHelper.flowLogWeekStartDate = NSDate()   // now starts the week
+                
+                // also set the week index to 1
+                NotificationHelper.currentWeekIndex = 1
+                
                 UIView.animateWithDuration(0.4, animations: {
                     self.proceedButton.alpha = 1
                 })
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: INTRO_DONE_BOOL_KEY)
+                
+            case .InvalidDate, .Other:
+                alert = UIAlertController(title: "An error occured", message: "Please try again later. Thank you.", preferredStyle: .Alert)
+                
+            case .NotificationsDisabled:
+                let (title, message) = NOTIFICATIONS_DISABLED_ALERT_STRINGS
+                alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+            }
+            
+            
+            if let errorAlert = alert
+            {
+                errorAlert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
+                self.presentViewController(errorAlert, animated: true, completion: nil)
             }
         })
     }
