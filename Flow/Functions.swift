@@ -8,6 +8,16 @@
 
 import Foundation
 import UIKit
+import GoogleMobileAds
+
+func setupBannerView(bannerView: GADBannerView, forAd: GoogleAdUnitID)
+{
+    bannerView.adUnitID = forAd.rawValue
+    
+    let request = GADRequest()
+    request.testDevices = [kGADSimulatorID]
+    bannerView.loadRequest(request)
+}
 
 func getRelativeDateDescription(date: NSDate, time: Bool = false) -> String
 {

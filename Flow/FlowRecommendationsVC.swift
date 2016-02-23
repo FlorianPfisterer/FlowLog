@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class FlowRecommendationsVC: UIViewController
 {
     // MARK: - IBOutlets
     @IBOutlet weak var diagramView: DiagramView!
+    @IBOutlet weak var bannerView: GADBannerView!
     
-    @IBOutlet weak var noDataLabel: UILabel!
     @IBOutlet weak var graphTitleLabel: UILabel!
     @IBOutlet weak var averageLabel: UILabel!
     @IBOutlet weak var maxLabel: UILabel!
@@ -55,6 +56,9 @@ extension FlowRecommendationsVC     // MARK: - View Lifecycle
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 100
+        
+        self.bannerView.rootViewController = self
+        setupBannerView(self.bannerView, forAd: .AnalysisGeneralBottomBanner)
     }
     
     override func viewWillAppear(animated: Bool)
@@ -106,8 +110,6 @@ extension FlowRecommendationsVC     // MARK: - Update UI
         
         self.diagramView.graphPoints = graphValues
         self.diagramView.setNeedsDisplay()
-        
-        self.noDataLabel.alpha = graphValues.filter({ $0 != 0 }).count == 0 ? 1 : 0
         
         // 2. setup average label
         if graphValues.count != 0

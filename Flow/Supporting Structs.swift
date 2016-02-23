@@ -59,6 +59,15 @@ enum NotificationScheduleResult: Int
     case Other
 }
 
+enum GoogleAdUnitID: String
+{
+    case Test =                        "ca-app-pub-3940256099942544/2934735716"
+    case OverviewBottomBanner =        "ca-app-pub-7799956148305568/3910022535"
+    case LogActivityBottomBanner =     "ca-app-pub-7799956148305568/5886283333"
+    case LogFlowBottomBanner =         "ca-app-pub-7799956148305568/8839749734"
+    case AnalysisGeneralBottomBanner = "ca-app-pub-7799956148305568/3865029732"
+}
+
 // MARK: - Structs
 struct Vector2D
 {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class WhatAreYouDoingVC: UIViewController
 {
@@ -16,6 +17,7 @@ class WhatAreYouDoingVC: UIViewController
     var searchedActivities: [Activity]?
     
     @IBOutlet weak var actionsCollectionView: UICollectionView!
+    @IBOutlet weak var bannerView: GADBannerView!
     
     var standardFontSize: CGFloat?
 }
@@ -31,6 +33,9 @@ extension WhatAreYouDoingVC     // MARK: - View Lifecycle
         self.actionsCollectionView.backgroundColor = UIColor.clearColor()
         
         self.loadAvailableActions()
+        
+        self.bannerView.rootViewController = self
+        setupBannerView(self.bannerView, forAd: .LogActivityBottomBanner)
     }
 }
 

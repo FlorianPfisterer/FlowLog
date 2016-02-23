@@ -20,6 +20,7 @@
 		414FE4621C709195006AE6DD /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414FE4601C709195006AE6DD /* Category+CoreDataProperties.swift */; };
 		414FE4631C709195006AE6DD /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414FE4611C709195006AE6DD /* Category.swift */; };
 		414FE4651C7091A5006AE6DD /* Activity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414FE4641C7091A5006AE6DD /* Activity+CoreDataProperties.swift */; };
+		4163A4BD1C7CCB9A0017D7D0 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4163A4BC1C7CCB9A0017D7D0 /* GoogleMobileAds.framework */; };
 		416F23741C40D8E200E86FFB /* FlowRecommendationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416F23731C40D8E200E86FFB /* FlowRecommendationsVC.swift */; };
 		416F23761C40EE0C00E86FFB /* RecommendationsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416F23751C40EE0C00E86FFB /* RecommendationsHelper.swift */; };
 		416F23781C40FF5900E86FFB /* DynamicRecommendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416F23771C40FF5900E86FFB /* DynamicRecommendationCell.swift */; };
@@ -77,6 +78,7 @@
 		414FE4601C709195006AE6DD /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		414FE4611C709195006AE6DD /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		414FE4641C7091A5006AE6DD /* Activity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4163A4BC1C7CCB9A0017D7D0 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		416F23731C40D8E200E86FFB /* FlowRecommendationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowRecommendationsVC.swift; sourceTree = "<group>"; };
 		416F23751C40EE0C00E86FFB /* RecommendationsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationsHelper.swift; sourceTree = "<group>"; };
 		416F23771C40FF5900E86FFB /* DynamicRecommendationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicRecommendationCell.swift; sourceTree = "<group>"; };
@@ -127,12 +129,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4163A4BD1C7CCB9A0017D7D0 /* GoogleMobileAds.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4163A4BB1C7CCB830017D7D0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4163A4BC1C7CCB9A0017D7D0 /* GoogleMobileAds.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		41B8150C1C40148800A2C72D /* Analysis */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +225,7 @@
 		41CE6B0B1C38F7DE00F4DBED /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4163A4BB1C7CCB830017D7D0 /* Frameworks */,
 				41CE6AFF1C38F73000F4DBED /* LaunchScreen.storyboard */,
 				41CE6B021C38F73000F4DBED /* Info.plist */,
 				41CE6AFD1C38F73000F4DBED /* Assets.xcassets */,
@@ -606,6 +618,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Flow",
+				);
 				INFOPLIST_FILE = Flow/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -619,6 +635,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Flow",
+				);
 				INFOPLIST_FILE = Flow/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

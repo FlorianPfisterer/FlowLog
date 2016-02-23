@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class AreYouInFlowVC: UIViewController
 {
     @IBOutlet weak var flowView: FlowView!
     @IBOutlet weak var saveLogButton: UIButton!
     @IBOutlet weak var challengeAxisLabel: UILabel!
+    @IBOutlet weak var bannerView: GADBannerView!
 }
 
 extension AreYouInFlowVC    // MARK: - View Lifecycle
@@ -28,6 +30,9 @@ extension AreYouInFlowVC    // MARK: - View Lifecycle
         self.setNewSelectionLocation(x: 0.5, y: 0.5)
         
         self.saveLogButton.enabled = false
+        
+        self.bannerView.rootViewController = self
+        setupBannerView(self.bannerView, forAd: .LogFlowBottomBanner)
     }
 }
 

@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class StartVC: UIViewController
 {
     @IBOutlet weak var progressView: ProgressView!
+    @IBOutlet weak var bannerView: GADBannerView!
     
     private var notificationAlertShown = false
 }
@@ -21,6 +23,9 @@ extension StartVC
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        self.bannerView.rootViewController = self
+        setupBannerView(self.bannerView, forAd: .OverviewBottomBanner)
     }
     
     override func viewWillAppear(animated: Bool)

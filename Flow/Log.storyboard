@@ -33,8 +33,16 @@
                                     <outlet property="delegate" destination="wlw-NS-cc5" id="Qea-8V-e8P"/>
                                 </connections>
                             </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2sd-v0-Mi0" customClass="GADBannerView">
+                                <rect key="frame" x="0.0" y="550" width="600" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="PGF-NR-aUm"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="oME-Ni-hXF"/>
+                                </constraints>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6Be-5l-CxS">
-                                <rect key="frame" x="3" y="174" width="594" height="423"/>
+                                <rect key="frame" x="3" y="174" width="594" height="373"/>
                                 <color key="tintColor" red="0.1215686275" green="0.47843137250000001" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="D7F-AC-JHz">
                                     <size key="itemSize" width="279" height="39"/>
@@ -85,30 +93,36 @@
                         <constraints>
                             <constraint firstItem="wtF-6v-Xvy" firstAttribute="top" secondItem="Ji4-4a-7p8" secondAttribute="bottom" constant="13" id="08M-Gj-qLc"/>
                             <constraint firstItem="qPr-WC-5aZ" firstAttribute="trailing" secondItem="bmR-kE-wiM" secondAttribute="trailingMargin" id="ETX-4L-K8v"/>
+                            <constraint firstAttribute="trailing" secondItem="2sd-v0-Mi0" secondAttribute="trailing" id="IfD-HG-Oq6"/>
                             <constraint firstItem="UOY-K3-h4O" firstAttribute="top" secondItem="6Be-5l-CxS" secondAttribute="bottom" constant="3" id="LPu-Jk-mb1"/>
                             <constraint firstItem="wtF-6v-Xvy" firstAttribute="centerX" secondItem="bmR-kE-wiM" secondAttribute="centerX" id="R6s-72-khS"/>
+                            <constraint firstItem="2sd-v0-Mi0" firstAttribute="top" secondItem="6Be-5l-CxS" secondAttribute="bottom" constant="3" id="WNu-Qg-Juh"/>
                             <constraint firstAttribute="leadingMargin" secondItem="qPr-WC-5aZ" secondAttribute="leading" id="Ydk-zl-6e1"/>
+                            <constraint firstItem="2sd-v0-Mi0" firstAttribute="leading" secondItem="bmR-kE-wiM" secondAttribute="leading" id="ZWF-gR-S15"/>
                             <constraint firstItem="qPr-WC-5aZ" firstAttribute="top" secondItem="wtF-6v-Xvy" secondAttribute="bottom" constant="13" id="csG-Cg-cYB"/>
                             <constraint firstItem="6Be-5l-CxS" firstAttribute="top" secondItem="qPr-WC-5aZ" secondAttribute="bottom" constant="14" id="csd-sq-V7X"/>
                             <constraint firstAttribute="trailing" secondItem="6Be-5l-CxS" secondAttribute="trailing" constant="3" id="dFL-x8-RGE"/>
                             <constraint firstItem="6Be-5l-CxS" firstAttribute="top" secondItem="wtF-6v-Xvy" secondAttribute="bottom" constant="8" id="eVh-Fj-0vs"/>
+                            <constraint firstItem="UOY-K3-h4O" firstAttribute="top" secondItem="2sd-v0-Mi0" secondAttribute="bottom" id="fae-cB-45i"/>
                             <constraint firstItem="6Be-5l-CxS" firstAttribute="leading" secondItem="bmR-kE-wiM" secondAttribute="leading" constant="3" id="ljx-UL-JKG"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="eVh-Fj-0vs"/>
+                                <exclude reference="LPu-Jk-mb1"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="QUESTION #1" id="Od3-uz-kzh"/>
                     <connections>
                         <outlet property="actionsCollectionView" destination="6Be-5l-CxS" id="8Vl-jU-mTw"/>
+                        <outlet property="bannerView" destination="2sd-v0-Mi0" id="A04-TG-Sou"/>
                         <segue destination="Kl0-9d-n6U" kind="show" identifier="toQuestion2Segue" id="xwR-kk-7Hg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wOd-L3-CuX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1538" y="186"/>
+            <point key="canvasLocation" x="1536" y="186"/>
         </scene>
         <!--QUESTION #2-->
         <scene sceneID="xCA-IC-Bsb">
@@ -223,7 +237,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jz5-Su-Aaq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2148.5" y="185.5"/>
+            <point key="canvasLocation" x="2247.75" y="185.5"/>
         </scene>
         <!--QUESTION #3-->
         <scene sceneID="I6z-Vu-vYj">
@@ -255,13 +269,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SKILL LEVEL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8pw-h7-t12">
-                                <rect key="frame" x="244" y="582" width="115" height="24"/>
+                                <rect key="frame" x="244" y="530" width="115" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hrk-7x-D5P" customClass="FlowView" customModule="FlowLog" customModuleProvider="target">
-                                <rect key="frame" x="46" y="125" width="313" height="454"/>
+                                <rect key="frame" x="46" y="125" width="313" height="402"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="axisThickness">
@@ -272,8 +286,15 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lbg-eY-eha" customClass="GADBannerView">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="8QX-sV-6H6"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKU-i4-6I4">
-                                <rect key="frame" x="0.0" y="623" width="375" height="36"/>
+                                <rect key="frame" x="0.0" y="571" width="375" height="36"/>
                                 <color key="backgroundColor" red="0.1215686275" green="0.47843137250000001" blue="0.50196078430000002" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Select Flow State">
@@ -288,10 +309,14 @@
                         <constraints>
                             <constraint firstItem="6TZ-kH-iQF" firstAttribute="top" secondItem="8pw-h7-t12" secondAttribute="bottom" constant="60" id="15K-nk-g7H"/>
                             <constraint firstItem="hrk-7x-D5P" firstAttribute="top" secondItem="2vj-bl-J6A" secondAttribute="bottom" constant="8" id="5TZ-pD-pcx"/>
+                            <constraint firstItem="Lbg-eY-eha" firstAttribute="leading" secondItem="kBM-bR-68l" secondAttribute="leading" id="AAw-xC-yEB"/>
                             <constraint firstItem="8pw-h7-t12" firstAttribute="centerX" secondItem="hrk-7x-D5P" secondAttribute="centerX" id="Fur-Pz-d2R"/>
                             <constraint firstItem="8pw-h7-t12" firstAttribute="top" secondItem="hrk-7x-D5P" secondAttribute="bottom" constant="3" id="Ifw-Et-40W"/>
                             <constraint firstItem="fKU-i4-6I4" firstAttribute="top" secondItem="8pw-h7-t12" secondAttribute="bottom" constant="17" id="IiH-BT-LTI"/>
+                            <constraint firstItem="6TZ-kH-iQF" firstAttribute="top" secondItem="Lbg-eY-eha" secondAttribute="bottom" id="KOQ-a4-LVM"/>
                             <constraint firstItem="8pw-h7-t12" firstAttribute="top" secondItem="hrk-7x-D5P" secondAttribute="bottom" constant="21" id="RtN-Bt-SNs"/>
+                            <constraint firstAttribute="trailing" secondItem="Lbg-eY-eha" secondAttribute="trailing" id="SvO-Pb-Hym"/>
+                            <constraint firstItem="Lbg-eY-eha" firstAttribute="top" secondItem="fKU-i4-6I4" secondAttribute="bottom" constant="10" id="TcQ-oO-Da5"/>
                             <constraint firstItem="6TZ-kH-iQF" firstAttribute="top" secondItem="8pw-h7-t12" secondAttribute="bottom" constant="20" id="Zh6-zR-dcc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hrk-7x-D5P" secondAttribute="trailing" id="aov-20-qA7"/>
                             <constraint firstItem="2vj-bl-J6A" firstAttribute="top" secondItem="CmY-AF-ehl" secondAttribute="bottom" constant="13" id="eEq-Hn-bME"/>
@@ -308,10 +333,12 @@
                                 <exclude reference="RtN-Bt-SNs"/>
                                 <exclude reference="15K-nk-g7H"/>
                                 <exclude reference="Zh6-zR-dcc"/>
+                                <exclude reference="gNw-Nm-s6l"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="bannerView" destination="Lbg-eY-eha" id="Si0-hZ-Cpn"/>
                         <outlet property="challengeAxisLabel" destination="ktW-1X-Loo" id="RP5-uC-XhH"/>
                         <outlet property="flowView" destination="hrk-7x-D5P" id="m81-nN-08q"/>
                         <outlet property="saveLogButton" destination="fKU-i4-6I4" id="waY-no-GyH"/>
@@ -319,7 +346,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sxG-nW-gZ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2895.75" y="185.5"/>
+            <point key="canvasLocation" x="2895.5" y="185.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XKA-Yg-4V0">
