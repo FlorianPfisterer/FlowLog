@@ -21,7 +21,6 @@ class RecommendationsHelper
             // exclude zero log timeframes
             if graphState != .FlowState
             {
-                print("FILTERUNG GRAPH VALUES")
                 graphValues = graphValues.filter({ $0 != 0 })
             }
             
