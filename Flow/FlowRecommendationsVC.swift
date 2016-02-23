@@ -13,6 +13,7 @@ class FlowRecommendationsVC: UIViewController
     // MARK: - IBOutlets
     @IBOutlet weak var diagramView: DiagramView!
     
+    @IBOutlet weak var noDataLabel: UILabel!
     @IBOutlet weak var graphTitleLabel: UILabel!
     @IBOutlet weak var averageLabel: UILabel!
     @IBOutlet weak var maxLabel: UILabel!
@@ -29,7 +30,7 @@ class FlowRecommendationsVC: UIViewController
     var recommendations: [String] = []
     
     var graphDisplayState: GraphDisplayState = .FlowState {     // standard
-        didSet (value)
+        didSet
         {
             self.setupGraphDisplay()
         }
@@ -106,6 +107,8 @@ extension FlowRecommendationsVC     // MARK: - Update UI
         self.diagramView.graphPoints = graphValues
         self.diagramView.setNeedsDisplay()
         
+        self.noDataLabel.alpha = graphValues.filter({ $0 != 0 }).count == 0 ? 1 : 0
+        
         // 2. setup average label
         if graphValues.count != 0
         {
@@ -115,14 +118,23 @@ extension FlowRecommendationsVC     // MARK: - Update UI
                 sum += item
             }
             
-            let averageValue: CGFloat = sum/CGFloat(graphValues.filter({ $0 != 0 }).count)
-            switch self.graphDisplayState
-            {
-            case .FlowState:
-                self.averageLabel.text = "\(StringHelper.format(".2", value: averageValue))"
+            let amount: Int = graphValues.filter({ $0 != 0 }).count
             
-            case .Happiness, .Energy, .AllCombined:
-                self.averageLabel.text = "\(StringHelper.format(".0", value: averageValue*100))%"
+            if amount != 0
+            {
+                let averageValue: CGFloat = sum/CGFloat(amount)
+                switch self.graphDisplayState
+                {
+                case .FlowState:
+                    self.averageLabel.text = "\(StringHelper.format(".2", value: averageValue))"
+                    
+                case .Happiness, .Energy, .AllCombined:
+                    self.averageLabel.text = "\(StringHelper.format(".0", value: averageValue*100))%"
+                }
+            }
+            else
+            {
+                self.averageLabel.text = "None"
             }
         }
         

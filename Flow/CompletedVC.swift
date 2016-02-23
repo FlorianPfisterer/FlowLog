@@ -80,6 +80,7 @@ extension CompletedVC   // MARK: - IBActions
 {
     @IBAction func startNewFlowLogWeek()
     {
+        NotificationHelper.currentWeekIndex = NotificationHelper.currentWeekIndex + 1
         LogHelper.flowLogWeekStartDate = NSDate()   // now starts a new week
         
         let completion = AUTOMATIC_VC_NOTIFICATION_COMPLETION(vc: self, success: {

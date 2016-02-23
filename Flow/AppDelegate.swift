@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         self.seedDatabaseIfNecessary()
         self.reactToPossibleNotificationsForApplication(application, withLaunchOptions: launchOptions)
         
-        //DBSeedHelper.seedLogs(40) // DEBUG
+        DBSeedHelper.seedLogs(40) // DEBUG
         
         return true
     }
@@ -186,6 +186,7 @@ extension AppDelegate       // MARK: - Helper Functions
         }
     }
     
+    // MARK: - Storyboard Helper Function for Debug
     private func setStoryboardTo(name: String)
     {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)

@@ -157,9 +157,9 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fDr-W2-jlT">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDr-W2-jlT">
                                 <rect key="frame" x="20" y="336" width="560" height="138"/>
-                                <string key="text">You have completed all FlowLogs! Check out the analysis of the data. Do you want to start a new FlowLog-week (to make the analyses more exact)?</string>
+                                <string key="text">You have completed all FlowLogs! Check out the analysis of the data. Do you want to start a new FlowLog-week to make the analyses more exact?</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -245,6 +245,6 @@
         <image name="moreIconNavigationbar" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="S5f-zD-pa2"/>
+        <segue reference="3OU-Kn-Y17"/>
     </inferredMetricsTieBreakers>
 </document>

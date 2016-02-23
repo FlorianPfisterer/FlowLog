@@ -11,7 +11,7 @@ import UIKit
 @IBDesignable
 class AwardView: UIView
 {
-    private let graphPoints: [CGFloat] = [1, 3, 15, 40, 120]
+    private let graphPoints: [CGFloat] = [1, 5, 18, 68, 170, 370]
     private var diagramView: DiagramView!
     
     override init(frame: CGRect)

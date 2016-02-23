@@ -36,6 +36,50 @@ class StringHelper
         return dateFormatter.stringFromDate(date)
     }
     
+    class func getLocalizedTimeDescriptionAtHour(hour: Int) -> String
+    {
+        let dateComponents = calendar.components([.Day, .Month, .Year], fromDate: NSDate())
+        dateComponents.calendar = calendar
+        dateComponents.hour = hour
+        
+        if let date = dateComponents.date
+        {
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.locale = NSLocale.autoupdatingCurrentLocale()
+            dateFormatter.timeStyle = .ShortStyle
+            dateFormatter.dateStyle = .NoStyle
+            
+            let fullDescription = StringHelper.getLocalizedTimeDescription(date)
+            
+            let is24 = fullDescription.rangeOfString(dateFormatter.AMSymbol) == nil && fullDescription.rangeOfString(dateFormatter.PMSymbol) == nil
+            
+            if is24
+            {
+                return "\(hour)"
+            }
+            else
+            {
+                if hour > 12
+                {
+                    return "\(hour-12)pm"
+                }
+                else if hour == 24 || hour == 0
+                {
+                    return "12am"
+                }
+                else if hour == 12
+                {
+                    return "12pm"
+                }
+                else
+                {
+                    return "\(hour)am"
+                }
+            }
+        }
+        return "\(hour)"
+    }
+    
     class func getLocalizedShortTimeDescriptionAtHour(hour: Int) -> String
     {
         let dateComponents = calendar.components([.Day, .Month, .Year], fromDate: NSDate())

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10089" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ghg-LI-xKZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ghg-LI-xKZ">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10072.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -115,7 +115,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ojv-Yn-52F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3385" y="910"/>
+            <point key="canvasLocation" x="3384" y="910"/>
         </scene>
         <!--Flow Recommendations-->
         <scene sceneID="6cK-ZU-bun">
@@ -210,12 +210,6 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3p" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bay-rV-ng5">
-                                        <rect key="frame" x="204" y="228" width="21" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7p" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewA-9t-Ybs">
                                         <rect key="frame" x="310" y="228" width="20" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -229,7 +223,19 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11a" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZc-6X-WED">
-                                        <rect key="frame" x="98" y="228" width="25" height="21"/>
+                                        <rect key="frame" x="100" y="228" width="25" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(No Data)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ald-2n-ZWx">
+                                        <rect key="frame" x="135" y="181" width="74" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3p" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bay-rV-ng5">
+                                        <rect key="frame" x="215" y="228" width="21" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -248,15 +254,18 @@
                                     <constraint firstItem="fZc-6X-WED" firstAttribute="leading" secondItem="gAf-Sg-Orz" secondAttribute="trailing" constant="41" id="Qls-B1-mVi"/>
                                     <constraint firstAttribute="trailing" secondItem="d88-I5-Ukg" secondAttribute="trailing" constant="1" id="Sp2-GS-dmx"/>
                                     <constraint firstAttribute="bottom" secondItem="fZc-6X-WED" secondAttribute="bottom" constant="8" id="Sw6-68-1PC"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ald-2n-ZWx" secondAttribute="bottom" constant="55" id="YWj-oQ-iJA"/>
                                     <constraint firstItem="d88-I5-Ukg" firstAttribute="centerX" secondItem="oCk-TW-nTX" secondAttribute="centerX" id="cvs-UG-XiI"/>
-                                    <constraint firstItem="bay-rV-ng5" firstAttribute="centerX" secondItem="W0l-ug-m9l" secondAttribute="centerX" multiplier="1:0.8" id="iYt-Te-74n"/>
-                                    <constraint firstItem="fZc-6X-WED" firstAttribute="centerX" secondItem="W0l-ug-m9l" secondAttribute="centerX" multiplier="1:1.55" id="idf-Fh-wiB"/>
+                                    <constraint firstItem="bay-rV-ng5" firstAttribute="centerX" secondItem="W0l-ug-m9l" secondAttribute="centerX" multiplier="1:0.76" id="iYt-Te-74n"/>
+                                    <constraint firstItem="fZc-6X-WED" firstAttribute="centerX" secondItem="W0l-ug-m9l" secondAttribute="centerX" multiplier="1:1.53" id="idf-Fh-wiB"/>
                                     <constraint firstItem="ewA-9t-Ybs" firstAttribute="centerY" secondItem="fZc-6X-WED" secondAttribute="centerY" id="lFe-TU-09P"/>
                                     <constraint firstAttribute="bottom" secondItem="d88-I5-Ukg" secondAttribute="bottom" constant="40" id="mca-Ez-AGo"/>
                                     <constraint firstAttribute="bottom" secondItem="gAf-Sg-Orz" secondAttribute="bottom" constant="8" id="oFB-pa-rPk"/>
                                     <constraint firstItem="ckG-Ee-dU1" firstAttribute="leading" secondItem="W0l-ug-m9l" secondAttribute="leading" constant="20" id="qay-6B-zHv"/>
+                                    <constraint firstItem="Ald-2n-ZWx" firstAttribute="centerX" secondItem="W0l-ug-m9l" secondAttribute="centerX" id="s1h-nF-Ug6"/>
                                     <constraint firstItem="pro-QB-h5a" firstAttribute="centerY" secondItem="HvT-oo-Q2a" secondAttribute="centerY" id="uer-ES-kBK"/>
                                     <constraint firstItem="bay-rV-ng5" firstAttribute="centerY" secondItem="ewA-9t-Ybs" secondAttribute="centerY" id="urn-5B-guA"/>
+                                    <constraint firstItem="Ald-2n-ZWx" firstAttribute="centerY" secondItem="W0l-ug-m9l" secondAttribute="centerY" constant="-20" id="vCg-LA-UDQ"/>
                                     <constraint firstItem="HvT-oo-Q2a" firstAttribute="leading" secondItem="W0l-ug-m9l" secondAttribute="leading" constant="20" id="y2l-S8-Zn1"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -269,6 +278,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="vCg-LA-UDQ"/>
                                         <exclude reference="Qls-B1-mVi"/>
                                         <exclude reference="Sw6-68-1PC"/>
                                         <exclude reference="cvs-UG-XiI"/>
@@ -308,6 +318,7 @@
                         <outlet property="middleLeftTimeLabel" destination="fZc-6X-WED" id="znR-y0-Uc6"/>
                         <outlet property="middleRightTimeLabel" destination="bay-rV-ng5" id="wS9-Nv-4tO"/>
                         <outlet property="minLabel" destination="d88-I5-Ukg" id="xUN-JX-YQK"/>
+                        <outlet property="noDataLabel" destination="Ald-2n-ZWx" id="b8X-Ay-nw5"/>
                         <outlet property="startTimeLabel" destination="gAf-Sg-Orz" id="gq6-lD-jhO"/>
                         <outlet property="tableView" destination="dBQ-DJ-Vws" id="NcS-px-79U"/>
                     </connections>
