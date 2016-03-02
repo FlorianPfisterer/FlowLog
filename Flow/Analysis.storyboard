@@ -240,13 +240,6 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="691-gg-xeZ" customClass="GADBannerView">
-                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="RZh-v1-AE7"/>
-                                </constraints>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dBQ-DJ-Vws">
                                 <rect key="frame" x="0.0" y="377" width="375" height="240"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -282,6 +275,13 @@
                                     <outlet property="delegate" destination="6Ef-Jz-vhe" id="BAi-8C-Jdc"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="691-gg-xeZ" customClass="GADBannerView">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="RZh-v1-AE7"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -315,6 +315,7 @@
                     <connections>
                         <outlet property="averageLabel" destination="pro-QB-h5a" id="Py4-Wm-UYv"/>
                         <outlet property="bannerView" destination="691-gg-xeZ" id="N5l-lO-g5S"/>
+                        <outlet property="bannerViewHeightConstraint" destination="RZh-v1-AE7" id="vWC-Vf-ChA"/>
                         <outlet property="diagramView" destination="W0l-ug-m9l" id="xTQ-gR-b0s"/>
                         <outlet property="endTimeLabel" destination="ewA-9t-Ybs" id="HLe-Ud-BgY"/>
                         <outlet property="graphKindSegmentedControl" destination="RJp-uD-OTA" id="u3D-GF-C0N"/>

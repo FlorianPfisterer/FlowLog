@@ -14,6 +14,7 @@ class FlowRecommendationsVC: UIViewController
     // MARK: - IBOutlets
     @IBOutlet weak var diagramView: DiagramView!
     @IBOutlet weak var bannerView: GADBannerView!
+    @IBOutlet weak var bannerViewHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var graphTitleLabel: UILabel!
     @IBOutlet weak var averageLabel: UILabel!
@@ -58,7 +59,14 @@ extension FlowRecommendationsVC     // MARK: - View Lifecycle
         self.tableView.estimatedRowHeight = 100
         
         self.bannerView.rootViewController = self
-        setupBannerView(self.bannerView, forAd: .AnalysisGeneralBottomBanner)
+        if DEBUG
+        {
+            self.bannerViewHeightConstraint.constant = 0
+        }
+        else
+        {
+            setupBannerView(self.bannerView, forAd: .AnalysisGeneralBottomBanner)
+        }
     }
     
     override func viewWillAppear(animated: Bool)

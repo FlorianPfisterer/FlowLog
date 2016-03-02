@@ -38,7 +38,6 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="PGF-NR-aUm"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="oME-Ni-hXF"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6Be-5l-CxS">
@@ -117,6 +116,7 @@
                     <connections>
                         <outlet property="actionsCollectionView" destination="6Be-5l-CxS" id="8Vl-jU-mTw"/>
                         <outlet property="bannerView" destination="2sd-v0-Mi0" id="A04-TG-Sou"/>
+                        <outlet property="bannerViewHeightConstraint" destination="PGF-NR-aUm" id="s9W-UD-vsT"/>
                         <segue destination="Kl0-9d-n6U" kind="show" identifier="toQuestion2Segue" id="xwR-kk-7Hg"/>
                     </connections>
                 </viewController>
@@ -339,6 +339,7 @@
                     </view>
                     <connections>
                         <outlet property="bannerView" destination="Lbg-eY-eha" id="Si0-hZ-Cpn"/>
+                        <outlet property="bannerViewHeightConstraint" destination="8QX-sV-6H6" id="zS9-hr-bJM"/>
                         <outlet property="challengeAxisLabel" destination="ktW-1X-Loo" id="RP5-uC-XhH"/>
                         <outlet property="flowView" destination="hrk-7x-D5P" id="m81-nN-08q"/>
                         <outlet property="saveLogButton" destination="fKU-i4-6I4" id="waY-no-GyH"/>

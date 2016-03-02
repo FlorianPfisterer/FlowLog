@@ -19,6 +19,8 @@ class WhatAreYouDoingVC: UIViewController
     @IBOutlet weak var actionsCollectionView: UICollectionView!
     @IBOutlet weak var bannerView: GADBannerView!
     
+    @IBOutlet weak var bannerViewHeightConstraint: NSLayoutConstraint!
+    
     var standardFontSize: CGFloat?
 }
 
@@ -35,7 +37,14 @@ extension WhatAreYouDoingVC     // MARK: - View Lifecycle
         self.loadAvailableActions()
         
         self.bannerView.rootViewController = self
-        setupBannerView(self.bannerView, forAd: .LogActivityBottomBanner)
+        if DEBUG
+        {
+            self.bannerViewHeightConstraint.constant = 0
+        }
+        else
+        {
+            setupBannerView(self.bannerView, forAd: .LogActivityBottomBanner)
+        }
     }
 }
 

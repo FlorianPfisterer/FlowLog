@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         self.seedDatabaseIfNecessary()
         self.reactToPossibleNotificationsForApplication(application, withLaunchOptions: launchOptions)
         
-        //DBSeedHelper.seedLogs(40) // DEBUG
+        //DBSeedHelper.seedLogs(38) // DEBUG
         
         return true
     }

@@ -79,6 +79,12 @@ extension TimeIntervalPicker
         self.addSubview(self.rightSectionView)
     }
     
+    private func configureForegroundSectionView(view: TimeIntervalSelectionView)
+    {
+        view.backgroundColor = UIColor.clearColor()
+        view.sliderViewWidth = self.sliderViewWidth
+    }
+    
     override func layoutSubviews()
     {
         super.layoutSubviews()
@@ -88,33 +94,27 @@ extension TimeIntervalPicker
         
         self.recalculateForegroundSections()
     }
-    
-    private func configureForegroundSectionView(view: TimeIntervalSelectionView)
-    {
-        view.backgroundColor = UIColor.clearColor()
-        view.sliderViewWidth = self.sliderViewWidth
-    }
 }
 
 extension TimeIntervalPicker
 {
     private var leftSectionRect: CGRect {
-        let x = self.leftSectionFraction * self.width - self.sectionViewWidth/2
+        let x = (self.width - self.sectionViewWidth) * self.leftSectionFraction       // max * current
         return CGRect(x: x, y: 0, width: self.sectionViewWidth, height: self.height)
     }
     
     private var rightSectionRect: CGRect {
-        let x = self.width - self.width * (1 - self.rightSectionFraction) - self.sectionViewWidth/2
+        let x = (self.width - self.sectionViewWidth) * self.rightSectionFraction        // max * current
         return CGRect(x: x, y: 0, width: self.sectionViewWidth, height: self.height)
     }
     
     private func recalculateForegroundSections()
     {
-        self.leftSectionView.frame = self.leftSectionRect
-        self.rightSectionView.frame = self.rightSectionRect
-        
         self.updateLeftSectionView()
         self.updateRightSectionView()
+        
+        self.leftSectionView.frame = self.leftSectionRect
+        self.rightSectionView.frame = self.rightSectionRect
     }
     
     private func updateLeftSectionView()
@@ -133,11 +133,11 @@ extension TimeIntervalPicker
 extension TimeIntervalPicker
 {
     private var expandedLeftSectionFrame: CGRect {
-        return CGRect(x: self.leftSectionView.frame.origin.x - 10, y: 0, width: self.sectionViewWidth + 20, height: self.bounds.size.height)
+        return CGRect(x: self.leftSectionView.frame.origin.x, y: 0, width: self.sectionViewWidth, height: self.bounds.size.height)
     }
     
     private var expandedRightSectionFrame: CGRect {
-        return CGRect(x: self.rightSectionView.frame.origin.x - 10, y: 0, width: self.sectionViewWidth + 20, height: self.bounds.size.height)
+        return CGRect(x: self.rightSectionView.frame.origin.x, y: 0, width: self.sectionViewWidth, height: self.bounds.size.height)
     }
     
     func didPanSegmentSlider(recognizer: UIPanGestureRecognizer)
@@ -193,7 +193,7 @@ extension TimeIntervalPicker
             {
                 self.leftSectionView.center.x = min(self.rightSectionView.frame.origin.x - self.sectionViewWidth/2, newX)
             }
-            
+
             self.leftSectionFraction = (self.leftSectionView.center.x - self.sectionViewWidth/2) / (self.width - self.sectionViewWidth)
             
         case .TookRight:
@@ -216,13 +216,11 @@ extension TimeIntervalPicker
 {
     func getStartTime() -> Time
     {
-        print("START TIME: \(self.leftSectionView.time.timeString())")
         return self.leftSectionView.time
     }
     
     func getEndTime() -> Time
     {
-        print("END TIME: \(self.rightSectionView.time.timeString())")
         return self.rightSectionView.time
     }
 }

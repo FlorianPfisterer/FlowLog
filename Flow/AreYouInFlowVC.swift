@@ -15,6 +15,7 @@ class AreYouInFlowVC: UIViewController
     @IBOutlet weak var saveLogButton: UIButton!
     @IBOutlet weak var challengeAxisLabel: UILabel!
     @IBOutlet weak var bannerView: GADBannerView!
+    @IBOutlet weak var bannerViewHeightConstraint: NSLayoutConstraint!
 }
 
 extension AreYouInFlowVC    // MARK: - View Lifecycle
@@ -32,7 +33,14 @@ extension AreYouInFlowVC    // MARK: - View Lifecycle
         self.saveLogButton.enabled = false
         
         self.bannerView.rootViewController = self
-        setupBannerView(self.bannerView, forAd: .LogFlowBottomBanner)
+        if DEBUG
+        {
+            self.bannerViewHeightConstraint.constant = 0
+        }
+        else
+        {
+            setupBannerView(self.bannerView, forAd: .LogFlowBottomBanner)
+        }
     }
 }
 
@@ -71,36 +79,31 @@ extension AreYouInFlowVC        // MARK: - IBActions
                 {
                     self.saveLogButton.setTitle("LOG SAVED", forState: .Normal)
                     
-                    let logCompletionHandler = {
-                        LogHelper.logCompletionHandler?()
-                        LogHelper.logCompletionHandler = nil
-                    }
-                    
                     if NotificationHelper.shouldScheduleNotification()
                     {
                         let completion = AUTOMATIC_VC_NOTIFICATION_COMPLETION(vc: self, success: {
                             if let _ = self.presentingViewController
                             {
-                                self.dismissViewControllerAnimated(true, completion: logCompletionHandler)
+                                self.dismissViewControllerAnimated(true, completion: nil)
                             }
                             else
                             {
                                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                                 let destinationVC = storyboard.instantiateInitialViewController()!
                                 
-                                self.presentViewController(destinationVC, animated: true, completion: logCompletionHandler)
+                                self.presentViewController(destinationVC, animated: true, completion: nil)
                             }
                         }, failure: {
                             if let _ = self.presentingViewController
                             {
-                                self.dismissViewControllerAnimated(true, completion: logCompletionHandler)
+                                self.dismissViewControllerAnimated(true, completion: nil)
                             }
                             else
                             {
                                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                                 let destinationVC = storyboard.instantiateInitialViewController()!
                                 
-                                self.presentViewController(destinationVC, animated: true, completion: logCompletionHandler)
+                                self.presentViewController(destinationVC, animated: true, completion: nil)
                             }
                         })
                         
@@ -109,6 +112,18 @@ extension AreYouInFlowVC        // MARK: - IBActions
                     else
                     {
                         print("INFO: no next log scheduled!")
+                        
+                        if let _ = self.presentingViewController
+                        {
+                            self.dismissViewControllerAnimated(true, completion: nil)
+                        }
+                        else
+                        {
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let destinationVC = storyboard.instantiateInitialViewController()!
+                            
+                            self.presentViewController(destinationVC, animated: true, completion: nil)
+                        }
                     }
                 }
                 else

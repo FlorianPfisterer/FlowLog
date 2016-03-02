@@ -12,6 +12,8 @@ class IntroAnalysesInfoVC: UIViewController
 {
     @IBOutlet weak var bottomHeadlineView: CircularHeadlineView!
     
+    private var changeToMainOverviewOnNextPresentation = false
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -29,6 +31,21 @@ class IntroAnalysesInfoVC: UIViewController
         
         self.navigationController?.navigationBarHidden = true
     }
+    
+    override func viewDidAppear(animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        
+        if self.changeToMainOverviewOnNextPresentation
+        {
+            self.changeToMainOverviewOnNextPresentation = false
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            if let rootVC = mainStoryboard.instantiateInitialViewController()
+            {
+                self.presentViewController(rootVC, animated: true, completion: nil)
+            }
+        }
+    }
 }
 
 extension IntroAnalysesInfoVC
@@ -41,16 +58,7 @@ extension IntroAnalysesInfoVC
         let storyboard = UIStoryboard(name: "Log", bundle: nil)
         if let rootVC = storyboard.instantiateInitialViewController()
         {
-            LogHelper.logCompletionHandler = {
-                dispatch_async(dispatch_get_main_queue(), {
-                    let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    if let rootVC = mainStoryboard.instantiateInitialViewController()
-                    {
-                        self.presentViewController(rootVC, animated: true, completion: nil)
-                    }
-                })
-            }
-            
+            self.changeToMainOverviewOnNextPresentation = true
             self.presentViewController(rootVC, animated: true, completion: nil)
         }
         else

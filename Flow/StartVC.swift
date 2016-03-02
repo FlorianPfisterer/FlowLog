@@ -15,6 +15,8 @@ class StartVC: UIViewController
     @IBOutlet weak var nextLogLabel: UILabel!
     @IBOutlet weak var bannerView: GADBannerView!
     
+    @IBOutlet weak var bannerViewHeightConstraint: NSLayoutConstraint!
+    
     private var notificationAlertShown = false
 }
 
@@ -26,7 +28,15 @@ extension StartVC
         super.viewDidLoad()
         
         self.bannerView.rootViewController = self
-        setupBannerView(self.bannerView, forAd: .OverviewBottomBanner)
+        
+        if DEBUG
+        {
+            self.bannerViewHeightConstraint.constant = 0
+        }
+        else
+        {
+            setupBannerView(self.bannerView, forAd: .OverviewBottomBanner)
+        }
     }
     
     override func viewWillAppear(animated: Bool)

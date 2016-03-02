@@ -120,6 +120,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bannerView" destination="l4I-OC-Z23" id="Hfe-8o-Hn3"/>
+                        <outlet property="bannerViewHeightConstraint" destination="k2T-EZ-qZt" id="Rqf-vr-ODq"/>
                         <outlet property="nextLogLabel" destination="e0f-xR-x5S" id="DYO-oJ-wZ6"/>
                         <outlet property="progressView" destination="Ufw-3y-D7A" id="7KD-Gd-fDO"/>
                     </connections>
