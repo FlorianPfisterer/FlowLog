@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -9,6 +9,7 @@
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
@@ -18,41 +19,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find your flow." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7I-fo-Mz0">
-                                <rect key="frame" x="241.5" y="406.5" width="117" height="21.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find your flow." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EK9-Si-6LU">
+                                <rect key="frame" x="242" y="365" width="117" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FlowLog" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gya-s1-bwt">
-                                <rect key="frame" x="182.5" y="337" width="235" height="76.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FlowLog" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oyh-Vf-MTk">
+                                <rect key="frame" x="183" y="295" width="235" height="77"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="64"/>
                                 <color key="textColor" red="0.1215686275" green="0.47843137250000001" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIconRounded" translatesAutoresizingMaskIntoConstraints="NO" id="HkF-3T-oLv">
-                                <rect key="frame" x="190" y="97" width="220" height="220"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIconRounded" translatesAutoresizingMaskIntoConstraints="NO" id="H0z-7D-s0s">
+                                <rect key="frame" x="190" y="55" width="220" height="220"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="220" id="8PC-DK-K1L">
+                                    <constraint firstAttribute="width" secondItem="H0z-7D-s0s" secondAttribute="height" multiplier="1:1" id="jdW-Hs-XaO"/>
+                                    <constraint firstAttribute="height" constant="220" id="zH1-Lk-QQ2">
                                         <variation key="widthClass=compact" constant="185"/>
                                     </constraint>
-                                    <constraint firstAttribute="width" secondItem="HkF-3T-oLv" secondAttribute="height" multiplier="1:1" id="cpK-hf-n9j"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.35294117650000001" green="0.47843137250000001" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.22213665360006793" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="h7I-fo-Mz0" firstAttribute="centerX" secondItem="Gya-s1-bwt" secondAttribute="centerX" id="B3a-wP-vKD"/>
-                            <constraint firstItem="HkF-3T-oLv" firstAttribute="width" secondItem="HkF-3T-oLv" secondAttribute="height" multiplier="1:1" id="RXr-dL-e12"/>
-                            <constraint firstItem="HkF-3T-oLv" firstAttribute="centerX" secondItem="Gya-s1-bwt" secondAttribute="centerX" id="VZI-75-XED"/>
-                            <constraint firstItem="Gya-s1-bwt" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ayx-nz-jv4"/>
-                            <constraint firstItem="h7I-fo-Mz0" firstAttribute="top" secondItem="Gya-s1-bwt" secondAttribute="bottom" constant="-7" id="eh9-k4-YiV"/>
-                            <constraint firstItem="Gya-s1-bwt" firstAttribute="top" secondItem="HkF-3T-oLv" secondAttribute="bottom" constant="20" id="ek5-aU-3He"/>
-                            <constraint firstItem="Gya-s1-bwt" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="1:0.8" id="hhR-1d-Aef"/>
+                            <constraint firstItem="H0z-7D-s0s" firstAttribute="width" secondItem="H0z-7D-s0s" secondAttribute="height" multiplier="1:1" id="Epz-bt-pmt"/>
+                            <constraint firstItem="EK9-Si-6LU" firstAttribute="centerX" secondItem="Oyh-Vf-MTk" secondAttribute="centerX" id="S8q-q4-2Ek"/>
+                            <constraint firstItem="Oyh-Vf-MTk" firstAttribute="top" secondItem="H0z-7D-s0s" secondAttribute="bottom" constant="20" id="is0-iP-TFT"/>
+                            <constraint firstItem="H0z-7D-s0s" firstAttribute="centerX" secondItem="Oyh-Vf-MTk" secondAttribute="centerX" id="ns0-p1-5Th"/>
+                            <constraint firstItem="Oyh-Vf-MTk" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="1:0.9" id="y70-7O-B9E"/>
+                            <constraint firstItem="EK9-Si-6LU" firstAttribute="top" secondItem="Oyh-Vf-MTk" secondAttribute="bottom" constant="-7" id="ydR-I1-Rsr"/>
+                            <constraint firstItem="Oyh-Vf-MTk" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ymJ-hd-P63"/>
                         </constraints>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="53" y="375"/>
         </scene>

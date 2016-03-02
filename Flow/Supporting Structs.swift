@@ -59,6 +59,13 @@ enum NotificationScheduleResult: Int
     case Other
 }
 
+enum SliderViewSelectionState
+{
+    case None
+    case TookLeft
+    case TookRight
+}
+
 enum GoogleAdUnitID: String
 {
     case Test =                        "ca-app-pub-3940256099942544/2934735716"
@@ -66,6 +73,13 @@ enum GoogleAdUnitID: String
     case LogActivityBottomBanner =     "ca-app-pub-7799956148305568/5886283333"
     case LogFlowBottomBanner =         "ca-app-pub-7799956148305568/8839749734"
     case AnalysisGeneralBottomBanner = "ca-app-pub-7799956148305568/3865029732"
+}
+
+enum TimeAccuracy
+{
+    case Hours
+    case HalfHours
+    case Minutes
 }
 
 // MARK: - Structs
@@ -158,5 +172,26 @@ extension Time      // public API
         dateComponents.second = 0
         
         return calendar.dateFromComponents(dateComponents)!
+    }
+}
+
+extension Time
+{
+    static func fromFraction(fraction: CGFloat, accuracy: TimeAccuracy = .Minutes) -> Time
+    {
+        switch accuracy
+        {
+        case .Hours:
+            let hours: CGFloat = 24 * fraction
+            return Time(absoluteMinutes: Int(floor(hours)) * 60)
+            
+        case .HalfHours:
+            let halfhours: CGFloat = 24 * 2 * fraction
+            return Time(absoluteMinutes: Int(floor(halfhours)) * 30)
+            
+        case .Minutes:
+            let minutes: CGFloat = 24 * 60 * fraction
+            return Time(absoluteMinutes: Int(floor(minutes)))
+        }
     }
 }

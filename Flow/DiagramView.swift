@@ -10,8 +10,8 @@ import UIKit
 
 @IBDesignable class DiagramView: UIView
 {
-    @IBInspectable var startColor: UIColor = UIColor.redColor()
-    @IBInspectable var endColor: UIColor = UIColor.greenColor()
+    @IBInspectable var startColor: UIColor = UIColor.gradientStartColor()
+    @IBInspectable var endColor: UIColor = UIColor.gradientEndColor()
     
     var graphPoints: [CGFloat] = [3, 6, 4, 21, 12, 3, 23, 3, 5, 8, 9, 2]        // example
     

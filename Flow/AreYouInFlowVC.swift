@@ -71,31 +71,36 @@ extension AreYouInFlowVC        // MARK: - IBActions
                 {
                     self.saveLogButton.setTitle("LOG SAVED", forState: .Normal)
                     
+                    let logCompletionHandler = {
+                        LogHelper.logCompletionHandler?()
+                        LogHelper.logCompletionHandler = nil
+                    }
+                    
                     if NotificationHelper.shouldScheduleNotification()
                     {
                         let completion = AUTOMATIC_VC_NOTIFICATION_COMPLETION(vc: self, success: {
                             if let _ = self.presentingViewController
                             {
-                                self.dismissViewControllerAnimated(true, completion: nil)
+                                self.dismissViewControllerAnimated(true, completion: logCompletionHandler)
                             }
                             else
                             {
                                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                                 let destinationVC = storyboard.instantiateInitialViewController()!
                                 
-                                self.presentViewController(destinationVC, animated: true, completion: nil)
+                                self.presentViewController(destinationVC, animated: true, completion: logCompletionHandler)
                             }
                         }, failure: {
                             if let _ = self.presentingViewController
                             {
-                                self.dismissViewControllerAnimated(true, completion: nil)
+                                self.dismissViewControllerAnimated(true, completion: logCompletionHandler)
                             }
                             else
                             {
                                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                                 let destinationVC = storyboard.instantiateInitialViewController()!
                                 
-                                self.presentViewController(destinationVC, animated: true, completion: nil)
+                                self.presentViewController(destinationVC, animated: true, completion: logCompletionHandler)
                             }
                         })
                         

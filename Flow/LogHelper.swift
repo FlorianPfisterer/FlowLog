@@ -19,6 +19,8 @@ class LogHelper
     static var energyLevel: Float!
     
     static var flowState: FlowState!
+    
+    static var logCompletionHandler: (() -> Void)?
 }
 
 extension LogHelper     // MARK: - Action Functions

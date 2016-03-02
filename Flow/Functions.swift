@@ -47,12 +47,6 @@ func getRelativeDateDescription(date: NSDate, time: Bool = false) -> String
     }
 }
 
-func doDelayed(inSeconds seconds: Double, completion: () -> Void)
-{
-    let delay: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(seconds * Double(NSEC_PER_SEC)))
-    dispatch_after(delay, dispatch_get_main_queue(), completion)
-}
-
 func * (left: Vector2D, right: Vector2D) -> CGFloat
 {
     return (left.dx * right.dx) + (left.dy * right.dy)

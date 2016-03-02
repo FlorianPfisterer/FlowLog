@@ -100,8 +100,50 @@ extension String
     }
 }
 
+extension UIView
+{
+    var width: CGFloat {
+        return self.bounds.size.width
+    }
+    
+    var height: CGFloat {
+        return self.bounds.size.height
+    }
+    
+    var midX: CGFloat {
+        return self.width/2
+    }
+    
+    var midY: CGFloat {
+        return self.height/2
+    }
+    
+    var boundsCenter: CGPoint {
+        return CGPoint(x: self.midX, y: self.midY)
+    }
+    
+}
 
+extension CGPoint
+{
+    static func fromRelativePoint(relativePoint: CGPoint, multiplier: CGSize) -> CGPoint
+    {
+        return CGPoint(x: relativePoint.x * multiplier.width, y: relativePoint.y * multiplier.height)
+    }
+}
 
+extension UIColor
+{
+    static func gradientStartColor() -> UIColor
+    {
+        return UIColor(red: 31.0/255.0, green: 122.0/255.0, blue: 128.0/255.0, alpha: 1)
+    }
+    
+    static func gradientEndColor() -> UIColor
+    {
+        return UIColor(red: 54.0/255.0, green: 54.0/255.0, blue: 54.0/255.0, alpha: 1)
+    }
+}
 
 
 

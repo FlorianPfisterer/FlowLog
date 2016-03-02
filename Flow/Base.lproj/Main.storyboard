@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bgW-nH-Gtf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bgW-nH-Gtf">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -15,7 +15,7 @@
                         <viewControllerLayoutGuide type="top" id="B5M-fu-iIN"/>
                         <viewControllerLayoutGuide type="bottom" id="uuv-s9-3A3"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="fP6-1F-dhz" customClass="GradientBackgroundVIew" customModule="FlowLog" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="fP6-1F-dhz" customClass="GradientBackgroundView" customModule="FlowLog" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -127,7 +127,7 @@
                         <viewControllerLayoutGuide type="top" id="AZU-x7-6bJ"/>
                         <viewControllerLayoutGuide type="bottom" id="D6F-Tp-Esy"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="4sc-zr-toq" customClass="GradientBackgroundVIew" customModule="FlowLog" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="4sc-zr-toq" customClass="GradientBackgroundView" customModule="FlowLog" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -159,6 +159,13 @@
                                     <segue destination="Wso-jC-oz1" kind="show" identifier="showAnalysisSegue" id="3OU-Kn-Y17"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDr-W2-jlT">
+                                <rect key="frame" x="20" y="336" width="560" height="138"/>
+                                <string key="text">You have completed all FlowLogs! Check out the analysis of the data. Do you want to start a new FlowLog-week to make the analyses more exact?</string>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mgV-G7-8j3" customClass="AwardView" customModule="FlowLog" customModuleProvider="target">
                                 <rect key="frame" x="60" y="28" width="480" height="240"/>
                                 <userDefinedRuntimeAttributes>
@@ -170,13 +177,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDr-W2-jlT">
-                                <rect key="frame" x="20" y="336" width="560" height="138"/>
-                                <string key="text">You have completed all FlowLogs! Check out the analysis of the data. Do you want to start a new FlowLog-week to make the analyses more exact?</string>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
