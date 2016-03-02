@@ -21,17 +21,18 @@ func setupBannerView(bannerView: GADBannerView, forAd: GoogleAdUnitID)
 
 func getRelativeDateDescription(date: NSDate, time: Bool = false) -> String
 {
-    let dateDay = calendar.component(NSCalendarUnit.Day, fromDate: date)
-    let nowDay = calendar.component(NSCalendarUnit.Day, fromDate: NSDate())
+    let nowDateInterval = NSDate().timeIntervalSinceReferenceDate
+    let thenDateInterval = date.timeIntervalSinceReferenceDate
+    
+    let dayDifference = Int(floor((thenDateInterval - nowDateInterval) / (60*60*24)))
     
     var timeString = ""
-    
     if time
     {
         timeString = ", \(StringHelper.getLocalizedTimeDescription(date))"
     }
     
-    switch (dateDay - nowDay)
+    switch (dayDifference)
     {
     case 0:
         return TODAY + timeString
@@ -43,7 +44,7 @@ func getRelativeDateDescription(date: NSDate, time: Bool = false) -> String
         return "in \(value) days" + timeString
         
     default:
-        return "in \(dateDay - nowDay) days" + timeString
+        return "in \(dayDifference) days" + timeString
     }
 }
 

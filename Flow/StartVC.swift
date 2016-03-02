@@ -12,6 +12,7 @@ import GoogleMobileAds
 class StartVC: UIViewController
 {
     @IBOutlet weak var progressView: ProgressView!
+    @IBOutlet weak var nextLogLabel: UILabel!
     @IBOutlet weak var bannerView: GADBannerView!
     
     private var notificationAlertShown = false
@@ -56,7 +57,6 @@ extension StartVC   // MARK: - Helper Functions
 {
     private func checkDueLogs()
     {
-        print("CheckDueLogs")
         if NotificationHelper.getLogIsDue()
         {
             self.startLog()
@@ -86,6 +86,14 @@ extension StartVC   // MARK: - View Update
 {
     func updateProgress()
     {
+        // next log label
+        if let fireDate = NotificationHelper.logFireDateScheduledNotYetExecuted
+        {
+            let timeDescription = getRelativeDateDescription(fireDate, time: true)
+            self.nextLogLabel.text = NEXT_LOG + ": " + timeDescription
+        }
+        
+        
         let (logsRemaningBool, numberOfLogsRemaining) = LogHelper.getRemainingFlowLogsInCurrentWeek()
         if logsRemaningBool
         {

@@ -32,6 +32,7 @@ let procrastinationQuotes = ["Procrastination is the thief of time.", "A stitch 
 // MARK: - Strings
 let TODAY = "today"
 let TOMORROW = "tomorrow"
+let NEXT_LOG = "Next Log"
 let ACTIVITY_ADD_NEW_STRING = "Add New"
 let NOTIFICATIONS_DISABLED_ALERT_STRINGS = ("Notifications are disabled", "In order to be able to use this app properly, you have to enable this app to send you notifications. Go to Settings -> Notifications -> FlowLog and try again.")
 
