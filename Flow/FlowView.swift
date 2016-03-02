@@ -194,6 +194,12 @@ extension FlowView      // MARK: - Helper Functions
                 let translation = recognizer.translationInView(self)
                 self.moveSelectionLocationEventually(by: translation)
             }
+            else if CGRectContainsPoint(self.bounds, location)
+            {
+                self.userTookCenterSelector = true
+                let translation = CGPoint(x: location.x - self.centerImageView.center.x, y: location.y - self.centerImageView.center.y)
+                self.moveSelectionLocationEventually(by: translation)
+            }
             
         case .Changed:
             if self.userTookCenterSelector
