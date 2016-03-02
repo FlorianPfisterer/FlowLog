@@ -30,6 +30,8 @@
 		417EFB7A1C83310E009E487A /* IntroHowItWorksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417EFB791C83310E009E487A /* IntroHowItWorksVC.swift */; };
 		417FE29F1C8617ED005271A4 /* IntroAnalysesInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417FE29E1C8617ED005271A4 /* IntroAnalysesInfoVC.swift */; };
 		419681981C7C425200A9BE3A /* ActivityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419681971C7C425200A9BE3A /* ActivityHelper.swift */; };
+		4199ED471C874EB60067EE60 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4199ED461C874EB60067EE60 /* SystemConfiguration.framework */; };
+		4199ED491C874ECA0067EE60 /* Reach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199ED481C874ECA0067EE60 /* Reach.swift */; };
 		41B10A081C8605D900490D5A /* IntroFlowLogInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B10A071C8605D900490D5A /* IntroFlowLogInfoVC.swift */; };
 		41B8150B1C40117200A2C72D /* AnalysisHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B8150A1C40117200A2C72D /* AnalysisHelper.swift */; };
 		41B8150E1C4014BD00A2C72D /* AnalysisOverviewTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B8150D1C4014BD00A2C72D /* AnalysisOverviewTVC.swift */; };
@@ -91,6 +93,8 @@
 		417EFB791C83310E009E487A /* IntroHowItWorksVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroHowItWorksVC.swift; sourceTree = "<group>"; };
 		417FE29E1C8617ED005271A4 /* IntroAnalysesInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroAnalysesInfoVC.swift; sourceTree = "<group>"; };
 		419681971C7C425200A9BE3A /* ActivityHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityHelper.swift; sourceTree = "<group>"; };
+		4199ED461C874EB60067EE60 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		4199ED481C874ECA0067EE60 /* Reach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reach.swift; sourceTree = "<group>"; };
 		41B10A071C8605D900490D5A /* IntroFlowLogInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroFlowLogInfoVC.swift; sourceTree = "<group>"; };
 		41B8150A1C40117200A2C72D /* AnalysisHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisHelper.swift; sourceTree = "<group>"; };
 		41B8150D1C4014BD00A2C72D /* AnalysisOverviewTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisOverviewTVC.swift; sourceTree = "<group>"; };
@@ -135,6 +139,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4199ED471C874EB60067EE60 /* SystemConfiguration.framework in Frameworks */,
 				410796D81C871D450088362B /* GoogleMobileAds.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -145,6 +150,8 @@
 		4163A4BB1C7CCB830017D7D0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4199ED481C874ECA0067EE60 /* Reach.swift */,
+				4199ED461C874EB60067EE60 /* SystemConfiguration.framework */,
 				410796D71C871D450088362B /* GoogleMobileAds.framework */,
 			);
 			name = Frameworks;
@@ -470,6 +477,7 @@
 				41E678DA1C3C16DA00FD74E6 /* GradientBackgroundView.swift in Sources */,
 				413EF02B1C5F3ED4006BD0AB /* AwardView.swift in Sources */,
 				417EFB7A1C83310E009E487A /* IntroHowItWorksVC.swift in Sources */,
+				4199ED491C874ECA0067EE60 /* Reach.swift in Sources */,
 				4120D74C1C3FC5A1003F94B4 /* Activity.swift in Sources */,
 				414FE4651C7091A5006AE6DD /* Activity+CoreDataProperties.swift in Sources */,
 				416F237A1C41017900E86FFB /* PopularFlowActivitiesTVC.swift in Sources */,

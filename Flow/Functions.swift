@@ -21,10 +21,26 @@ func setupBannerView(bannerView: GADBannerView, forAd: GoogleAdUnitID)
 
 func getRelativeDateDescription(date: NSDate, time: Bool = false) -> String
 {
-    let nowDateInterval = NSDate().timeIntervalSinceReferenceDate
-    let thenDateInterval = date.timeIntervalSinceReferenceDate
+    let nowComponents = calendar.components([.Day, .Month], fromDate: NSDate())
+    let thenComponents = calendar.components([.Day, .Month], fromDate: date)
     
-    let dayDifference = Int(floor((thenDateInterval - nowDateInterval) / (60*60*24)))
+    if NSDate().timeIntervalSinceReferenceDate > date.timeIntervalSinceReferenceDate       // already overdue
+    {
+        return "now"
+    }
+    
+    var dayDifference: Int = 1
+    switch thenComponents.month - nowComponents.month
+    {
+    case 0:
+        dayDifference = thenComponents.day - nowComponents.day
+        
+    case 1:
+        dayDifference = Int((date.timeIntervalSinceReferenceDate - NSDate().timeIntervalSinceReferenceDate) / (60*60*24))
+        
+    default:
+        return "in 30+ days"
+    }
     
     var timeString = ""
     if time
@@ -35,10 +51,10 @@ func getRelativeDateDescription(date: NSDate, time: Bool = false) -> String
     switch (dayDifference)
     {
     case 0:
-        return TODAY + timeString
+        return "today" + timeString
         
     case 1:
-        return TOMORROW + timeString
+        return "tomorrow" + timeString
         
     case let value where value > 1:
         return "in \(value) days" + timeString
@@ -74,4 +90,16 @@ func checkNotificationsEnabled(completion: (() -> Void)?) -> UIAlertController?
         return alert
     }
     return nil
+}
+
+func handleAdBannerShowup(heightConstraint heightConstraint: NSLayoutConstraint, usualHeight: CGFloat = 50)
+{
+    if !internetConnectionAvailable()
+    {
+        heightConstraint.constant = 0
+    }
+    else
+    {
+        heightConstraint.constant = usualHeight
+    }
 }

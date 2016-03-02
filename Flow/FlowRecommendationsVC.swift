@@ -74,6 +74,8 @@ extension FlowRecommendationsVC     // MARK: - View Lifecycle
         super.viewWillAppear(animated)
         
         self.setupGraphDisplay()
+        
+        handleAdBannerShowup(heightConstraint: self.bannerViewHeightConstraint)
     }
 }
 

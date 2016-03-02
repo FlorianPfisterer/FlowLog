@@ -46,6 +46,13 @@ extension WhatAreYouDoingVC     // MARK: - View Lifecycle
             setupBannerView(self.bannerView, forAd: .LogActivityBottomBanner)
         }
     }
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        
+        handleAdBannerShowup(heightConstraint: self.bannerViewHeightConstraint)
+    }
 }
 
 extension WhatAreYouDoingVC     // MARK: - Load Data

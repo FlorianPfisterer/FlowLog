@@ -42,6 +42,13 @@ extension AreYouInFlowVC    // MARK: - View Lifecycle
             setupBannerView(self.bannerView, forAd: .LogFlowBottomBanner)
         }
     }
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        
+        handleAdBannerShowup(heightConstraint: self.bannerViewHeightConstraint)
+    }
 }
 
 extension AreYouInFlowVC: FlowViewDelegate      // MARK: - FlowViewDelegate
