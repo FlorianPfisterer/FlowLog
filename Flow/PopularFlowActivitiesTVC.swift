@@ -22,7 +22,6 @@ extension PopularFlowActivitiesTVC      // MARK: - View Lifecycle
         self.loadFlowActivities()
         self.tableView.reloadData()
     }
-    
 }
 
 extension PopularFlowActivitiesTVC      // MARK: - Load Data
@@ -43,8 +42,6 @@ extension PopularFlowActivitiesTVC      // MARK: - Load Data
             {
                 sum += Int(activity.used)
             }
-            
-            print(sum)
             
             if sum != 0
             {
@@ -87,6 +84,16 @@ extension PopularFlowActivitiesTVC      // MARK: - TableView
         
         cell.textLabel?.text = activity.getName()
         cell.detailTextLabel?.text = "\(Int(percentage*100))%"
+        
+        let maxPercentage = self.flowActivities.map({ $0.1 }).maxElement()!
+        
+        let alpha: CGFloat = 0.7 * (CGFloat(percentage) / CGFloat(maxPercentage))
+        cell.backgroundColor = UIColor.gradientStartColor().colorWithAlphaComponent(alpha)
+        cell.textLabel?.backgroundColor = UIColor.clearColor()
+        cell.detailTextLabel?.backgroundColor = UIColor.clearColor()
+        
+        cell.textLabel?.textColor = alpha > 0.48 ? UIColor.whiteColor() : UIColor.blackColor()
+        cell.detailTextLabel?.textColor = alpha > 0.48 ? UIColor.whiteColor() : UIColor.darkGrayColor()
         
         return cell
     }

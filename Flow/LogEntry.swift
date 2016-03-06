@@ -13,4 +13,8 @@ import CoreData
 class LogEntry: NSManagedObject
 {
     // Insert code here to add functionality to your managed object subclass
+    
+    var date: NSDate {
+        return NSDate(timeIntervalSinceReferenceDate: self.createdAt)
+    }
 }

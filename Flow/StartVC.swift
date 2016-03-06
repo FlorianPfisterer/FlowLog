@@ -84,13 +84,47 @@ extension StartVC   // MARK: - Helper Functions
                 }
             }
             
-
             if let alert = checkNotificationsEnabled(completion)
             {
                 self.presentViewController(alert, animated: true, completion: nil)
                 self.notificationAlertShown = true
             }
         }
+    }
+}
+
+extension StartVC
+{
+    override func startLog()
+    {
+        if let _ = self.presentedViewController
+        {
+            print("already presenting ViewController!")
+            
+            // in order not to end the notification process if another ViewController is presented (unrelated to log)
+            NotificationHelper.scheduleNextNotification(completion: NOTIFICATION_COMPLETION_HANDLER_NONE)    // this notification will be deleted if a log is being created
+            
+            return
+        }
+        
+        let message = "It's time to create a log!"
+        let alert = UIAlertController(title: "Do a log now", message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { _ in
+            // if the user cancels the log, no notification is left => process will end => schedule a new one
+            let completion = AUTOMATIC_VC_NOTIFICATION_COMPLETION(vc: self, success: nil, failure: nil)
+            NotificationHelper.scheduleNextNotification(completion: completion)
+            
+// NEW:     // reload Progress Views
+            self.updateProgress()
+        }))
+        alert.addAction(UIAlertAction(title: "Let's go!", style: .Default, handler: { _ in
+            let storyboard = UIStoryboard(name: "Log", bundle: nil)
+            if let rootVC = storyboard.instantiateInitialViewController()
+            {
+                self.presentViewController(rootVC, animated: true, completion: nil)
+            }
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 }
 

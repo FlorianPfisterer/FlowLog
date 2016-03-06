@@ -10,56 +10,55 @@ import UIKit
 
 class PopularTimeFramesTVC: UITableViewController
 {
-    var upperFlowActivities: [(Activity, CGFloat)] = []
-    var lowerFlowActivities: [(Activity, CGFloat)] = []
+    var timeFrames = [TimeFrame]()
 }
 
 extension PopularTimeFramesTVC      // MARK: - View Lifecycle
 {
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        
+        self.title = "Popular Time Frames"
+    }
+    
     override func viewDidAppear(animated: Bool)
     {
         super.viewDidAppear(animated)
         
-        self.loadFlowActivities()
+        self.loadTimeFrames()
+        self.tableView.reloadData()
     }
 }
 
-extension PopularTimeFramesTVC      // MARK: - Load Data
+extension PopularTimeFramesTVC
 {
-    func loadFlowActivities()
+    private func loadTimeFrames()
     {
+        self.timeFrames.removeAll()
+        
         let context = CoreDataHelper.managedObjectContext()
-        let logsCount: Int = AnalysisHelper.getNumberOfLogs(context: context)
-        let allUsedActivities = AnalysisHelper.getSortedActivities(fromFlowState: .Flow, context: context)
-        
-        self.upperFlowActivities.removeAll()
-        self.lowerFlowActivities.removeAll()
-        
-        if allUsedActivities.count != 0 && logsCount > 5
+        let allFlowLogs = AnalysisHelper.getLogs(inFlowState: .Flow, context: context)
+    
+        if allFlowLogs.count >= 2
         {
-            var sum: Int = 0
-            for activity in allUsedActivities
-            {
-                sum += Int(activity.used)
-            }
+            self.timeFrames = allFlowLogs.reduce([TimeFrame](), combine: { result, log in
             
-            let averageActivityUse = CGFloat(sum) / CGFloat(allUsedActivities.count)
-            
-            for activity in allUsedActivities
-            {
-                if CGFloat(activity.used) >= averageActivityUse
+                if let frame = result.filter({ $0 <=> log.date }).first
                 {
-                    self.upperFlowActivities.append((activity, CGFloat(activity.used)/CGFloat(sum)))
+                    frame.flowStateCount = frame.flowStateCount + 1
+                    return result
                 }
                 else
                 {
-                    self.lowerFlowActivities.append((activity, CGFloat(activity.used)/CGFloat(sum)))
+                    let newFrame = TimeFrame(startTime: Time(date: log.date))
+                    return result + [newFrame]
                 }
-            }
+            }).sort({ $0.flowStateCount > $1.flowStateCount })
         }
         else
         {
-            let alert = UIAlertController(title: "Not enough data yet", message: "Come back later after doing a few logs.", preferredStyle: .Alert)
+            let alert = UIAlertController(title: "Not enough data yet", message: "Come back later after doing at least 2 logs with flow state.", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: { _ in
                 self.navigationController?.popViewControllerAnimated(true)
             }))
@@ -68,60 +67,41 @@ extension PopularTimeFramesTVC      // MARK: - Load Data
     }
 }
 
-extension PopularTimeFramesTVC      // MARK: - TableView
+extension PopularTimeFramesTVC      // MARK: - Table View
 {
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int
-    {
-        return 2
-    }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-        switch section
-        {
-        case 0:
-            return self.upperFlowActivities.count
-        case 1:
-            return self.lowerFlowActivities.count
-        default:
-            return 0
-        }
-    }
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("activityCell")!
-        var activity: Activity
-        var percentage: CGFloat
+        let cell = tableView.dequeueReusableCellWithIdentifier("timeFrameCell")!
+        let timeFrame = self.timeFrames[indexPath.row]
         
-        switch indexPath.section
-        {
-        case 0:
-            (activity, percentage) = self.upperFlowActivities[indexPath.row]
-        default:
-            (activity, percentage) = self.lowerFlowActivities[indexPath.row]
-        }
+        cell.textLabel?.text = timeFrame.title
+        cell.detailTextLabel?.text = timeFrame.detail
         
-        cell.textLabel?.text = activity.getName()
-        cell.detailTextLabel?.text = "\(Int(percentage*100))%"
+        let maxFlowStateCount = self.timeFrames.map({ $0.flowStateCount }).maxElement()!
+        
+        let alpha: CGFloat = 0.7 * (CGFloat(timeFrame.flowStateCount) / CGFloat(maxFlowStateCount))
+        cell.backgroundColor = UIColor.gradientStartColor().colorWithAlphaComponent(alpha)
+        cell.textLabel?.backgroundColor = UIColor.clearColor()
+        cell.detailTextLabel?.backgroundColor = UIColor.clearColor()
+        
+        cell.textLabel?.textColor = alpha > 0.48 ? UIColor.whiteColor() : UIColor.blackColor()
+        cell.detailTextLabel?.textColor = alpha > 0.48 ? UIColor.whiteColor() : UIColor.darkGrayColor()
         
         return cell
     }
     
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    {
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return self.timeFrames.count
+    }
+    
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?
     {
-        if self.upperFlowActivities.count > 0
-        {
-            switch section
-            {
-            case 0:
-                return "Activities with much flow potential"
-            default:
-                return "Activities with little flow potential"
-            }
-        }
-        
-        return nil
+        return "Time frames with logs in flow state"
     }
 }
-

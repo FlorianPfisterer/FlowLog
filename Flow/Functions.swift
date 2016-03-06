@@ -128,6 +128,20 @@ func == (lhs: NSIndexPath, rhs: (Int, Int)) -> Bool
     return lhs.section == rhs.0 && lhs.row == rhs.1
 }
 
+infix operator <=> { associativity left }
+func <=> (frame: TimeFrame, date: NSDate) -> Bool
+{
+    let time = Time(date: date)
+    
+    if time.minute >= 30
+    {
+        return frame.startTime.hour == time.hour && frame.startTime.minute == 30
+    }
+    else
+    {
+        return frame.startTime.hour == time.hour
+    }
+}
 
 
 

@@ -82,6 +82,27 @@ enum TimeAccuracy
     case Minutes
 }
 
+// MARK: - Classes
+class TimeFrame
+{
+    let startTime: Time
+    var flowStateCount = 1
+    
+    init(startTime: Time)
+    {
+        self.startTime = Time(hour: startTime.hour, minute: startTime.minute >= 30 ? 30 : 0)
+    }
+    
+    var title: String {
+        let endTime = Time(absoluteMinutes: self.startTime.absoluteMinutes + 30)
+        return "\(self.startTime.timeString()) - \(endTime.timeString())"
+    }
+    
+    var detail: String {
+        return "\(self.flowStateCount) FlowLog\(StringHelper.sEventually(self.flowStateCount))"
+    }
+}
+
 // MARK: - Structs
 struct Vector2D
 {
@@ -108,11 +129,9 @@ extension Vector2D  // public API
     {
         // cos(α) = ( p*q ) / ( |p|*|q| )
         let α = acos((self * vector) / (self.abs() * vector.abs()))  // radian
-        
         return (α * 180) / π
     }
 }
-
 
 struct Time
 {
