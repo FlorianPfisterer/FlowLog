@@ -19,6 +19,24 @@ func setupBannerView(bannerView: GADBannerView, forAd: GoogleAdUnitID)
     bannerView.loadRequest(request)
 }
 
+func resetAllData()
+{
+    // 1. delete logs
+    let context = CoreDataHelper.managedObjectContext()
+    CoreDataHelper.deleteAllDataFromClassNames(["LogEntry"], fromContext: context)
+    
+    // 2. reset settings
+    NSUserDefaults.standardUserDefaults().setBool(false, forKey: INTRO_DONE_BOOL_KEY)
+    
+    LogHelper.alarmStartTime = Time.standardStartTime
+    LogHelper.alarmEndTime = Time.standardEndTime
+    LogHelper.flowLogWeekStartDate = nil
+    
+    
+    NotificationHelper.currentWeekIndex = 1
+    NotificationHelper.logFireDateScheduledNotYetExecuted = nil
+}
+
 func getRelativeDateDescription(date: NSDate, time: Bool = false) -> String
 {
     let nowComponents = calendar.components([.Day, .Month], fromDate: NSDate())
@@ -103,3 +121,30 @@ func handleAdBannerShowup(heightConstraint heightConstraint: NSLayoutConstraint,
         heightConstraint.constant = usualHeight
     }
 }
+
+//infix operator =!= { associativity left }
+func == (lhs: NSIndexPath, rhs: (Int, Int)) -> Bool
+{
+    return lhs.section == rhs.0 && lhs.row == rhs.1
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

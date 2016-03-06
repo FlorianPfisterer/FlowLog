@@ -142,13 +142,6 @@
                                     <action selector="proceedToNextStep" destination="pTg-m5-L6f" eventType="touchUpInside" id="lFy-d7-6tf"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="This app will repeatedly remind you to do a FlowLog in the course of about a week. " textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="guH-7J-1EL">
-                                <rect key="frame" x="33" y="75" width="309" height="52"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2CL-zz-5sd" customClass="CircularHeadlineView" customModule="FlowLog" customModuleProvider="target">
                                 <rect key="frame" x="73" y="145" width="229" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -171,6 +164,13 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="numberString" value="☀︎"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="This app will repeatedly remind you to do a FlowLog in the course of about a week. " textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="guH-7J-1EL">
+                                <rect key="frame" x="33" y="75" width="309" height="52"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

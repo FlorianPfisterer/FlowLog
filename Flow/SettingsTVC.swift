@@ -33,7 +33,23 @@ extension SettingsTVC: MFMailComposeViewControllerDelegate      // MARK: - Table
 {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        if indexPath.section == 0 && indexPath.row == 1       // "Get Involved" Cell
+        if indexPath == (0, 0)  // restart tutorial
+        {
+            self.performSegueWithIdentifier("goToIntroStartSegue", sender: nil)
+        }
+        else if indexPath == (2, 0) // delete all data
+        {
+            let alert = UIAlertController(title: "Are you sure?", message: "If you delete all data, all logs you created will not be included in analyses and permanently deleted.", preferredStyle: .ActionSheet)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Delete all data", style: .Destructive, handler: { _ in
+                
+                resetAllData()
+                self.performSegueWithIdentifier("goToIntroStartSegue", sender: nil)
+                
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        else if indexPath == (1, 1)      // "Get Involved"
         {
             let mailComposerVC = MFMailComposeViewController()
             mailComposerVC.mailComposeDelegate = self
@@ -56,7 +72,7 @@ extension SettingsTVC: MFMailComposeViewControllerDelegate      // MARK: - Table
                 tableView.deselectRowAtIndexPath(indexPath, animated: true)
             }
         }
-        else if indexPath.section == 0 && indexPath.row == 0
+        else if indexPath == (1, 0)    // Further Resources
         {
             if let url = NSURL(string: "http://florianpfisterer.de/flow")
             {

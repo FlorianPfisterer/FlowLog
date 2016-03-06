@@ -69,6 +69,42 @@ class CoreDataHelper
         for object in array
         {
             context.deleteObject(object)
+      
         }
     }
 }
+
+extension CoreDataHelper
+{
+    static func deleteAllDataFromClassNames(classNames: [String], fromContext context: NSManagedObjectContext)
+    {
+        for name in classNames
+        {
+            do
+            {
+                if let objects = try CoreDataHelper.fetchEntities(name, managedObjectContext: context, predicate: nil, sortDescriptor: nil) as? [NSManagedObject]
+                {
+                    CoreDataHelper.deleteObjectsInArray(objects, fromContext: context)
+                }
+            }
+            catch
+            {
+                print("ERROR deleting objects: \(error)")
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
