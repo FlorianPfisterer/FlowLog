@@ -33,6 +33,56 @@ enum FlowState: Int16
     case Worry = 8
 }
 
+extension FlowState
+{
+    var weight: CGFloat {
+        switch self
+        {
+        case .Flow:
+            return 0.8
+        case .Control:
+            return 0.6
+        case .Arousal:
+            return 0.6
+        case .Relaxation:
+            return 0.3
+        case .Boredom:
+            return 0.2
+        case .Apathy:
+            return 0.1
+        case .Worry:
+            return 0.3
+        case .Anxiety:
+            return 0.6
+        }
+    }
+}
+
+extension FlowState
+{
+    var color: UIColor {
+        switch self
+        {
+        case .Anxiety:
+            return UIColor(red: 0, green: 0, blue: 1, alpha: 1)
+        case .Arousal:
+            return UIColor(red: 0.5, green: 0, blue: 1, alpha: 1)
+        case .Flow:
+            return UIColor(red: 1, green: 0, blue: 1, alpha: 1)
+        case .Control:
+            return UIColor(red: 1, green: 0.5, blue: 0.5, alpha: 1)
+        case .Relaxation:
+            return UIColor(red: 1, green: 1, blue: 0, alpha: 1)
+        case .Boredom:
+            return UIColor(red: 0.5, green: 1, blue: 0, alpha: 1)
+        case .Apathy:
+            return UIColor(red: 0, green: 1, blue: 0, alpha: 1)
+        case .Worry:
+            return UIColor(red: 0, green: 0.5, blue: 0.5, alpha: 1)
+        }
+    }
+}
+
 enum GraphDisplayState: Int
 {
     case FlowState = 0

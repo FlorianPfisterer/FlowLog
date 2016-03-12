@@ -21,7 +21,7 @@ extension AnalysisOverviewTVC: MFMailComposeViewControllerDelegate
 {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        if indexPath.section == 2       // tell us idea
+        if indexPath.section == 3       // tell us idea
         {
             let mailComposerVC = MFMailComposeViewController()
             mailComposerVC.mailComposeDelegate = self

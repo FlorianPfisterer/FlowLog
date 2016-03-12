@@ -138,3 +138,17 @@ class StringHelper
         return "s"
     }
 }
+
+extension StringHelper
+{
+    class func getLocalizedDateDescription(date: NSDate) -> String
+    {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale.autoupdatingCurrentLocale()
+        dateFormatter.timeStyle = .NoStyle
+        dateFormatter.dateStyle = .ShortStyle
+        
+        let description = dateFormatter.stringFromDate(date)
+        return description
+    }
+}
