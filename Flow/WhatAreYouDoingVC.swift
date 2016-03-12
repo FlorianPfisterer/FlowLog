@@ -137,7 +137,14 @@ extension WhatAreYouDoingVC: UICollectionViewDataSource, UICollectionViewDelegat
         }
         else
         {
-            LogHelper.currentActivity = self.activities[activityIndex - 1]
+            if let searched = self.searchedActivities
+            {
+                LogHelper.currentActivity = searched[activityIndex - 1]
+            }
+            else
+            {
+                LogHelper.currentActivity = self.activities[activityIndex - 1]
+            }
             
             self.performSegueWithIdentifier("toQuestion2Segue", sender: nil)
         }

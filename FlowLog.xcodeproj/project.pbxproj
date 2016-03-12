@@ -17,6 +17,8 @@
 		41386B0F1C60870400D08A07 /* StateWheelControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41386B0E1C60870400D08A07 /* StateWheelControl.swift */; };
 		41386B111C60929D00D08A07 /* AngleGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41386B101C60929D00D08A07 /* AngleGestureRecognizer.swift */; };
 		41386B141C6096B000D08A07 /* ColorWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41386B131C6096B000D08A07 /* ColorWheelView.swift */; };
+		41397C701C906FB200CF0AC4 /* AllLogsOverviewTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41397C6F1C906FB200CF0AC4 /* AllLogsOverviewTVC.swift */; };
+		41397C721C90729300CF0AC4 /* LogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41397C711C90729300CF0AC4 /* LogCell.swift */; };
 		413EF02B1C5F3ED4006BD0AB /* AwardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413EF02A1C5F3ED4006BD0AB /* AwardView.swift */; };
 		414FE4621C709195006AE6DD /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414FE4601C709195006AE6DD /* Category+CoreDataProperties.swift */; };
 		414FE4631C709195006AE6DD /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414FE4611C709195006AE6DD /* Category.swift */; };
@@ -80,6 +82,8 @@
 		41386B0E1C60870400D08A07 /* StateWheelControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateWheelControl.swift; sourceTree = "<group>"; };
 		41386B101C60929D00D08A07 /* AngleGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AngleGestureRecognizer.swift; sourceTree = "<group>"; };
 		41386B131C6096B000D08A07 /* ColorWheelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorWheelView.swift; sourceTree = "<group>"; };
+		41397C6F1C906FB200CF0AC4 /* AllLogsOverviewTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllLogsOverviewTVC.swift; sourceTree = "<group>"; };
+		41397C711C90729300CF0AC4 /* LogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogCell.swift; sourceTree = "<group>"; };
 		413EF02A1C5F3ED4006BD0AB /* AwardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardView.swift; sourceTree = "<group>"; };
 		414FE4601C709195006AE6DD /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		414FE4611C709195006AE6DD /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 				416F23731C40D8E200E86FFB /* FlowRecommendationsVC.swift */,
 				416F23791C41017900E86FFB /* PopularFlowActivitiesTVC.swift */,
 				416F237B1C41080600E86FFB /* PopularTimeFramesTVC.swift */,
+				41397C6F1C906FB200CF0AC4 /* AllLogsOverviewTVC.swift */,
 				41B8150F1C40173900A2C72D /* Views */,
 			);
 			name = Analysis;
@@ -174,6 +179,7 @@
 			children = (
 				41B815101C40174900A2C72D /* DiagramView.swift */,
 				416F23771C40FF5900E86FFB /* DynamicRecommendationCell.swift */,
+				41397C711C90729300CF0AC4 /* LogCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -460,6 +466,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41397C701C906FB200CF0AC4 /* AllLogsOverviewTVC.swift in Sources */,
 				41386B141C6096B000D08A07 /* ColorWheelView.swift in Sources */,
 				41C7CD231C6DD97C005AA1BA /* LogEntry+CoreDataProperties.swift in Sources */,
 				41CE6B361C391C2200F4DBED /* HowAreYouFeelingVC.swift in Sources */,
@@ -497,6 +504,7 @@
 				41CE6B311C390EB400F4DBED /* WhatAreYouDoingVC.swift in Sources */,
 				41E57FD41C624E44008D07ED /* HorizontalStateControl.swift in Sources */,
 				41CE6B3E1C39395B00F4DBED /* FlowView.swift in Sources */,
+				41397C721C90729300CF0AC4 /* LogCell.swift in Sources */,
 				419681981C7C425200A9BE3A /* ActivityHelper.swift in Sources */,
 				410377211C859D660006BD4E /* CircularHeadlineView.swift in Sources */,
 				41CE6B131C38F99500F4DBED /* Constants.swift in Sources */,
