@@ -12,6 +12,10 @@ import CoreData
 
 class RecommendationsHelper
 {
+    
+    
+    
+    
     class func getRecommendationsForGraphState(graphState: GraphDisplayState, var graphValues: [CGFloat], completion: ([String]) -> Void, context: NSManagedObjectContext)
     {
         dispatch_async(dispatch_get_main_queue(), {
