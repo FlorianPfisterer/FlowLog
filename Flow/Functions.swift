@@ -143,6 +143,54 @@ func <=> (frame: TimeFrame, date: NSDate) -> Bool
     }
 }
 
+// min max calculus
+func maxIndex<T: Comparable>(array: [T?]) -> Int?
+{
+    guard !array.isEmpty else { return nil }
+    
+    var maxIndex: Int? = nil
+    for index in 0..<array.count where array[index] != nil
+    {
+        guard let existingMaxIndex = maxIndex else {
+            maxIndex = index
+            continue
+        }
+        
+        let item = array[index]!
+        let maxItem = array[existingMaxIndex]!
+        
+        if item > maxItem
+        {
+            maxIndex = index
+        }
+    }
+    
+    return maxIndex
+}
+
+func minIndex<T: Comparable>(array: [T?]) -> Int?
+{
+    guard !array.isEmpty else { return nil }
+    
+    var minIndex: Int? = nil
+    for index in 0..<array.count where array[index] != nil
+    {
+        guard let existingMinIndex = minIndex else {
+            minIndex = index
+            continue
+        }
+        
+        let item = array[index]!
+        let minItem = array[existingMinIndex]!
+        
+        if item < minItem
+        {
+            minIndex = index
+        }
+    }
+    
+    return minIndex
+}
 
 
 

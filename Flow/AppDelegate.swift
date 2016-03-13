@@ -190,7 +190,7 @@ extension AppDelegate       // MARK: - Helper Functions
     private func setStoryboardTo(name: String)
     {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        let storyboard = UIStoryboard(name: "Analysis", bundle: NSBundle.mainBundle())  //
+        let storyboard = UIStoryboard(name: name, bundle: NSBundle.mainBundle())  //
         
         self.window?.rootViewController = storyboard.instantiateInitialViewController()
         self.window?.makeKeyAndVisible()

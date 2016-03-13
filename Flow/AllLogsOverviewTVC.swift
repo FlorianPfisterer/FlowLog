@@ -39,6 +39,11 @@ extension AllLogsOverviewTVC
 
 extension AllLogsOverviewTVC
 {
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?
+    {
+        return self.logs.count == 0 ? nil : "Ordered by date (\(self.logs.count))"
+    }
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         return 1

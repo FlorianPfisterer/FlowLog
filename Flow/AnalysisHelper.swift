@@ -148,3 +148,35 @@ class AnalysisHelper
         return AnalysisHelper.getLogsInHour(hour, inFlowState: flowState, context: context).count
     }
 }
+
+extension AnalysisHelper
+{
+    class func getGraphValues(forState state: GraphDisplayState, context: NSManagedObjectContext) -> [CGFloat?]
+    {
+        var graphValues: [CGFloat?] = []
+        
+        for hour in LogHelper.alarmStartTime.hour...LogHelper.alarmEndTime.hour
+        {
+            switch state
+            {
+            case .FlowState:
+                let logCountInFlowInHour = AnalysisHelper.getNumberOfLogsInHour(hour, inFlowState: .Flow, context: context)
+                graphValues.append(logCountInFlowInHour == 0 ? nil : CGFloat(logCountInFlowInHour))
+                
+            case .Energy:
+                let energyLevel = AnalysisHelper.getAverageEnergyLevelInHour(hour, context: context)
+                graphValues.append(energyLevel == 0 ? nil : energyLevel)
+                
+            case .Happiness:
+                let happinessLevel = AnalysisHelper.getAverageHappinessLevelInHour(hour, context: context)
+                graphValues.append(happinessLevel == 0 ? nil : happinessLevel)
+                
+            case .AllCombined:
+                let combinedScore = AnalysisHelper.getCombinedScoreInHour(hour, inFlowState: .Flow, context: context)
+                graphValues.append(combinedScore == 0 ? nil : combinedScore)
+            }
+        }
+        
+        return graphValues
+    }
+}

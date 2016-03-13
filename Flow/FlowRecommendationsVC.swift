@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMobileAds
+import CoreData
 
 class FlowRecommendationsVC: UIViewController
 {
@@ -58,6 +59,7 @@ extension FlowRecommendationsVC     // MARK: - View Lifecycle
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 100
         
+        // manage ad banner
         self.bannerView.rootViewController = self
         if DEBUG
         {
@@ -95,33 +97,43 @@ extension FlowRecommendationsVC     // MARK: - Update UI
     
     func setupGraphDisplay()
     {
-        // 1. setup graph data points
+        // 1. setup graph
         let context = CoreDataHelper.managedObjectContext()
-        var graphValues: [CGFloat] = []
+        let graphValues = AnalysisHelper.getGraphValues(forState: self.graphDisplayState, context: context)
+        let mappedGraphValues = graphValues.map({ $0 == nil ? 0 : $0! })
         
-        for hour in LogHelper.alarmStartTime.hour...LogHelper.alarmEndTime.hour
-        {
-            switch self.graphDisplayState
-            {
-            case .FlowState:
-                let logCountInFlowInHour = AnalysisHelper.getNumberOfLogsInHour(hour, inFlowState: .Flow, context: context)
-                graphValues.append(CGFloat(logCountInFlowInHour))
-            
-            case .Energy:
-                graphValues.append(AnalysisHelper.getAverageEnergyLevelInHour(hour, context: context))
-            
-            case .Happiness:
-                graphValues.append(AnalysisHelper.getAverageHappinessLevelInHour(hour, context: context))
-            
-            case .AllCombined:
-                graphValues.append(AnalysisHelper.getCombinedScoreInHour(hour, inFlowState: .Flow, context: context))
-            }
-        }
-        
-        self.diagramView.graphPoints = graphValues
+        self.diagramView.graphPoints = mappedGraphValues
         self.diagramView.setNeedsDisplay()
         
         // 2. setup average label
+        self.setupAverageLabels(mappedGraphValues)
+        
+        // 3. setup recommendations in tableView (async)
+        self.recommendations.removeAll()
+        switch self.graphDisplayState
+        {
+        case .FlowState:
+            RecommendationsHelper.getFlowReccomendations(flowValues: graphValues, context: context, completion: { recs in
+                self.recommendations = recs
+                self.tableView.reloadData()
+            })
+            
+        default:
+            RecommendationsHelper.getRecommendations(fromValues: graphValues, graphState: self.graphDisplayState, context: context, completion: { recs in
+                self.recommendations = recs
+                self.tableView.reloadData()
+            })
+        }
+        
+        // 4. setup title as well as min and max labels
+        self.setupGraphLabels(mappedGraphValues)
+    }
+}
+
+extension FlowRecommendationsVC
+{
+    private func setupAverageLabels(graphValues: [CGFloat])
+    {
         if graphValues.count != 0
         {
             var sum: CGFloat = 0
@@ -149,14 +161,10 @@ extension FlowRecommendationsVC     // MARK: - Update UI
                 self.averageLabel.text = "None"
             }
         }
-        
-        // 3. setup recommendations in tableView (async)
-        RecommendationsHelper.getRecommendationsForGraphState(self.graphDisplayState, graphValues: graphValues, completion: { recommendations in
-            self.recommendations = recommendations
-            self.tableView.reloadData()
-        }, context: context)
-        
-        // 4. setup min and max labels
+    }
+    
+    private func setupGraphLabels(graphValues: [CGFloat])
+    {
         guard let maxValue = graphValues.maxElement() else { return }
         guard let minValue = graphValues.minElement() else { return }
         
@@ -173,7 +181,7 @@ extension FlowRecommendationsVC     // MARK: - Update UI
             maxValueInt = Int(round(maxValue*100))
             minValueInt = Int(round(minValue*100))
         }
-
+        
         self.minLabel.text = "\(minValueInt)"
         self.maxLabel.text = "\(maxValueInt)"
         

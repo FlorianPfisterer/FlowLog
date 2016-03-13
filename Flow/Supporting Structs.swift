@@ -60,6 +60,25 @@ extension FlowState
 
 extension FlowState
 {
+    var recommendationPrefix: String? {
+        switch self
+        {
+        case .Flow:
+            return "Work on flow activities at "
+        case .Relaxation:
+            return "Good time to relax: "
+        case .Boredom:
+            return "Good time to do something interesting: "
+        case .Anxiety:
+            return "Reduce your challenge level at "
+        default:
+            return nil
+        }
+    }
+}
+
+extension FlowState
+{
     var color: UIColor {
         switch self
         {
