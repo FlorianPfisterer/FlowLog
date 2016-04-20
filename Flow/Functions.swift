@@ -122,7 +122,6 @@ func handleAdBannerShowup(heightConstraint heightConstraint: NSLayoutConstraint,
     }
 }
 
-//infix operator =!= { associativity left }
 func == (lhs: NSIndexPath, rhs: (Int, Int)) -> Bool
 {
     return lhs.section == rhs.0 && lhs.row == rhs.1

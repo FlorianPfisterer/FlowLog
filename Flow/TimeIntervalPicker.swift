@@ -67,7 +67,7 @@ extension TimeIntervalPicker
         self.backgroundArcView = BackgroundArcView()
         self.addSubview(self.backgroundArcView)
         
-        self.sliderRecognizer = UIPanGestureRecognizer(target: self, action: "didPanSegmentSlider:")
+        self.sliderRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.didPanSegmentSlider))
         self.addGestureRecognizer(self.sliderRecognizer)
         
         self.leftSectionView = TimeIntervalSelectionView()

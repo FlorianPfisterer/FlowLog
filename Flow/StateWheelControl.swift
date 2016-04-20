@@ -24,12 +24,7 @@ class StateWheelControl: UIControl
         }
     }
     
-    @IBOutlet weak var percentageLabel: UILabel!/* {
-        didSet
-        {
-            self.updatePercentageLabel()
-        }
-    }*/
+    @IBOutlet weak var percentageLabel: UILabel!
     
     var percentage: Int = 100
     
@@ -80,7 +75,7 @@ extension StateWheelControl
             selectedSegmentView.heightAnchor.constraintEqualToAnchor(self.heightAnchor, multiplier: 0.3)])
         
         // create rotating gesture recognizers
-        self.angleRecognizer = AngleGestureRecognizer(target: self, action: "handleAngleGestureChange")
+        self.angleRecognizer = AngleGestureRecognizer(target: self, action: #selector(self.handleAngleGestureChange))
         self.addGestureRecognizer(self.angleRecognizer)
     }
 }

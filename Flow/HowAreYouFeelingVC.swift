@@ -23,7 +23,7 @@ extension HowAreYouFeelingVC     // MARK: - View Lifecycle
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .Done, target: self, action: "goToNextQuestion")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .Done, target: self, action: #selector(self.goToNextQuestion))
         
         if UIScreen.mainScreen().bounds.size.height < 568
         {

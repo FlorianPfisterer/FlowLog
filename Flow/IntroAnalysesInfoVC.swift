@@ -68,7 +68,7 @@ extension IntroAnalysesInfoVC
             self.presentViewController(alert, animated: true, completion: nil)
         }
         
-        // for security reasons, schedule a log immediately
+        // for security reasons, schedule a log immediately (so that the process doesn't end if something unexpected happens)
         if NotificationHelper.shouldScheduleNotification()
         {
             let scheduleCompletion = AUTOMATIC_VC_NOTIFICATION_COMPLETION(vc: self, success: nil, failure: nil)

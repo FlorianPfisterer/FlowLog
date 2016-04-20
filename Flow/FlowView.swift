@@ -51,7 +51,7 @@ extension FlowView
         self.centerImageView.userInteractionEnabled = true
         self.addSubview(self.centerImageView)
         
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "didPanSelectionCenter:")
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.didPanSelectionCenter))
         self.addGestureRecognizer(panGestureRecognizer)
     }
     

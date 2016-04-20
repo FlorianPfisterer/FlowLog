@@ -85,20 +85,6 @@ extension CGVector
     }
 }
 
-// http://stackoverflow.com/questions/28414999/html-format-in-uitextview
-extension String
-{
-    var htmlAttributedString: NSAttributedString? {
-        do
-        {
-            return try NSAttributedString(data: dataUsingEncoding(NSUTF8StringEncoding)!, options: [NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: NSUTF8StringEncoding], documentAttributes: nil)
-        }
-        catch
-        {
-            return nil
-        }
-    }
-}
 
 extension UIView
 {
@@ -144,10 +130,3 @@ extension UIColor
         return UIColor(red: 54.0/255.0, green: 54.0/255.0, blue: 54.0/255.0, alpha: 1)
     }
 }
-
-
-
-
-
-
-

@@ -22,7 +22,7 @@ let CURRENT_WEEK_INDEX_INT_KEY = "current_week_index_int"
 let LOG_SCHEDULED_NOT_YET_EXECUTED_DATE_KEY = "log_scheduled_not_yet_executed_date_key"
 
 // MARK: - Constants
-let DEBUG = false
+let DEBUG = true
 
 let FLOW_LOGS_PER_WEEK_COUNT = 40
 let π = CGFloat(M_PI)
