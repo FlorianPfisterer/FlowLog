@@ -38,7 +38,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="6Ef-Jz-vhe" kind="show" id="HvH-bb-irP"/>
+                                            <segue destination="6Ef-Jz-vhe" kind="show" identifier="recommendationsSegue" id="HvH-bb-irP"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -118,7 +118,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="QHY-Qd-kE2" kind="show" id="q9f-aa-69Z"/>
+                                            <segue destination="QHY-Qd-kE2" kind="show" identifier="allLogsSegue" id="q9f-aa-69Z"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>

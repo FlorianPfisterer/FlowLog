@@ -90,19 +90,3 @@ extension CompletedVC   // MARK: - IBActions
         NotificationHelper.scheduleNextNotification(completion: completion)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

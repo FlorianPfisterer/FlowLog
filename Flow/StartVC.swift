@@ -37,6 +37,8 @@ extension StartVC
         {
             setupBannerView(self.bannerView, forAd: .OverviewBottomBanner)
         }
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(self.proceedToLog))
     }
     
     override func viewWillAppear(animated: Bool)
@@ -118,13 +120,18 @@ extension StartVC
             self.updateProgress()
         }))
         alert.addAction(UIAlertAction(title: "Let's go!", style: .Default, handler: { _ in
-            let storyboard = UIStoryboard(name: "Log", bundle: nil)
-            if let rootVC = storyboard.instantiateInitialViewController()
-            {
-                self.presentViewController(rootVC, animated: true, completion: nil)
-            }
+            self.proceedToLog()
         }))
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func proceedToLog()
+    {
+        let storyboard = UIStoryboard(name: "Log", bundle: nil)
+        if let rootVC = storyboard.instantiateInitialViewController()
+        {
+            self.presentViewController(rootVC, animated: true, completion: nil)
+        }
     }
 }
 

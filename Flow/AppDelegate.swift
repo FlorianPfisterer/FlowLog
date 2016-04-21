@@ -13,16 +13,42 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate
 {
     var window: UIWindow?
+    
+    static let applicationShortcutUserInfoIconKey = "applicationShortcutUserInfoIconKey"
+    
+    var launchedShortcutItem: UIApplicationShortcutItem?
+    
+    func handleShortcutItem(shortcutItem: UIApplicationShortcutItem) -> Bool
+    {
+        guard let shortcutId = ShortcutIdentifier(fullType: shortcutItem.type) else { return false }
+        
+        // check if activated before, if not, don't change anything
+        let introDone = NSUserDefaults.standardUserDefaults().boolForKey(INTRO_DONE_BOOL_KEY)
+        guard introDone else
+        {
+            print("ERROR: Shouldn't have QuickActions if intro not done")
+            return false
+        }
+        
+        self.setStoryboardTo(shortcutId.storyboardID)
+        shortcutId.performChanges()
+        
+        return true
+    }
+    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
         self.performOpticalAdjustments()
         self.seedDatabaseIfNecessary()
-        self.reactToPossibleNotificationsForApplication(application, withLaunchOptions: launchOptions)
         
-        DBSeedHelper.seedLogs(10) // DEBUG
-        
-        return true
+        return self.reactToPossibleLaunchOptionsForApplication(application, withLaunchOptions: launchOptions)
+    }
+    
+    override init()
+    {
+        super.init()
+        self.observeIntroDoneForQuickActions()
     }
     
     // MARK: - Core Data stack
@@ -153,14 +179,21 @@ extension AppDelegate       // MARK: - Helper Functions
         }
     }
     
-    private func reactToPossibleNotificationsForApplication(application: UIApplication, withLaunchOptions launchOptions: [NSObject : AnyObject]?)
+    private func reactToPossibleLaunchOptionsForApplication(application: UIApplication, withLaunchOptions launchOptions: [NSObject : AnyObject]?) -> Bool
     {
+        var shouldPerformAdditionalDelegateHandling = true
+        
         // react to possible notifications
         if let options = launchOptions
         {
             if let notification = options[UIApplicationLaunchOptionsLocalNotificationKey] as? UILocalNotification
             {
                 self.notification(notification, receivedAtStartup: true)
+            }
+            else if let shortcutItem = options[UIApplicationLaunchOptionsShortcutItemKey] as? UIApplicationShortcutItem
+            {
+                self.launchedShortcutItem = shortcutItem
+                shouldPerformAdditionalDelegateHandling = false
             }
             else
             {
@@ -184,6 +217,8 @@ extension AppDelegate       // MARK: - Helper Functions
                 application.registerUserNotificationSettings(settings)
             }
         }
+        
+        return shouldPerformAdditionalDelegateHandling
     }
     
     // MARK: - Storyboard Helper Function (also for Debug)
@@ -197,8 +232,58 @@ extension AppDelegate       // MARK: - Helper Functions
     }
 }
 
+extension AppDelegate
+{
+    func observeIntroDoneForQuickActions()
+    {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.userdefaultsDidChange), name: NSUserDefaultsDidChangeNotification, object: nil)
+    }
+    
+    func userdefaultsDidChange(notification: NSNotification)
+    {
+        let userdefaults = notification.object as! NSUserDefaults
+        let introDone = userdefaults.boolForKey(INTRO_DONE_BOOL_KEY)
+        
+        let application = UIApplication.sharedApplication()
+        
+        if introDone
+        {
+            print("INTRO DONE")
+            self.addShortcuts(toApplication: application)
+        }
+        else
+        {
+            print("INTRO NOT DONE")
+            self.removeShortcuts(fromApplication: application)
+        }
+    }
+    
+    private func addShortcuts(toApplication application: UIApplication)
+    {
+        let shortcuts = [ShortcutIdentifier.DoALog, .Recommendations, .AllLogs].reduce([UIApplicationShortcutItem](), combine: { result, identifier in
+            
+            let shortcut = UIMutableApplicationShortcutItem(type: identifier.typeDescription, localizedTitle: identifier.title, localizedSubtitle: nil, icon: UIApplicationShortcutIcon(type: identifier.associatedIconType), userInfo: nil)
+            
+            return result + [shortcut]
+        })
+        
+        application.shortcutItems = shortcuts
+    }
+    
+    private func removeShortcuts(fromApplication application: UIApplication)
+    {
+        application.shortcutItems = []
+    }
+}
+
 extension AppDelegate       // MARK: - App Lifecycle
 {
+    func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void)
+    {
+        let handledShortcutItem = self.handleShortcutItem(shortcutItem)
+        completionHandler(handledShortcutItem)
+    }
+    
     func applicationWillResignActive(application: UIApplication)
     {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -218,7 +303,9 @@ extension AppDelegate       // MARK: - App Lifecycle
 
     func applicationDidBecomeActive(application: UIApplication)
     {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        guard let shortcut = self.launchedShortcutItem else { return }
+        self.handleShortcutItem(shortcut)
+        self.launchedShortcutItem = nil
     }
 
     func applicationWillTerminate(application: UIApplication)

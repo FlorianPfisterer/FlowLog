@@ -20,6 +20,8 @@
 		41397C701C906FB200CF0AC4 /* AllLogsOverviewTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41397C6F1C906FB200CF0AC4 /* AllLogsOverviewTVC.swift */; };
 		41397C721C90729300CF0AC4 /* LogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41397C711C90729300CF0AC4 /* LogCell.swift */; };
 		413EF02B1C5F3ED4006BD0AB /* AwardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413EF02A1C5F3ED4006BD0AB /* AwardView.swift */; };
+		414070DD1CC8C6F400281122 /* QuickActionsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414070DC1CC8C6F400281122 /* QuickActionsHelper.swift */; };
+		414070DF1CC8C77700281122 /* ShortcutIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414070DE1CC8C77700281122 /* ShortcutIdentifier.swift */; };
 		414FE4621C709195006AE6DD /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414FE4601C709195006AE6DD /* Category+CoreDataProperties.swift */; };
 		414FE4631C709195006AE6DD /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414FE4611C709195006AE6DD /* Category.swift */; };
 		414FE4651C7091A5006AE6DD /* Activity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414FE4641C7091A5006AE6DD /* Activity+CoreDataProperties.swift */; };
@@ -84,6 +86,8 @@
 		41397C6F1C906FB200CF0AC4 /* AllLogsOverviewTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllLogsOverviewTVC.swift; sourceTree = "<group>"; };
 		41397C711C90729300CF0AC4 /* LogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogCell.swift; sourceTree = "<group>"; };
 		413EF02A1C5F3ED4006BD0AB /* AwardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardView.swift; sourceTree = "<group>"; };
+		414070DC1CC8C6F400281122 /* QuickActionsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickActionsHelper.swift; sourceTree = "<group>"; };
+		414070DE1CC8C77700281122 /* ShortcutIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutIdentifier.swift; sourceTree = "<group>"; };
 		414FE4601C709195006AE6DD /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		414FE4611C709195006AE6DD /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		414FE4641C7091A5006AE6DD /* Activity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -235,6 +239,7 @@
 				41B8150A1C40117200A2C72D /* AnalysisHelper.swift */,
 				416F23751C40EE0C00E86FFB /* RecommendationsHelper.swift */,
 				419681971C7C425200A9BE3A /* ActivityHelper.swift */,
+				414070DC1CC8C6F400281122 /* QuickActionsHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -283,6 +288,7 @@
 				41C7CD251C6DDB0E005AA1BA /* Extensions.swift */,
 				41C7CD271C6DDB35005AA1BA /* Supporting Structs.swift */,
 				41C7CD291C6DDB8A005AA1BA /* Functions.swift */,
+				414070DE1CC8C77700281122 /* ShortcutIdentifier.swift */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -476,6 +482,7 @@
 				41CE6AFC1C38F73000F4DBED /* Flow.xcdatamodeld in Sources */,
 				41E678D21C3BCEC800FD74E6 /* CoreDataHelper.swift in Sources */,
 				41CE6AF41C38F73000F4DBED /* AppDelegate.swift in Sources */,
+				414070DF1CC8C77700281122 /* ShortcutIdentifier.swift in Sources */,
 				41B8150E1C4014BD00A2C72D /* AnalysisOverviewTVC.swift in Sources */,
 				41E678DA1C3C16DA00FD74E6 /* GradientBackgroundView.swift in Sources */,
 				413EF02B1C5F3ED4006BD0AB /* AwardView.swift in Sources */,
@@ -512,6 +519,7 @@
 				41C5EA5E1C84AD73009B4438 /* TimeIntervalPicker.swift in Sources */,
 				414FE4631C709195006AE6DD /* Category.swift in Sources */,
 				41E134DC1C55EED30027D66C /* ProgressView.swift in Sources */,
+				414070DD1CC8C6F400281122 /* QuickActionsHelper.swift in Sources */,
 				41B8150B1C40117200A2C72D /* AnalysisHelper.swift in Sources */,
 				41CE6B3C1C3936FF00F4DBED /* AreYouInFlowVC.swift in Sources */,
 			);

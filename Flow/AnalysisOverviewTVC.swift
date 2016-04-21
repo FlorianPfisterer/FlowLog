@@ -11,9 +11,34 @@ import MessageUI
 
 class AnalysisOverviewTVC: UITableViewController
 {
+    override func viewDidAppear(animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        
+        guard let path = QuickActionsHelper.navigateTo else { return }
+        QuickActionsHelper.navigateTo = nil
+        
+        switch path
+        {
+        case .AllLogs:
+            self.performSegueWithIdentifier("allLogsSegue", sender: nil)
+            
+        case .Recommendations:
+            self.performSegueWithIdentifier("recommendationsSegue", sender: nil)
+        }
+    }
+    
     @IBAction func doneButtonPressed(sender: UIBarButtonItem)
     {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        if let _ = self.presentingViewController
+        {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        else
+        {
+            let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+            self.presentViewController(storyboard.instantiateInitialViewController()!, animated: true, completion: nil)
+        }
     }
 }
 
