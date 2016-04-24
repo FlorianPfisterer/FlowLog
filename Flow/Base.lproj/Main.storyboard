@@ -53,7 +53,7 @@
                                 </variation>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ks9-UP-761">
-                                <rect key="frame" x="0.0" y="492" width="600" height="38"/>
+                                <rect key="frame" x="0.0" y="541" width="600" height="38"/>
                                 <color key="backgroundColor" red="0.1215686275" green="0.47843137250000001" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="Log Data Analysis">
@@ -69,32 +69,22 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l4I-OC-Z23" customClass="GADBannerView">
-                                <rect key="frame" x="0.0" y="550" width="600" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="k2T-EZ-qZt"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="e0f-xR-x5S" firstAttribute="top" secondItem="Ufw-3y-D7A" secondAttribute="bottom" constant="18" id="BS9-Xs-Yrt"/>
                             <constraint firstAttribute="trailing" secondItem="ks9-UP-761" secondAttribute="trailing" id="BVl-GV-T0a"/>
-                            <constraint firstItem="uuv-s9-3A3" firstAttribute="top" secondItem="l4I-OC-Z23" secondAttribute="bottom" id="Bgg-5C-og3"/>
                             <constraint firstItem="Ufw-3y-D7A" firstAttribute="centerY" secondItem="fP6-1F-dhz" secondAttribute="centerY" multiplier="0.8" id="JuZ-6J-72K"/>
                             <constraint firstItem="Ufw-3y-D7A" firstAttribute="width" secondItem="fP6-1F-dhz" secondAttribute="width" id="Lc0-fR-0mf"/>
+                            <constraint firstItem="uuv-s9-3A3" firstAttribute="top" secondItem="ks9-UP-761" secondAttribute="bottom" constant="21" id="Qyh-5N-Os4"/>
                             <constraint firstItem="Ufw-3y-D7A" firstAttribute="width" secondItem="fP6-1F-dhz" secondAttribute="width" multiplier="0.6" id="TSe-yh-m0r"/>
                             <constraint firstItem="ks9-UP-761" firstAttribute="leading" secondItem="fP6-1F-dhz" secondAttribute="leadingMargin" id="UMc-fH-xYI"/>
                             <constraint firstItem="uuv-s9-3A3" firstAttribute="top" secondItem="ks9-UP-761" secondAttribute="bottom" constant="20" id="YKe-zr-5lG"/>
-                            <constraint firstItem="l4I-OC-Z23" firstAttribute="leading" secondItem="fP6-1F-dhz" secondAttribute="leading" id="bzC-ZH-OcZ"/>
                             <constraint firstItem="Ufw-3y-D7A" firstAttribute="top" secondItem="B5M-fu-iIN" secondAttribute="bottom" constant="27" id="cxu-q0-26G"/>
-                            <constraint firstAttribute="trailing" secondItem="l4I-OC-Z23" secondAttribute="trailing" id="dDD-DX-Res"/>
                             <constraint firstItem="e0f-xR-x5S" firstAttribute="centerX" secondItem="Ufw-3y-D7A" secondAttribute="centerX" id="deK-0P-WL1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ufw-3y-D7A" secondAttribute="trailing" constant="141" id="h9C-dN-h8p"/>
                             <constraint firstItem="Ufw-3y-D7A" firstAttribute="height" secondItem="fP6-1F-dhz" secondAttribute="height" multiplier="0.41" id="mRd-iR-ffQ"/>
                             <constraint firstItem="Ufw-3y-D7A" firstAttribute="leading" secondItem="fP6-1F-dhz" secondAttribute="leadingMargin" constant="142" id="nVi-hl-l0s"/>
-                            <constraint firstItem="l4I-OC-Z23" firstAttribute="top" secondItem="ks9-UP-761" secondAttribute="bottom" constant="20" id="qEO-oz-DaM"/>
                             <constraint firstItem="Ufw-3y-D7A" firstAttribute="centerX" secondItem="fP6-1F-dhz" secondAttribute="centerX" id="rRH-QI-ehv"/>
                             <constraint firstItem="ks9-UP-761" firstAttribute="leading" secondItem="fP6-1F-dhz" secondAttribute="leading" id="tCT-Tk-1d1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ks9-UP-761" secondAttribute="trailing" id="zP8-Xd-SpO"/>
@@ -119,8 +109,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="bannerView" destination="l4I-OC-Z23" id="Hfe-8o-Hn3"/>
-                        <outlet property="bannerViewHeightConstraint" destination="k2T-EZ-qZt" id="Rqf-vr-ODq"/>
                         <outlet property="nextLogLabel" destination="e0f-xR-x5S" id="DYO-oJ-wZ6"/>
                         <outlet property="progressView" destination="Ufw-3y-D7A" id="7KD-Gd-fDO"/>
                     </connections>
@@ -268,6 +256,6 @@
         <image name="moreIconNavigationbar" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3OU-Kn-Y17"/>
+        <segue reference="S5f-zD-pa2"/>
     </inferredMetricsTieBreakers>
 </document>

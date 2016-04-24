@@ -7,15 +7,14 @@
 //
 
 import UIKit
-import GoogleMobileAds
 
 class StartVC: UIViewController
 {
     @IBOutlet weak var progressView: ProgressView!
     @IBOutlet weak var nextLogLabel: UILabel!
-    @IBOutlet weak var bannerView: GADBannerView!
-    
-    @IBOutlet weak var bannerViewHeightConstraint: NSLayoutConstraint!
+//    @IBOutlet weak var bannerView: GADBannerView!
+//    
+//    @IBOutlet weak var bannerViewHeightConstraint: NSLayoutConstraint!
     
     private var notificationAlertShown = false
 }
@@ -27,16 +26,16 @@ extension StartVC
     {
         super.viewDidLoad()
         
-        self.bannerView.rootViewController = self
-        
-        if DEBUG
-        {
-            self.bannerViewHeightConstraint.constant = 0
-        }
-        else
-        {
-            setupBannerView(self.bannerView, forAd: .OverviewBottomBanner)
-        }
+//        self.bannerView.rootViewController = self
+//        
+//        if DEBUG
+//        {
+//            self.bannerViewHeightConstraint.constant = 0
+//        }
+//        else
+//        {
+//            setupBannerView(self.bannerView, forAd: .OverviewBottomBanner)
+//        }
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(self.proceedToLog))
     }
@@ -47,7 +46,7 @@ extension StartVC
         
         self.updateProgress()
         
-        handleAdBannerShowup(heightConstraint: self.bannerViewHeightConstraint)
+//       handleAdBannerShowup(heightConstraint: self.bannerViewHeightConstraint)
     }
     
     override func viewDidAppear(animated: Bool)

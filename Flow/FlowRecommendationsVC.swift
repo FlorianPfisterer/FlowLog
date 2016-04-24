@@ -7,15 +7,14 @@
 //
 
 import UIKit
-import GoogleMobileAds
 import CoreData
 
 class FlowRecommendationsVC: UIViewController
 {
     // MARK: - IBOutlets
     @IBOutlet weak var diagramView: DiagramView!
-    @IBOutlet weak var bannerView: GADBannerView!
-    @IBOutlet weak var bannerViewHeightConstraint: NSLayoutConstraint!
+//    @IBOutlet weak var bannerView: GADBannerView!
+//    @IBOutlet weak var bannerViewHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var graphTitleLabel: UILabel!
     @IBOutlet weak var averageLabel: UILabel!
@@ -60,15 +59,15 @@ extension FlowRecommendationsVC     // MARK: - View Lifecycle
         self.tableView.estimatedRowHeight = 100
         
         // manage ad banner
-        self.bannerView.rootViewController = self
-        if DEBUG
-        {
-            self.bannerViewHeightConstraint.constant = 0
-        }
-        else
-        {
-            setupBannerView(self.bannerView, forAd: .AnalysisGeneralBottomBanner)
-        }
+//        self.bannerView.rootViewController = self
+//        if DEBUG
+//        {
+//            self.bannerViewHeightConstraint.constant = 0
+//        }
+//        else
+//        {
+//            setupBannerView(self.bannerView, forAd: .AnalysisGeneralBottomBanner)
+//        }
     }
     
     override func viewWillAppear(animated: Bool)
@@ -77,7 +76,7 @@ extension FlowRecommendationsVC     // MARK: - View Lifecycle
         
         self.setupGraphDisplay()
         
-        handleAdBannerShowup(heightConstraint: self.bannerViewHeightConstraint)
+//        handleAdBannerShowup(heightConstraint: self.bannerViewHeightConstraint)
     }
 }
 

@@ -123,7 +123,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="More Analyses coming soon!" id="9e6-nF-hYK">
+                            <tableViewSection headerTitle="More Analyses" id="9e6-nF-hYK">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="dAZ-XW-mgG">
                                         <rect key="frame" x="0.0" y="443" width="600" height="44"/>
@@ -396,7 +396,7 @@
                                 </variation>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dBQ-DJ-Vws">
-                                <rect key="frame" x="0.0" y="377" width="375" height="240"/>
+                                <rect key="frame" x="0.0" y="377" width="375" height="290"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recommendationCell" rowHeight="70" id="ajN-Lf-ZAw" customClass="DynamicRecommendationCell" customModule="FlowLog" customModuleProvider="target">
@@ -430,28 +430,17 @@
                                     <outlet property="delegate" destination="6Ef-Jz-vhe" id="BAi-8C-Jdc"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="691-gg-xeZ" customClass="GADBannerView">
-                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="RZh-v1-AE7"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="W0l-ug-m9l" firstAttribute="height" secondItem="1a2-yP-8kx" secondAttribute="height" multiplier="1:2.6" id="2zH-hy-wGg"/>
-                            <constraint firstAttribute="trailing" secondItem="691-gg-xeZ" secondAttribute="trailing" id="6zp-Kw-wjt"/>
-                            <constraint firstItem="691-gg-xeZ" firstAttribute="top" secondItem="dBQ-DJ-Vws" secondAttribute="bottom" id="7gE-gY-RRa"/>
-                            <constraint firstItem="b60-UQ-w8I" firstAttribute="top" secondItem="691-gg-xeZ" secondAttribute="bottom" id="A1c-dU-uSi"/>
+                            <constraint firstItem="b60-UQ-w8I" firstAttribute="top" secondItem="dBQ-DJ-Vws" secondAttribute="bottom" id="CvH-SA-uYf"/>
                             <constraint firstItem="dBQ-DJ-Vws" firstAttribute="top" secondItem="RJp-uD-OTA" secondAttribute="bottom" constant="8" id="Qhw-zv-Xya"/>
                             <constraint firstItem="dBQ-DJ-Vws" firstAttribute="leading" secondItem="1a2-yP-8kx" secondAttribute="leading" id="ZYE-bM-Rji"/>
                             <constraint firstItem="W0l-ug-m9l" firstAttribute="leading" secondItem="1a2-yP-8kx" secondAttribute="leadingMargin" id="cAD-MR-8MX"/>
                             <constraint firstItem="RJp-uD-OTA" firstAttribute="top" secondItem="W0l-ug-m9l" secondAttribute="bottom" constant="8" id="dXL-hO-Uvb"/>
                             <constraint firstAttribute="trailing" secondItem="dBQ-DJ-Vws" secondAttribute="trailing" id="gsh-WL-QKN"/>
                             <constraint firstItem="b60-UQ-w8I" firstAttribute="top" secondItem="dBQ-DJ-Vws" secondAttribute="bottom" id="hCw-bl-dsK"/>
-                            <constraint firstItem="691-gg-xeZ" firstAttribute="leading" secondItem="1a2-yP-8kx" secondAttribute="leading" id="ice-qq-zho"/>
-                            <constraint firstItem="691-gg-xeZ" firstAttribute="top" secondItem="dBQ-DJ-Vws" secondAttribute="bottom" constant="8" id="k0o-4Y-RRp"/>
                             <constraint firstItem="W0l-ug-m9l" firstAttribute="trailing" secondItem="1a2-yP-8kx" secondAttribute="trailingMargin" id="klI-G6-kst"/>
                             <constraint firstItem="W0l-ug-m9l" firstAttribute="top" secondItem="AJa-GH-1Xa" secondAttribute="bottom" constant="12" id="mej-BR-asL"/>
                             <constraint firstItem="RJp-uD-OTA" firstAttribute="leading" secondItem="1a2-yP-8kx" secondAttribute="leadingMargin" id="wUV-YQ-f2o"/>
@@ -461,7 +450,6 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="yOK-wk-opA"/>
-                                <exclude reference="k0o-4Y-RRp"/>
                                 <exclude reference="hCw-bl-dsK"/>
                             </mask>
                         </variation>
@@ -469,8 +457,6 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="averageLabel" destination="pro-QB-h5a" id="Py4-Wm-UYv"/>
-                        <outlet property="bannerView" destination="691-gg-xeZ" id="N5l-lO-g5S"/>
-                        <outlet property="bannerViewHeightConstraint" destination="RZh-v1-AE7" id="vWC-Vf-ChA"/>
                         <outlet property="diagramView" destination="W0l-ug-m9l" id="xTQ-gR-b0s"/>
                         <outlet property="endTimeLabel" destination="ewA-9t-Ybs" id="HLe-Ud-BgY"/>
                         <outlet property="graphKindSegmentedControl" destination="RJp-uD-OTA" id="u3D-GF-C0N"/>
@@ -487,10 +473,10 @@
             </objects>
             <point key="canvasLocation" x="4065.5" y="40.5"/>
         </scene>
-        <!--Poupular Flow Activities-->
+        <!--Popular Flow Activities-->
         <scene sceneID="6j6-4H-2Jb">
             <objects>
-                <tableViewController title="Poupular Flow Activities" id="VZL-N5-KE9" customClass="PopularFlowActivitiesTVC" customModule="FlowLog" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Popular Flow Activities" id="VZL-N5-KE9" customClass="PopularFlowActivitiesTVC" customModule="FlowLog" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="X35-HW-IRy">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

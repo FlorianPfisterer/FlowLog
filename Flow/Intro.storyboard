@@ -286,34 +286,6 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dJ-Up-zTM" customClass="CircularHeadlineView" customModule="FlowLog" customModuleProvider="target">
-                                <rect key="frame" x="41" y="300" width="293" height="43"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="229" id="17B-WV-3gd"/>
-                                    <constraint firstAttribute="height" constant="43" id="UGU-Gk-nrQ"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="numberLabelFontSize">
-                                        <real key="value" value="31"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Your Energy Level"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="titleLabelFontSize">
-                                        <real key="value" value="21"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="labelMargin">
-                                        <real key="value" value="11"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="numberString" value="⚡︎"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="subTitle" value="how energized you feel"/>
-                                </userDefinedRuntimeAttributes>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="17B-WV-3gd"/>
-                                        <exclude reference="UGU-Gk-nrQ"/>
-                                    </mask>
-                                </variation>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XBt-go-EG7" customClass="CircularHeadlineView" customModule="FlowLog" customModuleProvider="target">
                                 <rect key="frame" x="41" y="360" width="293" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -372,6 +344,34 @@
                                     <segue destination="RQQ-E2-Mcr" kind="show" id="38x-Mg-6qI"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dJ-Up-zTM" customClass="CircularHeadlineView" customModule="FlowLog" customModuleProvider="target">
+                                <rect key="frame" x="41" y="300" width="293" height="43"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="229" id="17B-WV-3gd"/>
+                                    <constraint firstAttribute="height" constant="43" id="UGU-Gk-nrQ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="numberLabelFontSize">
+                                        <real key="value" value="31"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Your Energy Level"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="titleLabelFontSize">
+                                        <real key="value" value="21"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="labelMargin">
+                                        <real key="value" value="11"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="numberString" value="⚡︎"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="subTitle" value="how energized you feel"/>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="17B-WV-3gd"/>
+                                        <exclude reference="UGU-Gk-nrQ"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
