@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2Ly-D5-7S8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -16,20 +16,20 @@
                         <viewControllerLayoutGuide type="bottom" id="jB4-52-acs"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PXV-2b-7CH">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dcn-k8-B2y" customClass="GradientBackgroundView" customModule="FlowLog" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dcn-k8-B2y" customClass="GradientBackgroundView" customModule="Florian_Pfisterer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find your flow." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zuw-QS-PMM">
-                                        <rect key="frame" x="242" y="365" width="117" height="22"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Find your flow." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zuw-QS-PMM">
+                                        <rect key="frame" x="130" y="402" width="117" height="22"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIconRounded" translatesAutoresizingMaskIntoConstraints="NO" id="XVr-rP-a4M">
-                                        <rect key="frame" x="190" y="55" width="220" height="220"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="AppIconRounded" translatesAutoresizingMaskIntoConstraints="NO" id="XVr-rP-a4M">
+                                        <rect key="frame" x="78" y="92" width="220" height="220"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="220" id="fBn-bd-MyG">
                                                 <variation key="widthClass=compact" constant="185"/>
@@ -38,7 +38,7 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="24u-kn-Efp">
-                                        <rect key="frame" x="0.0" y="541" width="600" height="38"/>
+                                        <rect key="frame" x="0.0" y="608" width="375" height="38"/>
                                         <color key="backgroundColor" red="0.1215686275" green="0.47843137250000001" blue="0.50196078430000002" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="od5-Nz-6Lf"/>
@@ -56,8 +56,8 @@
                                             <segue destination="pTg-m5-L6f" kind="show" id="L2j-oy-KPj"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FlowLog" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Aa-nD-Kzx">
-                                        <rect key="frame" x="183" y="295" width="235" height="77"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="FlowLog" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Aa-nD-Kzx">
+                                        <rect key="frame" x="71" y="332" width="235" height="77"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="64"/>
                                         <color key="textColor" red="0.1215686275" green="0.47843137250000001" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -93,6 +93,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="PBK-6u-Izr"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ewo-nI-dr1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -101,16 +102,16 @@
         <!--How it works-->
         <scene sceneID="KvO-ab-wnz">
             <objects>
-                <viewController storyboardIdentifier="HowItWorksVC" title="How it works" id="pTg-m5-L6f" customClass="IntroHowItWorksVC" customModule="FlowLog" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HowItWorksVC" title="How it works" id="pTg-m5-L6f" customClass="IntroHowItWorksVC" customModule="Florian_Pfisterer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0KP-5H-3dV"/>
                         <viewControllerLayoutGuide type="bottom" id="gRY-na-fwM"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Bxu-D5-mQn" customClass="GradientBackgroundView" customModule="FlowLog" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="Bxu-D5-mQn" customClass="GradientBackgroundView" customModule="Florian_Pfisterer" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q0U-SM-3f7" customClass="TimeIntervalPicker" customModule="FlowLog" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q0U-SM-3f7" customClass="TimeIntervalPicker" customModule="Florian_Pfisterer" customModuleProvider="target">
                                 <rect key="frame" x="19" y="203" width="337" height="169"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -142,7 +143,7 @@
                                     <action selector="proceedToNextStep" destination="pTg-m5-L6f" eventType="touchUpInside" id="lFy-d7-6tf"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2CL-zz-5sd" customClass="CircularHeadlineView" customModule="FlowLog" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2CL-zz-5sd" customClass="CircularHeadlineView" customModule="Florian_Pfisterer" customModuleProvider="target">
                                 <rect key="frame" x="73" y="145" width="229" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -216,12 +217,12 @@
         <!--What's a FlowLog?-->
         <scene sceneID="1V6-YQ-cOv">
             <objects>
-                <viewController storyboardIdentifier="FlowLogInfoVC" title="What's a FlowLog?" id="4Jw-XG-VLD" customClass="IntroFlowLogInfoVC" customModule="FlowLog" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FlowLogInfoVC" title="What's a FlowLog?" id="4Jw-XG-VLD" customClass="IntroFlowLogInfoVC" customModule="Florian_Pfisterer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MWU-ke-6tH"/>
                         <viewControllerLayoutGuide type="bottom" id="S1F-Re-NVM"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="QQQ-Yg-ZVa" customClass="GradientBackgroundView" customModule="FlowLog" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="QQQ-Yg-ZVa" customClass="GradientBackgroundView" customModule="Florian_Pfisterer" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -231,7 +232,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jag-lm-JAg" customClass="CircularHeadlineView" customModule="FlowLog" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jag-lm-JAg" customClass="CircularHeadlineView" customModule="Florian_Pfisterer" customModuleProvider="target">
                                 <rect key="frame" x="41" y="180" width="293" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -258,7 +259,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2J-ql-bg4" customClass="CircularHeadlineView" customModule="FlowLog" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2J-ql-bg4" customClass="CircularHeadlineView" customModule="Florian_Pfisterer" customModuleProvider="target">
                                 <rect key="frame" x="41" y="240" width="293" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -286,7 +287,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XBt-go-EG7" customClass="CircularHeadlineView" customModule="FlowLog" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XBt-go-EG7" customClass="CircularHeadlineView" customModule="Florian_Pfisterer" customModuleProvider="target">
                                 <rect key="frame" x="41" y="360" width="293" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -344,7 +345,7 @@
                                     <segue destination="RQQ-E2-Mcr" kind="show" id="38x-Mg-6qI"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dJ-Up-zTM" customClass="CircularHeadlineView" customModule="FlowLog" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dJ-Up-zTM" customClass="CircularHeadlineView" customModule="Florian_Pfisterer" customModuleProvider="target">
                                 <rect key="frame" x="41" y="300" width="293" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -420,16 +421,16 @@
         <!--Analyses-->
         <scene sceneID="r1k-9t-GML">
             <objects>
-                <viewController storyboardIdentifier="AnalysesInfoVC" title="Analyses" id="RQQ-E2-Mcr" customClass="IntroAnalysesInfoVC" customModule="FlowLog" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AnalysesInfoVC" title="Analyses" id="RQQ-E2-Mcr" customClass="IntroAnalysesInfoVC" customModule="Florian_Pfisterer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="47V-4t-pgA"/>
                         <viewControllerLayoutGuide type="bottom" id="nnY-tR-lna"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="VFG-Fd-k7L" customClass="GradientBackgroundView" customModule="FlowLog" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="VFG-Fd-k7L" customClass="GradientBackgroundView" customModule="Florian_Pfisterer" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MDf-Kc-8jx" customClass="AwardView" customModule="FlowLog" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MDf-Kc-8jx" customClass="AwardView" customModule="Florian_Pfisterer" customModuleProvider="target">
                                 <rect key="frame" x="18" y="20" width="338" height="233"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="startColor">
@@ -446,7 +447,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="djd-OH-P8t" customClass="CircularHeadlineView" customModule="FlowLog" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="djd-OH-P8t" customClass="CircularHeadlineView" customModule="Florian_Pfisterer" customModuleProvider="target">
                                 <rect key="frame" x="41" y="305" width="293" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -475,7 +476,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tyb-ik-9ia" customClass="CircularHeadlineView" customModule="FlowLog" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tyb-ik-9ia" customClass="CircularHeadlineView" customModule="Florian_Pfisterer" customModuleProvider="target">
                                 <rect key="frame" x="41" y="365" width="293" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -502,7 +503,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1GY-9v-e27" customClass="CircularHeadlineView" customModule="FlowLog" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1GY-9v-e27" customClass="CircularHeadlineView" customModule="Florian_Pfisterer" customModuleProvider="target">
                                 <rect key="frame" x="41" y="425" width="293" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -529,7 +530,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYn-bu-3X0" customClass="CircularHeadlineView" customModule="FlowLog" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYn-bu-3X0" customClass="CircularHeadlineView" customModule="Florian_Pfisterer" customModuleProvider="target">
                                 <rect key="frame" x="41" y="485" width="293" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -639,7 +640,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lzT-ci-oSS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2709.5" y="280.5"/>
+            <point key="canvasLocation" x="2723.5" y="280.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4Z1-GG-dGt">

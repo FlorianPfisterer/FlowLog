@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "41CE6AEF1C38F73000F4DBED"
-               BuildableName = "FlowLog.app"
-               BlueprintName = "FlowLog"
+               BuildableName = "Florian Pfisterer.app"
+               BlueprintName = "Florian Pfisterer"
                ReferencedContainer = "container:Florian Pfisterer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "41CE6AEF1C38F73000F4DBED"
-            BuildableName = "FlowLog.app"
-            BlueprintName = "FlowLog"
+            BuildableName = "Florian Pfisterer.app"
+            BlueprintName = "Florian Pfisterer"
             ReferencedContainer = "container:Florian Pfisterer.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -56,8 +56,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "41CE6AEF1C38F73000F4DBED"
-            BuildableName = "FlowLog.app"
-            BlueprintName = "FlowLog"
+            BuildableName = "Florian Pfisterer.app"
+            BlueprintName = "Florian Pfisterer"
             ReferencedContainer = "container:Florian Pfisterer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -75,8 +75,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "41CE6AEF1C38F73000F4DBED"
-            BuildableName = "FlowLog.app"
-            BlueprintName = "FlowLog"
+            BuildableName = "Florian Pfisterer.app"
+            BlueprintName = "Florian Pfisterer"
             ReferencedContainer = "container:Florian Pfisterer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
