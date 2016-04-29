@@ -243,9 +243,9 @@
 		41CE6B0A1C38F7CC00F4DBED /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				41E678D51C3C139C00FD74E6 /* Intro */,
 				41E134D91C55EEBA0027D66C /* Overview */,
 				41CE6B2F1C390E9500F4DBED /* Log */,
-				41E678D51C3C139C00FD74E6 /* Intro */,
 				41B8150C1C40148800A2C72D /* Analysis */,
 				41CE6B281C3908F400F4DBED /* Settings */,
 			);

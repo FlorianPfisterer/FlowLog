@@ -207,7 +207,9 @@ struct Time
     var hour: Int
     var minute: Int
     
-    var absoluteMinutes: Int
+    var absoluteMinutes: Int {
+        return self.hour * 60 + self.minute
+    }
     
     static let standardStartTime = Time(hour: 9, minute: 0)
     static let standardEndTime = Time(hour: 19, minute: 0)
@@ -216,8 +218,6 @@ struct Time
     {
         self.hour = hour
         self.minute = minute
-        
-        self.absoluteMinutes = self.hour * 60 + self.minute
     }
     
     init(date: NSDate)
@@ -225,16 +225,12 @@ struct Time
         let dateComponents = calendar.components([NSCalendarUnit.Hour, NSCalendarUnit.Minute], fromDate: date)
         self.hour = dateComponents.hour
         self.minute = dateComponents.minute
-        
-        self.absoluteMinutes = self.hour * 60 + self.minute
     }
     
     init(absoluteMinutes: Int)
     {
         self.minute = absoluteMinutes % 60
         self.hour = (absoluteMinutes - self.minute) / 60
-        
-        self.absoluteMinutes = absoluteMinutes
     }
 }
 
@@ -255,11 +251,21 @@ extension Time      // public API
     {
         let dateComponents = calendar.components([NSCalendarUnit.Day, NSCalendarUnit.Month, NSCalendarUnit.Year], fromDate: NSDate())
         
-        dateComponents.hour = self.hour
-        dateComponents.minute = self.minute
-        dateComponents.second = 0
+        if self.hour == 24
+        {
+            dateComponents.hour = 23
+            dateComponents.minute = 59
+            dateComponents.second = 59
+        }
+        else
+        {
+            dateComponents.hour = self.hour
+            dateComponents.minute = self.minute
+            dateComponents.second = 0
+        }
         
-        return calendar.dateFromComponents(dateComponents)!
+        guard let date = calendar.dateFromComponents(dateComponents) else { return NSDate() }
+        return date
     }
 }
 

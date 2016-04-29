@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2Ly-D5-7S8">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -16,29 +16,20 @@
                         <viewControllerLayoutGuide type="bottom" id="jB4-52-acs"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PXV-2b-7CH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dcn-k8-B2y" customClass="GradientBackgroundView" customModule="Florian_Pfisterer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Find your flow." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zuw-QS-PMM">
-                                        <rect key="frame" x="130" y="402" width="117" height="22"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find your flow." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zuw-QS-PMM">
+                                        <rect key="frame" x="149" y="440" width="117" height="22"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="AppIconRounded" translatesAutoresizingMaskIntoConstraints="NO" id="XVr-rP-a4M">
-                                        <rect key="frame" x="78" y="92" width="220" height="220"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="220" id="fBn-bd-MyG">
-                                                <variation key="widthClass=compact" constant="185"/>
-                                            </constraint>
-                                            <constraint firstAttribute="width" secondItem="XVr-rP-a4M" secondAttribute="height" multiplier="1:1" id="xYG-ZX-8u7"/>
-                                        </constraints>
-                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="24u-kn-Efp">
-                                        <rect key="frame" x="0.0" y="608" width="375" height="38"/>
+                                        <rect key="frame" x="0.0" y="677" width="414" height="38"/>
                                         <color key="backgroundColor" red="0.1215686275" green="0.47843137250000001" blue="0.50196078430000002" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="od5-Nz-6Lf"/>
@@ -56,12 +47,21 @@
                                             <segue destination="pTg-m5-L6f" kind="show" id="L2j-oy-KPj"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="FlowLog" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Aa-nD-Kzx">
-                                        <rect key="frame" x="71" y="332" width="235" height="77"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FlowLog" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Aa-nD-Kzx">
+                                        <rect key="frame" x="90" y="370" width="235" height="77"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="64"/>
                                         <color key="textColor" red="0.1215686275" green="0.47843137250000001" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIconRounded" translatesAutoresizingMaskIntoConstraints="NO" id="XVr-rP-a4M">
+                                        <rect key="frame" x="97" y="130" width="220" height="220"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="220" id="fBn-bd-MyG">
+                                                <variation key="widthClass=compact" constant="185"/>
+                                            </constraint>
+                                            <constraint firstAttribute="width" secondItem="XVr-rP-a4M" secondAttribute="height" multiplier="1:1" id="xYG-ZX-8u7"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -93,7 +93,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="PBK-6u-Izr"/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ewo-nI-dr1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -108,24 +107,24 @@
                         <viewControllerLayoutGuide type="bottom" id="gRY-na-fwM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Bxu-D5-mQn" customClass="GradientBackgroundView" customModule="Florian_Pfisterer" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q0U-SM-3f7" customClass="TimeIntervalPicker" customModule="Florian_Pfisterer" customModuleProvider="target">
-                                <rect key="frame" x="19" y="203" width="337" height="169"/>
+                                <rect key="frame" x="21" y="203" width="372" height="169"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="169" id="hHz-7Z-cYv"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How It Works" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mlb-oo-D8C">
-                                <rect key="frame" x="92" y="28" width="192" height="39"/>
+                                <rect key="frame" x="111" y="28" width="192" height="39"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pov-eV-5n5">
-                                <rect key="frame" x="0.0" y="608" width="375" height="38"/>
+                                <rect key="frame" x="0.0" y="677" width="414" height="38"/>
                                 <color key="backgroundColor" red="0.1215686275" green="0.47843137250000001" blue="0.50196078430000002" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="qtY-xf-6pm"/>
@@ -144,7 +143,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2CL-zz-5sd" customClass="CircularHeadlineView" customModule="Florian_Pfisterer" customModuleProvider="target">
-                                <rect key="frame" x="73" y="145" width="229" height="43"/>
+                                <rect key="frame" x="93" y="145" width="229" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="229" id="xbA-RF-Ic4"/>
@@ -166,7 +165,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="This app will repeatedly remind you to do a FlowLog in the course of about a week. " textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="guH-7J-1EL">
-                                <rect key="frame" x="33" y="75" width="309" height="52"/>
+                                <rect key="frame" x="37" y="75" width="340" height="52"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -204,7 +203,6 @@
                         </variation>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="timeIntervalPicker" destination="Q0U-SM-3f7" id="QXU-As-Lem"/>
                         <segue destination="4Jw-XG-VLD" kind="show" identifier="goToFlowLogInfoSegue" id="MLf-m9-APv"/>
@@ -212,7 +210,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z0I-qM-69U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1667.5" y="280.5"/>
+            <point key="canvasLocation" x="1617" y="280"/>
         </scene>
         <!--What's a FlowLog?-->
         <scene sceneID="1V6-YQ-cOv">
@@ -223,20 +221,21 @@
                         <viewControllerLayoutGuide type="bottom" id="S1F-Re-NVM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QQQ-Yg-ZVa" customClass="GradientBackgroundView" customModule="Florian_Pfisterer" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's a FlowLog?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0Q-6D-0Em">
-                                <rect key="frame" x="51" y="28" width="273" height="39"/>
+                                <rect key="frame" x="71" y="28" width="273" height="39"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jag-lm-JAg" customClass="CircularHeadlineView" customModule="Florian_Pfisterer" customModuleProvider="target">
-                                <rect key="frame" x="41" y="180" width="293" height="43"/>
+                                <rect key="frame" x="77" y="180" width="260" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="43" id="pXE-6D-VU2"/>
+                                    <constraint firstAttribute="height" constant="43" id="jJS-5u-Fyh"/>
+                                    <constraint firstAttribute="width" constant="260" id="lH8-7o-8Le"/>
                                     <constraint firstAttribute="width" constant="229" id="yVt-cO-Red"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -259,36 +258,8 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2J-ql-bg4" customClass="CircularHeadlineView" customModule="Florian_Pfisterer" customModuleProvider="target">
-                                <rect key="frame" x="41" y="240" width="293" height="43"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="43" id="A7V-xH-7Cx"/>
-                                    <constraint firstAttribute="width" constant="229" id="uwX-wH-IUT"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="numberLabelFontSize">
-                                        <real key="value" value="31"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Your Happiness Level"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="titleLabelFontSize">
-                                        <real key="value" value="21"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="labelMargin">
-                                        <real key="value" value="11"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="numberString" value="☺︎"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="subTitle" value="how you are feeling"/>
-                                </userDefinedRuntimeAttributes>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="A7V-xH-7Cx"/>
-                                        <exclude reference="uwX-wH-IUT"/>
-                                    </mask>
-                                </variation>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XBt-go-EG7" customClass="CircularHeadlineView" customModule="Florian_Pfisterer" customModuleProvider="target">
-                                <rect key="frame" x="41" y="360" width="293" height="43"/>
+                                <rect key="frame" x="77" y="360" width="260" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="229" id="ihP-Ka-4ns"/>
@@ -316,7 +287,7 @@
                                 </variation>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1Yn-vJ-rx7">
-                                <rect key="frame" x="33" y="75" width="309" height="88"/>
+                                <rect key="frame" x="37" y="75" width="340" height="88"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <string key="text">Good question. In the time frame you have just specified, you will repeatedly receive a notification to do a FlowLog. It will ask you to enter:</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -327,7 +298,7 @@
                                 </variation>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O3D-wr-agX">
-                                <rect key="frame" x="0.0" y="608" width="375" height="38"/>
+                                <rect key="frame" x="0.0" y="677" width="414" height="38"/>
                                 <color key="backgroundColor" red="0.1215686275" green="0.47843137250000001" blue="0.50196078430000002" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="pDv-1F-Pp5"/>
@@ -346,7 +317,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dJ-Up-zTM" customClass="CircularHeadlineView" customModule="Florian_Pfisterer" customModuleProvider="target">
-                                <rect key="frame" x="41" y="300" width="293" height="43"/>
+                                <rect key="frame" x="77" y="300" width="260" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="229" id="17B-WV-3gd"/>
@@ -373,6 +344,34 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2J-ql-bg4" customClass="CircularHeadlineView" customModule="Florian_Pfisterer" customModuleProvider="target">
+                                <rect key="frame" x="77" y="240" width="260" height="43"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="A7V-xH-7Cx"/>
+                                    <constraint firstAttribute="width" constant="229" id="uwX-wH-IUT"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="numberLabelFontSize">
+                                        <real key="value" value="31"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Your Happiness Level"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="titleLabelFontSize">
+                                        <real key="value" value="21"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="labelMargin">
+                                        <real key="value" value="11"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="numberString" value="☺︎"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="subTitle" value="how you are feeling"/>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="A7V-xH-7Cx"/>
+                                        <exclude reference="uwX-wH-IUT"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -381,42 +380,35 @@
                                 <variation key="widthClass=compact" constant="5"/>
                             </constraint>
                             <constraint firstItem="O3D-wr-agX" firstAttribute="leading" secondItem="QQQ-Yg-ZVa" secondAttribute="leading" id="7uh-NF-szR"/>
-                            <constraint firstItem="H2J-ql-bg4" firstAttribute="height" secondItem="Jag-lm-JAg" secondAttribute="height" id="8AC-MY-pcf"/>
                             <constraint firstItem="9dJ-Up-zTM" firstAttribute="width" secondItem="H2J-ql-bg4" secondAttribute="width" id="Btx-GE-ERI"/>
-                            <constraint firstItem="H2J-ql-bg4" firstAttribute="top" secondItem="Jag-lm-JAg" secondAttribute="bottom" constant="17" id="IQM-pT-bhn"/>
+                            <constraint firstItem="H2J-ql-bg4" firstAttribute="height" secondItem="Jag-lm-JAg" secondAttribute="height" id="Dcn-Rk-F2p"/>
+                            <constraint firstItem="Jag-lm-JAg" firstAttribute="centerX" secondItem="1Yn-vJ-rx7" secondAttribute="centerX" id="HaA-lH-G4f"/>
                             <constraint firstItem="1Yn-vJ-rx7" firstAttribute="centerX" secondItem="c0Q-6D-0Em" secondAttribute="centerX" id="J1s-iI-oaz"/>
-                            <constraint firstItem="Jag-lm-JAg" firstAttribute="leading" secondItem="QQQ-Yg-ZVa" secondAttribute="leadingMargin" constant="25" id="LbW-Ni-gXE">
-                                <variation key="widthClass=compact" constant="15"/>
-                            </constraint>
                             <constraint firstItem="1Yn-vJ-rx7" firstAttribute="leading" secondItem="QQQ-Yg-ZVa" secondAttribute="leadingMargin" constant="17" id="OfO-FQ-4rh">
                                 <variation key="widthClass=compact" constant="5"/>
                             </constraint>
-                            <constraint firstAttribute="trailingMargin" secondItem="Jag-lm-JAg" secondAttribute="trailing" constant="25" id="WiH-HE-s3p">
-                                <variation key="widthClass=compact" constant="15"/>
-                            </constraint>
+                            <constraint firstItem="H2J-ql-bg4" firstAttribute="centerX" secondItem="Jag-lm-JAg" secondAttribute="centerX" id="PKf-tH-qpV"/>
                             <constraint firstItem="1Yn-vJ-rx7" firstAttribute="top" secondItem="c0Q-6D-0Em" secondAttribute="bottom" constant="8" id="X9I-9o-5bw"/>
-                            <constraint firstItem="H2J-ql-bg4" firstAttribute="width" secondItem="Jag-lm-JAg" secondAttribute="width" id="Z05-tx-w0W"/>
-                            <constraint firstItem="Jag-lm-JAg" firstAttribute="centerX" secondItem="QQQ-Yg-ZVa" secondAttribute="centerX" id="bDa-uS-B6e"/>
+                            <constraint firstItem="H2J-ql-bg4" firstAttribute="width" secondItem="Jag-lm-JAg" secondAttribute="width" id="cg0-A4-eSy"/>
                             <constraint firstItem="9dJ-Up-zTM" firstAttribute="top" secondItem="H2J-ql-bg4" secondAttribute="bottom" constant="17" id="eJz-ZU-uMs"/>
                             <constraint firstItem="9dJ-Up-zTM" firstAttribute="centerX" secondItem="H2J-ql-bg4" secondAttribute="centerX" id="fav-dp-y7C"/>
                             <constraint firstItem="S1F-Re-NVM" firstAttribute="top" secondItem="O3D-wr-agX" secondAttribute="bottom" constant="21" id="hBt-X5-LTC"/>
                             <constraint firstItem="XBt-go-EG7" firstAttribute="height" secondItem="9dJ-Up-zTM" secondAttribute="height" id="hoC-mL-i9w"/>
-                            <constraint firstItem="Jag-lm-JAg" firstAttribute="top" secondItem="1Yn-vJ-rx7" secondAttribute="bottom" constant="17" id="kRA-fw-HRR"/>
                             <constraint firstItem="c0Q-6D-0Em" firstAttribute="top" secondItem="MWU-ke-6tH" secondAttribute="bottom" constant="8" id="njS-HL-e91"/>
                             <constraint firstItem="9dJ-Up-zTM" firstAttribute="height" secondItem="H2J-ql-bg4" secondAttribute="height" id="ojr-ZH-YQz"/>
                             <constraint firstItem="XBt-go-EG7" firstAttribute="top" secondItem="9dJ-Up-zTM" secondAttribute="bottom" constant="17" id="qml-7M-aXA"/>
                             <constraint firstItem="XBt-go-EG7" firstAttribute="centerX" secondItem="9dJ-Up-zTM" secondAttribute="centerX" id="swE-2W-6t7"/>
-                            <constraint firstItem="H2J-ql-bg4" firstAttribute="centerX" secondItem="Jag-lm-JAg" secondAttribute="centerX" id="uye-gL-H8j"/>
+                            <constraint firstItem="H2J-ql-bg4" firstAttribute="top" secondItem="Jag-lm-JAg" secondAttribute="bottom" constant="17" id="wfI-g9-qdr"/>
                             <constraint firstAttribute="trailing" secondItem="O3D-wr-agX" secondAttribute="trailing" id="yx6-Bg-lKi"/>
                             <constraint firstItem="c0Q-6D-0Em" firstAttribute="centerX" secondItem="QQQ-Yg-ZVa" secondAttribute="centerX" id="zTX-O6-lz9"/>
+                            <constraint firstItem="Jag-lm-JAg" firstAttribute="top" secondItem="1Yn-vJ-rx7" secondAttribute="bottom" constant="17" id="zU3-E0-b24"/>
                         </constraints>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Nt-oc-0HY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2212.5" y="280.5"/>
+            <point key="canvasLocation" x="2176" y="280"/>
         </scene>
         <!--Analyses-->
         <scene sceneID="r1k-9t-GML">
@@ -427,11 +419,11 @@
                         <viewControllerLayoutGuide type="bottom" id="nnY-tR-lna"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="VFG-Fd-k7L" customClass="GradientBackgroundView" customModule="Florian_Pfisterer" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MDf-Kc-8jx" customClass="AwardView" customModule="Florian_Pfisterer" customModuleProvider="target">
-                                <rect key="frame" x="18" y="20" width="338" height="233"/>
+                                <rect key="frame" x="21" y="20" width="372" height="258"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="startColor">
                                         <color key="value" red="0.1215686275" green="0.47843137250000001" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -442,19 +434,18 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Analyses" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tlb-F2-bBO">
-                                <rect key="frame" x="121" y="49" width="132" height="39"/>
+                                <rect key="frame" x="141" y="49" width="132" height="39"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="djd-OH-P8t" customClass="CircularHeadlineView" customModule="Florian_Pfisterer" customModuleProvider="target">
-                                <rect key="frame" x="41" y="305" width="293" height="43"/>
+                                <rect key="frame" x="71" y="330" width="273" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="229" id="CfF-4Y-vNR"/>
-                                    <constraint firstAttribute="height" constant="43" id="Ung-Lp-fAo">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="60"/>
-                                    </constraint>
+                                    <constraint firstAttribute="width" constant="273" id="HnZ-1O-Y0t"/>
+                                    <constraint firstAttribute="height" constant="43" id="Sb8-np-Iev"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="numberLabelFontSize">
@@ -476,35 +467,8 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tyb-ik-9ia" customClass="CircularHeadlineView" customModule="Florian_Pfisterer" customModuleProvider="target">
-                                <rect key="frame" x="41" y="365" width="293" height="43"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="229" id="1e2-Kj-Kyp"/>
-                                    <constraint firstAttribute="height" constant="43" id="yrP-fO-dNT"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="numberLabelFontSize">
-                                        <real key="value" value="34"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Optimize Your Routines"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="titleLabelFontSize">
-                                        <real key="value" value="21"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="labelMargin">
-                                        <real key="value" value="11"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="subTitle" value="based on the analysis results"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="numberString" value="↺"/>
-                                </userDefinedRuntimeAttributes>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="1e2-Kj-Kyp"/>
-                                    </mask>
-                                </variation>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1GY-9v-e27" customClass="CircularHeadlineView" customModule="Florian_Pfisterer" customModuleProvider="target">
-                                <rect key="frame" x="41" y="425" width="293" height="43"/>
+                                <rect key="frame" x="71" y="450" width="273" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="229" id="HS8-qE-2Wq"/>
@@ -531,7 +495,7 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYn-bu-3X0" customClass="CircularHeadlineView" customModule="Florian_Pfisterer" customModuleProvider="target">
-                                <rect key="frame" x="41" y="485" width="293" height="43"/>
+                                <rect key="frame" x="71" y="510" width="273" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="bZw-yy-gaz"/>
@@ -558,7 +522,7 @@
                                 </variation>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="After doing a few FlowLogs, the app will provide several analyses to help you:" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cl2-4X-rqL">
-                                <rect key="frame" x="33" y="245" width="309" height="52"/>
+                                <rect key="frame" x="37" y="270" width="340" height="52"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -568,7 +532,7 @@
                                 </variation>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UtK-85-zYe">
-                                <rect key="frame" x="0.0" y="608" width="375" height="38"/>
+                                <rect key="frame" x="0.0" y="677" width="414" height="38"/>
                                 <color key="backgroundColor" red="0.1215686275" green="0.47843137250000001" blue="0.50196078430000002" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="iAI-Fr-qlm"/>
@@ -586,34 +550,60 @@
                                     <action selector="proceedToFirstLog" destination="RQQ-E2-Mcr" eventType="touchUpInside" id="aur-8U-qKz"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tyb-ik-9ia" customClass="CircularHeadlineView" customModule="Florian_Pfisterer" customModuleProvider="target">
+                                <rect key="frame" x="71" y="390" width="273" height="43"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="229" id="1e2-Kj-Kyp"/>
+                                    <constraint firstAttribute="height" constant="43" id="yrP-fO-dNT"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="numberLabelFontSize">
+                                        <real key="value" value="34"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Optimize Your Routines"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="titleLabelFontSize">
+                                        <real key="value" value="21"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="labelMargin">
+                                        <real key="value" value="11"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="subTitle" value="based on the analysis results"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="numberString" value="↺"/>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="1e2-Kj-Kyp"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Tyb-ik-9ia" firstAttribute="centerX" secondItem="djd-OH-P8t" secondAttribute="centerX" id="1XI-CB-bez"/>
                             <constraint firstItem="tlb-F2-bBO" firstAttribute="top" secondItem="47V-4t-pgA" secondAttribute="bottom" constant="17" id="1ts-y5-nbe"/>
                             <constraint firstItem="MDf-Kc-8jx" firstAttribute="height" secondItem="VFG-Fd-k7L" secondAttribute="height" multiplier="0.35" id="5H5-Ne-UaD"/>
                             <constraint firstItem="1GY-9v-e27" firstAttribute="centerX" secondItem="Tyb-ik-9ia" secondAttribute="centerX" id="73y-U7-CXM"/>
+                            <constraint firstItem="Tyb-ik-9ia" firstAttribute="width" secondItem="djd-OH-P8t" secondAttribute="width" id="A7E-3O-6Mc"/>
                             <constraint firstItem="dYn-bu-3X0" firstAttribute="top" secondItem="1GY-9v-e27" secondAttribute="bottom" constant="17" id="Afr-1h-16S"/>
-                            <constraint firstItem="Tyb-ik-9ia" firstAttribute="height" secondItem="djd-OH-P8t" secondAttribute="height" id="B0D-PO-gWh"/>
                             <constraint firstItem="dYn-bu-3X0" firstAttribute="height" secondItem="1GY-9v-e27" secondAttribute="height" id="BWz-FT-cls"/>
                             <constraint firstItem="MDf-Kc-8jx" firstAttribute="top" secondItem="47V-4t-pgA" secondAttribute="bottom" id="CrH-ha-q4d"/>
                             <constraint firstItem="tlb-F2-bBO" firstAttribute="centerX" secondItem="VFG-Fd-k7L" secondAttribute="centerX" id="Dxt-p9-JSZ"/>
                             <constraint firstItem="dYn-bu-3X0" firstAttribute="width" secondItem="1GY-9v-e27" secondAttribute="width" id="Egh-HM-t30"/>
+                            <constraint firstItem="djd-OH-P8t" firstAttribute="top" secondItem="cl2-4X-rqL" secondAttribute="bottom" constant="8" id="FlC-dG-ptQ"/>
                             <constraint firstItem="1GY-9v-e27" firstAttribute="height" secondItem="Tyb-ik-9ia" secondAttribute="height" id="Jrb-WS-v0k"/>
                             <constraint firstItem="MDf-Kc-8jx" firstAttribute="width" secondItem="VFG-Fd-k7L" secondAttribute="width" multiplier="0.9" id="Msh-hF-J3a"/>
                             <constraint firstItem="UtK-85-zYe" firstAttribute="leading" secondItem="VFG-Fd-k7L" secondAttribute="leading" id="O31-Ks-XAT"/>
-                            <constraint firstItem="djd-OH-P8t" firstAttribute="centerX" secondItem="cl2-4X-rqL" secondAttribute="centerX" id="OMM-l1-8ms"/>
                             <constraint firstItem="cl2-4X-rqL" firstAttribute="top" secondItem="MDf-Kc-8jx" secondAttribute="bottom" constant="-8" id="OhW-T0-M0m"/>
                             <constraint firstAttribute="trailing" secondItem="UtK-85-zYe" secondAttribute="trailing" id="Qrp-kr-fQP"/>
-                            <constraint firstItem="djd-OH-P8t" firstAttribute="top" secondItem="cl2-4X-rqL" secondAttribute="bottom" constant="8" id="ScX-ZC-4dg"/>
+                            <constraint firstItem="djd-OH-P8t" firstAttribute="centerX" secondItem="cl2-4X-rqL" secondAttribute="centerX" id="SG5-11-5ie"/>
+                            <constraint firstItem="Tyb-ik-9ia" firstAttribute="top" secondItem="djd-OH-P8t" secondAttribute="bottom" constant="17" id="V09-MX-159"/>
                             <constraint firstItem="nnY-tR-lna" firstAttribute="top" secondItem="UtK-85-zYe" secondAttribute="bottom" constant="21" id="Wkd-Ew-abn"/>
                             <constraint firstItem="dYn-bu-3X0" firstAttribute="centerX" secondItem="1GY-9v-e27" secondAttribute="centerX" id="aoJ-X9-kso"/>
                             <constraint firstItem="1GY-9v-e27" firstAttribute="top" secondItem="Tyb-ik-9ia" secondAttribute="bottom" constant="17" id="dIu-Yi-ngm"/>
                             <constraint firstItem="MDf-Kc-8jx" firstAttribute="top" secondItem="tlb-F2-bBO" secondAttribute="bottom" constant="-68" id="dZ7-Zd-Uqm"/>
-                            <constraint firstItem="Tyb-ik-9ia" firstAttribute="centerX" secondItem="djd-OH-P8t" secondAttribute="centerX" id="dgT-9Z-kcq"/>
+                            <constraint firstItem="Tyb-ik-9ia" firstAttribute="height" secondItem="djd-OH-P8t" secondAttribute="height" id="dxX-s6-uDA"/>
                             <constraint firstItem="1GY-9v-e27" firstAttribute="width" secondItem="Tyb-ik-9ia" secondAttribute="width" id="faU-s5-Nbg"/>
-                            <constraint firstItem="djd-OH-P8t" firstAttribute="leading" secondItem="VFG-Fd-k7L" secondAttribute="leadingMargin" constant="25" id="g38-rG-wzL">
-                                <variation key="widthClass=compact" constant="7"/>
-                            </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="cl2-4X-rqL" secondAttribute="trailing" constant="17" id="jkS-xR-LFR">
                                 <variation key="widthClass=compact" constant="3"/>
                             </constraint>
@@ -621,11 +611,6 @@
                                 <variation key="widthClass=compact" constant="3"/>
                             </constraint>
                             <constraint firstItem="cl2-4X-rqL" firstAttribute="centerX" secondItem="MDf-Kc-8jx" secondAttribute="centerX" id="lkJ-xF-fKx"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="djd-OH-P8t" secondAttribute="trailing" constant="25" id="naz-94-tjH">
-                                <variation key="widthClass=compact" constant="7"/>
-                            </constraint>
-                            <constraint firstItem="Tyb-ik-9ia" firstAttribute="width" secondItem="djd-OH-P8t" secondAttribute="width" id="rE0-Uc-KVU"/>
-                            <constraint firstItem="Tyb-ik-9ia" firstAttribute="top" secondItem="djd-OH-P8t" secondAttribute="bottom" constant="17" id="wbx-Vo-b2I"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -648,6 +633,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="2Ly-D5-7S8" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0fU-pY-fUV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

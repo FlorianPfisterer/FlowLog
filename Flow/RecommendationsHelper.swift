@@ -19,7 +19,7 @@ class RecommendationsHelper     // MARK: - for different flow states
             var recommendations = [String]()
             
             guard AnalysisHelper.getNumberOfLogs(context: context) > 5 else {
-                completion(["Sorry, there is not enough data for any recommendations yet. Come back later."])
+                completion(["Sorry, there is not enough data for any recommendations yet. Please create more than 5 log entries."])
                 return
             }
             
@@ -69,13 +69,13 @@ extension RecommendationsHelper     // MARK: - Energy, Happiness and Combined Re
             var recommendations = [String]()
             
             guard AnalysisHelper.getNumberOfLogs(context: context) > 5 else {
-                completion(["Sorry, there is not enough data for any recommendations yet. Come back later."])
+                completion(["Sorry, there is not enough data for any recommendations yet. Please create more than 5 log entries."])
                 return
             }
             
             if let maxIndex = maxIndex(graphValues)
             {
-                let hour = maxIndex + LogHelper.alarmStartTime.hour
+                let hour = maxIndex + LogHelper.alarmStartTime.roundedTimeHour()
                 let timeDescription = StringHelper.getLocalizedTimeDescriptionAtHour(hour)
                 
                 switch graphState
@@ -98,7 +98,7 @@ extension RecommendationsHelper     // MARK: - Energy, Happiness and Combined Re
             
             if let minIndex = minIndex(graphValues)
             {
-                let hour = minIndex + LogHelper.alarmStartTime.hour
+                let hour = minIndex + LogHelper.alarmStartTime.roundedTimeHour()
                 let timeDescription = StringHelper.getLocalizedTimeDescriptionAtHour(hour)
                 
                 switch graphState

@@ -9,7 +9,7 @@
         <!--Analyses-->
         <scene sceneID="3mM-Td-Fyp">
             <objects>
-                <tableViewController id="P1j-HW-Ph7" customClass="AnalysisOverviewTVC" customModule="FlowLog" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="P1j-HW-Ph7" customClass="AnalysisOverviewTVC" customModule="Florian_Pfisterer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="3mc-gM-6Wp">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -172,13 +172,13 @@
         <!--All Logs OverviewTVC-->
         <scene sceneID="JDZ-2V-md9">
             <objects>
-                <tableViewController id="QHY-Qd-kE2" customClass="AllLogsOverviewTVC" customModule="FlowLog" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="QHY-Qd-kE2" customClass="AllLogsOverviewTVC" customModule="Florian_Pfisterer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="69" sectionHeaderHeight="28" sectionFooterHeight="28" id="L4G-mG-6CD">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="logCell" rowHeight="69" id="MTZ-Cx-ihP" customClass="LogCell" customModule="FlowLog" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="logCell" rowHeight="69" id="MTZ-Cx-ihP" customClass="LogCell" customModule="Florian_Pfisterer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="69"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MTZ-Cx-ihP" id="63G-e9-6hy">
@@ -275,7 +275,7 @@
         <!--Flow Recommendations-->
         <scene sceneID="6cK-ZU-bun">
             <objects>
-                <viewController title="Flow Recommendations" id="6Ef-Jz-vhe" customClass="FlowRecommendationsVC" customModule="FlowLog" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Flow Recommendations" id="6Ef-Jz-vhe" customClass="FlowRecommendationsVC" customModule="Florian_Pfisterer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AJa-GH-1Xa"/>
                         <viewControllerLayoutGuide type="bottom" id="b60-UQ-w8I"/>
@@ -297,7 +297,7 @@
                                     <action selector="changeGraphKind:" destination="6Ef-Jz-vhe" eventType="valueChanged" id="YNa-CX-z1h"/>
                                 </connections>
                             </segmentedControl>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0l-ug-m9l" customClass="DiagramView" customModule="FlowLog" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0l-ug-m9l" customClass="DiagramView" customModule="Florian_Pfisterer" customModuleProvider="target">
                                 <rect key="frame" x="16" y="76" width="343" height="257"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flow State" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ckG-Ee-dU1">
@@ -343,13 +343,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11a" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZc-6X-WED">
-                                        <rect key="frame" x="100" y="228" width="25" height="21"/>
+                                        <rect key="frame" x="111" y="228" width="25" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3p" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bay-rV-ng5">
-                                        <rect key="frame" x="215" y="228" width="21" height="21"/>
+                                        <rect key="frame" x="211" y="228" width="21" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -360,6 +360,8 @@
                                     <constraint firstItem="HvT-oo-Q2a" firstAttribute="top" secondItem="ckG-Ee-dU1" secondAttribute="bottom" id="2vd-m2-npz"/>
                                     <constraint firstItem="ckG-Ee-dU1" firstAttribute="top" secondItem="W0l-ug-m9l" secondAttribute="top" constant="10" id="3vT-p5-8D5"/>
                                     <constraint firstAttribute="trailing" secondItem="oCk-TW-nTX" secondAttribute="trailing" constant="1" id="4Wm-WL-czf"/>
+                                    <constraint firstItem="fZc-6X-WED" firstAttribute="leading" secondItem="gAf-Sg-Orz" secondAttribute="trailing" constant="78" id="50v-qP-fUA"/>
+                                    <constraint firstItem="bay-rV-ng5" firstAttribute="centerX" secondItem="W0l-ug-m9l" secondAttribute="centerX" multiplier="1.29" id="Cce-2C-5rv"/>
                                     <constraint firstItem="oCk-TW-nTX" firstAttribute="top" secondItem="W0l-ug-m9l" secondAttribute="top" constant="50" id="DUa-1E-hU8"/>
                                     <constraint firstItem="fZc-6X-WED" firstAttribute="centerY" secondItem="gAf-Sg-Orz" secondAttribute="centerY" id="Fpm-Jw-9zc"/>
                                     <constraint firstAttribute="trailing" secondItem="ewA-9t-Ybs" secondAttribute="trailing" constant="13" id="GQ2-tf-9IK"/>
@@ -369,12 +371,14 @@
                                     <constraint firstAttribute="trailing" secondItem="d88-I5-Ukg" secondAttribute="trailing" constant="1" id="Sp2-GS-dmx"/>
                                     <constraint firstAttribute="bottom" secondItem="fZc-6X-WED" secondAttribute="bottom" constant="8" id="Sw6-68-1PC"/>
                                     <constraint firstItem="d88-I5-Ukg" firstAttribute="centerX" secondItem="oCk-TW-nTX" secondAttribute="centerX" id="cvs-UG-XiI"/>
+                                    <constraint firstItem="ewA-9t-Ybs" firstAttribute="leading" secondItem="bay-rV-ng5" secondAttribute="trailing" constant="78" id="h74-jM-954"/>
                                     <constraint firstItem="bay-rV-ng5" firstAttribute="centerX" secondItem="W0l-ug-m9l" secondAttribute="centerX" multiplier="1:0.76" id="iYt-Te-74n"/>
                                     <constraint firstItem="fZc-6X-WED" firstAttribute="centerX" secondItem="W0l-ug-m9l" secondAttribute="centerX" multiplier="1:1.53" id="idf-Fh-wiB"/>
                                     <constraint firstItem="ewA-9t-Ybs" firstAttribute="centerY" secondItem="fZc-6X-WED" secondAttribute="centerY" id="lFe-TU-09P"/>
                                     <constraint firstAttribute="bottom" secondItem="d88-I5-Ukg" secondAttribute="bottom" constant="40" id="mca-Ez-AGo"/>
                                     <constraint firstAttribute="bottom" secondItem="gAf-Sg-Orz" secondAttribute="bottom" constant="8" id="oFB-pa-rPk"/>
                                     <constraint firstItem="ckG-Ee-dU1" firstAttribute="leading" secondItem="W0l-ug-m9l" secondAttribute="leading" constant="20" id="qay-6B-zHv"/>
+                                    <constraint firstItem="fZc-6X-WED" firstAttribute="centerX" secondItem="W0l-ug-m9l" secondAttribute="centerX" multiplier="0.72" id="rIr-tE-0Oc"/>
                                     <constraint firstItem="pro-QB-h5a" firstAttribute="centerY" secondItem="HvT-oo-Q2a" secondAttribute="centerY" id="uer-ES-kBK"/>
                                     <constraint firstItem="bay-rV-ng5" firstAttribute="centerY" secondItem="ewA-9t-Ybs" secondAttribute="centerY" id="urn-5B-guA"/>
                                     <constraint firstItem="HvT-oo-Q2a" firstAttribute="leading" secondItem="W0l-ug-m9l" secondAttribute="leading" constant="20" id="y2l-S8-Zn1"/>
@@ -389,8 +393,12 @@
                                 </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="50v-qP-fUA"/>
                                         <exclude reference="Qls-B1-mVi"/>
                                         <exclude reference="Sw6-68-1PC"/>
+                                        <exclude reference="idf-Fh-wiB"/>
+                                        <exclude reference="iYt-Te-74n"/>
+                                        <exclude reference="h74-jM-954"/>
                                         <exclude reference="cvs-UG-XiI"/>
                                     </mask>
                                 </variation>
@@ -399,7 +407,7 @@
                                 <rect key="frame" x="0.0" y="377" width="375" height="290"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recommendationCell" rowHeight="70" id="ajN-Lf-ZAw" customClass="DynamicRecommendationCell" customModule="FlowLog" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recommendationCell" rowHeight="70" id="ajN-Lf-ZAw" customClass="DynamicRecommendationCell" customModule="Florian_Pfisterer" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ajN-Lf-ZAw" id="ecQ-D1-crn">
@@ -476,7 +484,7 @@
         <!--Popular Flow Activities-->
         <scene sceneID="6j6-4H-2Jb">
             <objects>
-                <tableViewController title="Popular Flow Activities" id="VZL-N5-KE9" customClass="PopularFlowActivitiesTVC" customModule="FlowLog" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Popular Flow Activities" id="VZL-N5-KE9" customClass="PopularFlowActivitiesTVC" customModule="Florian_Pfisterer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="X35-HW-IRy">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -520,7 +528,7 @@
         <!--Popular Time FramesTVC-->
         <scene sceneID="vs7-dv-DoJ">
             <objects>
-                <tableViewController id="mz7-RF-JP5" customClass="PopularTimeFramesTVC" customModule="FlowLog" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="mz7-RF-JP5" customClass="PopularTimeFramesTVC" customModule="Florian_Pfisterer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="cid-3T-5Vf">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
