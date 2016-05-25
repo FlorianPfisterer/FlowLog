@@ -111,7 +111,7 @@
 		41C7CD251C6DDB0E005AA1BA /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		41C7CD271C6DDB35005AA1BA /* Supporting Structs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Supporting Structs.swift"; sourceTree = "<group>"; };
 		41C7CD291C6DDB8A005AA1BA /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
-		41CE6AF01C38F73000F4DBED /* Florian Pfisterer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Florian Pfisterer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		41CE6AF01C38F73000F4DBED /* FlowLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlowLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41CE6AF31C38F73000F4DBED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41CE6AF81C38F73000F4DBED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		41CE6AFB1C38F73000F4DBED /* Flow.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Flow.xcdatamodel; sourceTree = "<group>"; };
@@ -205,7 +205,7 @@
 		41CE6AF11C38F73000F4DBED /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				41CE6AF01C38F73000F4DBED /* Florian Pfisterer.app */,
+				41CE6AF01C38F73000F4DBED /* FlowLog.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -375,9 +375,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		41CE6AEF1C38F73000F4DBED /* Florian Pfisterer */ = {
+		41CE6AEF1C38F73000F4DBED /* FlowLog */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 41CE6B051C38F73000F4DBED /* Build configuration list for PBXNativeTarget "Florian Pfisterer" */;
+			buildConfigurationList = 41CE6B051C38F73000F4DBED /* Build configuration list for PBXNativeTarget "FlowLog" */;
 			buildPhases = (
 				41CE6AEC1C38F73000F4DBED /* Sources */,
 				41CE6AED1C38F73000F4DBED /* Frameworks */,
@@ -388,9 +388,9 @@
 			);
 			dependencies = (
 			);
-			name = "Florian Pfisterer";
+			name = FlowLog;
 			productName = Flow;
-			productReference = 41CE6AF01C38F73000F4DBED /* Florian Pfisterer.app */;
+			productReference = 41CE6AF01C38F73000F4DBED /* FlowLog.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -409,7 +409,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 41CE6AEB1C38F73000F4DBED /* Build configuration list for PBXProject "Florian Pfisterer" */;
+			buildConfigurationList = 41CE6AEB1C38F73000F4DBED /* Build configuration list for PBXProject "FlowLog" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -422,7 +422,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				41CE6AEF1C38F73000F4DBED /* Florian Pfisterer */,
+				41CE6AEF1C38F73000F4DBED /* FlowLog */,
 			);
 		};
 /* End PBXProject section */
@@ -650,7 +650,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.florianpfisterer.flowlog.wwdc;
-				PRODUCT_NAME = "Florian Pfisterer";
+				PRODUCT_NAME = FlowLog;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -671,7 +671,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.florianpfisterer.flowlog.wwdc;
-				PRODUCT_NAME = "Florian Pfisterer";
+				PRODUCT_NAME = FlowLog;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -680,7 +680,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		41CE6AEB1C38F73000F4DBED /* Build configuration list for PBXProject "Florian Pfisterer" */ = {
+		41CE6AEB1C38F73000F4DBED /* Build configuration list for PBXProject "FlowLog" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				41CE6B031C38F73000F4DBED /* Debug */,
@@ -689,7 +689,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		41CE6B051C38F73000F4DBED /* Build configuration list for PBXNativeTarget "Florian Pfisterer" */ = {
+		41CE6B051C38F73000F4DBED /* Build configuration list for PBXNativeTarget "FlowLog" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				41CE6B061C38F73000F4DBED /* Debug */,
