@@ -415,7 +415,7 @@
 				TargetAttributes = {
 					41CE6AEF1C38F73000F4DBED = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = P9EMYLP33A;
+						DevelopmentTeam = 749UK5TQW5;
 					};
 				};
 			};
@@ -661,7 +661,7 @@
 				INFOPLIST_FILE = Flow/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.florianpfisterer.flowlog.wwdc;
+				PRODUCT_BUNDLE_IDENTIFIER = de.florianpfisterer.flowlog;
 				PRODUCT_NAME = FlowLog;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -682,7 +682,7 @@
 				INFOPLIST_FILE = Flow/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.florianpfisterer.flowlog.wwdc;
+				PRODUCT_BUNDLE_IDENTIFIER = de.florianpfisterer.flowlog;
 				PRODUCT_NAME = FlowLog;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

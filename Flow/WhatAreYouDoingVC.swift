@@ -44,14 +44,13 @@ extension WhatAreYouDoingVC     // MARK: - View Lifecycle
         else
         {
             self.bannerViewHeightConstraint.constant = 0
-            // TODO
         }
     }
     
     override func viewWillAppear(animated: Bool)
     {
         super.viewWillAppear(animated)
-        handleAdBannerShowup(heightConstraint: self.bannerViewHeightConstraint)
+        self.handleAdBannerShowup(heightConstraint: self.bannerViewHeightConstraint)
     }
 }
 

@@ -130,3 +130,18 @@ extension UIColor
         return UIColor(red: 54.0/255.0, green: 54.0/255.0, blue: 54.0/255.0, alpha: 1)
     }
 }
+
+extension UIViewController
+{
+    func handleAdBannerShowup(heightConstraint heightConstraint: NSLayoutConstraint, usualHeight: CGFloat = 50)
+    {
+        if !showAds()
+        {
+            heightConstraint.constant = 0
+        }
+        else
+        {
+            heightConstraint.constant = usualHeight
+        }
+    }
+}

@@ -46,8 +46,7 @@ extension AreYouInFlowVC    // MARK: - View Lifecycle
     override func viewWillAppear(animated: Bool)
     {
         super.viewWillAppear(animated)
-        
-        handleAdBannerShowup(heightConstraint: self.bannerViewHeightConstraint)
+        self.handleAdBannerShowup(heightConstraint: self.bannerViewHeightConstraint)
     }
 }
 

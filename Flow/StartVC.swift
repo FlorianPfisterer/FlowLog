@@ -46,8 +46,7 @@ extension StartVC
         super.viewWillAppear(animated)
         
         self.updateProgress()
-        
-        handleAdBannerShowup(heightConstraint: self.bannerViewHeightConstraint)
+        self.handleAdBannerShowup(heightConstraint: self.bannerViewHeightConstraint)
     }
     
     override func viewDidAppear(animated: Bool)

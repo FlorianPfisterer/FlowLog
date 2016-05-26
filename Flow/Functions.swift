@@ -115,18 +115,6 @@ func checkNotificationsEnabled(completion: (() -> Void)?) -> UIAlertController?
     return nil
 }
 
-func handleAdBannerShowup(heightConstraint heightConstraint: NSLayoutConstraint, usualHeight: CGFloat = 50)
-{
-    if !showAds()
-    {
-        heightConstraint.constant = 0
-    }
-    else
-    {
-        heightConstraint.constant = usualHeight
-    }
-}
-
 func == (lhs: NSIndexPath, rhs: (Int, Int)) -> Bool
 {
     return lhs.section == rhs.0 && lhs.row == rhs.1
