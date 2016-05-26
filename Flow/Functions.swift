@@ -8,6 +8,21 @@
 
 import Foundation
 import UIKit
+import GoogleMobileAds
+
+func setupBannerView(bannerView: GADBannerView, forAd: GoogleAdUnitID)
+{
+    bannerView.adUnitID = forAd.rawValue
+    
+    let request = GADRequest()
+    request.testDevices = [kGADSimulatorID]
+    bannerView.loadRequest(request)
+}
+
+func showAds() -> Bool
+{
+    return !DEBUG && internetConnectionAvailable()
+}
 
 func resetAllData()
 {
@@ -102,7 +117,7 @@ func checkNotificationsEnabled(completion: (() -> Void)?) -> UIAlertController?
 
 func handleAdBannerShowup(heightConstraint heightConstraint: NSLayoutConstraint, usualHeight: CGFloat = 50)
 {
-    if !internetConnectionAvailable()
+    if !showAds()
     {
         heightConstraint.constant = 0
     }

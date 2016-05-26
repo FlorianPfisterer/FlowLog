@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "41CE6AEF1C38F73000F4DBED"
-               BuildableName = "Florian Pfisterer.app"
+               BuildableName = "FlowLog.app"
                BlueprintName = "FlowLog"
                ReferencedContainer = "container:FlowLog.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "41CE6AEF1C38F73000F4DBED"
-            BuildableName = "Florian Pfisterer.app"
+            BuildableName = "FlowLog.app"
             BlueprintName = "FlowLog"
             ReferencedContainer = "container:FlowLog.xcodeproj">
          </BuildableReference>
@@ -56,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "41CE6AEF1C38F73000F4DBED"
-            BuildableName = "Florian Pfisterer.app"
+            BuildableName = "FlowLog.app"
             BlueprintName = "FlowLog"
             ReferencedContainer = "container:FlowLog.xcodeproj">
          </BuildableReference>
@@ -75,7 +75,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "41CE6AEF1C38F73000F4DBED"
-            BuildableName = "Florian Pfisterer.app"
+            BuildableName = "FlowLog.app"
             BlueprintName = "FlowLog"
             ReferencedContainer = "container:FlowLog.xcodeproj">
          </BuildableReference>

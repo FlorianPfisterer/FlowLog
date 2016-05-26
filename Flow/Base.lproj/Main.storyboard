@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bgW-nH-Gtf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bgW-nH-Gtf">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -10,16 +10,16 @@
         <!--StartVC-->
         <scene sceneID="ul0-Mm-BkR">
             <objects>
-                <viewController storyboardIdentifier="StartVC" title="StartVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lun-pC-bXd" customClass="StartVC" customModule="Florian_Pfisterer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartVC" title="StartVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lun-pC-bXd" customClass="StartVC" customModule="FlowLog" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="B5M-fu-iIN"/>
                         <viewControllerLayoutGuide type="bottom" id="uuv-s9-3A3"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="fP6-1F-dhz" customClass="GradientBackgroundView" customModule="Florian_Pfisterer" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="fP6-1F-dhz" customClass="GradientBackgroundView" customModule="FlowLog" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ufw-3y-D7A" customClass="ProgressView" customModule="Florian_Pfisterer" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ufw-3y-D7A" customClass="ProgressView" customModule="FlowLog" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="117" width="600" height="246"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Ufw-3y-D7A" secondAttribute="height" multiplier="1:1" id="B7v-nh-4CO"/>
@@ -52,8 +52,21 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Log: today, 7 pm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0f-xR-x5S">
+                                <rect key="frame" x="208" y="381" width="185" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oXP-qr-nV3" customClass="GADBannerView">
+                                <rect key="frame" x="0.0" y="550" width="600" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Tnb-Fm-w8b"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ks9-UP-761">
-                                <rect key="frame" x="0.0" y="541" width="600" height="38"/>
+                                <rect key="frame" x="0.0" y="502" width="600" height="38"/>
                                 <color key="backgroundColor" red="0.1215686275" green="0.47843137250000001" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="Log Data Analysis">
@@ -63,12 +76,6 @@
                                     <segue destination="Wso-jC-oz1" kind="show" identifier="showAnalysisSegue" id="S5f-zD-pa2"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Log: today, 7 pm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0f-xR-x5S">
-                                <rect key="frame" x="208" y="381" width="185" height="23"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -76,7 +83,9 @@
                             <constraint firstAttribute="trailing" secondItem="ks9-UP-761" secondAttribute="trailing" id="BVl-GV-T0a"/>
                             <constraint firstItem="Ufw-3y-D7A" firstAttribute="centerY" secondItem="fP6-1F-dhz" secondAttribute="centerY" multiplier="0.8" id="JuZ-6J-72K"/>
                             <constraint firstItem="Ufw-3y-D7A" firstAttribute="width" secondItem="fP6-1F-dhz" secondAttribute="width" id="Lc0-fR-0mf"/>
+                            <constraint firstItem="uuv-s9-3A3" firstAttribute="top" secondItem="oXP-qr-nV3" secondAttribute="bottom" id="Ltt-d9-gTZ"/>
                             <constraint firstItem="uuv-s9-3A3" firstAttribute="top" secondItem="ks9-UP-761" secondAttribute="bottom" constant="21" id="Qyh-5N-Os4"/>
+                            <constraint firstAttribute="trailing" secondItem="oXP-qr-nV3" secondAttribute="trailing" id="SuC-oJ-zmK"/>
                             <constraint firstItem="Ufw-3y-D7A" firstAttribute="width" secondItem="fP6-1F-dhz" secondAttribute="width" multiplier="0.6" id="TSe-yh-m0r"/>
                             <constraint firstItem="ks9-UP-761" firstAttribute="leading" secondItem="fP6-1F-dhz" secondAttribute="leadingMargin" id="UMc-fH-xYI"/>
                             <constraint firstItem="uuv-s9-3A3" firstAttribute="top" secondItem="ks9-UP-761" secondAttribute="bottom" constant="20" id="YKe-zr-5lG"/>
@@ -84,7 +93,9 @@
                             <constraint firstItem="e0f-xR-x5S" firstAttribute="centerX" secondItem="Ufw-3y-D7A" secondAttribute="centerX" id="deK-0P-WL1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ufw-3y-D7A" secondAttribute="trailing" constant="141" id="h9C-dN-h8p"/>
                             <constraint firstItem="Ufw-3y-D7A" firstAttribute="height" secondItem="fP6-1F-dhz" secondAttribute="height" multiplier="0.41" id="mRd-iR-ffQ"/>
+                            <constraint firstItem="oXP-qr-nV3" firstAttribute="leading" secondItem="fP6-1F-dhz" secondAttribute="leading" id="mU7-s1-FSX"/>
                             <constraint firstItem="Ufw-3y-D7A" firstAttribute="leading" secondItem="fP6-1F-dhz" secondAttribute="leadingMargin" constant="142" id="nVi-hl-l0s"/>
+                            <constraint firstItem="oXP-qr-nV3" firstAttribute="top" secondItem="ks9-UP-761" secondAttribute="bottom" constant="10" id="qih-Oc-4xH"/>
                             <constraint firstItem="Ufw-3y-D7A" firstAttribute="centerX" secondItem="fP6-1F-dhz" secondAttribute="centerX" id="rRH-QI-ehv"/>
                             <constraint firstItem="ks9-UP-761" firstAttribute="leading" secondItem="fP6-1F-dhz" secondAttribute="leading" id="tCT-Tk-1d1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ks9-UP-761" secondAttribute="trailing" id="zP8-Xd-SpO"/>
@@ -97,6 +108,7 @@
                                 <exclude reference="nVi-hl-l0s"/>
                                 <exclude reference="UMc-fH-xYI"/>
                                 <exclude reference="zP8-Xd-SpO"/>
+                                <exclude reference="Qyh-5N-Os4"/>
                                 <exclude reference="YKe-zr-5lG"/>
                             </mask>
                         </variation>
@@ -109,6 +121,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bannerView" destination="oXP-qr-nV3" id="Q78-Cz-1it"/>
+                        <outlet property="bannerViewHeightConstraint" destination="Tnb-Fm-w8b" id="uxP-bU-qAy"/>
                         <outlet property="nextLogLabel" destination="e0f-xR-x5S" id="DYO-oJ-wZ6"/>
                         <outlet property="progressView" destination="Ufw-3y-D7A" id="7KD-Gd-fDO"/>
                     </connections>
@@ -120,12 +134,12 @@
         <!--CompletedVC-->
         <scene sceneID="m44-wk-u3q">
             <objects>
-                <viewController storyboardIdentifier="CompletedVC" id="Rk3-ve-1a9" customClass="CompletedVC" customModule="Florian_Pfisterer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CompletedVC" id="Rk3-ve-1a9" customClass="CompletedVC" customModule="FlowLog" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AZU-x7-6bJ"/>
                         <viewControllerLayoutGuide type="bottom" id="D6F-Tp-Esy"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="4sc-zr-toq" customClass="GradientBackgroundView" customModule="Florian_Pfisterer" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="4sc-zr-toq" customClass="GradientBackgroundView" customModule="FlowLog" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -164,7 +178,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mgV-G7-8j3" customClass="AwardView" customModule="Florian_Pfisterer" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mgV-G7-8j3" customClass="AwardView" customModule="FlowLog" customModuleProvider="target">
                                 <rect key="frame" x="60" y="28" width="480" height="240"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="startColor">

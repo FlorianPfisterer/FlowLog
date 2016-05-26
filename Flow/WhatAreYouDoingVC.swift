@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class WhatAreYouDoingVC: UIViewController
 {
@@ -16,9 +17,9 @@ class WhatAreYouDoingVC: UIViewController
     var searchedActivities: [Activity]?
     
     @IBOutlet weak var actionsCollectionView: UICollectionView!
-//    @IBOutlet weak var bannerView: GADBannerView!
-//    
-//    @IBOutlet weak var bannerViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bannerView: GADBannerView!
+    
+    @IBOutlet weak var bannerViewHeightConstraint: NSLayoutConstraint!
     
     var standardFontSize: CGFloat?
 }
@@ -35,22 +36,22 @@ extension WhatAreYouDoingVC     // MARK: - View Lifecycle
         
         self.loadAvailableActions()
         
-//        self.bannerView.rootViewController = self
-//        if DEBUG
-//        {
-//            self.bannerViewHeightConstraint.constant = 0
-//        }
-//        else
-//        {
-//            setupBannerView(self.bannerView, forAd: .LogActivityBottomBanner)
-//        }
+        self.bannerView.rootViewController = self
+        if showAds()
+        {
+            setupBannerView(self.bannerView, forAd: .LogActivityBottomBanner)
+        }
+        else
+        {
+            self.bannerViewHeightConstraint.constant = 0
+            // TODO
+        }
     }
     
     override func viewWillAppear(animated: Bool)
     {
         super.viewWillAppear(animated)
-        
-//        handleAdBannerShowup(heightConstraint: self.bannerViewHeightConstraint)
+        handleAdBannerShowup(heightConstraint: self.bannerViewHeightConstraint)
     }
 }
 

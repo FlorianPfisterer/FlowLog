@@ -7,14 +7,15 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class AreYouInFlowVC: UIViewController
 {
     @IBOutlet weak var flowView: FlowView!
     @IBOutlet weak var saveLogButton: UIButton!
     @IBOutlet weak var challengeAxisLabel: UILabel!
-//    @IBOutlet weak var bannerView: GADBannerView!
-//    @IBOutlet weak var bannerViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bannerView: GADBannerView!
+    @IBOutlet weak var bannerViewHeightConstraint: NSLayoutConstraint!
 }
 
 extension AreYouInFlowVC    // MARK: - View Lifecycle
@@ -31,22 +32,22 @@ extension AreYouInFlowVC    // MARK: - View Lifecycle
         
         self.saveLogButton.enabled = false
         
-//        self.bannerView.rootViewController = self
-//        if DEBUG
-//        {
-//            self.bannerViewHeightConstraint.constant = 0
-//        }
-//        else
-//        {
-//            setupBannerView(self.bannerView, forAd: .LogFlowBottomBanner)
-//        }
+        self.bannerView.rootViewController = self
+        if showAds()
+        {
+            setupBannerView(self.bannerView, forAd: .LogFlowBottomBanner)
+        }
+        else
+        {
+            self.bannerViewHeightConstraint.constant = 0
+        }
     }
     
     override func viewWillAppear(animated: Bool)
     {
         super.viewWillAppear(animated)
         
-//        handleAdBannerShowup(heightConstraint: self.bannerViewHeightConstraint)
+        handleAdBannerShowup(heightConstraint: self.bannerViewHeightConstraint)
     }
 }
 

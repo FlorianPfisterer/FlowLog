@@ -35,6 +35,7 @@
 		419681981C7C425200A9BE3A /* ActivityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419681971C7C425200A9BE3A /* ActivityHelper.swift */; };
 		4199ED471C874EB60067EE60 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4199ED461C874EB60067EE60 /* SystemConfiguration.framework */; };
 		4199ED491C874ECA0067EE60 /* Reach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4199ED481C874ECA0067EE60 /* Reach.swift */; };
+		41B0055B1CF730C500EE4750 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41B0055A1CF730C500EE4750 /* GoogleMobileAds.framework */; };
 		41B10A081C8605D900490D5A /* IntroFlowLogInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B10A071C8605D900490D5A /* IntroFlowLogInfoVC.swift */; };
 		41B8150B1C40117200A2C72D /* AnalysisHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B8150A1C40117200A2C72D /* AnalysisHelper.swift */; };
 		41B8150E1C4014BD00A2C72D /* AnalysisOverviewTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B8150D1C4014BD00A2C72D /* AnalysisOverviewTVC.swift */; };
@@ -63,6 +64,8 @@
 		41CE6B3A1C39358700F4DBED /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE6B391C39358700F4DBED /* LogHelper.swift */; };
 		41CE6B3C1C3936FF00F4DBED /* AreYouInFlowVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE6B3B1C3936FF00F4DBED /* AreYouInFlowVC.swift */; };
 		41CE6B3E1C39395B00F4DBED /* FlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE6B3D1C39395B00F4DBED /* FlowView.swift */; };
+		41D3DA3C1CF5A75900F3F856 /* ErrorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3DA3B1CF5A75900F3F856 /* ErrorHelper.swift */; };
+		41D3DA3E1CF5A78B00F3F856 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D3DA3D1CF5A78B00F3F856 /* Errors.swift */; };
 		41D450BF1C3A701900E586D8 /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D450BE1C3A701900E586D8 /* NotificationHelper.swift */; };
 		41E134DC1C55EED30027D66C /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E134DB1C55EED30027D66C /* ProgressView.swift */; };
 		41E57FD41C624E44008D07ED /* HorizontalStateControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E57FD31C624E44008D07ED /* HorizontalStateControl.swift */; };
@@ -100,6 +103,7 @@
 		419681971C7C425200A9BE3A /* ActivityHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityHelper.swift; sourceTree = "<group>"; };
 		4199ED461C874EB60067EE60 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4199ED481C874ECA0067EE60 /* Reach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reach.swift; sourceTree = "<group>"; };
+		41B0055A1CF730C500EE4750 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		41B10A071C8605D900490D5A /* IntroFlowLogInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroFlowLogInfoVC.swift; sourceTree = "<group>"; };
 		41B8150A1C40117200A2C72D /* AnalysisHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisHelper.swift; sourceTree = "<group>"; };
 		41B8150D1C4014BD00A2C72D /* AnalysisOverviewTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisOverviewTVC.swift; sourceTree = "<group>"; };
@@ -130,6 +134,8 @@
 		41CE6B391C39358700F4DBED /* LogHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogHelper.swift; sourceTree = "<group>"; };
 		41CE6B3B1C3936FF00F4DBED /* AreYouInFlowVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInFlowVC.swift; sourceTree = "<group>"; };
 		41CE6B3D1C39395B00F4DBED /* FlowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowView.swift; sourceTree = "<group>"; };
+		41D3DA3B1CF5A75900F3F856 /* ErrorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHelper.swift; sourceTree = "<group>"; };
+		41D3DA3D1CF5A78B00F3F856 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		41D450BE1C3A701900E586D8 /* NotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
 		41E134DB1C55EED30027D66C /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		41E57FD31C624E44008D07ED /* HorizontalStateControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalStateControl.swift; sourceTree = "<group>"; };
@@ -143,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41B0055B1CF730C500EE4750 /* GoogleMobileAds.framework in Frameworks */,
 				4199ED471C874EB60067EE60 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,6 +160,7 @@
 		4163A4BB1C7CCB830017D7D0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				41B0055A1CF730C500EE4750 /* GoogleMobileAds.framework */,
 				4199ED481C874ECA0067EE60 /* Reach.swift */,
 				4199ED461C874EB60067EE60 /* SystemConfiguration.framework */,
 			);
@@ -236,6 +244,7 @@
 				416F23751C40EE0C00E86FFB /* RecommendationsHelper.swift */,
 				419681971C7C425200A9BE3A /* ActivityHelper.swift */,
 				414070DC1CC8C6F400281122 /* QuickActionsHelper.swift */,
+				41D3DA3B1CF5A75900F3F856 /* ErrorHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -285,6 +294,7 @@
 				41C7CD271C6DDB35005AA1BA /* Supporting Structs.swift */,
 				41C7CD291C6DDB8A005AA1BA /* Functions.swift */,
 				414070DE1CC8C77700281122 /* ShortcutIdentifier.swift */,
+				41D3DA3D1CF5A78B00F3F856 /* Errors.swift */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -485,6 +495,7 @@
 				413EF02B1C5F3ED4006BD0AB /* AwardView.swift in Sources */,
 				417EFB7A1C83310E009E487A /* IntroHowItWorksVC.swift in Sources */,
 				4199ED491C874ECA0067EE60 /* Reach.swift in Sources */,
+				41D3DA3E1CF5A78B00F3F856 /* Errors.swift in Sources */,
 				4120D74C1C3FC5A1003F94B4 /* Activity.swift in Sources */,
 				414FE4651C7091A5006AE6DD /* Activity+CoreDataProperties.swift in Sources */,
 				416F237A1C41017900E86FFB /* PopularFlowActivitiesTVC.swift in Sources */,
@@ -517,6 +528,7 @@
 				414FE4631C709195006AE6DD /* Category.swift in Sources */,
 				41E134DC1C55EED30027D66C /* ProgressView.swift in Sources */,
 				414070DD1CC8C6F400281122 /* QuickActionsHelper.swift in Sources */,
+				41D3DA3C1CF5A75900F3F856 /* ErrorHelper.swift in Sources */,
 				41B8150B1C40117200A2C72D /* AnalysisHelper.swift in Sources */,
 				41CE6B3C1C3936FF00F4DBED /* AreYouInFlowVC.swift in Sources */,
 			);
